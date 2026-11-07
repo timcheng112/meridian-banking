@@ -328,3 +328,10 @@ Use the existing feature-dev plan/design review gates for material corrections a
 The candidate explicitly chose to keep the right-hand daily-limit card scrolling with the dashboard.
 The wireframe right rail does not prescribe sticky positioning, while D8 explicitly requires the fixed mobile transfer action.
 Preserve this behavior during Figma/code reconciliation.
+
+## Accepted: S2 MR first and preserve application search presentation
+
+The candidate clarified that the S2 MR must be opened before proceeding with fidelity corrections.
+They prefer the current S2 application search presentation over the older Figma search example.
+Use the accepted application composition as the target for later Figma synchronization; the fidelity correction plan remains pending approval.
+This does not authorize the proposed input-color correction, merge or cleanup.
