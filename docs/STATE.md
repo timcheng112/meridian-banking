@@ -818,3 +818,17 @@ No transfer boards or future transfer behavior were changed; mock-worker repair 
 Detailed node inventories and evidence remain local in /private/tmp/meridian-fidelity-figma-ledger.json, /private/tmp/meridian-fidelity-dashboard-final-ledger.json and /private/tmp/meridian-fidelity-states-ledger.json, with screenshots outside Git.
 Local review artifact: /private/tmp/meridian-fidelity-review.html.
 Candidate understanding and acceptance remain pending; no application push, PR, merge, deployment or worktree cleanup occurred.
+
+## Requested Figma organization follow-up
+
+After fidelity implementation, the candidate explicitly requested organizing the scattered Figma designs more neatly.
+Authorized follow-up is canvas organization across existing pages: clearly labeled groups, logical flow order and consistent board spacing.
+Preserve board IDs, design contents, internal layout, components, variable bindings and all retained references; no substantive transfer design changes or deletion are included.
+Organization is complete; the verified application revision remains 6d48a73.
+
+Organized all four Figma pages into 22 native labeled sections with consistent grids and logical flow order.
+Preserved all 111 original roots and IDs; recursive before/after checks confirmed unchanged internal geometry, text, fills, variable bindings and modes.
+Section overlap checks passed and all four page overviews were visually reviewed.
+Dashboard baselines: 67:558; transfer flow: 67:1644; transaction search states: 67:2754; component controls: 67:2991.
+Organization session: 197dd72d-0a93-4666-b284-fcbcada4243c; detailed ledger: /private/tmp/meridian-figma-organization-ledger.json.
+Overview screenshots remain outside Git at /private/tmp/meridian-browser-qa/figma-organized-{dashboard,transfer,states,components}.png.
