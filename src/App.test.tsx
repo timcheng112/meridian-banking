@@ -2,7 +2,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { act, cleanup, render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { delay, http, HttpResponse } from 'msw'
-import { afterEach, describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 import type { Account, Customer, Transaction } from './api/types'
 import { formatMoney, formatShortDate } from './lib/format'
 import { server } from './test/setup'
@@ -79,7 +79,7 @@ describe('dashboard', () => {
     expect(rows[1]).toHaveTextContent('Pending')
     expect(screen.getAllByText('Pending')).toHaveLength(1)
     expectMoney(screen.getByRole('region', { name: 'Daily transfer limit' }), 5000)
-    expect(screen.getByRole('button', { name: 'New transfer' })).toBeDisabled()
+    for (const button of screen.getAllByRole('button', { name: 'New transfer' })) expect(button).toBeDisabled()
     expect(screen.getByRole('searchbox', { name: 'Search transactions' })).toBeDisabled()
   })
 
@@ -150,5 +150,45 @@ describe('dashboard', () => {
     expect(screen.getByText('Across 0 deposit accounts')).toBeVisible()
     expect(screen.queryByRole('article')).not.toBeInTheDocument()
     expect(screen.queryByRole('list', { name: 'Recent transactions' })).not.toBeInTheDocument()
+  })
+})
+
+
+describe('header preferences', () => {
+  it('exposes navigation and synchronized in-memory theme and segment controls without persistence', async () => {
+    const store = vi.spyOn(Storage.prototype, 'setItem')
+    try {
+      renderApp()
+      await screen.findByRole('heading', { name: 'Good evening, Ava' })
+      expect(screen.getByRole('link', { name: 'Overview', hidden: true })).toHaveAttribute('href', '#main-content')
+      for (const label of ['Cards', 'Payments', 'Insights']) expect(screen.getByRole('button', { name: label, hidden: true })).toBeDisabled()
+      const theme = screen.getByRole('button', { name: 'Dark mode' })
+      expect(theme).toHaveAttribute('aria-pressed', 'false')
+      expect(document.documentElement).toHaveAttribute('data-theme', 'light')
+      await userEvent.click(theme)
+      expect(theme).toHaveAttribute('aria-pressed', 'true')
+      expect(document.documentElement).toHaveAttribute('data-theme', 'dark')
+      await userEvent.click(screen.getAllByRole('button', { name: 'Premium' })[0])
+      expect(document.documentElement).toHaveAttribute('data-segment', 'premium')
+      for (const button of screen.getAllByRole('button', { name: 'Premium', hidden: true })) expect(button).toHaveAttribute('aria-pressed', 'true')
+      await userEvent.click(screen.getAllByRole('button', { name: 'Retail' })[0])
+      for (const button of screen.getAllByRole('button', { name: 'Retail', hidden: true })) expect(button).toHaveAttribute('aria-pressed', 'true')
+      expect(document.documentElement).toHaveAttribute('data-segment', 'retail')
+      expect(store).not.toHaveBeenCalled()
+      cleanup()
+      expect(document.documentElement).not.toHaveAttribute('data-theme')
+      expect(document.documentElement).not.toHaveAttribute('data-segment')
+    } finally { store.mockRestore() }
+  })
+
+  it('uses the server segment by default and preserves an explicit selection through refresh', async () => {
+    server.use(http.get('*/api/customer', () => HttpResponse.json({ customer: { ...customer, segment: 'premium' } })))
+    const client = renderApp()
+    await screen.findByRole('heading', { name: 'Good evening, Maya' })
+    expect(document.documentElement).toHaveAttribute('data-segment', 'premium')
+    await userEvent.click(screen.getAllByRole('button', { name: 'Retail' })[0])
+    await act(async () => { await client.invalidateQueries() })
+    expect(document.documentElement).toHaveAttribute('data-segment', 'retail')
+    for (const button of screen.getAllByRole('button', { name: 'Retail', hidden: true })) expect(button).toHaveAttribute('aria-pressed', 'true')
   })
 })

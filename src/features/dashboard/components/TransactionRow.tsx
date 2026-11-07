@@ -2,9 +2,11 @@ import type { Transaction } from '../../../api/types'
 import { formatMoney, formatShortDate } from '../../../lib/format'
 
 export function TransactionRow({ transaction }: { transaction: Transaction }) {
+  const initials = transaction.description.split(/\s+/).filter((word) => /[\p{L}\p{N}]/u.test(word)).slice(0, 2).map((word) => word[0]).join('')
   const incoming = transaction.direction === 'in'
   return (
     <li className="transaction-row">
+      <span className="merchant-mark" aria-hidden="true">{initials}</span>
       <div className="transaction-details">
         <h3>{transaction.description}</h3>
         <div className="transaction-metadata">

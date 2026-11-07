@@ -1,16 +1,22 @@
+import type { ReactNode } from 'react'
 import { DashboardContent } from './DashboardContent'
 import { DashboardFeedback } from './components/DashboardFeedback'
 import { DashboardSkeleton } from './components/DashboardSkeleton'
 import { useDashboard } from './useDashboard'
 import './dashboard.css'
 
-export function Dashboard() {
+export function Dashboard({ mobilePreferences }: { mobilePreferences: ReactNode }) {
   const dashboard = useDashboard()
 
   if (dashboard.status !== 'ready') {
-    if (dashboard.status === 'loading') return <DashboardSkeleton />
+    if (dashboard.status === 'loading') return <DashboardSkeleton mobilePreferences={mobilePreferences} />
 
-    return <DashboardFeedback kind="initial-error" onRetry={dashboard.retry} isFetching={dashboard.isFetching} />
+    return (
+      <>
+        <div className="mobile-preferences">{mobilePreferences}</div>
+        <DashboardFeedback kind="initial-error" onRetry={dashboard.retry} isFetching={dashboard.isFetching} />
+      </>
+    )
   }
 
   return (
@@ -18,7 +24,7 @@ export function Dashboard() {
       {dashboard.hasRefreshError ? (
         <DashboardFeedback kind="refresh-error" onRetry={dashboard.retry} isFetching={dashboard.isFetching} />
       ) : null}
-      <DashboardContent customer={dashboard.customer} accounts={dashboard.accounts} transactions={dashboard.transactions} />
+      <DashboardContent mobilePreferences={mobilePreferences} customer={dashboard.customer} accounts={dashboard.accounts} transactions={dashboard.transactions} />
     </>
   )
 }

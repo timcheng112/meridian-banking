@@ -1,4 +1,4 @@
-import { Button } from '../../../components/ui/Button'
+import { NewTransferButton } from './NewTransferButton'
 import { formatMoney } from '../../../lib/format'
 
 type BalanceHeroProps = {
@@ -14,7 +14,7 @@ export function BalanceHero({ total, depositCount }: BalanceHeroProps) {
         <p className="total-value amount">{formatMoney(total)}</p>
         <p>Across {depositCount} deposit {depositCount === 1 ? 'account' : 'accounts'}</p>
       </div>
-      <Button type="button" className="transfer-button" disabled>New transfer</Button>
+      <div className="desktop-transfer"><NewTransferButton /></div>
     </section>
   )
 }

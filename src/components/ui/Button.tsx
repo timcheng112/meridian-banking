@@ -3,8 +3,9 @@ import './ui.css'
 
 type ButtonProps = Omit<ComponentPropsWithRef<'button'>, 'type'> & {
   type: 'button' | 'submit' | 'reset'
+  variant?: 'primary' | 'secondary'
 }
 
-export function Button({ className, ...props }: ButtonProps) {
-  return <button {...props} className={`ui-button${className ? ` ${className}` : ''}`} />
+export function Button({ className, variant = 'primary', ...props }: ButtonProps) {
+  return <button {...props} className={`ui-button ui-button-${variant}${className ? ` ${className}` : ''}`} />
 }

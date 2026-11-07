@@ -3,6 +3,14 @@
 Record meaningful choices here once, with status, rationale, and alternatives.
 Submission README should reference this record rather than duplicate extended rationale.
 
+## Accepted process: finish S1 before candidate MR review
+
+The candidate explicitly requested completing all S1 checkpoints before review, using feature-dev with candidate review at the MR stage only.
+This supersedes intermediate checkpoint acceptance and per-checkpoint HTML-plan approval pauses for the already-approved S1 scope.
+Continue planning, Sol implementation, verification and independent Astra review internally; preserve the approved designs and the accepted header-alignment adjustment.
+Prepare the complete MR locally; external publication, merge and cleanup still require authorization.
+S2-S4 remain separate slices; this instruction does not expand S1 into search persistence or transfer implementation.
+
 ## Accepted: lightweight project memory
 
 The user requested AGENTS for persistent instructions, STATE for the current snapshot, and this file for decisions.
@@ -235,3 +243,14 @@ Treat the brief's suggested list as a coverage guide; keep simple empty copy and
 Implement header/preferences in checkpoint 3 and transfer-only components within their approved slices, using the accepted Figma designs and current requirements to shape interfaces.
 The candidate explicitly approved the concrete v2 HTML plan and authorized implementation.
 This broadens the earlier shared-UI-only-when-reused rule for these three named primitives; SearchInput has one current consumer, and its placement serves the candidate-requested library organization.
+
+
+## Accepted S1 implementation details
+
+The candidate authorized completing the existing S1 scope and accepted designs before MR review, with no intermediate approval pauses.
+The App preference owner observes the existing customer Query cache for the default segment; local override and theme remain in memory until S2.
+At 640px the accepted tablet layout keeps compact stacked accounts, shows the segment switch in the header and retains full-width search; at 1024px the desktop navigation, three-column account grid and 300px rail appear.
+Use shared skeleton/content sizing to reserve the expected three-account/eight-row layout while retaining content-driven growth for longer values.
+Narrow rows reserve enough space for wrapped metadata and descriptions; the Chrome verification records exact stable section geometry for the supplied fixtures.
+Download Figma SVG assets locally and use their unchanged silhouettes as semantic-colour masks, preserving native 16px grid and 20px theme/plus dimensions.
+The empty data favicon avoids a browser request for an absent starter asset without introducing a new visual design.

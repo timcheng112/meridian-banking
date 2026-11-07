@@ -1,14 +1,22 @@
 # Current state
 
+## Active continuation: complete S1 for MR review
+
+The candidate requested completion of all S1 checkpoints before candidate review, superseding the earlier intermediate review gates.
+Recovered clean feat/dashboard at 6cf81be; checkpoints 1 and 2 are implemented, and checkpoint 3 responsive/header/preferences/visual verification is now authorized within the existing S1 scope.
+Use feature-dev planning, implementation, verification and independent review internally, then prepare a complete local MR package for candidate review.
+S1 preference switching remains in memory; API search, persistent preferences and transfer behaviour remain S2-S4.
+External publication, merge and cleanup remain unauthorized.
+
 ## Snapshot and recovery
 
 Deadline: 10 November 2026, EOD, supplied by the candidate.
 The application renders dashboard content through the accepted query/state layer, with loading, initial error/Retry, refresh warnings and empty states.
-Header controls and final responsive/visual presentation remain checkpoint 3.
+The header, in-memory preferences, responsive layout and shared UI presentation are implemented; final S1 browser evidence is recorded below.
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
-Active scope: S1 approved; implement through three candidate review checkpoints before slice acceptance.
+Active scope: S1 implementation and verification complete; candidate review and understanding occur at the MR stage.
 Active feature branch: feat/dashboard, based on development at 043516afff5cfd3f52c6a0629a482663f54aff2c.
-Phase: checkpoint 1 accepted; checkpoint 2 implemented and verified, awaiting candidate review and understanding.
+Phase: all three S1 checkpoints implemented; local MR preparation complete, publication and candidate acceptance pending.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -25,7 +33,7 @@ Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
 | Setup | Durable records, skill, branches, Node 22 baseline | Complete; verification below |
 | Design | Local HTML directions, selected core flow, mobile/desktop, states and shared components | Complete Figma designs accepted; static verification limits remain documented |
 | Figma | Approved core designs using components and supplied tokens | Final hero action and refined review C applied; unused alternatives removed |
-| S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | Checkpoint 1 accepted; checkpoint 2 ready for candidate review; checkpoint 3 pending |
+| S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | All three checkpoints implemented and verified; local MR ready, publication and candidate acceptance pending |
 | S2 | API search, responsive dashboard, persistent theme/segment | Pending; responsive/accessibility work also belongs within S1 |
 | S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Pending |
 | S4 | Transfer mutation, failures, success and dashboard refresh | Pending |
@@ -42,14 +50,14 @@ Evidence must identify the checked revision; changes invalidate affected checks.
 
 | Requirement/source | Owner | Planned evidence | Status |
 | --- | --- | --- | --- |
-| D1-D5 | S1 | Behavioural tests plus loading/layout browser checks | Checkpoint 2 content tests pass; D2 controls and loading geometry/browser verification pending |
+| D1-D5 | S1 | Behavioural tests plus loading/layout browser checks | 16 tests pass; header controls and eight-width loading/layout browser checks pass on final S1 source |
 | D6 | S2 | API search, debounce, count, older match, clear/no-match tests | Pending |
-| D7; E4 dashboard retry | S1 | Failure then Retry integration test | Checkpoint 2 actual-button recovery test passed |
-| D8; brief §5 | S1-S3 | 360/390 px, breakpoint/desktop, overflow and tap-target checks | Pending |
+| D7; E4 dashboard retry | S1 | Failure then Retry integration test | Integration and real-browser keyboard Retry recovery passed |
+| D8; brief §5 | S1-S3 | 360/390 px, breakpoint/desktop, overflow and tap-target checks | Dashboard checks pass at eight widths; transfer checks remain S3 |
 | T1; T8 | S3-S4 | Keyboard, focus restoration, labels/errors/live announcements | Pending |
 | T2-T4; brief §3.3 | S3 | Form boundaries, new/saved recipient, step preservation and focus tests | Pending |
 | T5-T7; E4 transfer cases | S4 | Over-balance/no request, success refresh, failure, duplicate-submit tests | Pending |
-| TH1-TH3; tokens | S2 | Four theme combinations, persistence/pre-paint, contrast/focus checks | Pending |
+| TH1-TH3; tokens | S2 | Four theme combinations, persistence/pre-paint, contrast/focus checks | S1 four-mode switching/rendering and focus checked; persistence/pre-paint and full contrast audit remain S2 |
 | E1-E3 | All slices | Typecheck, boundary review, state/schema ownership review | Pending implementation |
 | E5 | Every slice, release | npm run check, build, browser console | Checkpoint 2 check/build pass; real-browser console verification pending |
 | E6; DEPLOYMENT.md | Release | HTTPS deployment, worker, transfer/refresh without local server | Pending |
@@ -454,3 +462,35 @@ Complete local review artifact: /private/tmp/meridian-component-library-review.h
 Candidate acceptance of checkpoint 2 and this refactor remains pending; review the shared UI, composition and financial components before proceeding to a separate checkpoint 3 plan.
 The app header remains temporary and the daily-limit card remains below content until checkpoint 3 implements the approved header and desktop right rail.
 No external writes, merge, deployment or worktree cleanup occurred.
+
+
+## S1 completion and MR preparation
+
+All three S1 checkpoints are implemented under the candidate's MR-only review instruction; this is not final candidate acceptance.
+The final implementation was built by gpt-6.1-sol and independently reviewed by gpt-6-astra, with no blocking findings.
+The full-width header uses centered content aligned with the dashboard; desktop navigation is selected/disabled as required, with theme, segment and avatar controls.
+Theme and segment overrides stay in React memory; the API customer segment provides the default and explicit choices survive refetches.
+The 640px layout retains stacked compact accounts with the segment switch in the header; 1024px enables desktop navigation, three account columns and a 300px right rail.
+Below 1024px, the disabled transfer action is fixed above safe-area padding, with enough page clearance to reach the daily-limit content.
+Shared button states, actual downloaded Figma grid/theme/plus SVGs, merchant initials and token-based four-mode rendering are implemented.
+Search and transfer remain visibly disabled S1 boundaries; persistence/pre-paint initialization, API search and transfer behaviour remain S2-S4.
+
+Final verification applies to the application source committed with this checkpoint.
+Using installed Node 22.23.4, npm run check passed lint, strict typechecking and all 16 tests; npm run build and git diff --check passed.
+The two new tests cover accessible navigation/preferences, no storage writes, server segment defaults and preserving an explicit override through refresh.
+In-app browser remained unavailable; temporary Playwright outside the repository and installed Chrome provided actual browser verification without changing project dependencies.
+Eight viewport widths passed overflow, target-size and responsive-rail checks: 360, 390, 639, 640, 1023, 1024, 1280 and 1440px.
+For supplied three-account/eight-transaction fixtures, measured hero, accounts, transactions and daily-limit section y-position/height differences were zero between held loading and ready states at all eight widths.
+These measurements describe the supplied fixtures and tested widths, not arbitrary future customer content or a universal CLS guarantee.
+Four theme/segment combinations were exercised at 390 and 1280px; representative desktop, tablet, mobile and theme screenshots were visually reviewed.
+A further 53 browser assertions passed for header alignment, footer clearance, keyboard switching, visible focus, unbroken account amounts, reduced-motion styles, local SVG slots, no persistence and keyboard Retry refetching all three resources.
+Final browser runs recorded no console/page errors or failed checked responses; an empty data favicon in index.html removes the starter's incidental favicon request.
+Full cross-browser, assistive-technology and comprehensive contrast audits remain outside this focused Chrome verification; final release coverage remains pending.
+
+Local evidence and runnable QA scripts: /private/tmp/meridian-browser-qa/; results.json and interactions.json contain measurements and assertions.
+Internal implementation brief: /private/tmp/meridian-s1-checkpoint-3-plan.md, refined against live desktop/mobile/tablet Figma context during QA.
+Local MR description: /private/tmp/meridian-s1-mr.md; complete file inventory, source review and screenshots: /private/tmp/meridian-s1-mr-review.html.
+Target MR is feat/dashboard into development at base 043516a; local refs should be verified before publication, with no force pushes.
+The local preview is http://127.0.0.1:4175/ while the task-owned Vite process runs.
+Next action: obtain explicit authorization to publish the needed branches and open the MR, then conduct candidate understanding/acceptance there.
+No push, PR creation, external evidence upload, merge, deployment or worktree cleanup occurred.
