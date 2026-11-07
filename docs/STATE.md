@@ -7,7 +7,7 @@ The visible application remains the starter health-check screen; S1's dashboard 
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
 Active scope: S1 approved; implement through three candidate review checkpoints before slice acceptance.
 Active feature branch: feat/dashboard, based on development at 043516afff5cfd3f52c6a0629a482663f54aff2c.
-Phase: checkpoint 1 ready for candidate review; pause before dashboard content.
+Phase: checkpoint 1 accepted; checkpoint 2 paused pending HTML technical-plan approval.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -24,7 +24,7 @@ Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
 | Setup | Durable records, skill, branches, Node 22 baseline | Complete; verification below |
 | Design | Local HTML directions, selected core flow, mobile/desktop, states and shared components | Complete Figma designs accepted; static verification limits remain documented |
 | Figma | Approved core designs using components and supplied tokens | Final hero action and refined review C applied; unused alternatives removed |
-| S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | Approved; begin data/state/tests checkpoint |
+| S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | Checkpoint 1 accepted; approve checkpoint 2 HTML plan before implementation |
 | S2 | API search, responsive dashboard, persistent theme/segment | Pending; responsive/accessibility work also belongs within S1 |
 | S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Pending |
 | S4 | Transfer mutation, failures, success and dashboard refresh | Pending |
@@ -134,7 +134,7 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Review the S1 data/state/tests checkpoint with the candidate, then proceed to dashboard content after their feedback.
+Present the checkpoint 2 HTML technical plan and obtain explicit approval before dispatching Sol implementation work.
 Complete designs are accepted, including the solid hero with brand/on-brand action and refined review C.
 Runtime behaviour, accessibility verification and candidate acceptance of implementation remain pending.
 After plan approval, preserve recovery records on the verified integration base and follow feature-dev's leased-worktree workflow.
@@ -336,7 +336,7 @@ The candidate authorized proceeding with S1 locally; MR publication, merge and c
 
 ## S1 checkpoint 1: data and state
 
-Review status: ready for candidate review; S1 implementation acceptance remains pending.
+Review status: candidate accepted checkpoint 1 after reviewing the query structure, discriminated union, concurrency/retry behaviour and test purposes; full S1 acceptance remains pending.
 Added three files under src/features/dashboard: queries.ts, useDashboard.ts and useDashboard.test.tsx.
 Typed query options use the existing API helper, distinct customer/accounts/transactions keys, limit=8 and explicit retry=false.
 The hook starts the three reads together, exposes loading/error/ready, and retains cached data with a refresh-error flag after a failed background refresh.
@@ -349,4 +349,17 @@ Dependencies installed from the offline cache with no package or lockfile change
 Local diff review found no changes to supplied mocks, seed data, formatters or runtime configuration.
 The build still renders the starter; dashboard UI, skeleton geometry, visible error/Retry interaction, E4's full UI test and browser verification remain pending.
 No browser evidence is claimed for this data-only checkpoint.
-Next checkpoint connects the data layer to dashboard content and adds user-facing integration tests; candidate review comes first.
+Next checkpoint connects the data layer to dashboard content and adds user-facing integration tests; approve its concrete HTML technical plan first.
+
+## Workflow correction after checkpoint 1
+
+The candidate requires an HTML technical-plan artifact with proposed files and implementation approach before approving each implementation checkpoint.
+The candidate requires Astra-led planning and workflow coordination, with explicitly selected lower-cost Sol workers implementing approved plans and tests.
+Updated the feature-dev skill on feat/dashboard to make these gates and model roles explicit; the integration checkout's skill remains unchanged until the correction is integrated.
+A read-only planning worker contributed a checkpoint 2 proposal; it inherited the session model before the explicit model-role correction and made no file changes.
+Checkpoint 2 has no application or test edits; prior source verification at 0b02dc1 remains applicable.
+Application implementation stays paused pending the new plan review.
+Checkpoint 2 proposal v1: /private/tmp/meridian-s1-checkpoint-2-plan.html, based on source revision 0b02dc1.
+It proposes six application/test file changes, component/data flow, missing-state copy, behavioural tests with purposes, and Astra/Sol ownership; it remains unapproved.
+An explicitly selected gpt-6-astra reviewer checked plan-approval gates, Sol dispatch, model-unavailability fallback and scope-change handling; its wording findings were addressed.
+Skill frontmatter and explicit-only metadata passed Ruby YAML checks; the bundled Python validator remains unavailable because PyYAML is not installed.

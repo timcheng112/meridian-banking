@@ -44,8 +44,8 @@ Design the complete core flow before application implementation, starting with a
 Start at 390 px, check 360 px, then adapt to desktop using the required breakpoints.
 After explicit external-write approval, build the chosen Figma design with reusable components, instances, and token bindings; supplied CSS tokens remain authoritative.
 HTML imports alone do not establish a Figma component library.
-Use optional HTML plan-review artifacts for consequential choices, not every small edit.
-Use optional Sol delegation per approved slice; keep tests and implementation together where practical and optionally delegate independent review.
+Present a local HTML technical plan before implementation for each slice/checkpoint, following the later accepted workflow correction; routine edits within that approved plan do not require a new artifact.
+Use Astra-led planning and review with explicitly selected Sol workers for approved implementation and tests; see the later workflow correction for the required HTML plan approval gate.
 The main agent remains responsible for verification, review, explanation, and candidate acceptance.
 Prepare PR descriptions and evidence locally; every external write requires explicit approval.
 Keep worktrees until accepted work is merged and cleanup is authorized.
@@ -194,3 +194,14 @@ S1 theme/segment switching is in memory; persistence and pre-paint initializatio
 Search and transfer controls remain visibly disabled until their implementing slices.
 This keeps S1 reviewable without presenting unfinished actions as working behaviour.
 Approval covers local implementation and commits; publication, merge, cleanup and candidate implementation acceptance remain separate.
+
+## Accepted correction: HTML technical plans and model roles
+
+The candidate identified missing HTML technical-plan review and absent subagent delegation as defects in the first feature-dev run.
+Before each implementation checkpoint, present a local HTML plan with proposed files, responsibilities, data flow, trade-offs, meaningful tests, verification and delegated ownership, then wait for explicit approval.
+The candidate wants Astra to lead planning and the feature-dev workflow, and lower-cost Sol workers to build the approved plan and its tests.
+This authorizes bounded delegation for the explicitly invoked feature-dev workflow; use explicit model selection rather than inheriting the lead model.
+Keep plan approval, integration review, candidate explanation and acceptance with the lead.
+The candidate accepted checkpoint 1 after reviewing its types, concurrency/retry behaviour and test purposes.
+Checkpoint 2 remains paused until its concrete HTML technical plan is approved; no application changes have been made for it.
+This correction changes the workflow, not the agreed application requirements or external-write authorization boundaries.
