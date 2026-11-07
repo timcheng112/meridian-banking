@@ -254,3 +254,10 @@ Use shared skeleton/content sizing to reserve the expected three-account/eight-r
 Narrow rows reserve enough space for wrapped metadata and descriptions; the Chrome verification records exact stable section geometry for the supplied fixtures.
 Download Figma SVG assets locally and use their unchanged silhouettes as semantic-colour masks, preserving native 16px grid and 20px theme/plus dimensions.
 The empty data favicon avoids a browser request for an absent starter asset without introducing a new visual design.
+
+## Accepted feedback: theme action icon
+
+The candidate pointed out that the theme icon stayed unchanged between light and dark modes.
+Show the moon in light mode with Switch to dark mode, and a sun in dark mode with Switch to light mode.
+The accessible name and tooltip describe the action; omit aria-pressed because this is an action button with a changing name.
+Retain the downloaded moon and add a local 20px sun SVG using the same semantic-colour mask treatment; Figma was not edited.

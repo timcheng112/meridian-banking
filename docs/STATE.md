@@ -494,3 +494,15 @@ Target MR is feat/dashboard into development at base 043516a; local refs should 
 The local preview is http://127.0.0.1:4175/ while the task-owned Vite process runs.
 Next action: obtain explicit authorization to publish the needed branches and open the MR, then conduct candidate understanding/acceptance there.
 No push, PR creation, external evidence upload, merge, deployment or worktree cleanup occurred.
+
+## Theme-toggle feedback correction
+
+Confirmed D2 and wireframe desktop header explicitly place the segment switch, theme control and AC avatar in the app bar; mobile moves the segment switch below the greeting.
+AC refers to the supplied customer Ava Chen.
+Corrected the unchanged theme icon to show moon/action-to-dark in light mode and sun/action-to-light in dark mode, with matching accessible names and tooltips.
+Updated ThemeToggle.tsx, Icon.tsx, the existing App integration test and added sun.svg; no Figma edits or external publication occurred.
+Lint, strict typechecking, all 16 tests, production build and diff check passed on the corrected source.
+Focused Chrome verification passed distinct 20px icons and Enter/Space roundtrip switching in both segments with no console errors; rendered header screenshots were inspected.
+Evidence: /private/tmp/meridian-browser-qa/theme-toggle-results.json and toggle-*.png.
+Earlier layout evidence remains applicable to unchanged geometry; earlier dark-header screenshots show the superseded moon icon and are superseded by these focused captures.
+Publication authorization remains pending; the candidate has supplied feedback rather than authorized a push or PR.
