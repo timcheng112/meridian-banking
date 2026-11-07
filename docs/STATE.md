@@ -1,6 +1,6 @@
 # Current state
 
-## Active continuation: S3 accepted; publication authorized
+## Active continuation: S3 accepted; PR #4 open
 
 The candidate approved S1 and reported merging PR #1 on 8 November 2026.
 GitHub confirms the merge into development at 04956afd78cfb1a4251edccd140be74cba99637e.
@@ -19,7 +19,7 @@ The header, persistent preferences, API search, responsive layout and shared UI 
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
 Active scope: S1, S2 and fidelity/header feedback accepted and merged; S3 plan v1 approved for local implementation.
 Integration branch: development at 3eba44f; active feat/transfer-form is f3c9b4a with the verified selected-A working diff; completed worktrees remain preserved pending separately authorized cleanup.
-Phase: the candidate accepted S3 and explicitly authorized commit, push and PR creation; final source matches the verified selected-A and taller-dialog evidence.
+Phase: S3 accepted and published in PR #4 to development; final application commit 3c33c48 matches verified evidence, and merge remains pending.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -39,7 +39,7 @@ Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
 | S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | Accepted and merged in PR #1 at 04956af |
 | S2 | API search and persistent theme/segment | Accepted and merged in MR #2 at 8d0b4a3 |
 | Fidelity | Bidirectional Figma/code reconciliation for implemented scope | Accepted and merged in MR #3 at 571b9d5 |
-| S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Accepted; commit, push and PR authorized |
+| S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Accepted; PR #4 open to development |
 | S4 | Transfer mutation, failures, success and dashboard refresh | Pending |
 | Release | Full requirement audit, production checks, submission README, deployment | Pending; publication requires approval |
 
@@ -148,7 +148,8 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Publish the accepted S3 branch and open its PR to development under the explicit candidate authorization below.
+Review PR #4: https://github.com/timcheng112/meridian-banking/pull/4.
+S3 is accepted and published; obtain separate merge authorization before integration.
 Local review: /private/tmp/meridian-s3-review.html; production preview http://127.0.0.1:4183/ while its process runs.
 Merge and cleanup require separate authorization; S4 still requires its own concrete plan approval.
 S2 MR #2 is accepted and merged; preserve the preferred S2 search presentation.
@@ -1132,3 +1133,13 @@ Final source hashes match the recorded selected-A and taller-dialog browser evid
 The PR covers T1-T4/T8 and shared validation with payee query states; S4 owns sending, success, API submission failures and dashboard refresh.
 Confirm transfer remains intentionally disabled with the approved preview notice.
 Merge, deployment, accepted-board propagation and worktree cleanup remain separately gated.
+
+## S3 PR #4 published
+
+Committed the final accepted source and records as 3c33c48827985eba5fb175925c5753c4e556bd06 and pushed feat/transfer-form.
+Opened https://github.com/timcheng112/meridian-banking/pull/4 targeting development under explicit candidate authorization.
+GitHub integration PR creation lacked repository write permission, so the authenticated gh CLI completed the authorized operation.
+Remote development remained 571b9d5; its merge base with this branch is the same commit, and the PR contains the intended S3 files and records.
+Evidence hashes still match the committed application files; no source changes followed the accepted verification.
+This documentation-only publication checkpoint accompanies the PR without changing application behavior.
+Merge, deployment, accepted-board propagation and worktree cleanup remain pending separate authorization; S4 is unimplemented.
