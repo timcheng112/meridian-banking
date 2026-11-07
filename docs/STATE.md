@@ -19,7 +19,7 @@ The header, persistent preferences, API search, responsive layout and shared UI 
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
 Active scope: S1, S2 and fidelity/header feedback accepted and merged; S3 plan v1 approved for local implementation.
 Integration branch: development at local recovery commit f1e16de above fidelity merge 571b9d5; completed S1, S2 and fidelity worktrees remain preserved pending separately authorized cleanup.
-Phase: S3 implemented and verified on feat/transfer-form at application revision e19fb10; candidate understanding and acceptance remain pending.
+Phase: candidate S3 review corrections implemented and verified on feat/transfer-form at c777694; candidate acceptance remains pending.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -973,3 +973,35 @@ Local evidence: /private/tmp/meridian-browser-qa/s3-final-e19fb10-results.json, 
 Local review artifact: /private/tmp/meridian-s3-review.html, including every changed application/test file and suggested walkthrough.
 Production preview: http://127.0.0.1:4183/ while the task-owned process runs.
 Candidate understanding/acceptance, publication, merge, deployment and cleanup remain pending; no external submission occurred.
+
+## S3 candidate review feedback
+
+The candidate reported touching loading skeletons, disclosure and no-match styling differences from Figma, native select chevron positioning, limited bottom field clearance and a recipient-selection regression after Back.
+Live Figma inspection confirms compact payee rows without the application's added avatar/trailing chevron, a labelled surface search input, bordered disclosure and smaller muted no-match text with 8px gaps.
+At 902px, full-screen presentation follows the accepted below-1024 breakpoint; content fidelity still needs correction.
+The saved-payee regression arises from combining controlled checked props with RHF register's uncontrolled radio ref, which restores the inactive saved ID on remount.
+Sol is correcting this through useController while preserving inactive form values and adding the saved-to-new-to-Back regression.
+The candidate explicitly requested Continue be disabled when the current step has errors.
+Approved feedback amendment: disable on known active-step errors, revalidate already-errored fields during editing, and retain blur/first-Continue validation for untouched fields and first-invalid focus.
+The same guard applies to Enter; inactive-mode and later-step errors must not block current-step progression.
+Routine fidelity corrections use existing files and tokens, including inset decorative chevrons over native selects and at least 24px clearance below final scrolled fields/errors.
+Earlier automated/browser evidence describes e19fb10 and missed this mixed-mode remount and these visual differences; refresh affected evidence before re-review.
+Payee search remains local over GET /api/payees because the contract has no payee-search query; initial field validation remains on blur/Continue as required by brief section 3.3.
+
+## S3 feedback corrections verified
+
+Runtime revisions e877e89 and c777694 correct the candidate feedback in five existing application/test files; the local plan includes the explicit candidate-feedback amendment.
+Controlled payee radios preserve new-recipient mode and details across Amount/Back even after a prior saved selection; selecting a saved payee explicitly still changes the active mode.
+Continue and Enter share the known-active-error guard, with edit-time recovery for errored fields and exclusion of inactive/hidden errors.
+Corrected recipient presentation includes labelled surface search, compact rows, four full-width separated skeletons, bordered brand disclosure with right icon, muted no-match copy/spacing and inset decorative chevrons over native selects.
+Final scrolled fields/errors retain 24px clearance above the fixed footer; the 902px view remains the approved full-screen sheet.
+Sol's full check passed lint, strict typecheck and 86 tests, including fourteen dialog tests; production build and diff checks passed after the final CSS corrections.
+Astra reviewed the behavior and final CSS delta with no findings, preserving one validation authority and the existing composition boundaries.
+Targeted Chrome feedback QA passed four groups with no page/console errors or POST requests.
+Final visual and mixed-mode/error checks apply to c77769470907b26f6959919e19b400df04451153; unchanged held-loading/error evidence from e877e89 is identified in the aggregate.
+Direct Figma comparison confirmed 61px payee rows, 20px radios, 48px search, bordered disclosure, muted 14px no-match text and 176x48px Clear search across 360/390/902/1280px light/dark samples.
+Coordination inspected final desktop recipient and scrolled 902px new-recipient screenshots; Astra inspected narrow dark and other affected states.
+Standard bank selection and retained values passed; native-popup keyboard automation remains unverified because the same headless Chrome behavior occurred in a bare native form.
+Evidence: /private/tmp/meridian-browser-qa/s3-feedback-final-c777694-results.json, s3-feedback-metrics.json and s3-feedback-*.png.
+The review artifact /private/tmp/meridian-s3-review.html and preview http://127.0.0.1:4183/ now show the corrections; refresh the preview to load the rebuilt assets.
+Candidate re-review and acceptance remain pending; no external publication, Figma design writes, merge, deployment or cleanup occurred.

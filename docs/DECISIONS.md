@@ -378,30 +378,10 @@ Confirm transfer remains disabled with Transfers are unavailable in this preview
 Approval authorizes local implementation and tests by Sol with Astra review, including the listed missing-state treatments.
 External publication, Figma writes, merge, deployment and cleanup remain separately gated.
 
-## Accepted: small GitHub Actions CI workflow
+## Accepted S3 feedback: Continue with known errors
 
-The candidate approved the exact single-job Node 22 CI scope directly in chat.
-Use GitHub-hosted Ubuntu, npm lockfile caching, clean installation, existing check and build scripts, read-only contents permission, ten-minute timeout, and concurrency cancellation per PR or branch.
-Trigger pull requests targeting development or main and pushes to those branches.
-Use current supported major versions of the official checkout and setup-node actions, verified against their official release documentation.
-Keep configuration in .github/workflows/ci.yml without new dependencies or application changes.
-The routine configuration proceeds from this concrete approval without another HTML artifact.
-Publication requires separate authorization; the earlier S3 approval covers only PR #4.
-
-The selected official action majors are checkout@v7 and setup-node@v7, checked against [checkout releases](https://github.com/actions/checkout/releases/tag/v7.0.1) and [setup-node releases](https://github.com/actions/setup-node/releases/tag/v7.1.0).
-Major tags keep supported fixes available without dependency tooling for this small assessment.
-The explicit npm cache uses the existing package-lock.json and clean installation still runs every time.
-Concurrency follows [GitHub's documented workflow grouping](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency); PR numbers and branch refs separate independent work.
-Checkout credentials are not persisted because this job only reads and validates code.
-
-## Accepted: CI publication
-
-The candidate approved committing, pushing and opening the CI PR after reviewing the concrete local workflow and passing checks.
-Authorization includes checking the hosted Actions run and correcting workflow failures within the approved scope.
-Merge, deployment and cleanup remain excluded.
-
-## Accepted: named validation steps
-
-The candidate approved seven explicitly named CI steps in the existing single Validation job so failures are visible directly in GitHub's step list.
-Replace the combined check command with its existing lint, typecheck and test commands, keeping their order and fail-fast behavior.
-No package scripts or application code change.
+The candidate explicitly requested disabling Continue when the current step has errors during implementation review.
+Disable for known active-step errors and revalidate errored fields as the user edits, allowing correction to re-enable Continue promptly.
+Untouched inputs retain required blur/first-Continue validation and first-invalid focus; errors belonging to another step or inactive recipient mode do not disable progression.
+Apply the same guard to Enter and retain the no-deposit-account guard.
+This supersedes plan v1's always-enabled Continue treatment after errors appear; no submission behavior or global form architecture changes are included.
