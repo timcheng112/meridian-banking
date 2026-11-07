@@ -857,3 +857,11 @@ Prepared /private/tmp/meridian-header-feedback-plan.html, version 1, covering th
 Concrete application plan approval, implementation, verification and candidate acceptance remain pending.
 
 Accepted-avatar rendered verification covered five widths and all four themes; evidence is /private/tmp/meridian-avatar-accepted-ledger.json and /private/tmp/meridian-browser-qa/avatar-accepted-*.png.
+
+## Header feedback plan v1 approved
+
+The candidate explicitly approved /private/tmp/meridian-header-feedback-plan.html, version 1, for application implementation.
+Continue fix/dashboard-fidelity from verified 7c34dfe in its retained worktree; this includes the approved avatar design and recovery records.
+Sol owns Header.tsx, layout.css, App.tsx and App.test.tsx; coordination owns records and Astra review.
+Scope is the non-interactive current-page Overview and approved circular customer avatar, preserving other behavior.
+Next: implement, run checks and focused responsive/keyboard browser verification, then candidate acceptance.

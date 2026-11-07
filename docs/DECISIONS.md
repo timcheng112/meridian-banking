@@ -358,3 +358,10 @@ The candidate selected the 40px circular avatar with 14px semibold brand/brand-s
 Propagated the reusable avatar to existing Figma headers while retaining the component and all unrelated references.
 The avatar is non-interactive and represents the customer by initials with an accessible customer-name label.
 Implementation remains pending approval of /private/tmp/meridian-header-feedback-plan.html, version 1, which also covers the agreed non-interactive current-page Overview label.
+
+## Accepted: header feedback implementation plan v1
+
+The candidate approved /private/tmp/meridian-header-feedback-plan.html, version 1, on the existing fidelity review branch.
+Render selected Overview as a span with aria-current=page and no link or tab stop; remove its obsolete href configuration.
+Render the approved circular initials avatar as a non-interactive named image using existing customer-derived data and supplied tokens.
+Retain existing preference ownership, component slots, query behavior and all fidelity exclusions.
