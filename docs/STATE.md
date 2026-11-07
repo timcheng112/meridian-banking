@@ -19,7 +19,7 @@ The header, persistent preferences, API search, responsive layout and shared UI 
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
 Active scope: S1, S2 and fidelity/header feedback accepted and merged; next is S3 technical planning.
 Integration branch: development at local recovery commit f1e16de above fidelity merge 571b9d5; completed S1, S2 and fidelity worktrees remain preserved pending separately authorized cleanup.
-Phase: S3 technical plan v1 approved; implementation branch preparation is next.
+Phase: S3 implemented and verified on feat/transfer-form at e19fb10; recover that worktree's STATE for current evidence and pending candidate acceptance.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -148,8 +148,9 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Implement approved /private/tmp/meridian-s3-plan-v1.html after persisting approval records and verifying the development base for a no-fetch worktree.
-Sol owns the approved application/test inventory; Astra reviews behavior and React/composition choices before candidate acceptance.
+Continue candidate review on feat/transfer-form; that worktree's STATE owns current S3 verification and acceptance status.
+Review /private/tmp/meridian-s3-review.html and the production preview http://127.0.0.1:4183/ while its process runs.
+S3 is implemented locally; candidate understanding/acceptance and publication remain pending.
 S2 MR #2 is accepted and merged; preserve the preferred S2 search presentation.
 Cleanup still requires authorization; do not reopen deferred mock-worker repair.
 Existing PR: https://github.com/timcheng112/meridian-banking/pull/1, merged.
@@ -938,3 +939,10 @@ Approval covers local S3 implementation, tests and the plan's listed missing-sta
 No compound-component framework or custom context is needed for this fixed flow.
 Next: commit approval records, verify the integration base includes f1e16de, acquire a no-fetch lease, record the new branch/base and dispatch gpt-6.1-sol.
 Candidate implementation acceptance and all external publication, merge, deployment and cleanup remain pending.
+
+## S3 worktree continuation pointer
+
+S3 is implemented and verified on feat/transfer-form, based on development 2420c37, with application revision e19fb10.
+Recover the active worktree using git worktree list and read its STATE for complete checks and limitations.
+The no-fetch meridian-s3 lease remains retained alongside the three completed leases.
+Candidate review is next; no publication, merge, cleanup or S4 implementation is authorized.
