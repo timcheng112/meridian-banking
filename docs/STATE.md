@@ -3,11 +3,12 @@
 ## Snapshot and recovery
 
 Deadline: 10 November 2026, EOD, supplied by the candidate.
-The visible application remains the starter health-check screen; S1's dashboard query/state layer is implemented and tested but not yet connected to App.
+The application renders dashboard content through the accepted query/state layer, with loading, initial error/Retry, refresh warnings and empty states.
+Header controls and final responsive/visual presentation remain checkpoint 3.
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
 Active scope: S1 approved; implement through three candidate review checkpoints before slice acceptance.
 Active feature branch: feat/dashboard, based on development at 043516afff5cfd3f52c6a0629a482663f54aff2c.
-Phase: checkpoint 1 accepted; checkpoint 2 paused pending HTML technical-plan approval.
+Phase: checkpoint 1 accepted; checkpoint 2 implemented and verified, awaiting candidate review and understanding.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -24,7 +25,7 @@ Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
 | Setup | Durable records, skill, branches, Node 22 baseline | Complete; verification below |
 | Design | Local HTML directions, selected core flow, mobile/desktop, states and shared components | Complete Figma designs accepted; static verification limits remain documented |
 | Figma | Approved core designs using components and supplied tokens | Final hero action and refined review C applied; unused alternatives removed |
-| S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | Checkpoint 1 accepted; approve checkpoint 2 HTML plan before implementation |
+| S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | Checkpoint 1 accepted; checkpoint 2 ready for candidate review; checkpoint 3 pending |
 | S2 | API search, responsive dashboard, persistent theme/segment | Pending; responsive/accessibility work also belongs within S1 |
 | S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Pending |
 | S4 | Transfer mutation, failures, success and dashboard refresh | Pending |
@@ -41,16 +42,16 @@ Evidence must identify the checked revision; changes invalidate affected checks.
 
 | Requirement/source | Owner | Planned evidence | Status |
 | --- | --- | --- | --- |
-| D1-D5 | S1 | Behavioural tests plus loading/layout browser checks | Pending |
+| D1-D5 | S1 | Behavioural tests plus loading/layout browser checks | Checkpoint 2 content tests pass; D2 controls and loading geometry/browser verification pending |
 | D6 | S2 | API search, debounce, count, older match, clear/no-match tests | Pending |
-| D7; E4 dashboard retry | S1 | Failure then Retry integration test | Pending |
+| D7; E4 dashboard retry | S1 | Failure then Retry integration test | Checkpoint 2 actual-button recovery test passed |
 | D8; brief §5 | S1-S3 | 360/390 px, breakpoint/desktop, overflow and tap-target checks | Pending |
 | T1; T8 | S3-S4 | Keyboard, focus restoration, labels/errors/live announcements | Pending |
 | T2-T4; brief §3.3 | S3 | Form boundaries, new/saved recipient, step preservation and focus tests | Pending |
 | T5-T7; E4 transfer cases | S4 | Over-balance/no request, success refresh, failure, duplicate-submit tests | Pending |
 | TH1-TH3; tokens | S2 | Four theme combinations, persistence/pre-paint, contrast/focus checks | Pending |
 | E1-E3 | All slices | Typecheck, boundary review, state/schema ownership review | Pending implementation |
-| E5 | Every slice, release | npm run check, build, browser console | Starter baseline passed; repeat for implemented slices |
+| E5 | Every slice, release | npm run check, build, browser console | Checkpoint 2 check/build pass; real-browser console verification pending |
 | E6; DEPLOYMENT.md | Release | HTTPS deployment, worker, transfer/refresh without local server | Pending |
 | brief §4; wireframes §1-7 | Design, all slices | Exact copy/formatters, required screens and states review | Pending |
 | API contract requests/errors/hooks | S1-S4 | Typed requests, server field errors, no POST retries, refetch-failure separation | Pending |
@@ -134,7 +135,7 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Present the checkpoint 2 HTML technical plan and obtain explicit approval before dispatching Sol implementation work.
+Review checkpoint 2's six-file application diff with the candidate and confirm understanding/acceptance before preparing checkpoint 3's HTML technical plan.
 Complete designs are accepted, including the solid hero with brand/on-brand action and refined review C.
 Runtime behaviour, accessibility verification and candidate acceptance of implementation remain pending.
 After plan approval, preserve recovery records on the verified integration base and follow feature-dev's leased-worktree workflow.
@@ -363,3 +364,32 @@ Checkpoint 2 proposal v1: /private/tmp/meridian-s1-checkpoint-2-plan.html, based
 It proposes six application/test file changes, component/data flow, missing-state copy, behavioural tests with purposes, and Astra/Sol ownership; it remains unapproved.
 An explicitly selected gpt-6-astra reviewer checked plan-approval gates, Sol dispatch, model-unavailability fallback and scope-change handling; its wording findings were addressed.
 Skill frontmatter and explicit-only metadata passed Ruby YAML checks; the bundled Python validator remains unavailable because PyYAML is not installed.
+
+## S1 checkpoint 2 approval
+
+The candidate explicitly approved /private/tmp/meridian-s1-checkpoint-2-plan.html v1 after discussing Dashboard versus DashboardContent and the purpose of App.test.tsx.
+Approved six-file scope: modify src/App.tsx, src/App.test.tsx and src/index.css; create src/features/dashboard/Dashboard.tsx, DashboardContent.tsx and dashboard.css.
+Dashboard handles query-state selection, skeletons, initial error/Retry and refresh warnings; DashboardContent receives typed data and derives/render financial content.
+Approved empty copy: No accounts to display.; No recent transactions.; empty deposit totals are zero with a derived account count and singular wording for one account.
+Approved refresh warning: We couldn't refresh your dashboard. Showing previously loaded data.
+Keep existing query/cache/type/formatter ownership and the planned six integration-test scenarios; no new dependencies or mock changes.
+Final header controls, responsive geometry, four-mode visual matching and browser layout-stability evidence remain checkpoint 3.
+Dispatch an explicitly selected gpt-6.1-sol worker for implementation and tests; lead retains records, integration review, walkthrough and acceptance.
+Checkpoint 2 implementation acceptance, MR publication, merge and cleanup remain pending.
+
+## S1 checkpoint 2: dashboard content review
+
+Implemented by an explicitly selected gpt-6.1-sol worker against approved HTML plan v1; independently reviewed by gpt-6-astra and inspected by the lead.
+Six application/test files changed exactly as planned, with no query-layer, API-type, formatter, mock, seed, dependency or runtime-configuration changes.
+App now renders Dashboard; Dashboard chooses loading/error/ready and refresh-warning states; DashboardContent derives and renders financial content from typed props.
+Content includes deposit-only total/count, account masks and credit Amount due, signed and dated transactions with Pending, remaining daily limit, and approved empty states.
+Search and New transfer remain disabled; the temporary header is Meridian text only.
+The six UI tests cover loading, default content, changed fixtures including singular counts and date formatting, initial Retry, refresh recovery with new values, and empty lists.
+Initial Retry replaces the error view with loading; refresh Retry stays visible but disabled while fetching.
+Selective TDD confirmed six missing-behaviour failures against the starter, then passing UI tests after implementation.
+Verification applies to the application source committed with this checkpoint: npm run check passed lint, strict typechecking and all 14 tests; npm run build and git diff --check passed with Volta Node 22.23.4.
+Independent review found no blockers; its initial-Retry test clarity suggestion was addressed and final checks passed afterward.
+In-app browser access returned unavailable in this session, so no browser, focus or console evidence is claimed.
+Checkpoint 3 must complete the approved header/navigation/avatar/preferences, icon/merchant-mark presentation, fixed mobile transfer action, 640/1024 breakpoints, 300px desktop rail, theme checks and skeleton layout-stability verification.
+The baseline CSS provides readable token-based wrapping content; it does not establish final Figma fidelity or D8 acceptance.
+Review remains pending; no MR publication, merge or cleanup has been authorized.

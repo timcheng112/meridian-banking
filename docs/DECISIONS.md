@@ -205,3 +205,11 @@ Keep plan approval, integration review, candidate explanation and acceptance wit
 The candidate accepted checkpoint 1 after reviewing its types, concurrency/retry behaviour and test purposes.
 Checkpoint 2 remains paused until its concrete HTML technical plan is approved; no application changes have been made for it.
 This correction changes the workflow, not the agreed application requirements or external-write authorization boundaries.
+
+## Accepted: checkpoint 2 content boundary and missing-state treatment
+
+The candidate approved HTML technical plan v1 after reviewing the proposed Dashboard/DashboardContent split and integration-test location.
+Keep request-state handling in Dashboard and loaded financial content/derived values in DashboardContent, with small private card/row components where useful.
+Empty accounts use No accounts to display., a zero deposit total and derived deposit count; empty transactions use No recent transactions.
+On refresh failure, retain available cached values and show We couldn't refresh your dashboard. Showing previously loaded data. with Retry.
+These modest additions use the existing panels; final responsive and visual verification remains checkpoint 3.
