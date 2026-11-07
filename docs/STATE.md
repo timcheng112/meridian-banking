@@ -535,6 +535,15 @@ The mobilePreferences ReactNode remains an explicit composition slot; review rep
 The empty favicon remains intentional and is explained in the review.
 Lint, strict typecheck, all 16 tests, build and diff check passed; the test suite additionally verifies a different customer's avatar identity.
 Refreshed Chrome verification passed eight widths, 53 interaction assertions and theme keyboard/icon checks.
-Curated screenshots and revision-tagged browser results are stored in docs/evidence/s1 for publication in PR #1.
+Curated screenshots are now direct attachments on PR #1; the repository evidence directory has been removed from the current branch.
 The in-app browser remained unavailable; the existing Chrome fallback was used.
 Candidate understanding/acceptance and merge remain pending; no S2-S4, deployment or worktree cleanup is authorized.
+
+## Direct evidence attachments
+
+The candidate requested automated direct attachments instead of committed evidence.
+Used checksum-verified GitHub CLI 2.103.3 from a temporary directory; the installed CLI remains unchanged.
+Eight screenshots and the verification summary are published at https://github.com/timcheng112/meridian-banking/pull/1#issuecomment-6708466783.
+The PR description uses GitHub user-attachment URLs.
+Removed docs/evidence/s1 from the current branch using a normal follow-up commit; its earlier commit remains in history, with no force push or history rewrite.
+Application files remain at verified revision 9945d4a; raw browser results and original images remain local.
