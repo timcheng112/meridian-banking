@@ -92,22 +92,6 @@
   overflow-wrap: anywhere;
 }
 
-.dashboard button {
-  min-height: var(--tap-target);
-  padding: var(--space-3) var(--space-4);
-  border: 0;
-  border-radius: var(--radius-sm);
-  background: var(--brand);
-  color: var(--on-brand);
-  font-weight: var(--weight-semibold);
-  cursor: pointer;
-}
-
-.dashboard button:disabled {
-  cursor: default;
-  opacity: 0.55;
-}
-
 .account-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
@@ -146,16 +130,6 @@
   flex-wrap: wrap;
   justify-content: space-between;
   padding-bottom: var(--space-6);
-}
-
-.transactions-heading input {
-  max-width: 100%;
-  min-height: var(--tap-target);
-  padding: var(--space-3);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  background: var(--surface-muted);
-  color: var(--text-muted);
 }
 
 .transaction-list {
@@ -234,26 +208,6 @@
   padding: var(--space-4);
   border-radius: var(--radius-md);
   margin-bottom: var(--space-6);
-}
-
-.skeleton {
-  background: var(--skeleton);
-  border-radius: var(--radius-sm);
-}
-
-.skeleton-line {
-  width: 60%;
-  height: var(--space-5);
-}
-
-.skeleton-heading {
-  width: 45%;
-  height: var(--space-8);
-}
-
-.skeleton-value {
-  width: 75%;
-  height: var(--space-10);
 }
 
 .skeleton-panel {

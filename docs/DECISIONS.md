@@ -213,3 +213,25 @@ Keep request-state handling in Dashboard and loaded financial content/derived va
 Empty accounts use No accounts to display., a zero deposit total and derived deposit count; empty transactions use No recent transactions.
 On refresh failure, retain available cached values and show We couldn't refresh your dashboard. Showing previously loaded data. with Retry.
 These modest additions use the existing panels; final responsive and visual verification remains checkpoint 3.
+
+## Accepted direction: dashboard component files
+
+The candidate accepted separate AccountCard, TransactionRow and DashboardSkeleton files in a single feature-local components folder for readability and review, even without reuse elsewhere.
+Keep Dashboard responsible for request states and DashboardContent responsible for derived financial values and section composition.
+The concrete extraction HTML plan still requires approval before implementation under the existing workflow.
+
+## Accepted: header content alignment
+
+The candidate accepted a full-width header background with its contents inside a centered 1200px container aligned with the dashboard content.
+Use the supplied desktop/mobile gutters and responsive placement for navigation, segment switch, theme toggle and avatar.
+This supersedes the accepted desktop Figma header's viewport-edge logo alignment for implementation; include the adjustment in the checkpoint 3 technical plan.
+The direction approval does not authorize starting checkpoint 3 before its concrete plan review.
+
+## Accepted: incremental project-local component library
+
+Use src/components/ui for native token-based controls and src/features/dashboard/components for banking-specific compositions.
+Plan v2 proposes extracting Button, SearchInput and Skeleton plus the existing dashboard's meaningful presentation responsibilities, without new dependencies or behaviour.
+Treat the brief's suggested list as a coverage guide; keep simple empty copy and Pending markup local until a separate responsibility warrants extraction.
+Implement header/preferences in checkpoint 3 and transfer-only components within their approved slices, using the accepted Figma designs and current requirements to shape interfaces.
+The candidate explicitly approved the concrete v2 HTML plan and authorized implementation.
+This broadens the earlier shared-UI-only-when-reused rule for these three named primitives; SearchInput has one current consumer, and its placement serves the candidate-requested library organization.

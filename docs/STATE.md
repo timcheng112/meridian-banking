@@ -135,7 +135,7 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Review checkpoint 2's six-file application diff with the candidate and confirm understanding/acceptance before preparing checkpoint 3's HTML technical plan.
+Address the candidate's checkpoint 2 review questions below before acceptance or checkpoint 3 planning.
 Complete designs are accepted, including the solid hero with brand/on-brand action and refined review C.
 Runtime behaviour, accessibility verification and candidate acceptance of implementation remain pending.
 After plan approval, preserve recovery records on the verified integration base and follow feature-dev's leased-worktree workflow.
@@ -393,3 +393,64 @@ In-app browser access returned unavailable in this session, so no browser, focus
 Checkpoint 3 must complete the approved header/navigation/avatar/preferences, icon/merchant-mark presentation, fixed mobile transfer action, 640/1024 breakpoints, 300px desktop rail, theme checks and skeleton layout-stability verification.
 The baseline CSS provides readable token-based wrapping content; it does not establish final Figma fidelity or D8 acceptance.
 Review remains pending; no MR publication, merge or cleanup has been authorized.
+
+## Pending candidate review feedback and handoff
+
+The candidate requested a handoff to address these questions before further implementation.
+Explain why DashboardContent identifies deposits with accounts.filter((account) => account.type !== 'credit'), referring to the supplied account types and API contract.
+Explain the current native-HTML/component-library decision and discuss whether a library is warranted; do not silently add one.
+Discuss separate files for AccountCard, TransactionRow and DashboardSkeleton for organization, even without reuse; the candidate suggested DashboardContent/DashboardContent.tsx with DashboardContent/components/AccountCard.tsx, but invited alternative structures.
+Clarify that AccountCard and TransactionRow are module-level functions in DashboardContent.tsx, not functions defined inside its render body.
+Present every added/modified file in future review handoffs, with purpose and suggested review order, rather than only selected entry points.
+The candidate asked why types.ts was omitted; src/api/types.ts is supplied starter code, last changed at bb9a6fe, and was not modified in either checkpoint.
+No structural refactor or new component library is approved by these questions; discuss the options, then revise the HTML technical plan for any material change and obtain approval before Sol implementation.
+Temporary continuation handoff: /private/tmp/meridian-checkpoint-2-review-handoff.md.
+
+## Component organization follow-up
+
+Recovered feat/dashboard at a9e78d3; application source still matches the recorded checkpoint verification, and only STATE had uncommitted handoff notes.
+Treehouse status was blocked while trying to initialize its home-directory state; lease status remains unverified, while the Git worktree and branch are confirmed.
+The candidate accepted a feature-local components folder for AccountCard, TransactionRow and DashboardSkeleton and will review checkpoint 2 after the changes.
+Concrete extraction plan v1 is /private/tmp/meridian-checkpoint-2-component-plan.html; explicit artifact approval remains pending before implementation dispatch.
+The candidate recalled the accepted Figma Components page; reusable project-local React components and native HTML are compatible, while adding a third-party package remains a separate decision.
+Confirmed that D3 explicitly specifies checking plus savings and that src/api/types.ts was supplied at bb9a6fe and remains unchanged.
+No application changes or new test runs occurred during this discussion.
+The candidate subsequently requested a component-library refactor aligned with Figma and asked whether the Figma inventory needs expanding before implementation.
+Opened the extraction plan in cmux and annotated it as preliminary pending the broader library scope.
+Read-only live metadata inspection covered Components 2:126, dashboard 5:2, mobile review 6:344 and recipient validation 7:148; this establishes an initial structural inventory, not exhaustive visual coverage.
+Existing designs cover buttons, fields, choices, feedback, status, icons, navigation, stepper, account cards and merchant marks; repeated screen-level transaction, dialog and summary structures warrant coverage review.
+Next reconcile library coverage and variants, then present an exact revised HTML implementation plan before dispatch; the three extracted dashboard components are not the final library inventory.
+The candidate accepted the full-width header background with centered 1200px inner content aligned with the dashboard; recorded in DECISIONS and annotated in the local plan for checkpoint 3.
+The current HTML includes the initial component-library inventory and ownership proposal, but its exact implementation-file table still covers only the three-component extraction and requires expansion before approval of the broader refactor.
+
+## Component-library plan v2
+
+The candidate requested expansion of the plan and confirmed that the brief's component list is advisory.
+Replaced the preliminary artifact at /private/tmp/meridian-checkpoint-2-component-plan.html with v2, based on unchanged application revision a9e78d3.
+Proposed current scope: shared Button, SearchInput and Skeleton with owned CSS, plus seven dashboard compositions, with fourteen application/style files and two record updates listed explicitly.
+The plan maps every suggested component to current extraction or later header/search/transfer work; short empty messages and the Pending label remain local.
+Preserve current behaviour and presentation; use existing integration tests plus before/after browser comparison because shared CSS ownership moves.
+Header alignment remains accepted for checkpoint 3; broader library implementation awaits explicit v2 approval.
+HTML nesting, unique section IDs, navigation targets and proposal status checks passed; no application edits or application-test reruns occurred.
+Independent gpt-6-astra plan review found no blockers; incorporated clarifications for the proposed reuse-rule exception, required search accessible label and preserving Retry outside the alert paragraph.
+For later S3 planning, the candidate requested considering the Vercel composition-patterns skill for the multi-step transfer modal.
+The candidate explicitly approved component-library HTML plan v2 and authorized proceeding after leaving Plan Mode.
+Implementation is authorized for its fourteen application/style files with existing tests; lead owns records and review, and Sol owns implementation and checks.
+Evaluate a stable dialog shell with explicit step components and shared form ownership; exact compound-component/context interfaces remain a future planning decision.
+
+## Component-library v2 implementation review
+
+Implemented the approved v2 extraction on feat/dashboard by explicitly selected gpt-6.1-sol, with independent read-only gpt-6-astra review and lead diff inspection; no blockers found.
+Added src/components/ui/Button.tsx, SearchInput.tsx, Skeleton.tsx and ui.css.
+Added src/features/dashboard/components/BalanceHero.tsx, AccountCard.tsx, TransactionList.tsx, TransactionRow.tsx, DailyLimitCard.tsx, DashboardSkeleton.tsx and DashboardFeedback.tsx.
+Modified Dashboard.tsx, DashboardContent.tsx and dashboard.css within src/features/dashboard; existing tests, starter API types, formatters, mocks, seeds, dependencies and runtime configuration remain unchanged.
+Button requires an explicit native type; SearchInput requires aria-label and fixes type=search; both forward native props and React 19 refs.
+DashboardContent retains financial derivation, Dashboard retains query-state selection, and the extracted compositions preserve copy, semantics and disabled controls.
+Verification applies to the application source committed with this checkpoint: npm run check passed lint, strict typechecking and all 14 tests; npm run build and git diff --check passed using installed Node 22.23.4.
+Lead comparison confirmed all seven moved CSS declaration bodies match their originals and all remaining dashboard rules are unchanged; independent review found no conflicting cascade rules.
+Fresh browser bootstrap returned Browser is not available: iab, so before/after rendered comparisons, keyboard checks and console verification remain outstanding.
+Static CSS checks and passing integration tests do not establish rendered equivalence or final responsive acceptance.
+Complete local review artifact: /private/tmp/meridian-component-library-review.html, with every added/modified file, purpose, source and tracked diff.
+Candidate acceptance of checkpoint 2 and this refactor remains pending; review the shared UI, composition and financial components before proceeding to a separate checkpoint 3 plan.
+The app header remains temporary and the daily-limit card remains below content until checkpoint 3 implements the approved header and desktop right rail.
+No external writes, merge, deployment or worktree cleanup occurred.
