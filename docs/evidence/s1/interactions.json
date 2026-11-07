@@ -1,0 +1,512 @@
+{
+  "results": [
+    {
+      "name": "header alignment 360",
+      "ok": true,
+      "details": {
+        "main": 16,
+        "header": 16
+      }
+    },
+    {
+      "name": "footer clearance 360",
+      "ok": true,
+      "details": {
+        "footer": {
+          "y": 764,
+          "b": 844
+        },
+        "limit": {
+          "b": 731.984375
+        },
+        "height": 844
+      }
+    },
+    {
+      "name": "theme keyboard 360",
+      "ok": true
+    },
+    {
+      "name": "visible focus 360",
+      "ok": true,
+      "details": {
+        "outline": "solid",
+        "width": "2px"
+      }
+    },
+    {
+      "name": "segment keyboard 360",
+      "ok": true
+    },
+    {
+      "name": "unsplit balances 360",
+      "ok": true,
+      "details": [
+        {
+          "lines": 1,
+          "text": "SGD\u00a04,280.55"
+        },
+        {
+          "lines": 1,
+          "text": "SGD\u00a012,840.00"
+        },
+        {
+          "lines": 1,
+          "text": "-SGD\u00a0420.30"
+        }
+      ]
+    },
+    {
+      "name": "reduced motion 360",
+      "ok": true,
+      "details": {
+        "transition": "0s",
+        "animation": "0s"
+      }
+    },
+    {
+      "name": "icon slots 360",
+      "ok": true,
+      "details": [
+        {
+          "class": "ui-icon ui-icon-sun",
+          "w": 20,
+          "h": 20,
+          "mask": "url(\"data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20stroke='currentColor'%20stroke-width='1.5'%20stroke-linecap='round'%3e%3ccircle%20cx='10'%20cy='10'%20r='3.5'%20/%3e%3cpath%20d='M10%201.5V3M10%2017v1.5M1.5%2010H3M17%2010h1.5M4%204l1.1%201.1M14.9%2014.9L16%2016M4%2016l1.1-1.1M14.9%205.1L16%204'%20/%3e%3c/svg%3e\")"
+        },
+        {
+          "class": "ui-icon ui-icon-plus",
+          "w": 20,
+          "h": 20,
+          "mask": "url(\"data:image/svg+xml,%3csvg%20preserveAspectRatio='none'%20overflow='visible'%20style='display:%20block;'%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20id='Plus'%3e%3cpath%20id='Icon'%20d='M10%204.16667V10M10%2010V15.8333M10%2010H4.16667M10%2010H15.8333'%20stroke-width='1.6'%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke='white'/%3e%3c/g%3e%3c/svg%3e\")"
+        }
+      ]
+    },
+    {
+      "name": "no preference persistence 360",
+      "ok": true
+    },
+    {
+      "name": "header alignment 390",
+      "ok": true,
+      "details": {
+        "main": 16,
+        "header": 16
+      }
+    },
+    {
+      "name": "footer clearance 390",
+      "ok": true,
+      "details": {
+        "footer": {
+          "y": 764,
+          "b": 844
+        },
+        "limit": {
+          "b": 731.984375
+        },
+        "height": 844
+      }
+    },
+    {
+      "name": "theme keyboard 390",
+      "ok": true
+    },
+    {
+      "name": "visible focus 390",
+      "ok": true,
+      "details": {
+        "outline": "solid",
+        "width": "2px"
+      }
+    },
+    {
+      "name": "segment keyboard 390",
+      "ok": true
+    },
+    {
+      "name": "unsplit balances 390",
+      "ok": true,
+      "details": [
+        {
+          "lines": 1,
+          "text": "SGD\u00a04,280.55"
+        },
+        {
+          "lines": 1,
+          "text": "SGD\u00a012,840.00"
+        },
+        {
+          "lines": 1,
+          "text": "-SGD\u00a0420.30"
+        }
+      ]
+    },
+    {
+      "name": "reduced motion 390",
+      "ok": true,
+      "details": {
+        "transition": "0s",
+        "animation": "0s"
+      }
+    },
+    {
+      "name": "icon slots 390",
+      "ok": true,
+      "details": [
+        {
+          "class": "ui-icon ui-icon-sun",
+          "w": 20,
+          "h": 20,
+          "mask": "url(\"data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20stroke='currentColor'%20stroke-width='1.5'%20stroke-linecap='round'%3e%3ccircle%20cx='10'%20cy='10'%20r='3.5'%20/%3e%3cpath%20d='M10%201.5V3M10%2017v1.5M1.5%2010H3M17%2010h1.5M4%204l1.1%201.1M14.9%2014.9L16%2016M4%2016l1.1-1.1M14.9%205.1L16%204'%20/%3e%3c/svg%3e\")"
+        },
+        {
+          "class": "ui-icon ui-icon-plus",
+          "w": 20,
+          "h": 20,
+          "mask": "url(\"data:image/svg+xml,%3csvg%20preserveAspectRatio='none'%20overflow='visible'%20style='display:%20block;'%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20id='Plus'%3e%3cpath%20id='Icon'%20d='M10%204.16667V10M10%2010V15.8333M10%2010H4.16667M10%2010H15.8333'%20stroke-width='1.6'%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke='white'/%3e%3c/g%3e%3c/svg%3e\")"
+        }
+      ]
+    },
+    {
+      "name": "no preference persistence 390",
+      "ok": true
+    },
+    {
+      "name": "header alignment 640",
+      "ok": true,
+      "details": {
+        "main": 24,
+        "header": 24
+      }
+    },
+    {
+      "name": "footer clearance 640",
+      "ok": true,
+      "details": {
+        "footer": {
+          "y": 764,
+          "b": 844
+        },
+        "limit": {
+          "b": 731.875
+        },
+        "height": 844
+      }
+    },
+    {
+      "name": "theme keyboard 640",
+      "ok": true
+    },
+    {
+      "name": "visible focus 640",
+      "ok": true,
+      "details": {
+        "outline": "solid",
+        "width": "2px"
+      }
+    },
+    {
+      "name": "segment keyboard 640",
+      "ok": true
+    },
+    {
+      "name": "unsplit balances 640",
+      "ok": true,
+      "details": [
+        {
+          "lines": 1,
+          "text": "SGD\u00a04,280.55"
+        },
+        {
+          "lines": 1,
+          "text": "SGD\u00a012,840.00"
+        },
+        {
+          "lines": 1,
+          "text": "-SGD\u00a0420.30"
+        }
+      ]
+    },
+    {
+      "name": "reduced motion 640",
+      "ok": true,
+      "details": {
+        "transition": "0s",
+        "animation": "0s"
+      }
+    },
+    {
+      "name": "icon slots 640",
+      "ok": true,
+      "details": [
+        {
+          "class": "ui-icon ui-icon-sun",
+          "w": 20,
+          "h": 20,
+          "mask": "url(\"data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20stroke='currentColor'%20stroke-width='1.5'%20stroke-linecap='round'%3e%3ccircle%20cx='10'%20cy='10'%20r='3.5'%20/%3e%3cpath%20d='M10%201.5V3M10%2017v1.5M1.5%2010H3M17%2010h1.5M4%204l1.1%201.1M14.9%2014.9L16%2016M4%2016l1.1-1.1M14.9%205.1L16%204'%20/%3e%3c/svg%3e\")"
+        },
+        {
+          "class": "ui-icon ui-icon-plus",
+          "w": 20,
+          "h": 20,
+          "mask": "url(\"data:image/svg+xml,%3csvg%20preserveAspectRatio='none'%20overflow='visible'%20style='display:%20block;'%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20id='Plus'%3e%3cpath%20id='Icon'%20d='M10%204.16667V10M10%2010V15.8333M10%2010H4.16667M10%2010H15.8333'%20stroke-width='1.6'%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke='white'/%3e%3c/g%3e%3c/svg%3e\")"
+        }
+      ]
+    },
+    {
+      "name": "no preference persistence 640",
+      "ok": true
+    },
+    {
+      "name": "header alignment 1024",
+      "ok": true,
+      "details": {
+        "main": 24,
+        "header": 24
+      }
+    },
+    {
+      "name": "theme keyboard 1024",
+      "ok": true
+    },
+    {
+      "name": "visible focus 1024",
+      "ok": true,
+      "details": {
+        "outline": "solid",
+        "width": "2px"
+      }
+    },
+    {
+      "name": "segment keyboard 1024",
+      "ok": true
+    },
+    {
+      "name": "unsplit balances 1024",
+      "ok": true,
+      "details": [
+        {
+          "lines": 1,
+          "text": "SGD\u00a04,280.55"
+        },
+        {
+          "lines": 1,
+          "text": "SGD\u00a012,840.00"
+        },
+        {
+          "lines": 1,
+          "text": "-SGD\u00a0420.30"
+        }
+      ]
+    },
+    {
+      "name": "reduced motion 1024",
+      "ok": true,
+      "details": {
+        "transition": "0s",
+        "animation": "0s"
+      }
+    },
+    {
+      "name": "icon slots 1024",
+      "ok": true,
+      "details": [
+        {
+          "class": "ui-icon ui-icon-grid",
+          "w": 16,
+          "h": 16,
+          "mask": "url(\"data:image/svg+xml,%3csvg%20preserveAspectRatio='none'%20overflow='visible'%20style='display:%20block;'%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20id='Frame'%3e%3cpath%20id='Vector'%20d='M2%202H6.66667V6.66667H2V2ZM9.33333%202H14V6.66667H9.33333V2ZM2%209.33333H6.66667V14H2V9.33333ZM9.33333%209.33333H14V14H9.33333V9.33333Z'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke='%232457E6'/%3e%3c/g%3e%3c/svg%3e\")"
+        },
+        {
+          "class": "ui-icon ui-icon-sun",
+          "w": 20,
+          "h": 20,
+          "mask": "url(\"data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20stroke='currentColor'%20stroke-width='1.5'%20stroke-linecap='round'%3e%3ccircle%20cx='10'%20cy='10'%20r='3.5'%20/%3e%3cpath%20d='M10%201.5V3M10%2017v1.5M1.5%2010H3M17%2010h1.5M4%204l1.1%201.1M14.9%2014.9L16%2016M4%2016l1.1-1.1M14.9%205.1L16%204'%20/%3e%3c/svg%3e\")"
+        },
+        {
+          "class": "ui-icon ui-icon-plus",
+          "w": 20,
+          "h": 20,
+          "mask": "url(\"data:image/svg+xml,%3csvg%20preserveAspectRatio='none'%20overflow='visible'%20style='display:%20block;'%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20id='Plus'%3e%3cpath%20id='Icon'%20d='M10%204.16667V10M10%2010V15.8333M10%2010H4.16667M10%2010H15.8333'%20stroke-width='1.6'%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke='white'/%3e%3c/g%3e%3c/svg%3e\")"
+        }
+      ]
+    },
+    {
+      "name": "no preference persistence 1024",
+      "ok": true
+    },
+    {
+      "name": "header alignment 1280",
+      "ok": true,
+      "details": {
+        "main": 40,
+        "header": 40
+      }
+    },
+    {
+      "name": "theme keyboard 1280",
+      "ok": true
+    },
+    {
+      "name": "visible focus 1280",
+      "ok": true,
+      "details": {
+        "outline": "solid",
+        "width": "2px"
+      }
+    },
+    {
+      "name": "segment keyboard 1280",
+      "ok": true
+    },
+    {
+      "name": "unsplit balances 1280",
+      "ok": true,
+      "details": [
+        {
+          "lines": 1,
+          "text": "SGD\u00a04,280.55"
+        },
+        {
+          "lines": 1,
+          "text": "SGD\u00a012,840.00"
+        },
+        {
+          "lines": 1,
+          "text": "-SGD\u00a0420.30"
+        }
+      ]
+    },
+    {
+      "name": "reduced motion 1280",
+      "ok": true,
+      "details": {
+        "transition": "0s",
+        "animation": "0s"
+      }
+    },
+    {
+      "name": "icon slots 1280",
+      "ok": true,
+      "details": [
+        {
+          "class": "ui-icon ui-icon-grid",
+          "w": 16,
+          "h": 16,
+          "mask": "url(\"data:image/svg+xml,%3csvg%20preserveAspectRatio='none'%20overflow='visible'%20style='display:%20block;'%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20id='Frame'%3e%3cpath%20id='Vector'%20d='M2%202H6.66667V6.66667H2V2ZM9.33333%202H14V6.66667H9.33333V2ZM2%209.33333H6.66667V14H2V9.33333ZM9.33333%209.33333H14V14H9.33333V9.33333Z'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke='%232457E6'/%3e%3c/g%3e%3c/svg%3e\")"
+        },
+        {
+          "class": "ui-icon ui-icon-sun",
+          "w": 20,
+          "h": 20,
+          "mask": "url(\"data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20stroke='currentColor'%20stroke-width='1.5'%20stroke-linecap='round'%3e%3ccircle%20cx='10'%20cy='10'%20r='3.5'%20/%3e%3cpath%20d='M10%201.5V3M10%2017v1.5M1.5%2010H3M17%2010h1.5M4%204l1.1%201.1M14.9%2014.9L16%2016M4%2016l1.1-1.1M14.9%205.1L16%204'%20/%3e%3c/svg%3e\")"
+        },
+        {
+          "class": "ui-icon ui-icon-plus",
+          "w": 20,
+          "h": 20,
+          "mask": "url(\"data:image/svg+xml,%3csvg%20preserveAspectRatio='none'%20overflow='visible'%20style='display:%20block;'%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20id='Plus'%3e%3cpath%20id='Icon'%20d='M10%204.16667V10M10%2010V15.8333M10%2010H4.16667M10%2010H15.8333'%20stroke-width='1.6'%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke='white'/%3e%3c/g%3e%3c/svg%3e\")"
+        }
+      ]
+    },
+    {
+      "name": "no preference persistence 1280",
+      "ok": true
+    },
+    {
+      "name": "header alignment 1440",
+      "ok": true,
+      "details": {
+        "main": 120,
+        "header": 120
+      }
+    },
+    {
+      "name": "theme keyboard 1440",
+      "ok": true
+    },
+    {
+      "name": "visible focus 1440",
+      "ok": true,
+      "details": {
+        "outline": "solid",
+        "width": "2px"
+      }
+    },
+    {
+      "name": "segment keyboard 1440",
+      "ok": true
+    },
+    {
+      "name": "unsplit balances 1440",
+      "ok": true,
+      "details": [
+        {
+          "lines": 1,
+          "text": "SGD\u00a04,280.55"
+        },
+        {
+          "lines": 1,
+          "text": "SGD\u00a012,840.00"
+        },
+        {
+          "lines": 1,
+          "text": "-SGD\u00a0420.30"
+        }
+      ]
+    },
+    {
+      "name": "reduced motion 1440",
+      "ok": true,
+      "details": {
+        "transition": "0s",
+        "animation": "0s"
+      }
+    },
+    {
+      "name": "icon slots 1440",
+      "ok": true,
+      "details": [
+        {
+          "class": "ui-icon ui-icon-grid",
+          "w": 16,
+          "h": 16,
+          "mask": "url(\"data:image/svg+xml,%3csvg%20preserveAspectRatio='none'%20overflow='visible'%20style='display:%20block;'%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20id='Frame'%3e%3cpath%20id='Vector'%20d='M2%202H6.66667V6.66667H2V2ZM9.33333%202H14V6.66667H9.33333V2ZM2%209.33333H6.66667V14H2V9.33333ZM9.33333%209.33333H14V14H9.33333V9.33333Z'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke='%232457E6'/%3e%3c/g%3e%3c/svg%3e\")"
+        },
+        {
+          "class": "ui-icon ui-icon-sun",
+          "w": 20,
+          "h": 20,
+          "mask": "url(\"data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20stroke='currentColor'%20stroke-width='1.5'%20stroke-linecap='round'%3e%3ccircle%20cx='10'%20cy='10'%20r='3.5'%20/%3e%3cpath%20d='M10%201.5V3M10%2017v1.5M1.5%2010H3M17%2010h1.5M4%204l1.1%201.1M14.9%2014.9L16%2016M4%2016l1.1-1.1M14.9%205.1L16%204'%20/%3e%3c/svg%3e\")"
+        },
+        {
+          "class": "ui-icon ui-icon-plus",
+          "w": 20,
+          "h": 20,
+          "mask": "url(\"data:image/svg+xml,%3csvg%20preserveAspectRatio='none'%20overflow='visible'%20style='display:%20block;'%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20id='Plus'%3e%3cpath%20id='Icon'%20d='M10%204.16667V10M10%2010V15.8333M10%2010H4.16667M10%2010H15.8333'%20stroke-width='1.6'%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke='white'/%3e%3c/g%3e%3c/svg%3e\")"
+        }
+      ]
+    },
+    {
+      "name": "no preference persistence 1440",
+      "ok": true
+    },
+    {
+      "name": "initial error copy",
+      "ok": true
+    },
+    {
+      "name": "keyboard Retry refetches all reads",
+      "ok": true,
+      "details": [
+        "/api/customer",
+        "/api/accounts",
+        "/api/transactions?limit=8"
+      ]
+    }
+  ],
+  "failures": [],
+  "errors": [],
+  "revision": "9945d4a03092d650f0e41526e965b39bab9940de"
+}

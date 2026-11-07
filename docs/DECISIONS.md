@@ -261,3 +261,10 @@ The candidate pointed out that the theme icon stayed unchanged between light and
 Show the moon in light mode with Switch to dark mode, and a sun in dark mode with Switch to light mode.
 The accessible name and tooltip describe the action; omit aria-pressed because this is an action button with a changing name.
 Retain the downloaded moon and add a local 20px sun SVG using the same semantic-colour mask treatment; Figma was not edited.
+
+## Accepted: S1 review configuration and preference ownership
+
+The candidate requested props for header content and segment choices, extraction of App preference logic, and destructuring in AccountCard and Dashboard.
+App supplies fixed application configuration; Header and SegmentSwitch render typed props, and avatar identity derives from the customer query.
+useAppPreferences owns the in-memory override, theme and document attributes while observing the existing customer cache.
+Retain the mobilePreferences composition slot to position the supplied control in loading, error and ready states without adding preference ownership to dashboard presentation.

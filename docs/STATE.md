@@ -526,3 +526,15 @@ Main remained bb9a6fe78ee2445d05ae4224d8b5d0f437e1b1dd.
 The GitHub connector denied PR creation with integration permission error 403; authenticated GitHub CLI created PR #1 using the prepared description.
 This publication receipt is documentation-only; application revision remains 7ae324d and its recorded verification still applies.
 No merge, deployment, screenshot upload, cleanup or S2-S4 work occurred.
+
+## S1 MR review revisions
+
+The candidate authorized review fixes, evidence uploads and replies prefixed Codex Agent: on PR #1.
+Application revision 9945d4a makes header brand/navigation and segment options configurable, derives avatar identity from customer data, extracts useAppPreferences and destructures AccountCard and Dashboard values.
+The mobilePreferences ReactNode remains an explicit composition slot; review replies explain its placement and ownership.
+The empty favicon remains intentional and is explained in the review.
+Lint, strict typecheck, all 16 tests, build and diff check passed; the test suite additionally verifies a different customer's avatar identity.
+Refreshed Chrome verification passed eight widths, 53 interaction assertions and theme keyboard/icon checks.
+Curated screenshots and revision-tagged browser results are stored in docs/evidence/s1 for publication in PR #1.
+The in-app browser remained unavailable; the existing Chrome fallback was used.
+Candidate understanding/acceptance and merge remain pending; no S2-S4, deployment or worktree cleanup is authorized.

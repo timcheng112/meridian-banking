@@ -1,0 +1,1533 @@
+{
+  "results": [
+    {
+      "width": 360,
+      "loading": {
+        "width": 360,
+        "scrollWidth": 360,
+        "hero": {
+          "x": 16,
+          "y": 234,
+          "w": 328,
+          "h": 126.796875,
+          "b": 360.796875
+        },
+        "accounts": {
+          "x": 16,
+          "y": 435.796875,
+          "w": 328,
+          "h": 365,
+          "b": 800.796875
+        },
+        "transactions": {
+          "x": 16,
+          "y": 824.796875,
+          "w": 328,
+          "h": 1063,
+          "b": 1887.796875
+        },
+        "limit": {
+          "x": 16,
+          "y": 1911.796875,
+          "w": 328,
+          "h": 183.1875,
+          "b": 2094.984375
+        },
+        "main": {
+          "x": 0,
+          "y": 64,
+          "w": 360,
+          "h": 2142.984375,
+          "b": 2206.984375
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "w": 360,
+          "h": 64,
+          "b": 64
+        },
+        "buttons": [
+          {
+            "text": "",
+            "label": "Switch to dark mode",
+            "w": 44,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "Retail",
+            "label": null,
+            "w": 80,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "Premium",
+            "label": null,
+            "w": 84.078125,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "New transfer",
+            "label": null,
+            "w": 328,
+            "h": 48,
+            "disabled": true
+          }
+        ]
+      },
+      "ready": {
+        "width": 360,
+        "scrollWidth": 360,
+        "hero": {
+          "x": 16,
+          "y": 234,
+          "w": 328,
+          "h": 126.796875,
+          "b": 360.796875
+        },
+        "accounts": {
+          "x": 16,
+          "y": 435.796875,
+          "w": 328,
+          "h": 365,
+          "b": 800.796875
+        },
+        "transactions": {
+          "x": 16,
+          "y": 824.796875,
+          "w": 328,
+          "h": 1063,
+          "b": 1887.796875
+        },
+        "limit": {
+          "x": 16,
+          "y": 1911.796875,
+          "w": 328,
+          "h": 183.1875,
+          "b": 2094.984375
+        },
+        "main": {
+          "x": 0,
+          "y": 64,
+          "w": 360,
+          "h": 2142.984375,
+          "b": 2206.984375
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "w": 360,
+          "h": 64,
+          "b": 64
+        },
+        "buttons": [
+          {
+            "text": "",
+            "label": "Switch to dark mode",
+            "w": 44,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "Retail",
+            "label": null,
+            "w": 80,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "Premium",
+            "label": null,
+            "w": 84.078125,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "New transfer",
+            "label": null,
+            "w": 328,
+            "h": 48,
+            "disabled": true
+          }
+        ]
+      },
+      "shift": {
+        "hero": {
+          "dy": 0,
+          "dh": 0
+        },
+        "accounts": {
+          "dy": 0,
+          "dh": 0
+        },
+        "transactions": {
+          "dy": 0,
+          "dh": 0
+        },
+        "limit": {
+          "dy": 0,
+          "dh": 0
+        }
+      }
+    },
+    {
+      "width": 390,
+      "loading": {
+        "width": 390,
+        "scrollWidth": 390,
+        "hero": {
+          "x": 16,
+          "y": 234,
+          "w": 358,
+          "h": 126.796875,
+          "b": 360.796875
+        },
+        "accounts": {
+          "x": 16,
+          "y": 435.796875,
+          "w": 358,
+          "h": 365,
+          "b": 800.796875
+        },
+        "transactions": {
+          "x": 16,
+          "y": 824.796875,
+          "w": 358,
+          "h": 1063,
+          "b": 1887.796875
+        },
+        "limit": {
+          "x": 16,
+          "y": 1911.796875,
+          "w": 358,
+          "h": 183.1875,
+          "b": 2094.984375
+        },
+        "main": {
+          "x": 0,
+          "y": 64,
+          "w": 390,
+          "h": 2142.984375,
+          "b": 2206.984375
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 64,
+          "b": 64
+        },
+        "buttons": [
+          {
+            "text": "",
+            "label": "Switch to dark mode",
+            "w": 44,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "Retail",
+            "label": null,
+            "w": 80,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "Premium",
+            "label": null,
+            "w": 84.078125,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "New transfer",
+            "label": null,
+            "w": 358,
+            "h": 48,
+            "disabled": true
+          }
+        ]
+      },
+      "ready": {
+        "width": 390,
+        "scrollWidth": 390,
+        "hero": {
+          "x": 16,
+          "y": 234,
+          "w": 358,
+          "h": 126.796875,
+          "b": 360.796875
+        },
+        "accounts": {
+          "x": 16,
+          "y": 435.796875,
+          "w": 358,
+          "h": 365,
+          "b": 800.796875
+        },
+        "transactions": {
+          "x": 16,
+          "y": 824.796875,
+          "w": 358,
+          "h": 1063,
+          "b": 1887.796875
+        },
+        "limit": {
+          "x": 16,
+          "y": 1911.796875,
+          "w": 358,
+          "h": 183.1875,
+          "b": 2094.984375
+        },
+        "main": {
+          "x": 0,
+          "y": 64,
+          "w": 390,
+          "h": 2142.984375,
+          "b": 2206.984375
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 64,
+          "b": 64
+        },
+        "buttons": [
+          {
+            "text": "",
+            "label": "Switch to dark mode",
+            "w": 44,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "Retail",
+            "label": null,
+            "w": 80,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "Premium",
+            "label": null,
+            "w": 84.078125,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "New transfer",
+            "label": null,
+            "w": 358,
+            "h": 48,
+            "disabled": true
+          }
+        ]
+      },
+      "shift": {
+        "hero": {
+          "dy": 0,
+          "dh": 0
+        },
+        "accounts": {
+          "dy": 0,
+          "dh": 0
+        },
+        "transactions": {
+          "dy": 0,
+          "dh": 0
+        },
+        "limit": {
+          "dy": 0,
+          "dh": 0
+        }
+      }
+    },
+    {
+      "width": 390,
+      "focused": {
+        "tag": "BUTTON",
+        "label": null,
+        "outline": "solid"
+      }
+    },
+    {
+      "width": 639,
+      "loading": {
+        "width": 639,
+        "scrollWidth": 639,
+        "hero": {
+          "x": 16,
+          "y": 234,
+          "w": 607,
+          "h": 126.796875,
+          "b": 360.796875
+        },
+        "accounts": {
+          "x": 16,
+          "y": 435.796875,
+          "w": 607,
+          "h": 365,
+          "b": 800.796875
+        },
+        "transactions": {
+          "x": 16,
+          "y": 824.796875,
+          "w": 607,
+          "h": 1063,
+          "b": 1887.796875
+        },
+        "limit": {
+          "x": 16,
+          "y": 1911.796875,
+          "w": 607,
+          "h": 183.1875,
+          "b": 2094.984375
+        },
+        "main": {
+          "x": 0,
+          "y": 64,
+          "w": 639,
+          "h": 2142.984375,
+          "b": 2206.984375
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "w": 639,
+          "h": 64,
+          "b": 64
+        },
+        "buttons": [
+          {
+            "text": "",
+            "label": "Switch to dark mode",
+            "w": 44,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "Retail",
+            "label": null,
+            "w": 80,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "Premium",
+            "label": null,
+            "w": 84.078125,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "New transfer",
+            "label": null,
+            "w": 607,
+            "h": 48,
+            "disabled": true
+          }
+        ]
+      },
+      "ready": {
+        "width": 639,
+        "scrollWidth": 639,
+        "hero": {
+          "x": 16,
+          "y": 234,
+          "w": 607,
+          "h": 126.796875,
+          "b": 360.796875
+        },
+        "accounts": {
+          "x": 16,
+          "y": 435.796875,
+          "w": 607,
+          "h": 365,
+          "b": 800.796875
+        },
+        "transactions": {
+          "x": 16,
+          "y": 824.796875,
+          "w": 607,
+          "h": 1063,
+          "b": 1887.796875
+        },
+        "limit": {
+          "x": 16,
+          "y": 1911.796875,
+          "w": 607,
+          "h": 183.1875,
+          "b": 2094.984375
+        },
+        "main": {
+          "x": 0,
+          "y": 64,
+          "w": 639,
+          "h": 2142.984375,
+          "b": 2206.984375
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "w": 639,
+          "h": 64,
+          "b": 64
+        },
+        "buttons": [
+          {
+            "text": "",
+            "label": "Switch to dark mode",
+            "w": 44,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "Retail",
+            "label": null,
+            "w": 80,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "Premium",
+            "label": null,
+            "w": 84.078125,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "New transfer",
+            "label": null,
+            "w": 607,
+            "h": 48,
+            "disabled": true
+          }
+        ]
+      },
+      "shift": {
+        "hero": {
+          "dy": 0,
+          "dh": 0
+        },
+        "accounts": {
+          "dy": 0,
+          "dh": 0
+        },
+        "transactions": {
+          "dy": 0,
+          "dh": 0
+        },
+        "limit": {
+          "dy": 0,
+          "dh": 0
+        }
+      }
+    },
+    {
+      "width": 640,
+      "loading": {
+        "width": 640,
+        "scrollWidth": 640,
+        "hero": {
+          "x": 24,
+          "y": 162,
+          "w": 592,
+          "h": 126.796875,
+          "b": 288.796875
+        },
+        "accounts": {
+          "x": 24,
+          "y": 363.796875,
+          "w": 592,
+          "h": 296.890625,
+          "b": 660.6875
+        },
+        "transactions": {
+          "x": 24,
+          "y": 684.6875,
+          "w": 592,
+          "h": 847,
+          "b": 1531.6875
+        },
+        "limit": {
+          "x": 24,
+          "y": 1555.6875,
+          "w": 592,
+          "h": 183.1875,
+          "b": 1738.875
+        },
+        "main": {
+          "x": 0,
+          "y": 64,
+          "w": 640,
+          "h": 1786.875,
+          "b": 1850.875
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "w": 640,
+          "h": 64,
+          "b": 64
+        },
+        "buttons": [
+          {
+            "text": "Retail",
+            "label": null,
+            "w": 80,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "Premium",
+            "label": null,
+            "w": 84.078125,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "",
+            "label": "Switch to dark mode",
+            "w": 44,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "New transfer",
+            "label": null,
+            "w": 608,
+            "h": 48,
+            "disabled": true
+          }
+        ]
+      },
+      "ready": {
+        "width": 640,
+        "scrollWidth": 640,
+        "hero": {
+          "x": 24,
+          "y": 162,
+          "w": 592,
+          "h": 126.796875,
+          "b": 288.796875
+        },
+        "accounts": {
+          "x": 24,
+          "y": 363.796875,
+          "w": 592,
+          "h": 296.890625,
+          "b": 660.6875
+        },
+        "transactions": {
+          "x": 24,
+          "y": 684.6875,
+          "w": 592,
+          "h": 847,
+          "b": 1531.6875
+        },
+        "limit": {
+          "x": 24,
+          "y": 1555.6875,
+          "w": 592,
+          "h": 183.1875,
+          "b": 1738.875
+        },
+        "main": {
+          "x": 0,
+          "y": 64,
+          "w": 640,
+          "h": 1786.875,
+          "b": 1850.875
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "w": 640,
+          "h": 64,
+          "b": 64
+        },
+        "buttons": [
+          {
+            "text": "Retail",
+            "label": null,
+            "w": 80,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "Premium",
+            "label": null,
+            "w": 84.078125,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "",
+            "label": "Switch to dark mode",
+            "w": 44,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "New transfer",
+            "label": null,
+            "w": 608,
+            "h": 48,
+            "disabled": true
+          }
+        ]
+      },
+      "shift": {
+        "hero": {
+          "dy": 0,
+          "dh": 0
+        },
+        "accounts": {
+          "dy": 0,
+          "dh": 0
+        },
+        "transactions": {
+          "dy": 0,
+          "dh": 0
+        },
+        "limit": {
+          "dy": 0,
+          "dh": 0
+        }
+      }
+    },
+    {
+      "width": 1023,
+      "loading": {
+        "width": 1023,
+        "scrollWidth": 1023,
+        "hero": {
+          "x": 24,
+          "y": 162,
+          "w": 975,
+          "h": 137.046875,
+          "b": 299.046875
+        },
+        "accounts": {
+          "x": 24,
+          "y": 374.046875,
+          "w": 975,
+          "h": 296.890625,
+          "b": 670.9375
+        },
+        "transactions": {
+          "x": 24,
+          "y": 694.9375,
+          "w": 975,
+          "h": 847,
+          "b": 1541.9375
+        },
+        "limit": {
+          "x": 24,
+          "y": 1565.9375,
+          "w": 975,
+          "h": 183.1875,
+          "b": 1749.125
+        },
+        "main": {
+          "x": 0,
+          "y": 64,
+          "w": 1023,
+          "h": 1797.125,
+          "b": 1861.125
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "w": 1023,
+          "h": 64,
+          "b": 64
+        },
+        "buttons": [
+          {
+            "text": "Retail",
+            "label": null,
+            "w": 80,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "Premium",
+            "label": null,
+            "w": 84.078125,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "",
+            "label": "Switch to dark mode",
+            "w": 44,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "New transfer",
+            "label": null,
+            "w": 991,
+            "h": 48,
+            "disabled": true
+          }
+        ]
+      },
+      "ready": {
+        "width": 1023,
+        "scrollWidth": 1023,
+        "hero": {
+          "x": 24,
+          "y": 162,
+          "w": 975,
+          "h": 137.046875,
+          "b": 299.046875
+        },
+        "accounts": {
+          "x": 24,
+          "y": 374.046875,
+          "w": 975,
+          "h": 296.890625,
+          "b": 670.9375
+        },
+        "transactions": {
+          "x": 24,
+          "y": 694.9375,
+          "w": 975,
+          "h": 847,
+          "b": 1541.9375
+        },
+        "limit": {
+          "x": 24,
+          "y": 1565.9375,
+          "w": 975,
+          "h": 183.1875,
+          "b": 1749.125
+        },
+        "main": {
+          "x": 0,
+          "y": 64,
+          "w": 1023,
+          "h": 1797.125,
+          "b": 1861.125
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "w": 1023,
+          "h": 64,
+          "b": 64
+        },
+        "buttons": [
+          {
+            "text": "Retail",
+            "label": null,
+            "w": 80,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "Premium",
+            "label": null,
+            "w": 84.078125,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "",
+            "label": "Switch to dark mode",
+            "w": 44,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "New transfer",
+            "label": null,
+            "w": 991,
+            "h": 48,
+            "disabled": true
+          }
+        ]
+      },
+      "shift": {
+        "hero": {
+          "dy": 0,
+          "dh": 0
+        },
+        "accounts": {
+          "dy": 0,
+          "dh": 0
+        },
+        "transactions": {
+          "dy": 0,
+          "dh": 0
+        },
+        "limit": {
+          "dy": 0,
+          "dh": 0
+        }
+      }
+    },
+    {
+      "width": 1024,
+      "loading": {
+        "width": 1024,
+        "scrollWidth": 1024,
+        "hero": {
+          "x": 24,
+          "y": 162,
+          "w": 652,
+          "h": 153.09375,
+          "b": 315.09375
+        },
+        "accounts": {
+          "x": 24,
+          "y": 390.09375,
+          "w": 652,
+          "h": 157.296875,
+          "b": 547.390625
+        },
+        "transactions": {
+          "x": 24,
+          "y": 571.390625,
+          "w": 652,
+          "h": 804,
+          "b": 1375.390625
+        },
+        "limit": {
+          "x": 700,
+          "y": 96,
+          "w": 300,
+          "h": 199.1875,
+          "b": 295.1875
+        },
+        "main": {
+          "x": 0,
+          "y": 64,
+          "w": 1024,
+          "h": 1343.390625,
+          "b": 1407.390625
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "w": 1024,
+          "h": 64,
+          "b": 64
+        },
+        "buttons": [
+          {
+            "text": "Cards",
+            "label": null,
+            "w": 62.0625,
+            "h": 48,
+            "disabled": true
+          },
+          {
+            "text": "Payments",
+            "label": null,
+            "w": 87.109375,
+            "h": 48,
+            "disabled": true
+          },
+          {
+            "text": "Insights",
+            "label": null,
+            "w": 74.546875,
+            "h": 48,
+            "disabled": true
+          },
+          {
+            "text": "Retail",
+            "label": null,
+            "w": 80,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "Premium",
+            "label": null,
+            "w": 84.078125,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "",
+            "label": "Switch to dark mode",
+            "w": 44,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "New transfer",
+            "label": null,
+            "w": 176,
+            "h": 48,
+            "disabled": true
+          }
+        ]
+      },
+      "ready": {
+        "width": 1024,
+        "scrollWidth": 1024,
+        "hero": {
+          "x": 24,
+          "y": 162,
+          "w": 652,
+          "h": 153.09375,
+          "b": 315.09375
+        },
+        "accounts": {
+          "x": 24,
+          "y": 390.09375,
+          "w": 652,
+          "h": 157.296875,
+          "b": 547.390625
+        },
+        "transactions": {
+          "x": 24,
+          "y": 571.390625,
+          "w": 652,
+          "h": 804,
+          "b": 1375.390625
+        },
+        "limit": {
+          "x": 700,
+          "y": 96,
+          "w": 300,
+          "h": 199.1875,
+          "b": 295.1875
+        },
+        "main": {
+          "x": 0,
+          "y": 64,
+          "w": 1024,
+          "h": 1343.390625,
+          "b": 1407.390625
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "w": 1024,
+          "h": 64,
+          "b": 64
+        },
+        "buttons": [
+          {
+            "text": "Cards",
+            "label": null,
+            "w": 62.0625,
+            "h": 48,
+            "disabled": true
+          },
+          {
+            "text": "Payments",
+            "label": null,
+            "w": 87.109375,
+            "h": 48,
+            "disabled": true
+          },
+          {
+            "text": "Insights",
+            "label": null,
+            "w": 74.546875,
+            "h": 48,
+            "disabled": true
+          },
+          {
+            "text": "Retail",
+            "label": null,
+            "w": 80,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "Premium",
+            "label": null,
+            "w": 84.078125,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "",
+            "label": "Switch to dark mode",
+            "w": 44,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "New transfer",
+            "label": null,
+            "w": 176,
+            "h": 48,
+            "disabled": true
+          }
+        ]
+      },
+      "shift": {
+        "hero": {
+          "dy": 0,
+          "dh": 0
+        },
+        "accounts": {
+          "dy": 0,
+          "dh": 0
+        },
+        "transactions": {
+          "dy": 0,
+          "dh": 0
+        },
+        "limit": {
+          "dy": 0,
+          "dh": 0
+        }
+      }
+    },
+    {
+      "width": 1280,
+      "loading": {
+        "width": 1280,
+        "scrollWidth": 1280,
+        "hero": {
+          "x": 40,
+          "y": 162,
+          "w": 876,
+          "h": 156.59375,
+          "b": 318.59375
+        },
+        "accounts": {
+          "x": 40,
+          "y": 393.59375,
+          "w": 876,
+          "h": 157.296875,
+          "b": 550.890625
+        },
+        "transactions": {
+          "x": 40,
+          "y": 574.890625,
+          "w": 876,
+          "h": 804,
+          "b": 1378.890625
+        },
+        "limit": {
+          "x": 940,
+          "y": 96,
+          "w": 300,
+          "h": 199.1875,
+          "b": 295.1875
+        },
+        "main": {
+          "x": 16,
+          "y": 64,
+          "w": 1248,
+          "h": 1346.890625,
+          "b": 1410.890625
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 64,
+          "b": 64
+        },
+        "buttons": [
+          {
+            "text": "Cards",
+            "label": null,
+            "w": 62.0625,
+            "h": 48,
+            "disabled": true
+          },
+          {
+            "text": "Payments",
+            "label": null,
+            "w": 87.109375,
+            "h": 48,
+            "disabled": true
+          },
+          {
+            "text": "Insights",
+            "label": null,
+            "w": 74.546875,
+            "h": 48,
+            "disabled": true
+          },
+          {
+            "text": "Retail",
+            "label": null,
+            "w": 80,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "Premium",
+            "label": null,
+            "w": 84.078125,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "",
+            "label": "Switch to dark mode",
+            "w": 44,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "New transfer",
+            "label": null,
+            "w": 176,
+            "h": 48,
+            "disabled": true
+          }
+        ]
+      },
+      "ready": {
+        "width": 1280,
+        "scrollWidth": 1280,
+        "hero": {
+          "x": 40,
+          "y": 162,
+          "w": 876,
+          "h": 156.59375,
+          "b": 318.59375
+        },
+        "accounts": {
+          "x": 40,
+          "y": 393.59375,
+          "w": 876,
+          "h": 157.296875,
+          "b": 550.890625
+        },
+        "transactions": {
+          "x": 40,
+          "y": 574.890625,
+          "w": 876,
+          "h": 804,
+          "b": 1378.890625
+        },
+        "limit": {
+          "x": 940,
+          "y": 96,
+          "w": 300,
+          "h": 199.1875,
+          "b": 295.1875
+        },
+        "main": {
+          "x": 16,
+          "y": 64,
+          "w": 1248,
+          "h": 1346.890625,
+          "b": 1410.890625
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 64,
+          "b": 64
+        },
+        "buttons": [
+          {
+            "text": "Cards",
+            "label": null,
+            "w": 62.0625,
+            "h": 48,
+            "disabled": true
+          },
+          {
+            "text": "Payments",
+            "label": null,
+            "w": 87.109375,
+            "h": 48,
+            "disabled": true
+          },
+          {
+            "text": "Insights",
+            "label": null,
+            "w": 74.546875,
+            "h": 48,
+            "disabled": true
+          },
+          {
+            "text": "Retail",
+            "label": null,
+            "w": 80,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "Premium",
+            "label": null,
+            "w": 84.078125,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "",
+            "label": "Switch to dark mode",
+            "w": 44,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "New transfer",
+            "label": null,
+            "w": 176,
+            "h": 48,
+            "disabled": true
+          }
+        ]
+      },
+      "shift": {
+        "hero": {
+          "dy": 0,
+          "dh": 0
+        },
+        "accounts": {
+          "dy": 0,
+          "dh": 0
+        },
+        "transactions": {
+          "dy": 0,
+          "dh": 0
+        },
+        "limit": {
+          "dy": 0,
+          "dh": 0
+        }
+      }
+    },
+    {
+      "width": 1280,
+      "focused": {
+        "tag": "BODY",
+        "label": null,
+        "outline": "none"
+      }
+    },
+    {
+      "width": 1440,
+      "loading": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "hero": {
+          "x": 120,
+          "y": 162,
+          "w": 876,
+          "h": 156.59375,
+          "b": 318.59375
+        },
+        "accounts": {
+          "x": 120,
+          "y": 393.59375,
+          "w": 876,
+          "h": 157.296875,
+          "b": 550.890625
+        },
+        "transactions": {
+          "x": 120,
+          "y": 574.890625,
+          "w": 876,
+          "h": 804,
+          "b": 1378.890625
+        },
+        "limit": {
+          "x": 1020,
+          "y": 96,
+          "w": 300,
+          "h": 199.1875,
+          "b": 295.1875
+        },
+        "main": {
+          "x": 96,
+          "y": 64,
+          "w": 1248,
+          "h": 1346.890625,
+          "b": 1410.890625
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 64,
+          "b": 64
+        },
+        "buttons": [
+          {
+            "text": "Cards",
+            "label": null,
+            "w": 62.0625,
+            "h": 48,
+            "disabled": true
+          },
+          {
+            "text": "Payments",
+            "label": null,
+            "w": 87.109375,
+            "h": 48,
+            "disabled": true
+          },
+          {
+            "text": "Insights",
+            "label": null,
+            "w": 74.546875,
+            "h": 48,
+            "disabled": true
+          },
+          {
+            "text": "Retail",
+            "label": null,
+            "w": 80,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "Premium",
+            "label": null,
+            "w": 84.078125,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "",
+            "label": "Switch to dark mode",
+            "w": 44,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "New transfer",
+            "label": null,
+            "w": 176,
+            "h": 48,
+            "disabled": true
+          }
+        ]
+      },
+      "ready": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "hero": {
+          "x": 120,
+          "y": 162,
+          "w": 876,
+          "h": 156.59375,
+          "b": 318.59375
+        },
+        "accounts": {
+          "x": 120,
+          "y": 393.59375,
+          "w": 876,
+          "h": 157.296875,
+          "b": 550.890625
+        },
+        "transactions": {
+          "x": 120,
+          "y": 574.890625,
+          "w": 876,
+          "h": 804,
+          "b": 1378.890625
+        },
+        "limit": {
+          "x": 1020,
+          "y": 96,
+          "w": 300,
+          "h": 199.1875,
+          "b": 295.1875
+        },
+        "main": {
+          "x": 96,
+          "y": 64,
+          "w": 1248,
+          "h": 1346.890625,
+          "b": 1410.890625
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 64,
+          "b": 64
+        },
+        "buttons": [
+          {
+            "text": "Cards",
+            "label": null,
+            "w": 62.0625,
+            "h": 48,
+            "disabled": true
+          },
+          {
+            "text": "Payments",
+            "label": null,
+            "w": 87.109375,
+            "h": 48,
+            "disabled": true
+          },
+          {
+            "text": "Insights",
+            "label": null,
+            "w": 74.546875,
+            "h": 48,
+            "disabled": true
+          },
+          {
+            "text": "Retail",
+            "label": null,
+            "w": 80,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "Premium",
+            "label": null,
+            "w": 84.078125,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "",
+            "label": "Switch to dark mode",
+            "w": 44,
+            "h": 48,
+            "disabled": false
+          },
+          {
+            "text": "New transfer",
+            "label": null,
+            "w": 176,
+            "h": 48,
+            "disabled": true
+          }
+        ]
+      },
+      "shift": {
+        "hero": {
+          "dy": 0,
+          "dh": 0
+        },
+        "accounts": {
+          "dy": 0,
+          "dh": 0
+        },
+        "transactions": {
+          "dy": 0,
+          "dh": 0
+        },
+        "limit": {
+          "dy": 0,
+          "dh": 0
+        }
+      }
+    }
+  ],
+  "failures": [],
+  "errors": [],
+  "revision": "9945d4a03092d650f0e41526e965b39bab9940de"
+}
