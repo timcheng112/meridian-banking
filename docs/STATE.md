@@ -19,7 +19,7 @@ The header, persistent preferences, API search, responsive layout and shared UI 
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
 Active scope: S1, S2 and fidelity/header feedback accepted and merged; next is S3 technical planning.
 Integration branch: development at local recovery commit f1e16de above fidelity merge 571b9d5; completed S1, S2 and fidelity worktrees remain preserved pending separately authorized cleanup.
-Phase: S3 implemented and verified on feat/transfer-form at e19fb10; recover that worktree's STATE for current evidence and pending candidate acceptance.
+Phase: S3 candidate feedback corrected and verified on feat/transfer-form at c777694; recover that worktree's STATE for current evidence and pending candidate acceptance.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -942,7 +942,7 @@ Candidate implementation acceptance and all external publication, merge, deploym
 
 ## S3 worktree continuation pointer
 
-S3 is implemented and verified on feat/transfer-form, based on development 2420c37, with application revision e19fb10.
+S3 is implemented and verified on feat/transfer-form, based on development 2420c37, with candidate feedback corrections at application revision c777694.
 Recover the active worktree using git worktree list and read its STATE for complete checks and limitations.
 The no-fetch meridian-s3 lease remains retained alongside the three completed leases.
 Candidate review is next; no publication, merge, cleanup or S4 implementation is authorized.
