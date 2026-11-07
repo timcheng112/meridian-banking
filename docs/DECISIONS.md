@@ -303,3 +303,15 @@ The candidate approved and merged S1 on 8 November 2026 and requested a handoff 
 After about eight hours invested, prioritize S2 search/preferences, the complete S3-S4 transfer flow, essential accessibility verification, deployment and submission documentation.
 Keep the small invalid-response correction and document the mock-worker refresh limitation; defer further lifecycle repair, optional features and broad architecture or visual redesign.
 The existing feature-dev S2 plan approval and React/composition assessment still apply; the user has not waived those gates or approved S2 implementation.
+
+## Accepted: S2 technical plan v1
+
+The candidate approved the concrete HTML plan /private/tmp/meridian-s2-technical-plan.html, version 1, and authorized local implementation.
+TransactionList owns feature-local search state; useDashboard retains parallel initial reads and recent rows for immediate clear.
+Use eight skeleton rows while debouncing or loading an uncached term, preserve input focus, and confine search failures and Retry to the transaction panel.
+Keep same-term cached results during refresh and distinguish refresh failure from an initial search failure.
+Persist explicit theme and segment choices under versioned localStorage keys; initialize HTML attributes synchronously in the document head before application startup.
+Without an override, theme follows system preference at startup and segment follows customer data with retail before the response.
+Handle invalid/blocked storage safely and preserve the existing hook/slots; omit live system tracking, cross-tab synchronization, context and memoization.
+The required React/composition assessment is included in the approved plan and will be checked during Astra review.
+Further mock-worker lifecycle work, transfer functionality, optional features and broad refactors remain excluded.

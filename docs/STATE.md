@@ -1,6 +1,6 @@
 # Current state
 
-## Active continuation: S2 planning after S1 acceptance
+## Active continuation: S2 approved implementation
 
 The candidate approved S1 and reported merging PR #1 on 8 November 2026.
 GitHub confirms the merge into development at 04956afd78cfb1a4251edccd140be74cba99637e.
@@ -19,7 +19,7 @@ The header, in-memory preferences, responsive layout and shared UI presentation 
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
 Active scope: S1 accepted and merged; S2 planning is next.
 Integration branch: development at merged S1 revision 04956af; feat/dashboard remains at 22b1f22 in its existing worktree pending separately authorized cleanup.
-Phase: S2 planning, with no S2 implementation approval yet.
+Phase: S2 technical plan v1 approved; implementation and verification in progress.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -652,3 +652,14 @@ Recorded source checks remain applicable because the merge tree matches the test
 The primary development checkout now contains the merged implementation and these updated recovery records.
 The old feature worktree is clean and preserved; no Treehouse lease return, branch deletion, deployment or new external write occurred during handoff.
 Next-session focus and tooling pointers are in /private/tmp/meridian-s2-planning-handoff.md.
+
+## S2 plan v1 approved - 8 November 2026
+
+The candidate explicitly approved /private/tmp/meridian-s2-technical-plan.html, version 1, after reviewing search and persistent preference requirements.
+Approved scope: D6 API search with 300 ms debounce, limit=8, response total, immediate clear, skeleton rows and search-local failure/Retry; TH1-TH3 persistent theme/segment and synchronous pre-paint initialization.
+The plan includes the React/composition assessment and retains useAppPreferences, Header/mobilePreferences slots and coordinated initial dashboard reads.
+Approved implementation branch: feat/search-preferences, based on development d225ec57f6d73b3975bbf4680b88c37db0921bd3 including recovery records.
+A no-fetch Treehouse lease was acquired and the base verified; local lease metadata identifies meridian-s2.
+The existing S1 lease was verified as retained; no cleanup was performed.
+Next: Sol implements the approved file inventory and behavioral tests; Astra reviews changes and verification before candidate walkthrough.
+Implementation acceptance, publication, merge, deployment and cleanup remain pending separate authorization.
