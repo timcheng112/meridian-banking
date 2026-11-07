@@ -17,7 +17,7 @@ The header, in-memory preferences, responsive layout and shared UI presentation 
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
 Active scope: S1 implementation and verification complete; candidate review and understanding occur at the MR stage.
 Active feature branch: feat/dashboard, based on development at 043516afff5cfd3f52c6a0629a482663f54aff2c.
-Phase: all three S1 checkpoints implemented; local MR prepared and publication authorized, with final candidate understanding/acceptance at MR review.
+Phase: S1 published as PR #1 into development; candidate understanding and acceptance remain pending at PR review.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -34,7 +34,7 @@ Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
 | Setup | Durable records, skill, branches, Node 22 baseline | Complete; verification below |
 | Design | Local HTML directions, selected core flow, mobile/desktop, states and shared components | Complete Figma designs accepted; static verification limits remain documented |
 | Figma | Approved core designs using components and supplied tokens | Final hero action and refined review C applied; unused alternatives removed |
-| S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | All three checkpoints implemented and verified; publication authorized, candidate acceptance pending |
+| S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | Published as PR #1; candidate review and acceptance pending |
 | S2 | API search, responsive dashboard, persistent theme/segment | Pending; responsive/accessibility work also belongs within S1 |
 | S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Pending |
 | S4 | Transfer mutation, failures, success and dashboard refresh | Pending |
@@ -144,9 +144,9 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Commit the pending STATE documentation update, push development and feat/dashboard without force, and open the prepared PR into development.
-Then record the published refs and PR URL and return it for candidate review.
-Merge, deployment, screenshot uploads, worktree cleanup and S2-S4 are outside authorization.
+Candidate review: https://github.com/timcheng112/meridian-banking/pull/1.
+Await review and understanding before S1 acceptance.
+Merge, deployment, screenshot uploads, worktree cleanup and S2-S4 remain outside authorization.
 
 ## Continuation audit - 7 November 2026
 
@@ -516,3 +516,13 @@ No merge, deployment, external screenshot upload or worktree cleanup is authoriz
 Application head at approval was 7ae324d; subsequent handoff-record changes are documentation-only and do not invalidate application verification.
 Next session should use /private/tmp/meridian-s1-publish-handoff.md and the prepared MR artifacts referenced above, reconcile current refs and publish the approved PR.
 No branch push or PR creation was performed during handoff preparation.
+
+## S1 publication completed
+
+PR: https://github.com/timcheng112/meridian-banking/pull/1, feat/dashboard into development.
+Committed the pending publication authorization and recovery reconciliation as e5ea800.
+Normal atomic push created development at 043516afff5cfd3f52c6a0629a482663f54aff2c and feat/dashboard at e5ea800b8f5a48d685c06f6162825503d36d75d4; remote refs were verified after pushing.
+Main remained bb9a6fe78ee2445d05ae4224d8b5d0f437e1b1dd.
+The GitHub connector denied PR creation with integration permission error 403; authenticated GitHub CLI created PR #1 using the prepared description.
+This publication receipt is documentation-only; application revision remains 7ae324d and its recorded verification still applies.
+No merge, deployment, screenshot upload, cleanup or S2-S4 work occurred.
