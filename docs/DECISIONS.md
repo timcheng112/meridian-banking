@@ -268,3 +268,10 @@ The candidate requested props for header content and segment choices, extraction
 App supplies fixed application configuration; Header and SegmentSwitch render typed props, and avatar identity derives from the customer query.
 useAppPreferences owns the in-memory override, theme and document attributes while observing the existing customer cache.
 Retain the mobilePreferences composition slot to position the supplied control in loading, error and ready states without adding preference ownership to dashboard presentation.
+
+## Accepted: composed header controls
+
+The candidate approved reducing Header to brand, navigation, customer and controls props.
+Group avatar name and initials in customer and supply HeaderControls through a ReactNode controls slot.
+Header owns layout and avatar rendering; HeaderControls presents segment and theme controls, while useAppPreferences retains state ownership.
+Use explicit multiline props and preserve the existing DOM structure without adding context.

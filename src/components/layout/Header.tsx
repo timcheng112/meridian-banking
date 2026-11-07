@@ -1,22 +1,20 @@
-import type { Segment } from '../../api/types'
+import type { ReactNode } from 'react'
 import { Icon } from '../ui/Icon'
-import { SegmentSwitch } from './SegmentSwitch'
-import { ThemeToggle } from './ThemeToggle'
 import './layout.css'
 
 type HeaderProps = {
   brand: { mark: string; name: string }
   navigation: ReadonlyArray<{ label: string; href?: string; current?: boolean }>
-  customerName: string
-  customerInitials: string
-  segmentOptions: ReadonlyArray<{ value: Segment; label: string }>
-  theme: 'light' | 'dark'
-  segment: Segment
-  onThemeToggle: () => void
-  onSegmentChange: (segment: Segment) => void
+  customer: { name: string; initials: string }
+  controls: ReactNode
 }
 
-export function Header({ brand, navigation, customerName, customerInitials, segmentOptions, theme, segment, onThemeToggle, onSegmentChange }: HeaderProps) {
+export function Header({
+  brand,
+  navigation,
+  customer,
+  controls,
+}: HeaderProps) {
   return (
     <header className="app-header">
       <div className="header-inner">
@@ -27,9 +25,8 @@ export function Header({ brand, navigation, customerName, customerInitials, segm
           ) : <button type="button" disabled key={label}>{label}</button>)}
         </nav>
         <div className="header-controls">
-          <div className="desktop-segment"><SegmentSwitch options={segmentOptions} segment={segment} onChange={onSegmentChange} /></div>
-          <ThemeToggle theme={theme} onToggle={onThemeToggle} />
-          <span className="customer-avatar" aria-label={customerName}>{customerInitials}</span>
+          {controls}
+          <span className="customer-avatar" aria-label={customer.name}>{customer.initials}</span>
         </div>
       </div>
     </header>

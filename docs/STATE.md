@@ -547,3 +547,13 @@ Eight screenshots and the verification summary are published at https://github.c
 The PR description uses GitHub user-attachment URLs.
 Removed docs/evidence/s1 from the current branch using a normal follow-up commit; its earlier commit remains in history, with no force push or history rewrite.
 Application files remain at verified revision 9945d4a; raw browser results and original images remain local.
+
+## Header composition review refinement
+
+The candidate approved replacing Header's ten props with brand, navigation, grouped customer identity and a controls slot.
+App composes HeaderControls into the slot; HeaderControls renders the segment and theme controls without adding a DOM wrapper or owning state.
+The component signatures and App composition now use multiline formatting.
+Lint, strict typecheck, all 16 tests, production build and diff check passed on this refactor.
+The production-build Chrome rerun passed all 53 interaction assertions and both segments' keyboard/theme-icon checks with no recorded errors.
+Existing direct MR screenshots remain identified with their original application revision; this follow-up adds no committed evidence files.
+Candidate acceptance and merge remain pending.

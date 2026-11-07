@@ -1,5 +1,6 @@
 import type { Segment } from './api/types'
 import { Header } from './components/layout/Header'
+import { HeaderControls } from './components/layout/HeaderControls'
 import { SegmentSwitch } from './components/layout/SegmentSwitch'
 import { Dashboard } from './features/dashboard/Dashboard'
 import { useAppPreferences } from './useAppPreferences'
@@ -18,11 +19,27 @@ const segmentOptions: ReadonlyArray<{ value: Segment; label: string }> = [
 
 export default function App() {
   const { theme, segment, toggleTheme, setSegment, customer } = useAppPreferences()
-  const customerName = customer ? `${customer.firstName} ${customer.lastName}` : 'Customer'
-  const customerInitials = customer ? `${customer.firstName.charAt(0)}${customer.lastName.charAt(0)}` : ''
+  const headerCustomer = {
+    name: customer ? `${customer.firstName} ${customer.lastName}` : 'Customer',
+    initials: customer ? `${customer.firstName.charAt(0)}${customer.lastName.charAt(0)}` : '',
+  }
+
   return (
     <>
-      <Header brand={brand} navigation={navigation} customerName={customerName} customerInitials={customerInitials} theme={theme} segment={segment} segmentOptions={segmentOptions} onThemeToggle={toggleTheme} onSegmentChange={setSegment} />
+      <Header
+        brand={brand}
+        navigation={navigation}
+        customer={headerCustomer}
+        controls={
+          <HeaderControls
+            segmentOptions={segmentOptions}
+            segment={segment}
+            theme={theme}
+            onSegmentChange={setSegment}
+            onThemeToggle={toggleTheme}
+          />
+        }
+      />
       <main id="main-content" className="dashboard">
         <Dashboard mobilePreferences={<SegmentSwitch options={segmentOptions} segment={segment} onChange={setSegment} />} />
       </main>
