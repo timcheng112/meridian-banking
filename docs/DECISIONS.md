@@ -322,3 +322,9 @@ The candidate requested a dedicated fidelity round after S2 to align the impleme
 Reconcile in both directions: implemented UI missing in Figma belongs in Figma, and approved design details missing in the implemented scope belong in code.
 Requirements and supplied tokens override either representation; future transfer designs remain assigned to S3-S4 rather than being pulled into this pass.
 Use the existing feature-dev plan/design review gates for material corrections and preserve explicit publication boundaries.
+
+## Accepted: daily-limit card stays in normal flow
+
+The candidate explicitly chose to keep the right-hand daily-limit card scrolling with the dashboard.
+The wireframe right rail does not prescribe sticky positioning, while D8 explicitly requires the fixed mobile transfer action.
+Preserve this behavior during Figma/code reconciliation.

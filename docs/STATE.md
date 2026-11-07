@@ -1,13 +1,13 @@
 # Current state
 
-## Active continuation: S2 verified, awaiting candidate acceptance
+## Active continuation: S2 accepted; Figma fidelity review
 
 The candidate approved S1 and reported merging PR #1 on 8 November 2026.
 GitHub confirms the merge into development at 04956afd78cfb1a4251edccd140be74cba99637e.
 The fetched merge tree exactly matches reviewed feature head 22b1f22, including the b1d0cb4 response correction.
 The primary local development checkout was fast-forwarded to the merged revision; the completed feat/dashboard worktree remains intact.
-S2 technical plan v1 is implemented and verified at 6cfda96; candidate walkthrough and acceptance are next.
-The candidate approved the concrete S2 HTML plan; implementation acceptance remains pending.
+The candidate tested the S2 preview, confirmed expected behavior and accepted continuing to the requested fidelity review.
+The candidate approved the concrete S2 HTML plan and accepted the verified implementation after testing the preview.
 The candidate has spent about eight hours on the assignment and agreed to prioritize remaining required functionality over further worker-lifecycle investigation, optional features or architecture/design exploration.
 Retain the simple response correction and document the manual-refresh limitation.
 
@@ -19,7 +19,7 @@ The header, persistent preferences, API search, responsive layout and shared UI 
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
 Active scope: S1 accepted and merged; S2 implementation is authorized on feat/search-preferences.
 Integration branch: development at recovery commit d225ec5 above merged S1 revision 04956af; feat/dashboard remains at 22b1f22 pending separately authorized cleanup.
-Phase: S2 implemented and verified; candidate understanding and acceptance pending.
+Phase: S2 accepted locally; bidirectional Figma/code fidelity audit and correction planning.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -37,7 +37,7 @@ Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
 | Design | Local HTML directions, selected core flow, mobile/desktop, states and shared components | Complete Figma designs accepted; static verification limits remain documented |
 | Figma | Approved core designs using components and supplied tokens | Final hero action and refined review C applied; unused alternatives removed |
 | S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | Accepted and merged in PR #1 at 04956af |
-| S2 | API search and persistent theme/segment | Verified at 6cfda96; candidate walkthrough and acceptance pending |
+| S2 | API search and persistent theme/segment | Accepted by candidate at 6cfda96; publication/merge pending |
 | Fidelity | Bidirectional Figma/code reconciliation for implemented scope | Requested after S2; concrete correction plan before material edits |
 | S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Pending |
 | S4 | Transfer mutation, failures, success and dashboard refresh | Pending |
@@ -148,7 +148,7 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Present the verified S2 walkthrough and evidence for 6cfda96 before candidate acceptance.
+Audit implemented dashboard/search/preferences against accepted Figma and prepare the concrete fidelity correction plan.
 Publication and merge remain separately authorized steps.
 Then perform the requested Figma/code fidelity round; do not reopen deferred mock-worker repair.
 Existing PR: https://github.com/timcheng112/meridian-banking/pull/1, merged.
@@ -694,3 +694,27 @@ The task-owned production preview is available on http://127.0.0.1:4177/ for can
 The existing user development server and S1 worktree were preserved.
 Candidate understanding and acceptance, publication, merge, deployment and cleanup remain pending; no external submission occurred.
 Next after S2 acceptance: the requested bidirectional Figma/code fidelity round for implemented scope.
+
+## S2 candidate acceptance - 8 November 2026
+
+The candidate tested the production preview, confirmed it works as expected and requested continuing.
+S2 at implementation revision 6cfda96 is accepted locally; publication, merge and cleanup remain pending authorization.
+Next is the previously requested bidirectional Figma/code fidelity round for implemented S1-S2 scope.
+Begin with read-only comparison and a concrete correction plan; transfer functionality remains S3-S4.
+
+## Accepted: daily-limit scrolling
+
+The candidate asked whether the right-hand daily-limit card should remain visible while scrolling and confirmed keeping the current normal page flow.
+Do not add sticky positioning during the fidelity round; only the mobile New transfer action remains fixed as required by D8.
+
+## Fidelity audit proposal v1 - 8 November 2026
+
+Read-only live Figma audit session: 24d62488-f725-493e-81e5-692afb253f5f in existing file LVZHN7v88I6WOCMr80nXlu.
+Reviewed dashboard and Required states inventories, design contexts/screenshots for desktop/mobile/search, and measured app/design geometry at 360, 390, 640, 1024 and 1280 px.
+Most differences are accepted code refinements absent from Figma: centered header, stable row/account geometry, sun action icon, search count/action placement and missing dashboard/search states.
+One proposed code correction: entered SearchInput text uses --text while placeholder remains --text-muted with explicit opacity1.
+Concrete proposal: /private/tmp/meridian-fidelity-plan.html, version 1, with embedded comparison screenshots and exact Figma/code scope.
+Astra confirmed the narrow reconciliation boundary and retained normal-flow daily-limit behavior.
+Approval remains pending for this concrete correction plan; no Figma design or application changes occurred during audit.
+Proposed implementation branch fix/dashboard-fidelity depends on the accepted S2 head including these recovery records; verify its exact base after approval.
+S2 remains accepted locally with publication/merge pending; no external submission occurred.
