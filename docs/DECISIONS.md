@@ -343,3 +343,11 @@ Synchronize accepted S1-S2 presentation and implemented states into Figma while 
 Retain accepted search composition, normal-flow daily-limit rail, current query/hook boundaries and existing component slots.
 Use merged development including d7c0268 and approval records as the verified implementation base.
 Screenshots remain outside Git; transfer work, further mock-worker repair and broad refactoring remain deferred.
+
+## Header review feedback and proposed circular avatar
+
+The candidate identified selected Overview as a current-page label that should have no click action or keyboard tab stop while retaining aria-current=page and selected styling.
+Implementation of that feedback is pending.
+For the AC avatar required by D2, a circular initials treatment is permitted because the brief prescribes no shape.
+Propose a non-interactive 40px circle with brand/brand-soft tokens, 14px semibold initials and the customer name as its accessible label.
+The isolated Figma proposal at 70:802 is ready for candidate selection; it has not been propagated or implemented.

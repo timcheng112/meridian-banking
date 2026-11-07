@@ -832,3 +832,16 @@ Section overlap checks passed and all four page overviews were visually reviewed
 Dashboard baselines: 67:558; transfer flow: 67:1644; transaction search states: 67:2754; component controls: 67:2991.
 Organization session: 197dd72d-0a93-4666-b284-fcbcada4243c; detailed ledger: /private/tmp/meridian-figma-organization-ledger.json.
 Overview screenshots remain outside Git at /private/tmp/meridian-browser-qa/figma-organized-{dashboard,transfer,states,components}.png.
+
+## Header feedback and avatar design proposal
+
+The candidate noted selected Overview should be non-interactive; this direction is agreed but application implementation remains pending.
+The candidate asked whether D2 prescribes bare AC initials and requested designing an avatar in Figma before implementation.
+D2 requires an AC avatar without specifying its shape; the wireframe uses a placeholder.
+Created an isolated proposal on Components at 70:802, with draft component 70:803: 40px circle, 14px semibold initials, brand foreground, brand-soft fill and radius-full.
+Twelve header previews cover 1280, 390 and 360px in all four theme/segment combinations.
+Token contrast ratios are 5.10, 5.33, 5.52 and 6.03:1; rendered checks confirm centered initials and no clipping at 360px.
+The proposed avatar is non-interactive and exposes the customer name; no profile menu is in scope.
+Accepted boards and application remain unchanged; avatar design selection and concrete implementation-plan approval remain pending.
+Review link: https://www.figma.com/design/LVZHN7v88I6WOCMr80nXlu?node-id=70-802.
+Evidence and full node inventory: /private/tmp/meridian-avatar-proposal-ledger.json and /private/tmp/meridian-browser-qa/avatar-proposal-*.png.
