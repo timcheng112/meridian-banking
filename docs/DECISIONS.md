@@ -275,3 +275,12 @@ The candidate approved reducing Header to brand, navigation, customer and contro
 Group avatar name and initials in customer and supply HeaderControls through a ReactNode controls slot.
 Header owns layout and avatar rendering; HeaderControls presents segment and theme controls, while useAppPreferences retains state ownership.
 Use explicit multiline props and preserve the existing DOM structure without adding context.
+
+## Accepted: React and composition review during slice planning
+
+The candidate requested a focused review of current S1 and investigation of the unresolved idle skeleton issue before proceeding.
+Starting with S2, every slice plan must apply the React best-practices and composition-patterns skills before implementation approval.
+Assess relevant rules, state ownership, rendering boundaries and composition candidates in the existing technical plan, with concrete rationale for introducing or declining abstractions.
+Use the existing implementation review and release verification to check the resulting work; no separate recurring post-S4 architecture-review stage is mandated.
+This supersedes the earlier proposal for a dedicated recurring review round and does not authorize starting S2.
+The discussed useHeader/container/shared-preferences design remains a candidate for review, not an approved implementation.

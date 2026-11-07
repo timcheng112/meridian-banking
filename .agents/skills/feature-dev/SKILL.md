@@ -18,6 +18,11 @@ Keep tests and implementation together where useful, and keep approvals and expl
 ## PLAN and DESIGN
 
 Inspect relevant requirements, accepted engineering decisions, implementation, and designs.
+For every slice plan, starting with S2, apply the installed vercel-react-best-practices and vercel-composition-patterns skills before presenting the plan for approval; read the rules relevant to the proposed work.
+Include a concise React and composition assessment in the technical plan: state ownership and subscriptions, derived data/effects, async query flow, component responsibilities, and candidate composition seams.
+Explain which recommendations apply, which composition changes solve a concrete problem, and which abstractions or optimizations are unnecessary; account for the React/Vite stack rather than importing unrelated framework patterns.
+Keep presentation hooks, context, slots and memoization proportional to demonstrated needs; identify meaningful verification for any rendering-performance claim.
+Carry the agreed assessment into implementation and verify it during the existing review gate; a separate recurring architecture-review round is not required by this process.
 Propose scope, acceptance criteria, verification, exclusions, and meaningful trade-offs; discuss new engineering choices without reopening settled ones unnecessarily.
 For UI changes, confirm an approved design covers the slice; propose missing or changed designs before implementation.
 Before implementation for each slice/checkpoint, create and present a local HTML technical-plan artifact for explicit candidate approval.

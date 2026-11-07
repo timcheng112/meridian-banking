@@ -1,13 +1,12 @@
 # Current state
 
-## Active continuation: publish S1 for MR review
+## Active continuation: focused S1 review and idle skeleton investigation
 
-S1 implementation and verification are complete at application revision 7ae324d.
-The candidate approved pushing development and feat/dashboard and creating the PR into development.
-Candidate understanding and acceptance remain pending at PR review; S2-S4 remain outside this continuation.
-Git confirms the feature worktree and development base 043516a; Treehouse lease metadata remains unverified.
-Remote inspection found only main at bb9a6fe and no matching open PR before publication.
-The pending handoff record and this recovery reconciliation change documentation only.
+Application revision: 511f8d2 on feat/dashboard; PR #1 remains open for candidate review.
+The candidate requested a handoff to review current S1 for React practices, composition opportunities and overengineering, and investigate the reported idle skeleton issue.
+Start with diagnosis and findings; the discussed useHeader/container/preferences-provider redesign has not been approved for implementation.
+Starting with S2, React best-practices and composition assessment is mandatory within each slice's planning phase; the feature-dev skill now records this requirement.
+S2-S4 implementation, merge, deployment and worktree cleanup remain outside this continuation.
 
 ## Snapshot and recovery
 
@@ -17,7 +16,7 @@ The header, in-memory preferences, responsive layout and shared UI presentation 
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
 Active scope: S1 implementation and verification complete; candidate review and understanding occur at the MR stage.
 Active feature branch: feat/dashboard, based on development at 043516afff5cfd3f52c6a0629a482663f54aff2c.
-Phase: S1 published as PR #1 into development; candidate understanding and acceptance remain pending at PR review.
+Phase: S1 PR review; focused architecture review and idle skeleton investigation pending before acceptance.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -34,13 +33,14 @@ Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
 | Setup | Durable records, skill, branches, Node 22 baseline | Complete; verification below |
 | Design | Local HTML directions, selected core flow, mobile/desktop, states and shared components | Complete Figma designs accepted; static verification limits remain documented |
 | Figma | Approved core designs using components and supplied tokens | Final hero action and refined review C applied; unused alternatives removed |
-| S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | Published as PR #1; candidate review and acceptance pending |
+| S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | PR #1 open; focused React/composition review and idle skeleton investigation before acceptance |
 | S2 | API search, responsive dashboard, persistent theme/segment | Pending; responsive/accessibility work also belongs within S1 |
 | S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Pending |
 | S4 | Transfer mutation, failures, success and dashboard refresh | Pending |
 | Release | Full requirement audit, production checks, submission README, deployment | Pending; publication requires approval |
 
 Each slice uses feature-dev for technical planning and approval before implementation.
+Starting with S2, each plan includes React best-practices and composition assessment; see DECISIONS and the updated skill.
 Acceptance requires candidate understanding; verification alone does not mark a slice accepted.
 
 ## Coverage and evidence index
@@ -144,9 +144,10 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Candidate review: https://github.com/timcheng112/meridian-banking/pull/1.
-Await review and understanding before S1 acceptance.
-Merge, deployment, screenshot uploads, worktree cleanup and S2-S4 remain outside authorization.
+Recover feat/dashboard and review current S1 boundaries and complexity using the React and composition skills.
+Investigate the idle skeleton issue below and present evidence-backed findings before proposing architectural fixes.
+PR: https://github.com/timcheng112/meridian-banking/pull/1.
+Candidate understanding and acceptance remain pending; no merge, deployment, cleanup or S2-S4 implementation is authorized.
 
 ## Continuation audit - 7 November 2026
 
@@ -557,3 +558,18 @@ Lint, strict typecheck, all 16 tests, production build and diff check passed on 
 The production-build Chrome rerun passed all 53 interaction assertions and both segments' keyboard/theme-icon checks with no recorded errors.
 Existing direct MR screenshots remain identified with their original application revision; this follow-up adds no committed evidence files.
 Candidate acceptance and merge remain pending.
+
+## Idle skeleton report and review handoff
+
+The candidate reports that http://localhost:5173 loaded successfully, then remained on dashboard skeletons after switching away to another tab and returning following an unspecified idle duration.
+A manual page refresh restores the dashboard; the exact idle duration and root cause remain unknown.
+Source inspection found that useDashboard preserves content while all three cached responses exist, and production code contains no query-cache clearing call.
+The API helper has no request timeout, so a never-settling initial request can wait indefinitely; this is a resilience finding, not an established explanation of the reported transition.
+Forty-second isolated headless and visible Chrome attempts did not reproduce the issue, but both tabs remained document.visibilityState=visible, so these were not faithful background-tab tests.
+An additional controlled visibility-state override and visibilitychange-event test waited 40 seconds, triggered successful refetches of all three API resources and retained the dashboard with unchanged performance.timeOrigin.
+That synthetic event test does not reproduce the candidate's actual browser session or rule out the reported bug.
+Temporary diagnostic scripts: /private/tmp/meridian-browser-qa/idle-review.mjs, idle-visible-review.mjs and idle-event-review.mjs.
+No fix, new application test or application change was made for this report.
+Next review should assess useAppPreferences/customer presentation ownership and mobile preference composition before introducing hooks, context or memoization.
+The existing typed parallel queries, derived balances and native UI primitives have no demonstrated need for replacement.
+The feature-dev planning update and recovery records are documentation-only; verification at application revision 511f8d2 remains applicable with the newly reported idle limitation.
