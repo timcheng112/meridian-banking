@@ -1,13 +1,13 @@
 # Current state
 
-## Active continuation: S2 approved implementation
+## Active continuation: S2 verified, awaiting candidate acceptance
 
 The candidate approved S1 and reported merging PR #1 on 8 November 2026.
 GitHub confirms the merge into development at 04956afd78cfb1a4251edccd140be74cba99637e.
 The fetched merge tree exactly matches reviewed feature head 22b1f22, including the b1d0cb4 response correction.
 The primary local development checkout was fast-forwarded to the merged revision; the completed feat/dashboard worktree remains intact.
-Next: plan S2 API search and persistent theme/segment preferences with feature-dev, including React best-practices and composition assessment.
-S2 implementation requires its concrete technical plan approval; the S1 MR-only exception does not automatically extend to S2.
+S2 technical plan v1 is implemented and verified at 6cfda96; candidate walkthrough and acceptance are next.
+The candidate approved the concrete S2 HTML plan; implementation acceptance remains pending.
 The candidate has spent about eight hours on the assignment and agreed to prioritize remaining required functionality over further worker-lifecycle investigation, optional features or architecture/design exploration.
 Retain the simple response correction and document the manual-refresh limitation.
 
@@ -15,11 +15,11 @@ Retain the simple response correction and document the manual-refresh limitation
 
 Deadline: 10 November 2026, EOD, supplied by the candidate.
 The application renders dashboard content through the accepted query/state layer, with loading, initial error/Retry, refresh warnings and empty states.
-The header, in-memory preferences, responsive layout and shared UI presentation are implemented; final S1 browser evidence is recorded below.
+The header, persistent preferences, API search, responsive layout and shared UI presentation are implemented; S2 evidence is recorded below.
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
-Active scope: S1 accepted and merged; S2 planning is next.
-Integration branch: development at merged S1 revision 04956af; feat/dashboard remains at 22b1f22 in its existing worktree pending separately authorized cleanup.
-Phase: S2 technical plan v1 approved; implementation and verification in progress.
+Active scope: S1 accepted and merged; S2 implementation is authorized on feat/search-preferences.
+Integration branch: development at recovery commit d225ec5 above merged S1 revision 04956af; feat/dashboard remains at 22b1f22 pending separately authorized cleanup.
+Phase: S2 implemented and verified; candidate understanding and acceptance pending.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -37,7 +37,8 @@ Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
 | Design | Local HTML directions, selected core flow, mobile/desktop, states and shared components | Complete Figma designs accepted; static verification limits remain documented |
 | Figma | Approved core designs using components and supplied tokens | Final hero action and refined review C applied; unused alternatives removed |
 | S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | Accepted and merged in PR #1 at 04956af |
-| S2 | API search and persistent theme/segment | Next: concrete plan; preserve responsive/accessibility behavior completed in S1 |
+| S2 | API search and persistent theme/segment | Verified at 6cfda96; candidate walkthrough and acceptance pending |
+| Fidelity | Bidirectional Figma/code reconciliation for implemented scope | Requested after S2; concrete correction plan before material edits |
 | S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Pending |
 | S4 | Transfer mutation, failures, success and dashboard refresh | Pending |
 | Release | Full requirement audit, production checks, submission README, deployment | Pending; publication requires approval |
@@ -55,13 +56,13 @@ Evidence must identify the checked revision; changes invalidate affected checks.
 | Requirement/source | Owner | Planned evidence | Status |
 | --- | --- | --- | --- |
 | D1-D5 | S1 | Behavioural tests plus loading/layout browser checks | 16 tests pass; header controls and eight-width loading/layout browser checks pass on final S1 source |
-| D6 | S2 | API search, debounce, count, older match, clear/no-match tests | Pending |
+| D6 | S2 | API search, debounce, count, older match, clear/no-match tests | Automated and focused production-browser checks pass at 6cfda96 |
 | D7; E4 dashboard retry | S1 | Failure then Retry integration test | Integration and real-browser keyboard Retry recovery passed |
 | D8; brief §5 | S1-S3 | 360/390 px, breakpoint/desktop, overflow and tap-target checks | Dashboard checks pass at eight widths; transfer checks remain S3 |
 | T1; T8 | S3-S4 | Keyboard, focus restoration, labels/errors/live announcements | Pending |
 | T2-T4; brief §3.3 | S3 | Form boundaries, new/saved recipient, step preservation and focus tests | Pending |
 | T5-T7; E4 transfer cases | S4 | Over-balance/no request, success refresh, failure, duplicate-submit tests | Pending |
-| TH1-TH3; tokens | S2 | Four theme combinations, persistence/pre-paint, contrast/focus checks | S1 four-mode switching/rendering and focus checked; persistence/pre-paint and full contrast audit remain S2 |
+| TH1-TH3; tokens | S2 | Four theme combinations, persistence/pre-paint, contrast/focus checks | S2 persistence/pre-paint and four-mode checks pass at 6cfda96; sampled text contrast passes, full composited/non-text audit remains release |
 | E1-E3 | All slices | Typecheck, boundary review, state/schema ownership review | Pending implementation |
 | E5 | Every slice, release | npm run check, build, browser console | Final S1 check/build and focused Chrome console checks pass at 7ae324d |
 | E6; DEPLOYMENT.md | Release | HTTPS deployment, worker, transfer/refresh without local server | Pending |
@@ -147,9 +148,9 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Recover the merged development checkout and read the accepted S2 choices in DECISIONS and authoritative D6/TH1-TH3 requirements.
-Prepare the S2 HTML technical plan through feature-dev, with the required React/composition assessment and bounded Sol implementation ownership.
-Obtain approval before starting S2 implementation; do not reopen the accepted S1 component structure or deferred mock-worker repair.
+Present the verified S2 walkthrough and evidence for 6cfda96 before candidate acceptance.
+Publication and merge remain separately authorized steps.
+Then perform the requested Figma/code fidelity round; do not reopen deferred mock-worker repair.
 Existing PR: https://github.com/timcheng112/meridian-banking/pull/1, merged.
 Completed worktree cleanup, new external publication and deployment remain separate authorization boundaries.
 
@@ -663,3 +664,33 @@ A no-fetch Treehouse lease was acquired and the base verified; local lease metad
 The existing S1 lease was verified as retained; no cleanup was performed.
 Next: Sol implements the approved file inventory and behavioral tests; Astra reviews changes and verification before candidate walkthrough.
 Implementation acceptance, publication, merge, deployment and cleanup remain pending separate authorization.
+
+## Requested follow-up: Figma fidelity after S2
+
+The candidate requested a dedicated bidirectional Figma/code fidelity round after S2 and before continuing the remaining feature slices.
+Compare the current application with the accepted Figma designs across responsive layouts, theme/segment combinations and implemented states.
+Add implemented UI or states missing from Figma to the existing design file, and implement approved design details missing from the application.
+The brief and supplied tokens remain authoritative; distinguish future S3-S4 transfer designs from omissions in the already implemented scope.
+Record mismatches and prepare the concrete correction plan for review before material changes under feature-dev.
+This follow-up does not interrupt or expand the current approved S2 implementation.
+
+## S2 implemented and verified - 8 November 2026
+
+Implementation revision: 6cfda96 on feat/search-preferences, above approval record d6c70bd and integration base d225ec5.
+Sol implemented only the approved nine application/test files, with no dependency changes or edits to supplied mocks/generated files.
+Search uses debounced term-specific Query reads, response totals, eight-row skeletons, clear/focus restoration and transaction-local error/Retry states.
+Preferences initialize synchronously from validated stored choices and persist explicit user selections, with safe storage failures and retained customer-default semantics.
+Astra review found no blocking correctness or plan-adherence findings; an initial Retry focus issue was fixed and covered with deferred-response tests before final verification.
+Node 22.23.4 npm run check passed lint, strict typecheck and 47 tests; npm run build and git diff --check passed.
+Production Chrome verified saved preferences and system dark before application modules loaded, older mixed-case search matches, result count, skeletons, keyboard Clear/Retry, no matches and search-local failure recovery.
+Responsive checks passed at 360, 390, 640, 1024 and 1280 px without horizontal overflow; search and Clear controls met 44 px targets.
+All four theme/segment combinations persisted across reload; 42 visible text contrast samples per combination had no failures.
+Contrast sampling used computed foreground and nearest opaque ancestor background; it does not establish full composited opacity, non-text contrast or assistive-technology behavior.
+Production QA recorded no page or console errors; the 360 px search and dark Premium desktop screenshots were visually inspected.
+The in-app browser remained unavailable; the existing isolated Chrome fallback was used.
+Local QA: /private/tmp/meridian-browser-qa/s2-verification.mjs and s2-results.json, with s2-*.png screenshots.
+Local review summary: /private/tmp/meridian-s2-review.md.
+The task-owned production preview is available on http://127.0.0.1:4177/ for candidate review while its process runs.
+The existing user development server and S1 worktree were preserved.
+Candidate understanding and acceptance, publication, merge, deployment and cleanup remain pending; no external submission occurred.
+Next after S2 acceptance: the requested bidirectional Figma/code fidelity round for implemented scope.

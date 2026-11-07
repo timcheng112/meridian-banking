@@ -315,3 +315,10 @@ Without an override, theme follows system preference at startup and segment foll
 Handle invalid/blocked storage safely and preserve the existing hook/slots; omit live system tracking, cross-tab synchronization, context and memoization.
 The required React/composition assessment is included in the approved plan and will be checked during Astra review.
 Further mock-worker lifecycle work, transfer functionality, optional features and broad refactors remain excluded.
+
+## Accepted follow-up: bidirectional Figma fidelity after S2
+
+The candidate requested a dedicated fidelity round after S2 to align the implementation and existing Figma design file.
+Reconcile in both directions: implemented UI missing in Figma belongs in Figma, and approved design details missing in the implemented scope belong in code.
+Requirements and supplied tokens override either representation; future transfer designs remain assigned to S3-S4 rather than being pulled into this pass.
+Use the existing feature-dev plan/design review gates for material corrections and preserve explicit publication boundaries.
