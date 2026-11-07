@@ -15,4 +15,3 @@ export function AccountCard({ account }: { account: Account }) {
     </article>
   )
 }
-
