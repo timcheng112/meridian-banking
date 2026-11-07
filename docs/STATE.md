@@ -1,6 +1,6 @@
 # Current state
 
-## Active continuation: fidelity v2 implemented; candidate review next
+## Active continuation: fidelity and header feedback accepted; publication pending
 
 The candidate approved S1 and reported merging PR #1 on 8 November 2026.
 GitHub confirms the merge into development at 04956afd78cfb1a4251edccd140be74cba99637e.
@@ -17,9 +17,9 @@ Deadline: 10 November 2026, EOD, supplied by the candidate.
 The application renders dashboard content through the accepted query/state layer, with loading, initial error/Retry, refresh warnings and empty states.
 The header, persistent preferences, API search, responsive layout and shared UI presentation are implemented; S2 evidence is recorded below.
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
-Active scope: S1 and S2 accepted and merged; fidelity v2 implemented and verified, pending candidate understanding and acceptance.
+Active scope: S1 and S2 accepted and merged; fidelity v2 and header feedback accepted locally.
 Integration branch: development updated to S2 merge 8d0b4a3; completed S1 and S2 worktrees remain preserved pending separately authorized cleanup.
-Phase: fidelity v2 local review prepared; candidate acceptance and application publication remain pending.
+Phase: candidate accepted the verified preview; application publication and merge remain pending.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -38,7 +38,7 @@ Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
 | Figma | Approved core designs using components and supplied tokens | Final hero action and refined review C applied; unused alternatives removed |
 | S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | Accepted and merged in PR #1 at 04956af |
 | S2 | API search and persistent theme/segment | Accepted and merged in MR #2 at 8d0b4a3 |
-| Fidelity | Bidirectional Figma/code reconciliation for implemented scope | V2 implemented and verified; candidate review pending |
+| Fidelity | Bidirectional Figma/code reconciliation for implemented scope | V2 and header feedback accepted locally; publication pending |
 | S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Pending |
 | S4 | Transfer mutation, failures, success and dashboard refresh | Pending |
 | Release | Full requirement audit, production checks, submission README, deployment | Pending; publication requires approval |
@@ -148,7 +148,7 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Review /private/tmp/meridian-fidelity-review.html and preview http://127.0.0.1:4181/ with the candidate; obtain understanding and acceptance before publication or merge.
+Obtain explicit authorization to publish fix/dashboard-fidelity and open its MR into development using /private/tmp/meridian-fidelity-mr.md.
 S2 MR #2 is accepted and merged; preserve the preferred S2 search presentation.
 Cleanup still requires authorization; do not reopen deferred mock-worker repair.
 Existing PR: https://github.com/timcheng112/meridian-banking/pull/1, merged.
@@ -878,3 +878,12 @@ All five widths retain a 64px header without horizontal overflow, and avatar dim
 Browser results recorded no console/page errors; evidence remains outside Git at /private/tmp/meridian-browser-qa/header-feedback-results.json and header-feedback-*.png.
 Production preview remains http://127.0.0.1:4181/ serving the updated build; reload to see the new header.
 Candidate understanding/acceptance, application publication and merge remain pending.
+
+## Candidate acceptance - fidelity and header feedback
+
+The candidate reviewed the updated preview and confirmed “ok passed”.
+Fidelity v2 and the approved header feedback are accepted locally at application revision 24f7a89.
+Prepared local MR summary /private/tmp/meridian-fidelity-mr.md for fix/dashboard-fidelity into development.
+Application source and verification remain unchanged; this checkpoint records acceptance only.
+Branch publication, MR creation, evidence uploads, merge, deployment and cleanup remain unauthorized.
+Next safe action is obtaining explicit branch/MR publication authorization; S3 remains a separately planned slice.
