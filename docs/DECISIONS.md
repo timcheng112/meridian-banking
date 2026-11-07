@@ -335,3 +335,11 @@ The candidate clarified that the S2 MR must be opened before proceeding with fid
 They prefer the current S2 application search presentation over the older Figma search example.
 Use the accepted application composition as the target for later Figma synchronization; the fidelity correction plan remains pending approval.
 This does not authorize the proposed input-color correction, merge or cleanup.
+
+## Accepted: fidelity technical plan v2
+
+The candidate approved /private/tmp/meridian-fidelity-plan-v2.html, including listed existing-file Figma edits and the SearchInput text/placeholder token correction.
+Synchronize accepted S1-S2 presentation and implemented states into Figma while keeping requirements and supplied tokens authoritative.
+Retain accepted search composition, normal-flow daily-limit rail, current query/hook boundaries and existing component slots.
+Use merged development including d7c0268 and approval records as the verified implementation base.
+Screenshots remain outside Git; transfer work, further mock-worker repair and broad refactoring remain deferred.

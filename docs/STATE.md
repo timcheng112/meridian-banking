@@ -19,7 +19,7 @@ The header, persistent preferences, API search, responsive layout and shared UI 
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
 Active scope: S1 and S2 accepted and merged; next is review of the requested fidelity plan.
 Integration branch: development updated to S2 merge 8d0b4a3; completed S1 and S2 worktrees remain preserved pending separately authorized cleanup.
-Phase: S2 review accepted and MR #2 merged; fidelity plan v1 still requires approval.
+Phase: S2 review accepted and MR #2 merged; fidelity plan v2 still requires approval.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -148,7 +148,7 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Review the existing fidelity proposal /private/tmp/meridian-fidelity-plan.html with the candidate before material changes.
+Review the recovered fidelity proposal /private/tmp/meridian-fidelity-plan-v2.html with the candidate before material changes.
 S2 MR #2 is accepted and merged; preserve the preferred S2 search presentation.
 Cleanup still requires authorization; do not reopen deferred mock-worker repair.
 Existing PR: https://github.com/timcheng112/meridian-banking/pull/1, merged.
@@ -757,3 +757,24 @@ Local development was fast-forwarded; both completed feature worktrees remain in
 The refreshed evidence is attached at https://github.com/timcheng112/meridian-banking/pull/2#issuecomment-6710338768 and remains outside Git.
 Continuation pointers are saved in /private/tmp/meridian-fidelity-handoff.md.
 The fidelity proposal remains unapproved; no fidelity edits, cleanup or deployment occurred during handoff.
+
+## Fidelity plan recovery v2 - 8 November 2026
+
+Recovered clean development at d7c0268, with its recovery commit still local above origin/development 8d0b4a3.
+Verified the S2 merge tree equals reviewed head 3a5d832 and application/configuration files match verified f3a95f2; recorded checks remain applicable, with no fresh runtime checks claimed.
+Treehouse status confirms both S1 and S2 leases remain retained.
+The former preview at port 4177 did not respond.
+Prepared /private/tmp/meridian-fidelity-plan-v2.html for candidate review, preserving v1 separately.
+Astra read-only review corrected the development base, historical screenshot labels, current search-hook ownership, exact state copy and full-layout placement of dashboard refresh warnings.
+Scope remains Figma synchronization plus the proposed SearchInput text/placeholder token correction, preserving accepted search presentation and normal-flow daily limit.
+Approval remains pending; no application implementation, tests, Figma writes, publication or cleanup occurred.
+Next action is candidate review of v2; after approval, commit recovery/approval records and verify the development base includes d7c0268 before acquiring the implementation branch.
+
+## Fidelity v2 approved - 8 November 2026
+
+The candidate explicitly approved /private/tmp/meridian-fidelity-plan-v2.html and requested proceeding.
+Approval covers its listed updates to existing Figma file LVZHN7v88I6WOCMr80nXlu and the SearchInput CSS token correction.
+Preserve accepted S2 search presentation and normal-flow daily-limit card; transfer and mock-worker work remain excluded.
+Use fix/dashboard-fidelity from verified development including d7c0268 and this approval record, with Sol owning the CSS correction and checks and Astra reviewing evidence.
+Publication of application branches, PR creation, merges, deployment, evidence upload and cleanup remain separately authorized actions.
+Next: acquire a no-fetch lease, verify the base, record scope on the branch, implement and verify the approved plan.
