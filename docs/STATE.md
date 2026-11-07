@@ -778,3 +778,10 @@ Preserve accepted S2 search presentation and normal-flow daily-limit card; trans
 Use fix/dashboard-fidelity from verified development including d7c0268 and this approval record, with Sol owning the CSS correction and checks and Astra reviewing evidence.
 Publication of application branches, PR creation, merges, deployment, evidence upload and cleanup remain separately authorized actions.
 Next: acquire a no-fetch lease, verify the base, record scope on the branch, implement and verify the approved plan.
+
+## Fidelity implementation branch
+
+Active branch: fix/dashboard-fidelity, based on development af56ce3 including recovery d7c0268 and v2 approval.
+The branch was created in a clean no-fetch Treehouse lease; S1 and S2 worktrees remain preserved.
+Approved ownership: Sol edits src/components/ui/ui.css and verifies the CSS-only correction; coordination owns records and approved Figma synchronization.
+Implementation and visual verification are in progress; candidate acceptance remains pending.
