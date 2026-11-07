@@ -5,6 +5,9 @@
 Deadline: 10 November 2026, EOD, supplied by the candidate.
 The application remains the starter health-check screen; no assessment features exist; the candidate explicitly accepted the complete Figma designs on 7 November 2026.
 Active scope: S1 approved; implement through three candidate review checkpoints before slice acceptance.
+Active feature branch: feat/dashboard, based on development at 043516afff5cfd3f52c6a0629a482663f54aff2c.
+Phase: checkpoint 1, data/state/tests; pause for candidate review before dashboard content.
+Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
 The candidate explicitly authorized creating design files in Figma folder 686015682.
