@@ -1,6 +1,6 @@
 # Current state
 
-## Active continuation: publish S2 for MR review
+## Active continuation: S2 MR open for review
 
 The candidate approved S1 and reported merging PR #1 on 8 November 2026.
 GitHub confirms the merge into development at 04956afd78cfb1a4251edccd140be74cba99637e.
@@ -19,7 +19,7 @@ The header, persistent preferences, API search, responsive layout and shared UI 
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
 Active scope: S1 accepted and merged; S2 implementation is authorized on feat/search-preferences.
 Integration branch: development at recovery commit d225ec5 above merged S1 revision 04956af; feat/dashboard remains at 22b1f22 pending separately authorized cleanup.
-Phase: S2 accepted locally; candidate requested opening its MR before further fidelity work.
+Phase: S2 MR #2 is open into development; further fidelity work is paused for MR review.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -148,7 +148,7 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Open the authorized S2 MR from feat/search-preferences to development and return it for candidate review.
+Review S2 MR #2: https://github.com/timcheng112/meridian-banking/pull/2.
 Fidelity work is paused until the S2 MR review is handled; preserve the preferred S2 search presentation.
 Merge and cleanup still require authorization; do not reopen deferred mock-worker repair.
 Existing PR: https://github.com/timcheng112/meridian-banking/pull/1, merged.
@@ -726,3 +726,11 @@ This authorizes publishing the accepted S2 branch and opening its MR into develo
 The candidate explicitly prefers the S2 application search presentation shown in their screenshot.
 Treat that result-count, Clear search and list composition as the preferred Figma synchronization target; fidelity plan v1 remains unapproved, including its proposed input-color adjustment.
 Pause further fidelity work until S2 MR review is handled.
+
+## S2 publication receipt - 8 November 2026
+
+Published feat/search-preferences at 427d5e9 and opened MR #2 into development: https://github.com/timcheng112/meridian-banking/pull/2.
+The connected GitHub integration returned 403 for PR creation; the authenticated GitHub CLI successfully created the MR using the prepared local description.
+Application source remains at verified 6cfda96; later commits contain records only.
+Fidelity corrections remain paused and plan v1 unapproved; preserve the candidate-preferred S2 search presentation.
+Merge, deployment and cleanup remain pending authorization.
