@@ -1,12 +1,13 @@
 # Current state
 
-## Active continuation: complete S1 for MR review
+## Active continuation: publish S1 for MR review
 
-The candidate requested completion of all S1 checkpoints before candidate review, superseding the earlier intermediate review gates.
-Recovered clean feat/dashboard at 6cf81be; checkpoints 1 and 2 are implemented, and checkpoint 3 responsive/header/preferences/visual verification is now authorized within the existing S1 scope.
-Use feature-dev planning, implementation, verification and independent review internally, then prepare a complete local MR package for candidate review.
-S1 preference switching remains in memory; API search, persistent preferences and transfer behaviour remain S2-S4.
-External publication, merge and cleanup remain unauthorized.
+S1 implementation and verification are complete at application revision 7ae324d.
+The candidate approved pushing development and feat/dashboard and creating the PR into development.
+Candidate understanding and acceptance remain pending at PR review; S2-S4 remain outside this continuation.
+Git confirms the feature worktree and development base 043516a; Treehouse lease metadata remains unverified.
+Remote inspection found only main at bb9a6fe and no matching open PR before publication.
+The pending handoff record and this recovery reconciliation change documentation only.
 
 ## Snapshot and recovery
 
@@ -16,12 +17,12 @@ The header, in-memory preferences, responsive layout and shared UI presentation 
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
 Active scope: S1 implementation and verification complete; candidate review and understanding occur at the MR stage.
 Active feature branch: feat/dashboard, based on development at 043516afff5cfd3f52c6a0629a482663f54aff2c.
-Phase: all three S1 checkpoints implemented; local MR preparation complete, publication and candidate acceptance pending.
+Phase: all three S1 checkpoints implemented; local MR prepared and publication authorized, with final candidate understanding/acceptance at MR review.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
 The candidate explicitly authorized creating design files in Figma folder 686015682.
-This authorization covers the Clarity design work; application publication remains unauthorized.
+Design authorization covers the Clarity work; separate S1 branch and PR publication authorization is recorded below.
 The unused prototype Treehouse lease was returned to its pool after cleanliness verification and explicit user approval; no active prototype lease remains.
 Prototypes are temporary local HTML files, outside the repository, served at http://127.0.0.1:4174/ while the preview process runs.
 Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
@@ -33,7 +34,7 @@ Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
 | Setup | Durable records, skill, branches, Node 22 baseline | Complete; verification below |
 | Design | Local HTML directions, selected core flow, mobile/desktop, states and shared components | Complete Figma designs accepted; static verification limits remain documented |
 | Figma | Approved core designs using components and supplied tokens | Final hero action and refined review C applied; unused alternatives removed |
-| S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | All three checkpoints implemented and verified; local MR ready, publication and candidate acceptance pending |
+| S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | All three checkpoints implemented and verified; publication authorized, candidate acceptance pending |
 | S2 | API search, responsive dashboard, persistent theme/segment | Pending; responsive/accessibility work also belongs within S1 |
 | S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Pending |
 | S4 | Transfer mutation, failures, success and dashboard refresh | Pending |
@@ -59,7 +60,7 @@ Evidence must identify the checked revision; changes invalidate affected checks.
 | T5-T7; E4 transfer cases | S4 | Over-balance/no request, success refresh, failure, duplicate-submit tests | Pending |
 | TH1-TH3; tokens | S2 | Four theme combinations, persistence/pre-paint, contrast/focus checks | S1 four-mode switching/rendering and focus checked; persistence/pre-paint and full contrast audit remain S2 |
 | E1-E3 | All slices | Typecheck, boundary review, state/schema ownership review | Pending implementation |
-| E5 | Every slice, release | npm run check, build, browser console | Checkpoint 2 check/build pass; real-browser console verification pending |
+| E5 | Every slice, release | npm run check, build, browser console | Final S1 check/build and focused Chrome console checks pass at 7ae324d |
 | E6; DEPLOYMENT.md | Release | HTTPS deployment, worker, transfer/refresh without local server | Pending |
 | brief §4; wireframes §1-7 | Design, all slices | Exact copy/formatters, required screens and states review | Pending |
 | API contract requests/errors/hooks | S1-S4 | Typed requests, server field errors, no POST retries, refetch-failure separation | Pending |
@@ -143,10 +144,9 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Address the candidate's checkpoint 2 review questions below before acceptance or checkpoint 3 planning.
-Complete designs are accepted, including the solid hero with brand/on-brand action and refined review C.
-Runtime behaviour, accessibility verification and candidate acceptance of implementation remain pending.
-After plan approval, preserve recovery records on the verified integration base and follow feature-dev's leased-worktree workflow.
+Commit the pending STATE documentation update, push development and feat/dashboard without force, and open the prepared PR into development.
+Then record the published refs and PR URL and return it for candidate review.
+Merge, deployment, screenshot uploads, worktree cleanup and S2-S4 are outside authorization.
 
 ## Continuation audit - 7 November 2026
 
@@ -506,3 +506,13 @@ Focused Chrome verification passed distinct 20px icons and Enter/Space roundtrip
 Evidence: /private/tmp/meridian-browser-qa/theme-toggle-results.json and toggle-*.png.
 Earlier layout evidence remains applicable to unchanged geometry; earlier dark-header screenshots show the superseded moon icon and are superseded by these focused captures.
 Publication authorization remains pending; the candidate has supplied feedback rather than authorized a push or PR.
+
+## Publication authorization and handoff
+
+The candidate subsequently said "ok approved" and requested a handoff to continue the push in the next session.
+This approves the previously proposed publication of development and feat/dashboard and opening the PR from feat/dashboard into development.
+Do not ask for that same publication authorization again; inspect current remote refs and use normal non-force pushes.
+No merge, deployment, external screenshot upload or worktree cleanup is authorized.
+Application head at approval was 7ae324d; subsequent handoff-record changes are documentation-only and do not invalidate application verification.
+Next session should use /private/tmp/meridian-s1-publish-handoff.md and the prepared MR artifacts referenced above, reconcile current refs and publish the approved PR.
+No branch push or PR creation was performed during handoff preparation.
