@@ -1,6 +1,6 @@
 # Current state
 
-## Active continuation: fidelity and header feedback accepted; publication pending
+## Active continuation: fidelity and header feedback published in MR #3
 
 The candidate approved S1 and reported merging PR #1 on 8 November 2026.
 GitHub confirms the merge into development at 04956afd78cfb1a4251edccd140be74cba99637e.
@@ -19,7 +19,7 @@ The header, persistent preferences, API search, responsive layout and shared UI 
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
 Active scope: S1 and S2 accepted and merged; fidelity v2 and header feedback accepted locally.
 Integration branch: development updated to S2 merge 8d0b4a3; completed S1 and S2 worktrees remain preserved pending separately authorized cleanup.
-Phase: candidate accepted the verified preview; application publication and merge remain pending.
+Phase: candidate accepted the verified preview; MR #3 is open and merge remains pending.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -38,7 +38,7 @@ Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
 | Figma | Approved core designs using components and supplied tokens | Final hero action and refined review C applied; unused alternatives removed |
 | S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | Accepted and merged in PR #1 at 04956af |
 | S2 | API search and persistent theme/segment | Accepted and merged in MR #2 at 8d0b4a3 |
-| Fidelity | Bidirectional Figma/code reconciliation for implemented scope | V2 and header feedback accepted locally; publication pending |
+| Fidelity | Bidirectional Figma/code reconciliation for implemented scope | Accepted and published in MR #3; merge pending |
 | S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Pending |
 | S4 | Transfer mutation, failures, success and dashboard refresh | Pending |
 | Release | Full requirement audit, production checks, submission README, deployment | Pending; publication requires approval |
@@ -148,7 +148,7 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Obtain explicit authorization to publish fix/dashboard-fidelity and open its MR into development using /private/tmp/meridian-fidelity-mr.md.
+Review MR #3 at https://github.com/timcheng112/meridian-banking/pull/3; merge and cleanup require explicit authorization.
 S2 MR #2 is accepted and merged; preserve the preferred S2 search presentation.
 Cleanup still requires authorization; do not reopen deferred mock-worker repair.
 Existing PR: https://github.com/timcheng112/meridian-banking/pull/1, merged.
@@ -893,3 +893,11 @@ Next safe action is obtaining explicit branch/MR publication authorization; S3 r
 The candidate authorized pushing fix/dashboard-fidelity and opening its prepared MR into development in response to the publication request.
 Verified remote development remains 8d0b4a3 and the fidelity branch does not yet exist remotely.
 Use a normal non-force branch push; no merge, screenshot upload, deployment or cleanup is authorized.
+
+## Fidelity publication receipt
+
+Published fix/dashboard-fidelity and opened MR #3 into development: https://github.com/timcheng112/meridian-banking/pull/3.
+Initial published head was 840c590; this receipt is documentation-only and leaves verified application revision 24f7a89 unchanged.
+The GitHub connector denied MR creation with integration error 403; authenticated GitHub CLI completed the authorized creation.
+Remote development was verified at 8d0b4a3 before publication and was not changed.
+No screenshot upload, merge, deployment or cleanup occurred; merge remains pending explicit authorization.
