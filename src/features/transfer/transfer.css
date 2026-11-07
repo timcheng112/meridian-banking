@@ -25,12 +25,12 @@
 .payee-list { margin: var(--space-2) 0; border: 0; padding: 0; min-width: 0; }
 .payee-row { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) var(--space-4); border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; margin-bottom: var(--space-2); }
 .payee-row[data-selected='true'] { border-color: var(--brand); background: var(--brand-soft); }
-.payee-row input { accent-color: var(--brand); width: var(--space-4); height: var(--space-4); flex: none; margin: 0; }
+.payee-row input { accent-color: var(--brand); width: var(--space-5); height: var(--space-5); flex: none; margin: 0; }
 .payee-identity { flex: 1; min-width: 0; display: grid; gap: var(--space-1); overflow-wrap: anywhere; }
 .payee-identity strong { font-size: var(--text-sm); font-weight: var(--weight-semibold); }
 .payee-identity > span { font-size: var(--text-xs); color: var(--text-muted); }
-.new-recipient-toggle { width: 100%; min-height: var(--space-12); padding: var(--space-3) var(--space-4); display: flex; align-items: center; gap: var(--space-2); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-sm); color: var(--text); font-size: var(--text-sm); font-weight: var(--weight-semibold); cursor: pointer; text-align: left; }
-.new-recipient-toggle svg { margin-left: auto; }
+.new-recipient-toggle { width: 100%; min-height: var(--space-12); padding: var(--space-3) var(--space-4); display: flex; align-items: center; gap: var(--space-2); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--brand); font-size: var(--text-sm); font-weight: var(--weight-semibold); cursor: pointer; text-align: left; }
+.new-recipient-toggle svg { margin-left: auto; color: var(--text); }
 .new-recipient-fields { padding-top: var(--space-4); }
 .transfer-field { margin-bottom: var(--space-6); }
 .transfer-field:last-child { margin-bottom: 0; }
@@ -67,7 +67,7 @@
 .transfer-dialog .ui-search-input { box-sizing: border-box; width: 100%; }
 
 .transfer-dialog .payee-search-label { display: block; font-size: var(--text-sm); font-weight: var(--weight-semibold); margin-bottom: var(--space-2); }
-.transfer-dialog .ui-search-input { min-height: var(--space-12); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-sm); }
+.transfer-dialog .ui-search-input { height: var(--space-12); min-height: var(--space-12); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-sm); }
 .payee-loading { display: grid; gap: var(--space-2); margin: var(--space-2) 0; }
 .transfer-dialog .payee-loading p { font-size: var(--text-sm); color: var(--text-muted); margin: 0; }
 .transfer-dialog .payee-skeleton { width: 100%; height: calc(var(--space-12) + var(--space-3)); border-radius: var(--radius-sm); }
