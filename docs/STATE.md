@@ -3,10 +3,11 @@
 ## Snapshot and recovery
 
 Deadline: 10 November 2026, EOD, supplied by the candidate.
-The application remains the starter health-check screen; no assessment features exist; the candidate explicitly accepted the complete Figma designs on 7 November 2026.
+The visible application remains the starter health-check screen; S1's dashboard query/state layer is implemented and tested but not yet connected to App.
+The candidate explicitly accepted the complete Figma designs on 7 November 2026.
 Active scope: S1 approved; implement through three candidate review checkpoints before slice acceptance.
 Active feature branch: feat/dashboard, based on development at 043516afff5cfd3f52c6a0629a482663f54aff2c.
-Phase: checkpoint 1, data/state/tests; pause for candidate review before dashboard content.
+Phase: checkpoint 1 ready for candidate review; pause before dashboard content.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -133,7 +134,7 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Implement the approved S1 plan below, pausing for candidate review after each checkpoint.
+Review the S1 data/state/tests checkpoint with the candidate, then proceed to dashboard content after their feedback.
 Complete designs are accepted, including the solid hero with brand/on-brand action and refined review C.
 Runtime behaviour, accessibility verification and candidate acceptance of implementation remain pending.
 After plan approval, preserve recovery records on the verified integration base and follow feature-dev's leased-worktree workflow.
@@ -332,3 +333,20 @@ Exclude API search, persistent preferences, payees, transfer forms/mutations, op
 Before acceptance, walk through request-to-cache-to-render, derived balance and Retry, and have the candidate explain an interview-sized modification.
 Delivery uses one slice branch and eventual MR, with candidate review pauses after data/state/tests, dashboard content, and responsive presentation/verification.
 The candidate authorized proceeding with S1 locally; MR publication, merge and cleanup remain unauthorized.
+
+## S1 checkpoint 1: data and state
+
+Review status: ready for candidate review; S1 implementation acceptance remains pending.
+Added three files under src/features/dashboard: queries.ts, useDashboard.ts and useDashboard.test.tsx.
+Typed query options use the existing API helper, distinct customer/accounts/transactions keys, limit=8 and explicit retry=false.
+The hook starts the three reads together, exposes loading/error/ready, and retains cached data with a refresh-error flag after a failed background refresh.
+Retry starts all three reads together and joins existing in-flight requests instead of cancelling/restarting them.
+Server data remains in Query; the hook only derives the combined view state.
+Six new tests cover parallel starts with held responses, waiting for the slowest resource, empty arrays, supplied data/order/limit, each endpoint failing without automatic retry, retrying all resources, and cached-data recovery.
+Selective TDD: all six failed against the loading-only stub for missing behaviour, then passed against the implemented query layer.
+Verification applies to the source committed with this checkpoint: npm run check passed lint, strict typechecking and all nine tests; npm run build and git diff --check passed.
+Dependencies installed from the offline cache with no package or lockfile changes.
+Local diff review found no changes to supplied mocks, seed data, formatters or runtime configuration.
+The build still renders the starter; dashboard UI, skeleton geometry, visible error/Retry interaction, E4's full UI test and browser verification remain pending.
+No browser evidence is claimed for this data-only checkpoint.
+Next checkpoint connects the data layer to dashboard content and adds user-facing integration tests; candidate review comes first.
