@@ -1,12 +1,15 @@
 # Current state
 
-## Active continuation: focused S1 review and idle skeleton investigation
+## Active continuation: S2 planning after S1 acceptance
 
-Application revision: b1d0cb4 on feat/dashboard; PR #1 remains open for candidate review.
-The candidate requested a handoff to review current S1 for React practices, composition opportunities and overengineering, and investigate the reported idle skeleton issue.
-Start with diagnosis and findings; the discussed useHeader/container/preferences-provider redesign has not been approved for implementation.
-Starting with S2, React best-practices and composition assessment is mandatory within each slice's planning phase; the feature-dev skill now records this requirement.
-S2-S4 implementation, merge, deployment and worktree cleanup remain outside this continuation.
+The candidate approved S1 and reported merging PR #1 on 8 November 2026.
+GitHub confirms the merge into development at 04956afd78cfb1a4251edccd140be74cba99637e.
+The fetched merge tree exactly matches reviewed feature head 22b1f22, including the b1d0cb4 response correction.
+The primary local development checkout was fast-forwarded to the merged revision; the completed feat/dashboard worktree remains intact.
+Next: plan S2 API search and persistent theme/segment preferences with feature-dev, including React best-practices and composition assessment.
+S2 implementation requires its concrete technical plan approval; the S1 MR-only exception does not automatically extend to S2.
+The candidate has spent about eight hours on the assignment and agreed to prioritize remaining required functionality over further worker-lifecycle investigation, optional features or architecture/design exploration.
+Retain the simple response correction and document the manual-refresh limitation.
 
 ## Snapshot and recovery
 
@@ -14,9 +17,9 @@ Deadline: 10 November 2026, EOD, supplied by the candidate.
 The application renders dashboard content through the accepted query/state layer, with loading, initial error/Retry, refresh warnings and empty states.
 The header, in-memory preferences, responsive layout and shared UI presentation are implemented; final S1 browser evidence is recorded below.
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
-Active scope: S1 implementation and verification complete; candidate review and understanding occur at the MR stage.
-Active feature branch: feat/dashboard, based on development at 043516afff5cfd3f52c6a0629a482663f54aff2c.
-Phase: S1 PR review; focused architecture review and simplified invalid-response correction verified, with candidate acceptance pending.
+Active scope: S1 accepted and merged; S2 planning is next.
+Integration branch: development at merged S1 revision 04956af; feat/dashboard remains at 22b1f22 in its existing worktree pending separately authorized cleanup.
+Phase: S2 planning, with no S2 implementation approval yet.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -33,8 +36,8 @@ Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
 | Setup | Durable records, skill, branches, Node 22 baseline | Complete; verification below |
 | Design | Local HTML directions, selected core flow, mobile/desktop, states and shared components | Complete Figma designs accepted; static verification limits remain documented |
 | Figma | Approved core designs using components and supplied tokens | Final hero action and refined review C applied; unused alternatives removed |
-| S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | PR #1 open; focused React/composition review and idle skeleton investigation before acceptance |
-| S2 | API search, responsive dashboard, persistent theme/segment | Pending; responsive/accessibility work also belongs within S1 |
+| S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | Accepted and merged in PR #1 at 04956af |
+| S2 | API search and persistent theme/segment | Next: concrete plan; preserve responsive/accessibility behavior completed in S1 |
 | S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Pending |
 | S4 | Transfer mutation, failures, success and dashboard refresh | Pending |
 | Release | Full requirement audit, production checks, submission README, deployment | Pending; publication requires approval |
@@ -144,10 +147,11 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Review the verified simplified invalid-response correction and its reload limitation with the candidate; mock-worker lifecycle repair is excluded at the candidate's simplicity preference.
-The controlled worker-termination reproduction explains a matching failure path; the original idle-tab trigger remains unobserved.
-PR: https://github.com/timcheng112/meridian-banking/pull/1.
-Candidate understanding and acceptance remain pending; no merge, deployment, cleanup or S2-S4 implementation is authorized.
+Recover the merged development checkout and read the accepted S2 choices in DECISIONS and authoritative D6/TH1-TH3 requirements.
+Prepare the S2 HTML technical plan through feature-dev, with the required React/composition assessment and bounded Sol implementation ownership.
+Obtain approval before starting S2 implementation; do not reopen the accepted S1 component structure or deferred mock-worker repair.
+Existing PR: https://github.com/timcheng112/meridian-banking/pull/1, merged.
+Completed worktree cleanup, new external publication and deployment remain separate authorization boundaries.
 
 ## Continuation audit - 7 November 2026
 
@@ -640,3 +644,11 @@ Publication includes the previously local planning-skill commit 5f4d32d and the 
 Published the simplified correction as b1d0cb4 with a normal push of feat/dashboard to the existing PR.
 Review summary and file inventory: https://github.com/timcheng112/meridian-banking/pull/1#issuecomment-6709369882.
 The publication receipt is documentation-only and does not invalidate the recorded checks on b1d0cb4 application source.
+
+## S1 merge and S2 handoff checkpoint - 8 November 2026
+
+The user explicitly approved and merged S1; GitHub and fetched integration-tree comparison confirm the result.
+Recorded source checks remain applicable because the merge tree matches the tested feature tree; application tests were not redundantly rerun for this documentation-only handoff.
+The primary development checkout now contains the merged implementation and these updated recovery records.
+The old feature worktree is clean and preserved; no Treehouse lease return, branch deletion, deployment or new external write occurred during handoff.
+Next-session focus and tooling pointers are in /private/tmp/meridian-s2-planning-handoff.md.

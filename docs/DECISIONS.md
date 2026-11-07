@@ -296,3 +296,10 @@ Public stop/start showed an MSW registration-update race; the alternative protoc
 A stopped mock worker still requires a page refresh; Retry retries the GETs but does not repair mock interception.
 General GET deadlines, automatic request replay, new UI and preference changes remain excluded.
 Continue under the accepted S1 MR-only review cadence with the simplified internal plan /private/tmp/meridian-s1-recovery-plan.html, version 3.
+
+## Accepted: S1 complete and prioritize mandatory remaining scope
+
+The candidate approved and merged S1 on 8 November 2026 and requested a handoff for the next planned work.
+After about eight hours invested, prioritize S2 search/preferences, the complete S3-S4 transfer flow, essential accessibility verification, deployment and submission documentation.
+Keep the small invalid-response correction and document the mock-worker refresh limitation; defer further lifecycle repair, optional features and broad architecture or visual redesign.
+The existing feature-dev S2 plan approval and React/composition assessment still apply; the user has not waived those gates or approved S2 implementation.
