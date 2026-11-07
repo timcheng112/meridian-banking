@@ -134,3 +134,35 @@ describe('dashboard data', () => {
     })
   })
 })
+
+
+describe('invalid dashboard responses', () => {
+  it.each(['<html>Vite</html>', '{broken', 'null'])('shows an initial error for %s', async (body) => {
+    server.use(http.get('*/api/accounts', () => new HttpResponse(body)))
+    const { result, client } = setup()
+    await waitFor(() => expect(result.current.status).toBe('error'))
+    expect(client.getQueryData(['accounts'])).toBeUndefined()
+  })
+
+  it.each(['<html>Vite</html>', '{broken', 'null'])('preserves cached data after refresh returns %s', async (body) => {
+    const { result, client } = setup()
+    await waitFor(() => expect(result.current.status).toBe('ready'))
+    const cached = client.getQueryData(['accounts'])
+    server.use(http.get('*/api/accounts', () => new HttpResponse(body)))
+    await act(async () => { await client.invalidateQueries() })
+    expect(result.current.status).toBe('ready')
+    if (result.current.status !== 'ready') throw new Error('Expected cache')
+    expect(result.current.hasRefreshError).toBe(true)
+    expect(client.getQueryData(['accounts'])).toBe(cached)
+  })
+
+  it('retries all reads after an invalid response is removed', async () => {
+    server.use(http.get('*/api/accounts', () => new HttpResponse('null')))
+    const { result, client } = setup()
+    await waitFor(() => expect(result.current.status).toBe('error'))
+    await waitFor(() => expect(client.isFetching()).toBe(0))
+    server.resetHandlers()
+    await act(async () => { await result.current.retry() })
+    await waitFor(() => expect(result.current.status).toBe('ready'))
+  })
+})

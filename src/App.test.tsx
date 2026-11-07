@@ -198,3 +198,32 @@ describe('header preferences', () => {
     for (const button of screen.getAllByRole('button', { name: 'Retail', hidden: true })) expect(button).toHaveAttribute('aria-pressed', 'true')
   })
 })
+
+
+describe('invalid response Retry presentation', () => {
+  it('shows the existing initial error and retries after the invalid response is removed', async () => {
+    server.use(http.get('*/api/accounts', () => new HttpResponse('<html>Vite</html>')))
+    const client = renderApp()
+    expect(await screen.findByRole('alert')).toHaveTextContent("We couldn't load your dashboard.")
+    await waitFor(() => expect(client.isFetching()).toBe(0))
+    server.resetHandlers()
+    const retry = screen.getByRole('button', { name: 'Retry' })
+    retry.focus()
+    await userEvent.keyboard('{Enter}')
+    expect(await screen.findByRole('heading', { name: 'Good evening, Ava' })).toBeVisible()
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument()
+  })
+
+  it('preserves loaded content and shows the existing warning after invalid refresh', async () => {
+    const client = renderApp()
+    await screen.findByRole('heading', { name: 'Good evening, Ava' })
+    server.use(http.get('*/api/accounts', () => HttpResponse.json(null)))
+    await act(async () => { await client.invalidateQueries() })
+    expect(await screen.findByRole('alert')).toHaveTextContent("We couldn't refresh your dashboard. Showing previously loaded data.")
+    expectMoney(screen.getByRole('region', { name: 'Total available' }), 17120.55)
+    expect(screen.getByRole('heading', { name: 'FairPrice Finest' })).toBeVisible()
+    server.resetHandlers()
+    await userEvent.click(screen.getByRole('button', { name: 'Retry' }))
+    await waitFor(() => expect(screen.queryByRole('alert')).not.toBeInTheDocument())
+  })
+})

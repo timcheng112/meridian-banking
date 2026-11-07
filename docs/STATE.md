@@ -16,7 +16,7 @@ The header, in-memory preferences, responsive layout and shared UI presentation 
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
 Active scope: S1 implementation and verification complete; candidate review and understanding occur at the MR stage.
 Active feature branch: feat/dashboard, based on development at 043516afff5cfd3f52c6a0629a482663f54aff2c.
-Phase: S1 PR review; focused architecture review and idle skeleton investigation pending before acceptance.
+Phase: S1 PR review; focused architecture review and simplified invalid-response correction verified, with candidate acceptance pending.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -144,8 +144,8 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Recover feat/dashboard and review current S1 boundaries and complexity using the React and composition skills.
-Investigate the idle skeleton issue below and present evidence-backed findings before proposing architectural fixes.
+Review the verified simplified invalid-response correction and its reload limitation with the candidate; mock-worker lifecycle repair is excluded at the candidate's simplicity preference.
+The controlled worker-termination reproduction explains a matching failure path; the original idle-tab trigger remains unobserved.
 PR: https://github.com/timcheng112/meridian-banking/pull/1.
 Candidate understanding and acceptance remain pending; no merge, deployment, cleanup or S2-S4 implementation is authorized.
 
@@ -573,3 +573,67 @@ No fix, new application test or application change was made for this report.
 Next review should assess useAppPreferences/customer presentation ownership and mobile preference composition before introducing hooks, context or memoization.
 The existing typed parallel queries, derived balances and native UI primitives have no demonstrated need for replacement.
 The feature-dev planning update and recovery records are documentation-only; verification at application revision 511f8d2 remains applicable with the newly reported idle limitation.
+
+## Focused S1 review findings - 7 November 2026
+
+Reviewed application revision 511f8d2 at local HEAD 5f4d32d using the React best-practices and composition-patterns skills, current PR discussion, source, tests and installed dependency implementations.
+Fresh npm run check passed lint, strict typechecking and all 16 tests on Node 22.23.4.
+No application code, tests, mocks, generated files or dependencies changed; only this recovery record changed in the repository.
+
+Retain the current parallel query/cache ownership, derived financial values, Dashboard state boundary, Header controls slot and small native UI primitives.
+The mobilePreferences ReactNode forwards composed UI through two levels without duplicating preference state; a provider or compound-component API is unnecessary for current S1 scope.
+Calling useHeader from App would retain App's render subscription; separate stateful hook instances would split desktop/mobile preferences rather than synchronize them.
+Preference updates currently render App and its dashboard subtree, but no measured performance problem justifies memoization or another state layer.
+Customer identity preparation could move into a header container if responsibilities grow; the present two expressions do not warrant that extraction alone.
+
+Confirmed high-priority failure path: apiFetch converts invalid JSON to null even on HTTP 200, and useDashboard classifies missing data without a query error as loading.
+An isolated Chrome session loaded successfully, then browser-level ServiceWorker.stopAllWorkers followed by query invalidation produced HTTP 200 text/html responses for all three API requests.
+All three queries ended with status success, fetchStatus idle and null data; the dashboard showed skeletons without Retry and performance.timeOrigin stayed unchanged.
+A reload restored valid JSON and dashboard content.
+Explicit worker.stop followed by invalidation reproduced the same outcome, and an injected null accounts response alone also replaced ready content with skeletons.
+The supplied worker stores active client IDs in memory and bypasses mocking for unregistered clients; losing this state on worker termination is consistent with the observed HTML fallback.
+These controlled interventions establish a concrete failure mechanism, not proof that natural worker termination caused the candidate's original idle session.
+The API helper and bootstrap are unchanged starter code; the S1 state derivation exposes this inherited boundary weakness.
+
+A held background accounts refresh preserved loaded content and cached data; a 40-second CDP freeze/resume preserved the greeting, query data and document time origin.
+The freeze test is a controlled lifecycle test, not a faithful natural background-tab reproduction.
+The lack of a request deadline remains a separate resilience gap: an unresolved initial request can keep skeletons indefinitely, and an unresolved sibling request can keep Retry disabled after another request fails.
+Do not present that timeout gap as the cause of the reproduced null-data failure.
+
+Browser bootstrap again reported iab unavailable, so tests used the existing temporary Playwright and isolated installed Chrome fallback against localhost:5173 serving the active feature worktree.
+Diagnostic instrumentation exposed the QueryClient only in intercepted browser module responses and wrapped fetch only in the isolated context; repository source and the user's existing tab were untouched.
+Script: /private/tmp/meridian-browser-qa/focused-s1-review.mjs.
+Preferred evidence: /private/tmp/meridian-browser-qa/focused-s1-review-corrected-results.json, including successful assertions for held refresh, null-response skeletons, stopped-worker skeletons and reload recovery.
+The initial results file preserves the freeze sample but contains an incorrect loaded-selector metric; use its greeting, skeleton and query observations, not its loaded field.
+The corrected run fixes that selector, skips repeating the freeze test and adds browser-level worker termination.
+
+Recommended next plan: reject invalid successful API bodies before cache insertion, verify initial error/Retry and cached-content refresh warnings, and design bounded mock-runtime recovery outside supplied mocks/generated files.
+Assess a bounded GET deadline separately, preserving cancellation and avoiding automatic transfer retries.
+Keep architecture unchanged while addressing these failure boundaries; the corrective implementation plan remains unapproved.
+No commit, publication, merge, deployment, worktree cleanup or S2-S4 work occurred.
+
+## S1 simplified response correction verified
+
+The candidate prioritized simplicity after mock-worker recovery grew complex; the final correction changes only src/api/client.ts at runtime.
+Successful malformed JSON/null responses now reject before cache insertion; cancellation and valid API error details are preserved.
+Focused tests were added in src/api/client.test.ts, src/features/dashboard/useDashboard.test.tsx and src/App.test.tsx.
+All attempted runtime recovery modules were removed; src/main.tsx and src/features/dashboard/useDashboard.ts match HEAD 5f4d32d exactly.
+useAppPreferences and the existing composition slots remain unchanged.
+Concrete internal plan v3: /private/tmp/meridian-s1-recovery-plan.html.
+No complete response schemas, request deadlines, worker lifecycle changes or automatic request replay were added.
+
+Verification applies to the application source accompanying this checkpoint.
+Sol ran npm run check with 35 passing tests, strict typechecking and lint, plus npm run build and git diff --check on Node 22.23.4.
+Independent gpt-6-astra review found no blockers and separately reran all 35 tests successfully.
+Isolated Chrome verified initial HTML errors and keyboard Retry after a valid response on both the dev server and production preview.
+Browser-level worker termination followed by refetch retained all three cached responses, balances and existing preferences, showed the refresh warning and kept Retry usable; explicit page refresh restored interception.
+The focused browser run recorded no page errors.
+Script and results: /private/tmp/meridian-browser-qa/s1-simple-response-verification.mjs and s1-simple-response-verification-results.json.
+The in-app browser remained unavailable; the existing standalone Chrome fallback was used.
+Treehouse status could not initialize its home-directory state in the sandbox; lease metadata remains unverified, while Git confirms the existing feature worktree.
+
+Limitation: Retry repeats reads but does not repair lost mock interception; manual page refresh remains necessary in that case.
+The original natural idle trigger remains unobserved.
+Candidate understanding and S1 acceptance remain pending; no publication, merge, deployment or worktree cleanup occurred during this correction.
+The candidate subsequently explicitly authorized committing and pushing these changes for review in existing PR #1.
+Publication includes the previously local planning-skill commit 5f4d32d and the simplified response correction; merge, deployment and cleanup remain unauthorized.

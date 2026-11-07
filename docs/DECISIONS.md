@@ -284,3 +284,15 @@ Assess relevant rules, state ownership, rendering boundaries and composition can
 Use the existing implementation review and release verification to check the resulting work; no separate recurring post-S4 architecture-review stage is mandated.
 This supersedes the earlier proposal for a dedicated recurring review round and does not authorize starting S2.
 The discussed useHeader/container/shared-preferences design remains a candidate for review, not an approved implementation.
+
+## Accepted: retain S1 composition and keep response handling simple
+
+After the focused React and composition review, the candidate agreed to retain useAppPreferences and the existing Header/mobilePreferences slots without adding useHeader, context or memoization.
+The candidate initially authorized response validation and mock-worker recovery, then explicitly prioritized simplicity when the recovery approach grew complex.
+Keep only the response-handling correction: reject successful malformed JSON or null before caching, preserve cancellation and valid API errors, and use the existing dashboard error/Retry behavior.
+Do not duplicate all response types as schemas; retain the accepted controlled typed API boundary.
+Remove the attempted worker lifecycle coordinator and internal-protocol bridge, restoring the existing bootstrap and dashboard hook implementation.
+Public stop/start showed an MSW registration-update race; the alternative protocol bridge introduced a maintenance dependency disproportionate to this assessment.
+A stopped mock worker still requires a page refresh; Retry retries the GETs but does not repair mock interception.
+General GET deadlines, automatic request replay, new UI and preference changes remain excluded.
+Continue under the accepted S1 MR-only review cadence with the simplified internal plan /private/tmp/meridian-s1-recovery-plan.html, version 3.
