@@ -37,7 +37,7 @@ Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
 | Design | Local HTML directions, selected core flow, mobile/desktop, states and shared components | Complete Figma designs accepted; static verification limits remain documented |
 | Figma | Approved core designs using components and supplied tokens | Final hero action and refined review C applied; unused alternatives removed |
 | S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | Accepted and merged in PR #1 at 04956af |
-| S2 | API search and persistent theme/segment | Accepted by candidate at 6cfda96; publication/merge pending |
+| S2 | API search and persistent theme/segment | MR #2 open; review extraction verified at f3a95f2, candidate re-review pending |
 | Fidelity | Bidirectional Figma/code reconciliation for implemented scope | Requested after S2; concrete correction plan before material edits |
 | S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Pending |
 | S4 | Transfer mutation, failures, success and dashboard refresh | Pending |
@@ -734,3 +734,16 @@ The connected GitHub integration returned 403 for PR creation; the authenticated
 Application source remains at verified 6cfda96; later commits contain records only.
 Fidelity corrections remain paused and plan v1 unapproved; preserve the candidate-preferred S2 search presentation.
 Merge, deployment and cleanup remain pending authorization.
+
+## S2 MR review correction - 8 November 2026
+
+Application revision f3a95f2 extracts displayed rows, status, error and empty-state copy into useTransactionSearch; TransactionList retains rendering and DOM focus ownership.
+This addresses review comment r4502821277 without changing query definitions or visible behavior.
+Independent Astra review found no findings; Node 22.23.4 lint, typecheck, all 47 tests, build and diff checks passed.
+Production Chrome verification and screenshots were refreshed against this revision, including five responsive widths, search states, keyboard Clear/Retry and four persisted preference combinations.
+No page or console errors were recorded; sampled contrast limits remain as documented above.
+At 360 and 390 px, the mobile transfer footer stayed at viewport bottom at top, middle and bottom scroll positions; the daily-limit content cleared it at page end.
+The earlier full-page screenshot was misleading; viewport captures show the actual fixed positioning, and no CSS correction was needed.
+Evidence remains outside Git in /private/tmp/meridian-browser-qa and is authorized for MR attachment.
+The candidate explicitly authorized committing, pushing, updating MR #2 and refreshing screenshot evidence, then requested another review.
+Next: candidate re-review of MR #2; merge and cleanup remain unauthorized, and fidelity remains paused.
