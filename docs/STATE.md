@@ -1,6 +1,6 @@
 # Current state
 
-## Active continuation: local CI setup; accepted S3 in PR #4
+## Active continuation: fidelity merged; S3 planning next
 
 The candidate approved S1 and reported merging PR #1 on 8 November 2026.
 GitHub confirms the merge into development at 04956afd78cfb1a4251edccd140be74cba99637e.
@@ -17,9 +17,9 @@ Deadline: 10 November 2026, EOD, supplied by the candidate.
 The application renders dashboard content through the accepted query/state layer, with loading, initial error/Retry, refresh warnings and empty states.
 The header, persistent preferences, API search, responsive layout and shared UI presentation are implemented; S2 evidence is recorded below.
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
-Active scope: approved local GitHub Actions CI setup on chore/ci; S3 is accepted and published in open PR #4.
-Integration base: local development 3eba44f above remote fidelity merge 571b9d5; existing worktrees remain preserved pending separately authorized cleanup.
-Phase: CI configuration approved for local implementation; accepted S3 remains on feat/transfer-form at 77aea84 in https://github.com/timcheng112/meridian-banking/pull/4, which is open and unmerged.
+Active scope: S1, S2 and fidelity/header feedback accepted and merged; next is S3 technical planning.
+Integration branch: development at local recovery commit f1e16de above fidelity merge 571b9d5; completed S1, S2 and fidelity worktrees remain preserved pending separately authorized cleanup.
+Phase: S3 technical plan v1 approved; implementation branch preparation is next.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -39,7 +39,7 @@ Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
 | S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | Accepted and merged in PR #1 at 04956af |
 | S2 | API search and persistent theme/segment | Accepted and merged in MR #2 at 8d0b4a3 |
 | Fidelity | Bidirectional Figma/code reconciliation for implemented scope | Accepted and merged in MR #3 at 571b9d5 |
-| S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Accepted; open PR #4 at 77aea84, excluded from this CI branch until merged |
+| S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Pending |
 | S4 | Transfer mutation, failures, success and dashboard refresh | Pending |
 | Release | Full requirement audit, production checks, submission README, deployment | Pending; publication requires approval |
 
@@ -148,9 +148,8 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Continue candidate review on feat/transfer-form; that worktree's STATE owns current S3 verification and acceptance status.
-Review /private/tmp/meridian-s3-review.html and the production preview http://127.0.0.1:4183/ while its process runs.
-S3 is implemented locally; candidate understanding/acceptance and publication remain pending.
+Implement approved /private/tmp/meridian-s3-plan-v1.html after persisting approval records and verifying the development base for a no-fetch worktree.
+Sol owns the approved application/test inventory; Astra reviews behavior and React/composition choices before candidate acceptance.
 S2 MR #2 is accepted and merged; preserve the preferred S2 search presentation.
 Cleanup still requires authorization; do not reopen deferred mock-worker repair.
 Existing PR: https://github.com/timcheng112/meridian-banking/pull/1, merged.
@@ -940,44 +939,11 @@ No compound-component framework or custom context is needed for this fixed flow.
 Next: commit approval records, verify the integration base includes f1e16de, acquire a no-fetch lease, record the new branch/base and dispatch gpt-6.1-sol.
 Candidate implementation acceptance and all external publication, merge, deployment and cleanup remain pending.
 
-## S3 worktree continuation pointer
+## S3 implementation branch
 
-S3 is accepted and published on feat/transfer-form at 77aea84 in open PR #4, based on development 2420c37.
-Recover the active worktree using git worktree list and read its STATE for complete checks and limitations.
-The no-fetch meridian-s3 lease remains retained alongside the three completed leases.
-S3 merge, cleanup and S4 implementation remain unauthorized.
-
-## Approved CI setup
-
-The candidate approved one Ubuntu job using Node 22 and npm caching, followed by npm ci, npm run check and npm run build.
-Run for pull requests targeting development or main and pushes to either branch, cancel obsolete runs for the same PR or branch, use read-only contents permission, and cap the job at ten minutes.
-The concrete routine configuration scope was approved directly in chat; no additional HTML plan is required for this task.
-Branch chore/ci starts from verified local development 3eba44f and uses a separate no-fetch Treehouse lease.
-The earlier S3 publication approval does not authorize publishing this branch.
-S3 acceptance includes selected A styling, 16px mobile footer gaps and the 880px desktop height cap; its application code and detailed evidence remain in the preserved S3 branch and PR #4.
-The candidate accepted the local workflow and explicitly authorized commit, push and opening its PR to development.
-Published CI PR: https://github.com/timcheng112/meridian-banking/pull/5.
-Next: review and separately authorize merge; cleanup remains excluded.
-No deployment, secrets, browser automation, S4, merge or cleanup is included.
-
-## CI local verification checkpoint
-
-The workflow is implemented and reviewed on chore/ci above scope-record commit 31df4d6.
-Official releases verified on 8 November 2026 are checkout v7.0.1 and setup-node v7.1.0; the workflow uses their v7 major tags.
-Node 22.23.4 npm ci --offline installed 319 packages successfully; npm run check passed lint, typecheck and all 47 tests across six files, and npm run build passed.
-Ruby YAML syntax parsing and git diff --check passed; actionlint is unavailable locally.
-Workflow SHA-256: 75b885f28ab2e581736a088157a4e4630e9c7e2f4019ba17d9d6c6a94a7820f4.
-The lockfile and application source are unchanged from development 3eba44f, whose application tree matches remote development 571b9d5.
-These checks cover the merged dashboard baseline; S3's separate 87-test evidence remains on its accepted PR #4 branch.
-Hosted Ubuntu run https://github.com/timcheng112/meridian-banking/actions/runs/42441128237 passed at workflow commit 382242d, including installation, checks, build and cache post-step.
-Concurrent-run cancellation and the integration-branch push trigger have not been exercised deliberately.
-CI commit and push completed and PR #5 is open against development.
-No deployment, merge or worktree cleanup occurred.
-
-## Approved CI log readability follow-up
-
-The candidate approved naming the job Validation and its seven steps Check out code, Set up Node.js, Install dependencies, Lint, Typecheck, Tests and Build.
-Lint, typecheck and tests now run as separate sequential steps using the existing package scripts in the same job.
-Triggers, permissions, concurrency, dependencies, caching and build behavior remain unchanged.
-This updates the existing authorized PR #5; hosted verification of this follow-up is pending the next push.
-The preceding final-head run passed at 6e82276: https://github.com/timcheng112/meridian-banking/actions/runs/42441627770.
+Active branch: feat/transfer-form, based on development 2420c37605d1866b78644324cfa853028f253ad4 including f1e16de and approved plan v1 records.
+Acquired a no-fetch Treehouse lease and explicitly verified the branch base in the clean worktree.
+Treehouse status at the configured temporary pool confirms all three completed leases remain retained; the earlier default-root status failure is resolved for this pool.
+Sol owns the exact application/test inventory in /private/tmp/meridian-s3-plan-v1.html; coordination owns records and Astra review.
+Implementation is authorized; no S4 sending or external publication is included.
+The browser skill was read and in-app connection attempted; it returned Browser is not available: iab, so use the established isolated Chrome fallback for runtime verification.
