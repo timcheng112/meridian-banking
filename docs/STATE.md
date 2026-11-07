@@ -1,6 +1,6 @@
 # Current state
 
-## Active continuation: fidelity merged; S3 planning next
+## Active continuation: S3 ready for candidate review
 
 The candidate approved S1 and reported merging PR #1 on 8 November 2026.
 GitHub confirms the merge into development at 04956afd78cfb1a4251edccd140be74cba99637e.
@@ -17,9 +17,9 @@ Deadline: 10 November 2026, EOD, supplied by the candidate.
 The application renders dashboard content through the accepted query/state layer, with loading, initial error/Retry, refresh warnings and empty states.
 The header, persistent preferences, API search, responsive layout and shared UI presentation are implemented; S2 evidence is recorded below.
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
-Active scope: S1, S2 and fidelity/header feedback accepted and merged; next is S3 technical planning.
+Active scope: S1, S2 and fidelity/header feedback accepted and merged; S3 plan v1 approved for local implementation.
 Integration branch: development at local recovery commit f1e16de above fidelity merge 571b9d5; completed S1, S2 and fidelity worktrees remain preserved pending separately authorized cleanup.
-Phase: S3 technical plan v1 approved; implementation branch preparation is next.
+Phase: S3 implemented and verified on feat/transfer-form at application revision e19fb10; candidate understanding and acceptance remain pending.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -39,7 +39,7 @@ Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
 | S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | Accepted and merged in PR #1 at 04956af |
 | S2 | API search and persistent theme/segment | Accepted and merged in MR #2 at 8d0b4a3 |
 | Fidelity | Bidirectional Figma/code reconciliation for implemented scope | Accepted and merged in MR #3 at 571b9d5 |
-| S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Pending |
+| S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Implemented and verified; candidate acceptance pending |
 | S4 | Transfer mutation, failures, success and dashboard refresh | Pending |
 | Release | Full requirement audit, production checks, submission README, deployment | Pending; publication requires approval |
 
@@ -59,8 +59,8 @@ Evidence must identify the checked revision; changes invalidate affected checks.
 | D6 | S2 | API search, debounce, count, older match, clear/no-match tests | Automated and focused production-browser checks pass at 6cfda96 |
 | D7; E4 dashboard retry | S1 | Failure then Retry integration test | Integration and real-browser keyboard Retry recovery passed |
 | D8; brief §5 | S1-S3 | 360/390 px, breakpoint/desktop, overflow and tap-target checks | Dashboard checks pass at eight widths; transfer checks remain S3 |
-| T1; T8 | S3-S4 | Keyboard, focus restoration, labels/errors/live announcements | Pending |
-| T2-T4; brief §3.3 | S3 | Form boundaries, new/saved recipient, step preservation and focus tests | Pending |
+| T1; T8 | S3-S4 | Keyboard, focus restoration, labels/errors/live announcements | S3 tests and Chrome checks pass at e19fb10; send alert/success announcement remain S4 |
+| T2-T4; brief §3.3 | S3 | Form boundaries, new/saved recipient, step preservation and focus tests | Automated and focused Chrome checks pass at e19fb10 |
 | T5-T7; E4 transfer cases | S4 | Over-balance/no request, success refresh, failure, duplicate-submit tests | Pending |
 | TH1-TH3; tokens | S2 | Four theme combinations, persistence/pre-paint, contrast/focus checks | S2 persistence/pre-paint and four-mode checks pass at 6cfda96; sampled text contrast passes, full composited/non-text audit remains release |
 | E1-E3 | All slices | Typecheck, boundary review, state/schema ownership review | Pending implementation |
@@ -148,8 +148,9 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Implement approved /private/tmp/meridian-s3-plan-v1.html after persisting approval records and verifying the development base for a no-fetch worktree.
-Sol owns the approved application/test inventory; Astra reviews behavior and React/composition choices before candidate acceptance.
+Candidate review: /private/tmp/meridian-s3-review.html and local production preview http://127.0.0.1:4183/ while its process runs.
+Walk through the form/schema/step composition and obtain explicit understanding and acceptance before marking S3 accepted.
+Publication remains separately authorized; S4 still requires its own concrete plan approval.
 S2 MR #2 is accepted and merged; preserve the preferred S2 search presentation.
 Cleanup still requires authorization; do not reopen deferred mock-worker repair.
 Existing PR: https://github.com/timcheng112/meridian-banking/pull/1, merged.
@@ -947,3 +948,28 @@ Treehouse status at the configured temporary pool confirms all three completed l
 Sol owns the exact application/test inventory in /private/tmp/meridian-s3-plan-v1.html; coordination owns records and Astra review.
 Implementation is authorized; no S4 sending or external publication is included.
 The browser skill was read and in-app connection attempted; it returned Browser is not available: iab, so use the established isolated Chrome fallback for runtime verification.
+
+## S3 implemented and verified - 8 November 2026
+
+Implementation revision 85d50e8 and scoped CSS correction e19fb10 implement the approved v1 plan in its sixteen application/test files.
+Sol built the native dialog, explicit steps, one RHF form, context-aware Zod rules and Query payees; independent Astra review found no outstanding findings after corrections.
+Checks cover conditional recipient fields, financial boundaries, preserved inputs, blur/Continue focus, refreshed balance/limit and removed account/payee handling.
+The React/composition review confirmed derived values, localized form subscriptions, typed props and shell children/footer slots without custom context, compound exports or speculative memoization.
+The entry buttons now open the form; closing discards the draft and restores focus, and Confirm transfer remains disabled with the approved preview notice.
+S4 POST, sending, success, API rejection and dashboard refresh remain unimplemented.
+
+Node 22.23.4 npm run check passed lint, strict typecheck and 83 tests; the focused eleven-test dialog suite passed after the final same-ID balance-refresh assertion.
+The final production build and git diff --check passed; Vite reports two third-party Zod PURE-annotation warnings without build failure.
+Chrome QA at e19fb105b4d4622b349c6d1b223b8d677735138f passed all nine groups: native modality/keyboard/restoration, saved/new flow, validation/preservation/reset, loading/error/Retry/empty/cached-refresh behavior, seven responsive widths, short viewports and four color modes.
+No page/console errors or transfer POST requests were recorded.
+Browser QA found dashboard CSS overriding dialog typography/spacing and a completed-connector specificity conflict; Sol scoped the selectors, Astra reviewed the correction, and fresh browser checks confirmed the fix.
+Desktop measures 520 by 720px with bounded height, body padding 16 by 24px and 120/200px footer buttons; short mobile viewport checks preserve a scrolling body and reachable fixed footer.
+Representative narrow errors, long-value review and dark Premium screenshots were visually inspected by Astra and coordination.
+Sampled text contrast minima were 5.44:1 light and 7.52:1 dark; nearest-opaque-background sampling does not establish exhaustive composited/non-text compliance.
+Chrome browser-chrome focus transitions were distinguished from focus reaching background application controls; background inertness passed.
+Physical safe areas, actual browser zoom, cross-browser and assistive-technology verification remain untested; no-deposit and live account/context removal checks rely on integration tests.
+
+Local evidence: /private/tmp/meridian-browser-qa/s3-final-e19fb10-results.json, s3-layout-metrics.json, s3-contrast-samples.json and s3-*.png.
+Local review artifact: /private/tmp/meridian-s3-review.html, including every changed application/test file and suggested walkthrough.
+Production preview: http://127.0.0.1:4183/ while the task-owned process runs.
+Candidate understanding/acceptance, publication, merge, deployment and cleanup remain pending; no external submission occurred.
