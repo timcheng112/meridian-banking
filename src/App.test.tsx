@@ -189,6 +189,8 @@ describe('header preferences', () => {
     server.use(http.get('*/api/customer', () => HttpResponse.json({ customer: { ...customer, segment: 'premium' } })))
     const client = renderApp()
     await screen.findByRole('heading', { name: 'Good evening, Maya' })
+    expect(screen.getByLabelText('Maya Tan')).toHaveTextContent('MT')
+    expect(screen.queryByLabelText('Ava Chen')).not.toBeInTheDocument()
     expect(document.documentElement).toHaveAttribute('data-segment', 'premium')
     await userEvent.click(screen.getAllByRole('button', { name: 'Retail' })[0])
     await act(async () => { await client.invalidateQueries() })

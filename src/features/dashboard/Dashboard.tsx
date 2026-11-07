@@ -7,24 +7,27 @@ import './dashboard.css'
 
 export function Dashboard({ mobilePreferences }: { mobilePreferences: ReactNode }) {
   const dashboard = useDashboard()
+  const { status, retry, isFetching } = dashboard
 
-  if (dashboard.status !== 'ready') {
-    if (dashboard.status === 'loading') return <DashboardSkeleton mobilePreferences={mobilePreferences} />
+  if (status !== 'ready') {
+    if (status === 'loading') return <DashboardSkeleton mobilePreferences={mobilePreferences} />
 
     return (
       <>
         <div className="mobile-preferences">{mobilePreferences}</div>
-        <DashboardFeedback kind="initial-error" onRetry={dashboard.retry} isFetching={dashboard.isFetching} />
+        <DashboardFeedback kind="initial-error" onRetry={retry} isFetching={isFetching} />
       </>
     )
   }
 
+  const { hasRefreshError, customer, accounts, transactions } = dashboard
+
   return (
     <>
-      {dashboard.hasRefreshError ? (
-        <DashboardFeedback kind="refresh-error" onRetry={dashboard.retry} isFetching={dashboard.isFetching} />
+      {hasRefreshError ? (
+        <DashboardFeedback kind="refresh-error" onRetry={retry} isFetching={isFetching} />
       ) : null}
-      <DashboardContent mobilePreferences={mobilePreferences} customer={dashboard.customer} accounts={dashboard.accounts} transactions={dashboard.transactions} />
+      <DashboardContent mobilePreferences={mobilePreferences} customer={customer} accounts={accounts} transactions={transactions} />
     </>
   )
 }

@@ -5,25 +5,31 @@ import { ThemeToggle } from './ThemeToggle'
 import './layout.css'
 
 type HeaderProps = {
+  brand: { mark: string; name: string }
+  navigation: ReadonlyArray<{ label: string; href?: string; current?: boolean }>
+  customerName: string
+  customerInitials: string
+  segmentOptions: ReadonlyArray<{ value: Segment; label: string }>
   theme: 'light' | 'dark'
   segment: Segment
   onThemeToggle: () => void
   onSegmentChange: (segment: Segment) => void
 }
 
-export function Header({ theme, segment, onThemeToggle, onSegmentChange }: HeaderProps) {
+export function Header({ brand, navigation, customerName, customerInitials, segmentOptions, theme, segment, onThemeToggle, onSegmentChange }: HeaderProps) {
   return (
     <header className="app-header">
       <div className="header-inner">
-        <strong className="brand-logo">M <span>Meridian</span></strong>
+        <strong className="brand-logo">{brand.mark} <span>{brand.name}</span></strong>
         <nav className="desktop-nav" aria-label="Main navigation">
-          <a href="#main-content" aria-current="page"><Icon name="grid" />Overview</a>
-          {['Cards', 'Payments', 'Insights'].map((label) => <button type="button" disabled key={label}>{label}</button>)}
+          {navigation.map(({ label, href, current }) => href ? (
+            <a key={label} href={href} aria-current={current ? 'page' : undefined}>{current ? <Icon name="grid" /> : null}{label}</a>
+          ) : <button type="button" disabled key={label}>{label}</button>)}
         </nav>
         <div className="header-controls">
-          <div className="desktop-segment"><SegmentSwitch segment={segment} onChange={onSegmentChange} /></div>
+          <div className="desktop-segment"><SegmentSwitch options={segmentOptions} segment={segment} onChange={onSegmentChange} /></div>
           <ThemeToggle theme={theme} onToggle={onThemeToggle} />
-          <span className="customer-avatar" aria-label="Ava Chen">AC</span>
+          <span className="customer-avatar" aria-label={customerName}>{customerInitials}</span>
         </div>
       </div>
     </header>

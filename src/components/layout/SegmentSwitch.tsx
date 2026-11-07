@@ -1,12 +1,17 @@
 import type { Segment } from '../../api/types'
 
-type SegmentSwitchProps = { segment: Segment; onChange: (segment: Segment) => void }
+type SegmentSwitchProps = {
+  options: ReadonlyArray<{ value: Segment; label: string }>
+  segment: Segment
+  onChange: (segment: Segment) => void
+}
 
-export function SegmentSwitch({ segment, onChange }: SegmentSwitchProps) {
+export function SegmentSwitch({ options, segment, onChange }: SegmentSwitchProps) {
   return (
     <div className="segment-switch" role="group" aria-label="Customer segment">
-      <button type="button" aria-pressed={segment === 'retail'} onClick={() => onChange('retail')}>Retail</button>
-      <button type="button" aria-pressed={segment === 'premium'} onClick={() => onChange('premium')}>Premium</button>
+      {options.map(({ value, label }) => (
+        <button key={value} type="button" aria-pressed={segment === value} onClick={() => onChange(value)}>{label}</button>
+      ))}
     </div>
   )
 }
