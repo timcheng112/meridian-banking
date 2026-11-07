@@ -1,6 +1,6 @@
 # Current state
 
-## Active continuation: S2 MR open for review
+## Active continuation: S2 merged; fidelity plan review next
 
 The candidate approved S1 and reported merging PR #1 on 8 November 2026.
 GitHub confirms the merge into development at 04956afd78cfb1a4251edccd140be74cba99637e.
@@ -17,9 +17,9 @@ Deadline: 10 November 2026, EOD, supplied by the candidate.
 The application renders dashboard content through the accepted query/state layer, with loading, initial error/Retry, refresh warnings and empty states.
 The header, persistent preferences, API search, responsive layout and shared UI presentation are implemented; S2 evidence is recorded below.
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
-Active scope: S1 accepted and merged; S2 implementation is authorized on feat/search-preferences.
-Integration branch: development at recovery commit d225ec5 above merged S1 revision 04956af; feat/dashboard remains at 22b1f22 pending separately authorized cleanup.
-Phase: S2 MR #2 is open into development; further fidelity work is paused for MR review.
+Active scope: S1 and S2 accepted and merged; next is review of the requested fidelity plan.
+Integration branch: development updated to S2 merge 8d0b4a3; completed S1 and S2 worktrees remain preserved pending separately authorized cleanup.
+Phase: S2 review accepted and MR #2 merged; fidelity plan v1 still requires approval.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -37,7 +37,7 @@ Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
 | Design | Local HTML directions, selected core flow, mobile/desktop, states and shared components | Complete Figma designs accepted; static verification limits remain documented |
 | Figma | Approved core designs using components and supplied tokens | Final hero action and refined review C applied; unused alternatives removed |
 | S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | Accepted and merged in PR #1 at 04956af |
-| S2 | API search and persistent theme/segment | MR #2 open; review extraction verified at f3a95f2, candidate re-review pending |
+| S2 | API search and persistent theme/segment | Accepted and merged in MR #2 at 8d0b4a3 |
 | Fidelity | Bidirectional Figma/code reconciliation for implemented scope | Requested after S2; concrete correction plan before material edits |
 | S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Pending |
 | S4 | Transfer mutation, failures, success and dashboard refresh | Pending |
@@ -148,9 +148,9 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Review S2 MR #2: https://github.com/timcheng112/meridian-banking/pull/2.
-Fidelity work is paused until the S2 MR review is handled; preserve the preferred S2 search presentation.
-Merge and cleanup still require authorization; do not reopen deferred mock-worker repair.
+Review the existing fidelity proposal /private/tmp/meridian-fidelity-plan.html with the candidate before material changes.
+S2 MR #2 is accepted and merged; preserve the preferred S2 search presentation.
+Cleanup still requires authorization; do not reopen deferred mock-worker repair.
 Existing PR: https://github.com/timcheng112/meridian-banking/pull/1, merged.
 Completed worktree cleanup, new external publication and deployment remain separate authorization boundaries.
 
@@ -747,3 +747,13 @@ The earlier full-page screenshot was misleading; viewport captures show the actu
 Evidence remains outside Git in /private/tmp/meridian-browser-qa and is authorized for MR attachment.
 The candidate explicitly authorized committing, pushing, updating MR #2 and refreshing screenshot evidence, then requested another review.
 Next: candidate re-review of MR #2; merge and cleanup remain unauthorized, and fidelity remains paused.
+
+## S2 merge and fidelity handoff - 8 November 2026
+
+The candidate approved the review fix and merged MR #2.
+GitHub confirms merge 8d0b4a34f1b4460cf13b2325e25987e6ff3434b0 into development.
+The fetched merge tree exactly matches reviewed feature head 3a5d832; recorded verification on application revision f3a95f2 remains applicable.
+Local development was fast-forwarded; both completed feature worktrees remain intact.
+The refreshed evidence is attached at https://github.com/timcheng112/meridian-banking/pull/2#issuecomment-6710338768 and remains outside Git.
+Continuation pointers are saved in /private/tmp/meridian-fidelity-handoff.md.
+The fidelity proposal remains unapproved; no fidelity edits, cleanup or deployment occurred during handoff.
