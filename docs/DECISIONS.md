@@ -365,3 +365,15 @@ The candidate approved /private/tmp/meridian-header-feedback-plan.html, version 
 Render selected Overview as a span with aria-current=page and no link or tab stop; remove its obsolete href configuration.
 Render the approved circular initials avatar as a non-interactive named image using existing customer-derived data and supplied tokens.
 Retain existing preference ownership, component slots, query behavior and all fidelity exclusions.
+
+## Accepted: S3 transfer form plan v1
+
+The candidate approved /private/tmp/meridian-s3-plan-v1.html after discussing native dialog behavior and composition through a shared shell, children and footer slots.
+Use a native modal dialog shell, explicit recipient/amount/review components and one persistent RHF form with composable context-aware Zod validation.
+Keep payees in Query, derive financial values, and use shallow typed props and shell slots; the React/composition assessment finds no current need for custom context, compound exports or memoization.
+Propose a bank select with DBS, OCBC, UOB, POSB and Other bank, revealing an actual bank-name input for Other and retaining the API's 2-30-character rule.
+Back preserves inputs; closing discards the draft and restores focus to the opener.
+Preserve accepted transfer designs and empty-payee copy, with proposed loading/error/no-deposit treatments reviewed in the artifact.
+Confirm transfer remains disabled with Transfers are unavailable in this preview. during S3; S4 owns submission, failures, success and refresh.
+Approval authorizes local implementation and tests by Sol with Astra review, including the listed missing-state treatments.
+External publication, Figma writes, merge, deployment and cleanup remain separately gated.

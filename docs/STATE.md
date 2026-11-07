@@ -18,8 +18,8 @@ The application renders dashboard content through the accepted query/state layer
 The header, persistent preferences, API search, responsive layout and shared UI presentation are implemented; S2 evidence is recorded below.
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
 Active scope: S1, S2 and fidelity/header feedback accepted and merged; next is S3 technical planning.
-Integration branch: development updated to fidelity merge 571b9d5; completed S1, S2 and fidelity worktrees remain preserved pending separately authorized cleanup.
-Phase: fidelity MR #3 merged; S3 concrete technical plan and implementation approval remain pending.
+Integration branch: development at local recovery commit f1e16de above fidelity merge 571b9d5; completed S1, S2 and fidelity worktrees remain preserved pending separately authorized cleanup.
+Phase: S3 technical plan v1 approved; implementation branch preparation is next.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -148,8 +148,8 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Use /private/tmp/meridian-s3-planning-handoff.md to begin S3 planning from recovered development.
-Inspect the accepted transfer designs and current requirements, then present a concrete HTML plan for approval before implementation.
+Implement approved /private/tmp/meridian-s3-plan-v1.html after persisting approval records and verifying the development base for a no-fetch worktree.
+Sol owns the approved application/test inventory; Astra reviews behavior and React/composition choices before candidate acceptance.
 S2 MR #2 is accepted and merged; preserve the preferred S2 search presentation.
 Cleanup still requires authorization; do not reopen deferred mock-worker repair.
 Existing PR: https://github.com/timcheng112/meridian-banking/pull/1, merged.
@@ -914,3 +914,27 @@ Continuation document: /private/tmp/meridian-s3-planning-handoff.md.
 Next scope is S3 planning for the transfer dialog, recipient/amount/review steps, shared validation and accessibility; S4 retains sending, success and refresh.
 S3 implementation is not approved; apply feature-dev with React/composition assessment and a concrete HTML plan before implementation.
 Preserve accepted search/header treatment, normal-flow daily limit, external screenshot storage and deferred mock-worker repair.
+
+## S3 planning recovery - 8 November 2026
+
+Recovered clean development at f1e16de and read the S3 handoff, requirements, accepted decisions, source, tests and runtime configuration.
+Application source and inspected package/runtime configuration match verified revision 24f7a89; its recorded 47-test, check/build and browser evidence remains applicable, with no fresh runtime checks claimed.
+Git confirms the three completed feature worktrees remain intact.
+Treehouse status could not initialize its home-directory state within the sandbox; lease status is unverified in this planning pass, and no allocation or cleanup was attempted.
+Explicitly selected gpt-6-astra owns technical planning, applying the React best-practices and composition-patterns skills; gpt-6.1-sol implementation remains gated on candidate plan approval.
+Read-only Figma session e97a35a8-ad10-4967-af17-0b433eb0519a inspected the accepted transfer flow and required-state inventory, plus rendered desktop amount, mobile review and recipient-validation examples.
+The native dialog, form boundaries, bank choices and missing payee loading/error states are proposals for concrete plan review.
+S3 covers dialog, recipient/amount/review and shared validation; S4 retains POST, sending, success, API rejection and dashboard refresh.
+No application implementation, test edits, Figma design edits or external publication occurred.
+Concrete proposal: /private/tmp/meridian-s3-plan-v1.html, version 1, with exact file ownership, validation/data flow, focus behavior, React/composition assessment and verification gates.
+The plan preserves accepted empty-payee copy and proposes Other bank entry and temporary disabled Confirm with Transfers are unavailable in this preview.
+HTML structural and navigation checks passed; this is a planning artifact, not runtime verification.
+Candidate approval remains pending; next action is plan review before any implementation dispatch.
+
+## S3 plan v1 approved
+
+The candidate approved the concrete plan after clarifying native dialog support and composition through a shared shell, explicit steps, children and footer slots.
+Approval covers local S3 implementation, tests and the plan's listed missing-state treatments; S4 retains sending, success, API failures and refresh.
+No compound-component framework or custom context is needed for this fixed flow.
+Next: commit approval records, verify the integration base includes f1e16de, acquire a no-fetch lease, record the new branch/base and dispatch gpt-6.1-sol.
+Candidate implementation acceptance and all external publication, merge, deployment and cleanup remain pending.
