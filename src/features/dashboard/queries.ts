@@ -19,3 +19,12 @@ export const recentTransactionsQuery = queryOptions({
   queryFn: ({ signal }) => apiFetch<TransactionsResponse>('/api/transactions?limit=8', { signal }),
   retry: false,
 })
+
+export function transactionSearchQuery(term: string) {
+  const params = new URLSearchParams({ limit: '8', q: term })
+  return queryOptions({
+    queryKey: ['transactions', { limit: 8, q: term }],
+    queryFn: ({ signal }) => apiFetch<TransactionsResponse>(`/api/transactions?${params}`, { signal }),
+    retry: false,
+  })
+}
