@@ -2,7 +2,7 @@
 
 ## Active continuation: focused S1 review and idle skeleton investigation
 
-Application revision: 511f8d2 on feat/dashboard; PR #1 remains open for candidate review.
+Application revision: b1d0cb4 on feat/dashboard; PR #1 remains open for candidate review.
 The candidate requested a handoff to review current S1 for React practices, composition opportunities and overengineering, and investigate the reported idle skeleton issue.
 Start with diagnosis and findings; the discussed useHeader/container/preferences-provider redesign has not been approved for implementation.
 Starting with S2, React best-practices and composition assessment is mandatory within each slice's planning phase; the feature-dev skill now records this requirement.
@@ -637,3 +637,6 @@ The original natural idle trigger remains unobserved.
 Candidate understanding and S1 acceptance remain pending; no publication, merge, deployment or worktree cleanup occurred during this correction.
 The candidate subsequently explicitly authorized committing and pushing these changes for review in existing PR #1.
 Publication includes the previously local planning-skill commit 5f4d32d and the simplified response correction; merge, deployment and cleanup remain unauthorized.
+Published the simplified correction as b1d0cb4 with a normal push of feat/dashboard to the existing PR.
+Review summary and file inventory: https://github.com/timcheng112/meridian-banking/pull/1#issuecomment-6709369882.
+The publication receipt is documentation-only and does not invalidate the recorded checks on b1d0cb4 application source.
