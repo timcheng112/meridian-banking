@@ -351,3 +351,10 @@ Implementation of that feedback is pending.
 For the AC avatar required by D2, a circular initials treatment is permitted because the brief prescribes no shape.
 Propose a non-interactive 40px circle with brand/brand-soft tokens, 14px semibold initials and the customer name as its accessible label.
 The isolated Figma proposal at 70:802 is ready for candidate selection; it has not been propagated or implemented.
+
+## Accepted: circular initials avatar
+
+The candidate selected the 40px circular avatar with 14px semibold brand/brand-soft styling and authorized removing its proposal boards.
+Propagated the reusable avatar to existing Figma headers while retaining the component and all unrelated references.
+The avatar is non-interactive and represents the customer by initials with an accessible customer-name label.
+Implementation remains pending approval of /private/tmp/meridian-header-feedback-plan.html, version 1, which also covers the agreed non-interactive current-page Overview label.

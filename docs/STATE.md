@@ -845,3 +845,15 @@ The proposed avatar is non-interactive and exposes the customer name; no profile
 Accepted boards and application remain unchanged; avatar design selection and concrete implementation-plan approval remain pending.
 Review link: https://www.figma.com/design/LVZHN7v88I6WOCMr80nXlu?node-id=70-802.
 Evidence and full node inventory: /private/tmp/meridian-avatar-proposal-ledger.json and /private/tmp/meridian-browser-qa/avatar-proposal-*.png.
+
+## Circular avatar selected and proposal cleanup
+
+The candidate approved the circular-avatar proposal and explicitly authorized removing its proposals.
+Propagated the accepted component 70:803 to 21 existing headers: eleven Dashboard, nine Required states/dashboard contexts and one Transfer overlay.
+Preserved all header dimensions and verified no child overflow; the reusable component now lives in organized Dashboard components section 67:2994.
+Removed only avatar proposal section 70:802 and its twelve preview headers/notes; retained older selected hero/review references.
+Application remains unchanged at 6d48a73.
+Prepared /private/tmp/meridian-header-feedback-plan.html, version 1, covering the circular avatar and non-interactive Overview on the existing fidelity review branch.
+Concrete application plan approval, implementation, verification and candidate acceptance remain pending.
+
+Accepted-avatar rendered verification covered five widths and all four themes; evidence is /private/tmp/meridian-avatar-accepted-ledger.json and /private/tmp/meridian-browser-qa/avatar-accepted-*.png.
