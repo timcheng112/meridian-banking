@@ -887,3 +887,9 @@ Prepared local MR summary /private/tmp/meridian-fidelity-mr.md for fix/dashboard
 Application source and verification remain unchanged; this checkpoint records acceptance only.
 Branch publication, MR creation, evidence uploads, merge, deployment and cleanup remain unauthorized.
 Next safe action is obtaining explicit branch/MR publication authorization; S3 remains a separately planned slice.
+
+## Fidelity publication authorized
+
+The candidate authorized pushing fix/dashboard-fidelity and opening its prepared MR into development in response to the publication request.
+Verified remote development remains 8d0b4a3 and the fidelity branch does not yet exist remotely.
+Use a normal non-force branch push; no merge, screenshot upload, deployment or cleanup is authorized.
