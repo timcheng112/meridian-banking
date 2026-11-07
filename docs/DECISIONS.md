@@ -3,6 +3,14 @@
 Record meaningful choices here once, with status, rationale, and alternatives.
 Submission README should reference this record rather than duplicate extended rationale.
 
+## Accepted process: finish S1 before candidate MR review
+
+The candidate explicitly requested completing all S1 checkpoints before review, using feature-dev with candidate review at the MR stage only.
+This supersedes intermediate checkpoint acceptance and per-checkpoint HTML-plan approval pauses for the already-approved S1 scope.
+Continue planning, Sol implementation, verification and independent Astra review internally; preserve the approved designs and the accepted header-alignment adjustment.
+Prepare the complete MR locally; external publication, merge and cleanup still require authorization.
+S2-S4 remain separate slices; this instruction does not expand S1 into search persistence or transfer implementation.
+
 ## Accepted: lightweight project memory
 
 The user requested AGENTS for persistent instructions, STATE for the current snapshot, and this file for decisions.
@@ -44,8 +52,8 @@ Design the complete core flow before application implementation, starting with a
 Start at 390 px, check 360 px, then adapt to desktop using the required breakpoints.
 After explicit external-write approval, build the chosen Figma design with reusable components, instances, and token bindings; supplied CSS tokens remain authoritative.
 HTML imports alone do not establish a Figma component library.
-Use optional HTML plan-review artifacts for consequential choices, not every small edit.
-Use optional Sol delegation per approved slice; keep tests and implementation together where practical and optionally delegate independent review.
+Present a local HTML technical plan before implementation for each slice/checkpoint, following the later accepted workflow correction; routine edits within that approved plan do not require a new artifact.
+Use Astra-led planning and review with explicitly selected Sol workers for approved implementation and tests; see the later workflow correction for the required HTML plan approval gate.
 The main agent remains responsible for verification, review, explanation, and candidate acceptance.
 Prepare PR descriptions and evidence locally; every external write requires explicit approval.
 Keep worktrees until accepted work is merged and cleanup is authorized.
@@ -194,3 +202,97 @@ S1 theme/segment switching is in memory; persistence and pre-paint initializatio
 Search and transfer controls remain visibly disabled until their implementing slices.
 This keeps S1 reviewable without presenting unfinished actions as working behaviour.
 Approval covers local implementation and commits; publication, merge, cleanup and candidate implementation acceptance remain separate.
+
+## Accepted correction: HTML technical plans and model roles
+
+The candidate identified missing HTML technical-plan review and absent subagent delegation as defects in the first feature-dev run.
+Before each implementation checkpoint, present a local HTML plan with proposed files, responsibilities, data flow, trade-offs, meaningful tests, verification and delegated ownership, then wait for explicit approval.
+The candidate wants Astra to lead planning and the feature-dev workflow, and lower-cost Sol workers to build the approved plan and its tests.
+This authorizes bounded delegation for the explicitly invoked feature-dev workflow; use explicit model selection rather than inheriting the lead model.
+Keep plan approval, integration review, candidate explanation and acceptance with the lead.
+The candidate accepted checkpoint 1 after reviewing its types, concurrency/retry behaviour and test purposes.
+Checkpoint 2 remains paused until its concrete HTML technical plan is approved; no application changes have been made for it.
+This correction changes the workflow, not the agreed application requirements or external-write authorization boundaries.
+
+## Accepted: checkpoint 2 content boundary and missing-state treatment
+
+The candidate approved HTML technical plan v1 after reviewing the proposed Dashboard/DashboardContent split and integration-test location.
+Keep request-state handling in Dashboard and loaded financial content/derived values in DashboardContent, with small private card/row components where useful.
+Empty accounts use No accounts to display., a zero deposit total and derived deposit count; empty transactions use No recent transactions.
+On refresh failure, retain available cached values and show We couldn't refresh your dashboard. Showing previously loaded data. with Retry.
+These modest additions use the existing panels; final responsive and visual verification remains checkpoint 3.
+
+## Accepted direction: dashboard component files
+
+The candidate accepted separate AccountCard, TransactionRow and DashboardSkeleton files in a single feature-local components folder for readability and review, even without reuse elsewhere.
+Keep Dashboard responsible for request states and DashboardContent responsible for derived financial values and section composition.
+The concrete extraction HTML plan still requires approval before implementation under the existing workflow.
+
+## Accepted: header content alignment
+
+The candidate accepted a full-width header background with its contents inside a centered 1200px container aligned with the dashboard content.
+Use the supplied desktop/mobile gutters and responsive placement for navigation, segment switch, theme toggle and avatar.
+This supersedes the accepted desktop Figma header's viewport-edge logo alignment for implementation; include the adjustment in the checkpoint 3 technical plan.
+The direction approval does not authorize starting checkpoint 3 before its concrete plan review.
+
+## Accepted: incremental project-local component library
+
+Use src/components/ui for native token-based controls and src/features/dashboard/components for banking-specific compositions.
+Plan v2 proposes extracting Button, SearchInput and Skeleton plus the existing dashboard's meaningful presentation responsibilities, without new dependencies or behaviour.
+Treat the brief's suggested list as a coverage guide; keep simple empty copy and Pending markup local until a separate responsibility warrants extraction.
+Implement header/preferences in checkpoint 3 and transfer-only components within their approved slices, using the accepted Figma designs and current requirements to shape interfaces.
+The candidate explicitly approved the concrete v2 HTML plan and authorized implementation.
+This broadens the earlier shared-UI-only-when-reused rule for these three named primitives; SearchInput has one current consumer, and its placement serves the candidate-requested library organization.
+
+
+## Accepted S1 implementation details
+
+The candidate authorized completing the existing S1 scope and accepted designs before MR review, with no intermediate approval pauses.
+The App preference owner observes the existing customer Query cache for the default segment; local override and theme remain in memory until S2.
+At 640px the accepted tablet layout keeps compact stacked accounts, shows the segment switch in the header and retains full-width search; at 1024px the desktop navigation, three-column account grid and 300px rail appear.
+Use shared skeleton/content sizing to reserve the expected three-account/eight-row layout while retaining content-driven growth for longer values.
+Narrow rows reserve enough space for wrapped metadata and descriptions; the Chrome verification records exact stable section geometry for the supplied fixtures.
+Download Figma SVG assets locally and use their unchanged silhouettes as semantic-colour masks, preserving native 16px grid and 20px theme/plus dimensions.
+The empty data favicon avoids a browser request for an absent starter asset without introducing a new visual design.
+
+## Accepted feedback: theme action icon
+
+The candidate pointed out that the theme icon stayed unchanged between light and dark modes.
+Show the moon in light mode with Switch to dark mode, and a sun in dark mode with Switch to light mode.
+The accessible name and tooltip describe the action; omit aria-pressed because this is an action button with a changing name.
+Retain the downloaded moon and add a local 20px sun SVG using the same semantic-colour mask treatment; Figma was not edited.
+
+## Accepted: S1 review configuration and preference ownership
+
+The candidate requested props for header content and segment choices, extraction of App preference logic, and destructuring in AccountCard and Dashboard.
+App supplies fixed application configuration; Header and SegmentSwitch render typed props, and avatar identity derives from the customer query.
+useAppPreferences owns the in-memory override, theme and document attributes while observing the existing customer cache.
+Retain the mobilePreferences composition slot to position the supplied control in loading, error and ready states without adding preference ownership to dashboard presentation.
+
+## Accepted: composed header controls
+
+The candidate approved reducing Header to brand, navigation, customer and controls props.
+Group avatar name and initials in customer and supply HeaderControls through a ReactNode controls slot.
+Header owns layout and avatar rendering; HeaderControls presents segment and theme controls, while useAppPreferences retains state ownership.
+Use explicit multiline props and preserve the existing DOM structure without adding context.
+
+## Accepted: React and composition review during slice planning
+
+The candidate requested a focused review of current S1 and investigation of the unresolved idle skeleton issue before proceeding.
+Starting with S2, every slice plan must apply the React best-practices and composition-patterns skills before implementation approval.
+Assess relevant rules, state ownership, rendering boundaries and composition candidates in the existing technical plan, with concrete rationale for introducing or declining abstractions.
+Use the existing implementation review and release verification to check the resulting work; no separate recurring post-S4 architecture-review stage is mandated.
+This supersedes the earlier proposal for a dedicated recurring review round and does not authorize starting S2.
+The discussed useHeader/container/shared-preferences design remains a candidate for review, not an approved implementation.
+
+## Accepted: retain S1 composition and keep response handling simple
+
+After the focused React and composition review, the candidate agreed to retain useAppPreferences and the existing Header/mobilePreferences slots without adding useHeader, context or memoization.
+The candidate initially authorized response validation and mock-worker recovery, then explicitly prioritized simplicity when the recovery approach grew complex.
+Keep only the response-handling correction: reject successful malformed JSON or null before caching, preserve cancellation and valid API errors, and use the existing dashboard error/Retry behavior.
+Do not duplicate all response types as schemas; retain the accepted controlled typed API boundary.
+Remove the attempted worker lifecycle coordinator and internal-protocol bridge, restoring the existing bootstrap and dashboard hook implementation.
+Public stop/start showed an MSW registration-update race; the alternative protocol bridge introduced a maintenance dependency disproportionate to this assessment.
+A stopped mock worker still requires a page refresh; Retry retries the GETs but does not repair mock interception.
+General GET deadlines, automatic request replay, new UI and preference changes remain excluded.
+Continue under the accepted S1 MR-only review cadence with the simplified internal plan /private/tmp/meridian-s1-recovery-plan.html, version 3.

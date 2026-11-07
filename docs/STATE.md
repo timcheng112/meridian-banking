@@ -1,14 +1,27 @@
 # Current state
 
+## Active continuation: focused S1 review and idle skeleton investigation
+
+Application revision: b1d0cb4 on feat/dashboard; PR #1 remains open for candidate review.
+The candidate requested a handoff to review current S1 for React practices, composition opportunities and overengineering, and investigate the reported idle skeleton issue.
+Start with diagnosis and findings; the discussed useHeader/container/preferences-provider redesign has not been approved for implementation.
+Starting with S2, React best-practices and composition assessment is mandatory within each slice's planning phase; the feature-dev skill now records this requirement.
+S2-S4 implementation, merge, deployment and worktree cleanup remain outside this continuation.
+
 ## Snapshot and recovery
 
 Deadline: 10 November 2026, EOD, supplied by the candidate.
-The application remains the starter health-check screen; no assessment features exist; the candidate explicitly accepted the complete Figma designs on 7 November 2026.
-Active scope: S1 approved; implement through three candidate review checkpoints before slice acceptance.
+The application renders dashboard content through the accepted query/state layer, with loading, initial error/Retry, refresh warnings and empty states.
+The header, in-memory preferences, responsive layout and shared UI presentation are implemented; final S1 browser evidence is recorded below.
+The candidate explicitly accepted the complete Figma designs on 7 November 2026.
+Active scope: S1 implementation and verification complete; candidate review and understanding occur at the MR stage.
+Active feature branch: feat/dashboard, based on development at 043516afff5cfd3f52c6a0629a482663f54aff2c.
+Phase: S1 PR review; focused architecture review and simplified invalid-response correction verified, with candidate acceptance pending.
+Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
 The candidate explicitly authorized creating design files in Figma folder 686015682.
-This authorization covers the Clarity design work; application publication remains unauthorized.
+Design authorization covers the Clarity work; separate S1 branch and PR publication authorization is recorded below.
 The unused prototype Treehouse lease was returned to its pool after cleanliness verification and explicit user approval; no active prototype lease remains.
 Prototypes are temporary local HTML files, outside the repository, served at http://127.0.0.1:4174/ while the preview process runs.
 Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
@@ -20,13 +33,14 @@ Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
 | Setup | Durable records, skill, branches, Node 22 baseline | Complete; verification below |
 | Design | Local HTML directions, selected core flow, mobile/desktop, states and shared components | Complete Figma designs accepted; static verification limits remain documented |
 | Figma | Approved core designs using components and supplied tokens | Final hero action and refined review C applied; unused alternatives removed |
-| S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | Approved; begin data/state/tests checkpoint |
+| S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | PR #1 open; focused React/composition review and idle skeleton investigation before acceptance |
 | S2 | API search, responsive dashboard, persistent theme/segment | Pending; responsive/accessibility work also belongs within S1 |
 | S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Pending |
 | S4 | Transfer mutation, failures, success and dashboard refresh | Pending |
 | Release | Full requirement audit, production checks, submission README, deployment | Pending; publication requires approval |
 
 Each slice uses feature-dev for technical planning and approval before implementation.
+Starting with S2, each plan includes React best-practices and composition assessment; see DECISIONS and the updated skill.
 Acceptance requires candidate understanding; verification alone does not mark a slice accepted.
 
 ## Coverage and evidence index
@@ -37,16 +51,16 @@ Evidence must identify the checked revision; changes invalidate affected checks.
 
 | Requirement/source | Owner | Planned evidence | Status |
 | --- | --- | --- | --- |
-| D1-D5 | S1 | Behavioural tests plus loading/layout browser checks | Pending |
+| D1-D5 | S1 | Behavioural tests plus loading/layout browser checks | 16 tests pass; header controls and eight-width loading/layout browser checks pass on final S1 source |
 | D6 | S2 | API search, debounce, count, older match, clear/no-match tests | Pending |
-| D7; E4 dashboard retry | S1 | Failure then Retry integration test | Pending |
-| D8; brief §5 | S1-S3 | 360/390 px, breakpoint/desktop, overflow and tap-target checks | Pending |
+| D7; E4 dashboard retry | S1 | Failure then Retry integration test | Integration and real-browser keyboard Retry recovery passed |
+| D8; brief §5 | S1-S3 | 360/390 px, breakpoint/desktop, overflow and tap-target checks | Dashboard checks pass at eight widths; transfer checks remain S3 |
 | T1; T8 | S3-S4 | Keyboard, focus restoration, labels/errors/live announcements | Pending |
 | T2-T4; brief §3.3 | S3 | Form boundaries, new/saved recipient, step preservation and focus tests | Pending |
 | T5-T7; E4 transfer cases | S4 | Over-balance/no request, success refresh, failure, duplicate-submit tests | Pending |
-| TH1-TH3; tokens | S2 | Four theme combinations, persistence/pre-paint, contrast/focus checks | Pending |
+| TH1-TH3; tokens | S2 | Four theme combinations, persistence/pre-paint, contrast/focus checks | S1 four-mode switching/rendering and focus checked; persistence/pre-paint and full contrast audit remain S2 |
 | E1-E3 | All slices | Typecheck, boundary review, state/schema ownership review | Pending implementation |
-| E5 | Every slice, release | npm run check, build, browser console | Starter baseline passed; repeat for implemented slices |
+| E5 | Every slice, release | npm run check, build, browser console | Final S1 check/build and focused Chrome console checks pass at 7ae324d |
 | E6; DEPLOYMENT.md | Release | HTTPS deployment, worker, transfer/refresh without local server | Pending |
 | brief §4; wireframes §1-7 | Design, all slices | Exact copy/formatters, required screens and states review | Pending |
 | API contract requests/errors/hooks | S1-S4 | Typed requests, server field errors, no POST retries, refetch-failure separation | Pending |
@@ -130,10 +144,10 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Implement the approved S1 plan below, pausing for candidate review after each checkpoint.
-Complete designs are accepted, including the solid hero with brand/on-brand action and refined review C.
-Runtime behaviour, accessibility verification and candidate acceptance of implementation remain pending.
-After plan approval, preserve recovery records on the verified integration base and follow feature-dev's leased-worktree workflow.
+Review the verified simplified invalid-response correction and its reload limitation with the candidate; mock-worker lifecycle repair is excluded at the candidate's simplicity preference.
+The controlled worker-termination reproduction explains a matching failure path; the original idle-tab trigger remains unobserved.
+PR: https://github.com/timcheng112/meridian-banking/pull/1.
+Candidate understanding and acceptance remain pending; no merge, deployment, cleanup or S2-S4 implementation is authorized.
 
 ## Continuation audit - 7 November 2026
 
@@ -329,3 +343,300 @@ Exclude API search, persistent preferences, payees, transfer forms/mutations, op
 Before acceptance, walk through request-to-cache-to-render, derived balance and Retry, and have the candidate explain an interview-sized modification.
 Delivery uses one slice branch and eventual MR, with candidate review pauses after data/state/tests, dashboard content, and responsive presentation/verification.
 The candidate authorized proceeding with S1 locally; MR publication, merge and cleanup remain unauthorized.
+
+## S1 checkpoint 1: data and state
+
+Review status: candidate accepted checkpoint 1 after reviewing the query structure, discriminated union, concurrency/retry behaviour and test purposes; full S1 acceptance remains pending.
+Added three files under src/features/dashboard: queries.ts, useDashboard.ts and useDashboard.test.tsx.
+Typed query options use the existing API helper, distinct customer/accounts/transactions keys, limit=8 and explicit retry=false.
+The hook starts the three reads together, exposes loading/error/ready, and retains cached data with a refresh-error flag after a failed background refresh.
+Retry starts all three reads together and joins existing in-flight requests instead of cancelling/restarting them.
+Server data remains in Query; the hook only derives the combined view state.
+Six new tests cover parallel starts with held responses, waiting for the slowest resource, empty arrays, supplied data/order/limit, each endpoint failing without automatic retry, retrying all resources, and cached-data recovery.
+Selective TDD: all six failed against the loading-only stub for missing behaviour, then passed against the implemented query layer.
+Verification applies to the source committed with this checkpoint: npm run check passed lint, strict typechecking and all nine tests; npm run build and git diff --check passed.
+Dependencies installed from the offline cache with no package or lockfile changes.
+Local diff review found no changes to supplied mocks, seed data, formatters or runtime configuration.
+The build still renders the starter; dashboard UI, skeleton geometry, visible error/Retry interaction, E4's full UI test and browser verification remain pending.
+No browser evidence is claimed for this data-only checkpoint.
+Next checkpoint connects the data layer to dashboard content and adds user-facing integration tests; approve its concrete HTML technical plan first.
+
+## Workflow correction after checkpoint 1
+
+The candidate requires an HTML technical-plan artifact with proposed files and implementation approach before approving each implementation checkpoint.
+The candidate requires Astra-led planning and workflow coordination, with explicitly selected lower-cost Sol workers implementing approved plans and tests.
+Updated the feature-dev skill on feat/dashboard to make these gates and model roles explicit; the integration checkout's skill remains unchanged until the correction is integrated.
+A read-only planning worker contributed a checkpoint 2 proposal; it inherited the session model before the explicit model-role correction and made no file changes.
+Checkpoint 2 has no application or test edits; prior source verification at 0b02dc1 remains applicable.
+Application implementation stays paused pending the new plan review.
+Checkpoint 2 proposal v1: /private/tmp/meridian-s1-checkpoint-2-plan.html, based on source revision 0b02dc1.
+It proposes six application/test file changes, component/data flow, missing-state copy, behavioural tests with purposes, and Astra/Sol ownership; it remains unapproved.
+An explicitly selected gpt-6-astra reviewer checked plan-approval gates, Sol dispatch, model-unavailability fallback and scope-change handling; its wording findings were addressed.
+Skill frontmatter and explicit-only metadata passed Ruby YAML checks; the bundled Python validator remains unavailable because PyYAML is not installed.
+
+## S1 checkpoint 2 approval
+
+The candidate explicitly approved /private/tmp/meridian-s1-checkpoint-2-plan.html v1 after discussing Dashboard versus DashboardContent and the purpose of App.test.tsx.
+Approved six-file scope: modify src/App.tsx, src/App.test.tsx and src/index.css; create src/features/dashboard/Dashboard.tsx, DashboardContent.tsx and dashboard.css.
+Dashboard handles query-state selection, skeletons, initial error/Retry and refresh warnings; DashboardContent receives typed data and derives/render financial content.
+Approved empty copy: No accounts to display.; No recent transactions.; empty deposit totals are zero with a derived account count and singular wording for one account.
+Approved refresh warning: We couldn't refresh your dashboard. Showing previously loaded data.
+Keep existing query/cache/type/formatter ownership and the planned six integration-test scenarios; no new dependencies or mock changes.
+Final header controls, responsive geometry, four-mode visual matching and browser layout-stability evidence remain checkpoint 3.
+Dispatch an explicitly selected gpt-6.1-sol worker for implementation and tests; lead retains records, integration review, walkthrough and acceptance.
+Checkpoint 2 implementation acceptance, MR publication, merge and cleanup remain pending.
+
+## S1 checkpoint 2: dashboard content review
+
+Implemented by an explicitly selected gpt-6.1-sol worker against approved HTML plan v1; independently reviewed by gpt-6-astra and inspected by the lead.
+Six application/test files changed exactly as planned, with no query-layer, API-type, formatter, mock, seed, dependency or runtime-configuration changes.
+App now renders Dashboard; Dashboard chooses loading/error/ready and refresh-warning states; DashboardContent derives and renders financial content from typed props.
+Content includes deposit-only total/count, account masks and credit Amount due, signed and dated transactions with Pending, remaining daily limit, and approved empty states.
+Search and New transfer remain disabled; the temporary header is Meridian text only.
+The six UI tests cover loading, default content, changed fixtures including singular counts and date formatting, initial Retry, refresh recovery with new values, and empty lists.
+Initial Retry replaces the error view with loading; refresh Retry stays visible but disabled while fetching.
+Selective TDD confirmed six missing-behaviour failures against the starter, then passing UI tests after implementation.
+Verification applies to the application source committed with this checkpoint: npm run check passed lint, strict typechecking and all 14 tests; npm run build and git diff --check passed with Volta Node 22.23.4.
+Independent review found no blockers; its initial-Retry test clarity suggestion was addressed and final checks passed afterward.
+In-app browser access returned unavailable in this session, so no browser, focus or console evidence is claimed.
+Checkpoint 3 must complete the approved header/navigation/avatar/preferences, icon/merchant-mark presentation, fixed mobile transfer action, 640/1024 breakpoints, 300px desktop rail, theme checks and skeleton layout-stability verification.
+The baseline CSS provides readable token-based wrapping content; it does not establish final Figma fidelity or D8 acceptance.
+Review remains pending; no MR publication, merge or cleanup has been authorized.
+
+## Pending candidate review feedback and handoff
+
+The candidate requested a handoff to address these questions before further implementation.
+Explain why DashboardContent identifies deposits with accounts.filter((account) => account.type !== 'credit'), referring to the supplied account types and API contract.
+Explain the current native-HTML/component-library decision and discuss whether a library is warranted; do not silently add one.
+Discuss separate files for AccountCard, TransactionRow and DashboardSkeleton for organization, even without reuse; the candidate suggested DashboardContent/DashboardContent.tsx with DashboardContent/components/AccountCard.tsx, but invited alternative structures.
+Clarify that AccountCard and TransactionRow are module-level functions in DashboardContent.tsx, not functions defined inside its render body.
+Present every added/modified file in future review handoffs, with purpose and suggested review order, rather than only selected entry points.
+The candidate asked why types.ts was omitted; src/api/types.ts is supplied starter code, last changed at bb9a6fe, and was not modified in either checkpoint.
+No structural refactor or new component library is approved by these questions; discuss the options, then revise the HTML technical plan for any material change and obtain approval before Sol implementation.
+Temporary continuation handoff: /private/tmp/meridian-checkpoint-2-review-handoff.md.
+
+## Component organization follow-up
+
+Recovered feat/dashboard at a9e78d3; application source still matches the recorded checkpoint verification, and only STATE had uncommitted handoff notes.
+Treehouse status was blocked while trying to initialize its home-directory state; lease status remains unverified, while the Git worktree and branch are confirmed.
+The candidate accepted a feature-local components folder for AccountCard, TransactionRow and DashboardSkeleton and will review checkpoint 2 after the changes.
+Concrete extraction plan v1 is /private/tmp/meridian-checkpoint-2-component-plan.html; explicit artifact approval remains pending before implementation dispatch.
+The candidate recalled the accepted Figma Components page; reusable project-local React components and native HTML are compatible, while adding a third-party package remains a separate decision.
+Confirmed that D3 explicitly specifies checking plus savings and that src/api/types.ts was supplied at bb9a6fe and remains unchanged.
+No application changes or new test runs occurred during this discussion.
+The candidate subsequently requested a component-library refactor aligned with Figma and asked whether the Figma inventory needs expanding before implementation.
+Opened the extraction plan in cmux and annotated it as preliminary pending the broader library scope.
+Read-only live metadata inspection covered Components 2:126, dashboard 5:2, mobile review 6:344 and recipient validation 7:148; this establishes an initial structural inventory, not exhaustive visual coverage.
+Existing designs cover buttons, fields, choices, feedback, status, icons, navigation, stepper, account cards and merchant marks; repeated screen-level transaction, dialog and summary structures warrant coverage review.
+Next reconcile library coverage and variants, then present an exact revised HTML implementation plan before dispatch; the three extracted dashboard components are not the final library inventory.
+The candidate accepted the full-width header background with centered 1200px inner content aligned with the dashboard; recorded in DECISIONS and annotated in the local plan for checkpoint 3.
+The current HTML includes the initial component-library inventory and ownership proposal, but its exact implementation-file table still covers only the three-component extraction and requires expansion before approval of the broader refactor.
+
+## Component-library plan v2
+
+The candidate requested expansion of the plan and confirmed that the brief's component list is advisory.
+Replaced the preliminary artifact at /private/tmp/meridian-checkpoint-2-component-plan.html with v2, based on unchanged application revision a9e78d3.
+Proposed current scope: shared Button, SearchInput and Skeleton with owned CSS, plus seven dashboard compositions, with fourteen application/style files and two record updates listed explicitly.
+The plan maps every suggested component to current extraction or later header/search/transfer work; short empty messages and the Pending label remain local.
+Preserve current behaviour and presentation; use existing integration tests plus before/after browser comparison because shared CSS ownership moves.
+Header alignment remains accepted for checkpoint 3; broader library implementation awaits explicit v2 approval.
+HTML nesting, unique section IDs, navigation targets and proposal status checks passed; no application edits or application-test reruns occurred.
+Independent gpt-6-astra plan review found no blockers; incorporated clarifications for the proposed reuse-rule exception, required search accessible label and preserving Retry outside the alert paragraph.
+For later S3 planning, the candidate requested considering the Vercel composition-patterns skill for the multi-step transfer modal.
+The candidate explicitly approved component-library HTML plan v2 and authorized proceeding after leaving Plan Mode.
+Implementation is authorized for its fourteen application/style files with existing tests; lead owns records and review, and Sol owns implementation and checks.
+Evaluate a stable dialog shell with explicit step components and shared form ownership; exact compound-component/context interfaces remain a future planning decision.
+
+## Component-library v2 implementation review
+
+Implemented the approved v2 extraction on feat/dashboard by explicitly selected gpt-6.1-sol, with independent read-only gpt-6-astra review and lead diff inspection; no blockers found.
+Added src/components/ui/Button.tsx, SearchInput.tsx, Skeleton.tsx and ui.css.
+Added src/features/dashboard/components/BalanceHero.tsx, AccountCard.tsx, TransactionList.tsx, TransactionRow.tsx, DailyLimitCard.tsx, DashboardSkeleton.tsx and DashboardFeedback.tsx.
+Modified Dashboard.tsx, DashboardContent.tsx and dashboard.css within src/features/dashboard; existing tests, starter API types, formatters, mocks, seeds, dependencies and runtime configuration remain unchanged.
+Button requires an explicit native type; SearchInput requires aria-label and fixes type=search; both forward native props and React 19 refs.
+DashboardContent retains financial derivation, Dashboard retains query-state selection, and the extracted compositions preserve copy, semantics and disabled controls.
+Verification applies to the application source committed with this checkpoint: npm run check passed lint, strict typechecking and all 14 tests; npm run build and git diff --check passed using installed Node 22.23.4.
+Lead comparison confirmed all seven moved CSS declaration bodies match their originals and all remaining dashboard rules are unchanged; independent review found no conflicting cascade rules.
+Fresh browser bootstrap returned Browser is not available: iab, so before/after rendered comparisons, keyboard checks and console verification remain outstanding.
+Static CSS checks and passing integration tests do not establish rendered equivalence or final responsive acceptance.
+Complete local review artifact: /private/tmp/meridian-component-library-review.html, with every added/modified file, purpose, source and tracked diff.
+Candidate acceptance of checkpoint 2 and this refactor remains pending; review the shared UI, composition and financial components before proceeding to a separate checkpoint 3 plan.
+The app header remains temporary and the daily-limit card remains below content until checkpoint 3 implements the approved header and desktop right rail.
+No external writes, merge, deployment or worktree cleanup occurred.
+
+
+## S1 completion and MR preparation
+
+All three S1 checkpoints are implemented under the candidate's MR-only review instruction; this is not final candidate acceptance.
+The final implementation was built by gpt-6.1-sol and independently reviewed by gpt-6-astra, with no blocking findings.
+The full-width header uses centered content aligned with the dashboard; desktop navigation is selected/disabled as required, with theme, segment and avatar controls.
+Theme and segment overrides stay in React memory; the API customer segment provides the default and explicit choices survive refetches.
+The 640px layout retains stacked compact accounts with the segment switch in the header; 1024px enables desktop navigation, three account columns and a 300px right rail.
+Below 1024px, the disabled transfer action is fixed above safe-area padding, with enough page clearance to reach the daily-limit content.
+Shared button states, actual downloaded Figma grid/theme/plus SVGs, merchant initials and token-based four-mode rendering are implemented.
+Search and transfer remain visibly disabled S1 boundaries; persistence/pre-paint initialization, API search and transfer behaviour remain S2-S4.
+
+Final verification applies to the application source committed with this checkpoint.
+Using installed Node 22.23.4, npm run check passed lint, strict typechecking and all 16 tests; npm run build and git diff --check passed.
+The two new tests cover accessible navigation/preferences, no storage writes, server segment defaults and preserving an explicit override through refresh.
+In-app browser remained unavailable; temporary Playwright outside the repository and installed Chrome provided actual browser verification without changing project dependencies.
+Eight viewport widths passed overflow, target-size and responsive-rail checks: 360, 390, 639, 640, 1023, 1024, 1280 and 1440px.
+For supplied three-account/eight-transaction fixtures, measured hero, accounts, transactions and daily-limit section y-position/height differences were zero between held loading and ready states at all eight widths.
+These measurements describe the supplied fixtures and tested widths, not arbitrary future customer content or a universal CLS guarantee.
+Four theme/segment combinations were exercised at 390 and 1280px; representative desktop, tablet, mobile and theme screenshots were visually reviewed.
+A further 53 browser assertions passed for header alignment, footer clearance, keyboard switching, visible focus, unbroken account amounts, reduced-motion styles, local SVG slots, no persistence and keyboard Retry refetching all three resources.
+Final browser runs recorded no console/page errors or failed checked responses; an empty data favicon in index.html removes the starter's incidental favicon request.
+Full cross-browser, assistive-technology and comprehensive contrast audits remain outside this focused Chrome verification; final release coverage remains pending.
+
+Local evidence and runnable QA scripts: /private/tmp/meridian-browser-qa/; results.json and interactions.json contain measurements and assertions.
+Internal implementation brief: /private/tmp/meridian-s1-checkpoint-3-plan.md, refined against live desktop/mobile/tablet Figma context during QA.
+Local MR description: /private/tmp/meridian-s1-mr.md; complete file inventory, source review and screenshots: /private/tmp/meridian-s1-mr-review.html.
+Target MR is feat/dashboard into development at base 043516a; local refs should be verified before publication, with no force pushes.
+The local preview is http://127.0.0.1:4175/ while the task-owned Vite process runs.
+Next action: obtain explicit authorization to publish the needed branches and open the MR, then conduct candidate understanding/acceptance there.
+No push, PR creation, external evidence upload, merge, deployment or worktree cleanup occurred.
+
+## Theme-toggle feedback correction
+
+Confirmed D2 and wireframe desktop header explicitly place the segment switch, theme control and AC avatar in the app bar; mobile moves the segment switch below the greeting.
+AC refers to the supplied customer Ava Chen.
+Corrected the unchanged theme icon to show moon/action-to-dark in light mode and sun/action-to-light in dark mode, with matching accessible names and tooltips.
+Updated ThemeToggle.tsx, Icon.tsx, the existing App integration test and added sun.svg; no Figma edits or external publication occurred.
+Lint, strict typechecking, all 16 tests, production build and diff check passed on the corrected source.
+Focused Chrome verification passed distinct 20px icons and Enter/Space roundtrip switching in both segments with no console errors; rendered header screenshots were inspected.
+Evidence: /private/tmp/meridian-browser-qa/theme-toggle-results.json and toggle-*.png.
+Earlier layout evidence remains applicable to unchanged geometry; earlier dark-header screenshots show the superseded moon icon and are superseded by these focused captures.
+Publication authorization remains pending; the candidate has supplied feedback rather than authorized a push or PR.
+
+## Publication authorization and handoff
+
+The candidate subsequently said "ok approved" and requested a handoff to continue the push in the next session.
+This approves the previously proposed publication of development and feat/dashboard and opening the PR from feat/dashboard into development.
+Do not ask for that same publication authorization again; inspect current remote refs and use normal non-force pushes.
+No merge, deployment, external screenshot upload or worktree cleanup is authorized.
+Application head at approval was 7ae324d; subsequent handoff-record changes are documentation-only and do not invalidate application verification.
+Next session should use /private/tmp/meridian-s1-publish-handoff.md and the prepared MR artifacts referenced above, reconcile current refs and publish the approved PR.
+No branch push or PR creation was performed during handoff preparation.
+
+## S1 publication completed
+
+PR: https://github.com/timcheng112/meridian-banking/pull/1, feat/dashboard into development.
+Committed the pending publication authorization and recovery reconciliation as e5ea800.
+Normal atomic push created development at 043516afff5cfd3f52c6a0629a482663f54aff2c and feat/dashboard at e5ea800b8f5a48d685c06f6162825503d36d75d4; remote refs were verified after pushing.
+Main remained bb9a6fe78ee2445d05ae4224d8b5d0f437e1b1dd.
+The GitHub connector denied PR creation with integration permission error 403; authenticated GitHub CLI created PR #1 using the prepared description.
+This publication receipt is documentation-only; application revision remains 7ae324d and its recorded verification still applies.
+No merge, deployment, screenshot upload, cleanup or S2-S4 work occurred.
+
+## S1 MR review revisions
+
+The candidate authorized review fixes, evidence uploads and replies prefixed Codex Agent: on PR #1.
+Application revision 9945d4a makes header brand/navigation and segment options configurable, derives avatar identity from customer data, extracts useAppPreferences and destructures AccountCard and Dashboard values.
+The mobilePreferences ReactNode remains an explicit composition slot; review replies explain its placement and ownership.
+The empty favicon remains intentional and is explained in the review.
+Lint, strict typecheck, all 16 tests, build and diff check passed; the test suite additionally verifies a different customer's avatar identity.
+Refreshed Chrome verification passed eight widths, 53 interaction assertions and theme keyboard/icon checks.
+Curated screenshots are now direct attachments on PR #1; the repository evidence directory has been removed from the current branch.
+The in-app browser remained unavailable; the existing Chrome fallback was used.
+Candidate understanding/acceptance and merge remain pending; no S2-S4, deployment or worktree cleanup is authorized.
+
+## Direct evidence attachments
+
+The candidate requested automated direct attachments instead of committed evidence.
+Used checksum-verified GitHub CLI 2.103.3 from a temporary directory; the installed CLI remains unchanged.
+Eight screenshots and the verification summary are published at https://github.com/timcheng112/meridian-banking/pull/1#issuecomment-6708466783.
+The PR description uses GitHub user-attachment URLs.
+Removed docs/evidence/s1 from the current branch using a normal follow-up commit; its earlier commit remains in history, with no force push or history rewrite.
+Application files remain at verified revision 9945d4a; raw browser results and original images remain local.
+
+## Header composition review refinement
+
+The candidate approved replacing Header's ten props with brand, navigation, grouped customer identity and a controls slot.
+App composes HeaderControls into the slot; HeaderControls renders the segment and theme controls without adding a DOM wrapper or owning state.
+The component signatures and App composition now use multiline formatting.
+Lint, strict typecheck, all 16 tests, production build and diff check passed on this refactor.
+The production-build Chrome rerun passed all 53 interaction assertions and both segments' keyboard/theme-icon checks with no recorded errors.
+Existing direct MR screenshots remain identified with their original application revision; this follow-up adds no committed evidence files.
+Candidate acceptance and merge remain pending.
+
+## Idle skeleton report and review handoff
+
+The candidate reports that http://localhost:5173 loaded successfully, then remained on dashboard skeletons after switching away to another tab and returning following an unspecified idle duration.
+A manual page refresh restores the dashboard; the exact idle duration and root cause remain unknown.
+Source inspection found that useDashboard preserves content while all three cached responses exist, and production code contains no query-cache clearing call.
+The API helper has no request timeout, so a never-settling initial request can wait indefinitely; this is a resilience finding, not an established explanation of the reported transition.
+Forty-second isolated headless and visible Chrome attempts did not reproduce the issue, but both tabs remained document.visibilityState=visible, so these were not faithful background-tab tests.
+An additional controlled visibility-state override and visibilitychange-event test waited 40 seconds, triggered successful refetches of all three API resources and retained the dashboard with unchanged performance.timeOrigin.
+That synthetic event test does not reproduce the candidate's actual browser session or rule out the reported bug.
+Temporary diagnostic scripts: /private/tmp/meridian-browser-qa/idle-review.mjs, idle-visible-review.mjs and idle-event-review.mjs.
+No fix, new application test or application change was made for this report.
+Next review should assess useAppPreferences/customer presentation ownership and mobile preference composition before introducing hooks, context or memoization.
+The existing typed parallel queries, derived balances and native UI primitives have no demonstrated need for replacement.
+The feature-dev planning update and recovery records are documentation-only; verification at application revision 511f8d2 remains applicable with the newly reported idle limitation.
+
+## Focused S1 review findings - 7 November 2026
+
+Reviewed application revision 511f8d2 at local HEAD 5f4d32d using the React best-practices and composition-patterns skills, current PR discussion, source, tests and installed dependency implementations.
+Fresh npm run check passed lint, strict typechecking and all 16 tests on Node 22.23.4.
+No application code, tests, mocks, generated files or dependencies changed; only this recovery record changed in the repository.
+
+Retain the current parallel query/cache ownership, derived financial values, Dashboard state boundary, Header controls slot and small native UI primitives.
+The mobilePreferences ReactNode forwards composed UI through two levels without duplicating preference state; a provider or compound-component API is unnecessary for current S1 scope.
+Calling useHeader from App would retain App's render subscription; separate stateful hook instances would split desktop/mobile preferences rather than synchronize them.
+Preference updates currently render App and its dashboard subtree, but no measured performance problem justifies memoization or another state layer.
+Customer identity preparation could move into a header container if responsibilities grow; the present two expressions do not warrant that extraction alone.
+
+Confirmed high-priority failure path: apiFetch converts invalid JSON to null even on HTTP 200, and useDashboard classifies missing data without a query error as loading.
+An isolated Chrome session loaded successfully, then browser-level ServiceWorker.stopAllWorkers followed by query invalidation produced HTTP 200 text/html responses for all three API requests.
+All three queries ended with status success, fetchStatus idle and null data; the dashboard showed skeletons without Retry and performance.timeOrigin stayed unchanged.
+A reload restored valid JSON and dashboard content.
+Explicit worker.stop followed by invalidation reproduced the same outcome, and an injected null accounts response alone also replaced ready content with skeletons.
+The supplied worker stores active client IDs in memory and bypasses mocking for unregistered clients; losing this state on worker termination is consistent with the observed HTML fallback.
+These controlled interventions establish a concrete failure mechanism, not proof that natural worker termination caused the candidate's original idle session.
+The API helper and bootstrap are unchanged starter code; the S1 state derivation exposes this inherited boundary weakness.
+
+A held background accounts refresh preserved loaded content and cached data; a 40-second CDP freeze/resume preserved the greeting, query data and document time origin.
+The freeze test is a controlled lifecycle test, not a faithful natural background-tab reproduction.
+The lack of a request deadline remains a separate resilience gap: an unresolved initial request can keep skeletons indefinitely, and an unresolved sibling request can keep Retry disabled after another request fails.
+Do not present that timeout gap as the cause of the reproduced null-data failure.
+
+Browser bootstrap again reported iab unavailable, so tests used the existing temporary Playwright and isolated installed Chrome fallback against localhost:5173 serving the active feature worktree.
+Diagnostic instrumentation exposed the QueryClient only in intercepted browser module responses and wrapped fetch only in the isolated context; repository source and the user's existing tab were untouched.
+Script: /private/tmp/meridian-browser-qa/focused-s1-review.mjs.
+Preferred evidence: /private/tmp/meridian-browser-qa/focused-s1-review-corrected-results.json, including successful assertions for held refresh, null-response skeletons, stopped-worker skeletons and reload recovery.
+The initial results file preserves the freeze sample but contains an incorrect loaded-selector metric; use its greeting, skeleton and query observations, not its loaded field.
+The corrected run fixes that selector, skips repeating the freeze test and adds browser-level worker termination.
+
+Recommended next plan: reject invalid successful API bodies before cache insertion, verify initial error/Retry and cached-content refresh warnings, and design bounded mock-runtime recovery outside supplied mocks/generated files.
+Assess a bounded GET deadline separately, preserving cancellation and avoiding automatic transfer retries.
+Keep architecture unchanged while addressing these failure boundaries; the corrective implementation plan remains unapproved.
+No commit, publication, merge, deployment, worktree cleanup or S2-S4 work occurred.
+
+## S1 simplified response correction verified
+
+The candidate prioritized simplicity after mock-worker recovery grew complex; the final correction changes only src/api/client.ts at runtime.
+Successful malformed JSON/null responses now reject before cache insertion; cancellation and valid API error details are preserved.
+Focused tests were added in src/api/client.test.ts, src/features/dashboard/useDashboard.test.tsx and src/App.test.tsx.
+All attempted runtime recovery modules were removed; src/main.tsx and src/features/dashboard/useDashboard.ts match HEAD 5f4d32d exactly.
+useAppPreferences and the existing composition slots remain unchanged.
+Concrete internal plan v3: /private/tmp/meridian-s1-recovery-plan.html.
+No complete response schemas, request deadlines, worker lifecycle changes or automatic request replay were added.
+
+Verification applies to the application source accompanying this checkpoint.
+Sol ran npm run check with 35 passing tests, strict typechecking and lint, plus npm run build and git diff --check on Node 22.23.4.
+Independent gpt-6-astra review found no blockers and separately reran all 35 tests successfully.
+Isolated Chrome verified initial HTML errors and keyboard Retry after a valid response on both the dev server and production preview.
+Browser-level worker termination followed by refetch retained all three cached responses, balances and existing preferences, showed the refresh warning and kept Retry usable; explicit page refresh restored interception.
+The focused browser run recorded no page errors.
+Script and results: /private/tmp/meridian-browser-qa/s1-simple-response-verification.mjs and s1-simple-response-verification-results.json.
+The in-app browser remained unavailable; the existing standalone Chrome fallback was used.
+Treehouse status could not initialize its home-directory state in the sandbox; lease metadata remains unverified, while Git confirms the existing feature worktree.
+
+Limitation: Retry repeats reads but does not repair lost mock interception; manual page refresh remains necessary in that case.
+The original natural idle trigger remains unobserved.
+Candidate understanding and S1 acceptance remain pending; no publication, merge, deployment or worktree cleanup occurred during this correction.
+The candidate subsequently explicitly authorized committing and pushing these changes for review in existing PR #1.
+Publication includes the previously local planning-skill commit 5f4d32d and the simplified response correction; merge, deployment and cleanup remain unauthorized.
+Published the simplified correction as b1d0cb4 with a normal push of feat/dashboard to the existing PR.
+Review summary and file inventory: https://github.com/timcheng112/meridian-banking/pull/1#issuecomment-6709369882.
+The publication receipt is documentation-only and does not invalidate the recorded checks on b1d0cb4 application source.

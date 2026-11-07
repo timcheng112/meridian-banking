@@ -24,20 +24,49 @@ export class ApiError extends Error {
   }
 }
 
+export class InvalidResponseError extends Error {
+  constructor() {
+    super('The API returned an invalid JSON response')
+    this.name = 'InvalidResponseError'
+  }
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value)
+}
+
+function errorBody(body: unknown): ApiErrorBody | null {
+  if (!isRecord(body) || !isRecord(body.error)) return null
+  const { code, message, fields, meta } = body.error
+  if (typeof code !== 'string' || typeof message !== 'string') return null
+  return { error: {
+    code,
+    message,
+    ...(isRecord(fields) && Object.values(fields).every((value) => typeof value === 'string')
+      ? { fields: fields as Record<string, string> } : {}),
+    ...(isRecord(meta) ? { meta } : {}),
+  } }
+}
+
 export async function apiFetch<T>(
   path: string,
   init?: RequestInit,
 ): Promise<T> {
   const url = `${BASE_URL}${path.replace(/^\//, '')}`
   const response = await fetch(url, init)
-  const body = (await response.json().catch(() => null)) as
-    | T
-    | ApiErrorBody
-    | null
-
-  if (!response.ok) {
-    throw new ApiError(response.status, body as ApiErrorBody | null)
+  let body: unknown
+  try {
+    body = await response.json()
+  } catch (error) {
+    // Cancellation and transport errors remain distinguishable from invalid JSON.
+    if (!(error instanceof SyntaxError)) throw error
+    if (response.ok) throw new InvalidResponseError()
+    body = null
   }
 
+  if (!response.ok) {
+    throw new ApiError(response.status, errorBody(body))
+  }
+  if (body === null) throw new InvalidResponseError()
   return body as T
 }
