@@ -1,22 +1,25 @@
 # Current state
 
-## Active continuation: focused S1 review and idle skeleton investigation
+## Active continuation: S2 MR open for review
 
-Application revision: b1d0cb4 on feat/dashboard; PR #1 remains open for candidate review.
-The candidate requested a handoff to review current S1 for React practices, composition opportunities and overengineering, and investigate the reported idle skeleton issue.
-Start with diagnosis and findings; the discussed useHeader/container/preferences-provider redesign has not been approved for implementation.
-Starting with S2, React best-practices and composition assessment is mandatory within each slice's planning phase; the feature-dev skill now records this requirement.
-S2-S4 implementation, merge, deployment and worktree cleanup remain outside this continuation.
+The candidate approved S1 and reported merging PR #1 on 8 November 2026.
+GitHub confirms the merge into development at 04956afd78cfb1a4251edccd140be74cba99637e.
+The fetched merge tree exactly matches reviewed feature head 22b1f22, including the b1d0cb4 response correction.
+The primary local development checkout was fast-forwarded to the merged revision; the completed feat/dashboard worktree remains intact.
+The candidate tested the S2 preview, confirmed expected behavior and accepted continuing to the requested fidelity review.
+The candidate approved the concrete S2 HTML plan and accepted the verified implementation after testing the preview.
+The candidate has spent about eight hours on the assignment and agreed to prioritize remaining required functionality over further worker-lifecycle investigation, optional features or architecture/design exploration.
+Retain the simple response correction and document the manual-refresh limitation.
 
 ## Snapshot and recovery
 
 Deadline: 10 November 2026, EOD, supplied by the candidate.
 The application renders dashboard content through the accepted query/state layer, with loading, initial error/Retry, refresh warnings and empty states.
-The header, in-memory preferences, responsive layout and shared UI presentation are implemented; final S1 browser evidence is recorded below.
+The header, persistent preferences, API search, responsive layout and shared UI presentation are implemented; S2 evidence is recorded below.
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
-Active scope: S1 implementation and verification complete; candidate review and understanding occur at the MR stage.
-Active feature branch: feat/dashboard, based on development at 043516afff5cfd3f52c6a0629a482663f54aff2c.
-Phase: S1 PR review; focused architecture review and simplified invalid-response correction verified, with candidate acceptance pending.
+Active scope: S1 accepted and merged; S2 implementation is authorized on feat/search-preferences.
+Integration branch: development at recovery commit d225ec5 above merged S1 revision 04956af; feat/dashboard remains at 22b1f22 pending separately authorized cleanup.
+Phase: S2 MR #2 is open into development; further fidelity work is paused for MR review.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -33,8 +36,9 @@ Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
 | Setup | Durable records, skill, branches, Node 22 baseline | Complete; verification below |
 | Design | Local HTML directions, selected core flow, mobile/desktop, states and shared components | Complete Figma designs accepted; static verification limits remain documented |
 | Figma | Approved core designs using components and supplied tokens | Final hero action and refined review C applied; unused alternatives removed |
-| S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | PR #1 open; focused React/composition review and idle skeleton investigation before acceptance |
-| S2 | API search, responsive dashboard, persistent theme/segment | Pending; responsive/accessibility work also belongs within S1 |
+| S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | Accepted and merged in PR #1 at 04956af |
+| S2 | API search and persistent theme/segment | MR #2 open; review extraction verified at f3a95f2, candidate re-review pending |
+| Fidelity | Bidirectional Figma/code reconciliation for implemented scope | Requested after S2; concrete correction plan before material edits |
 | S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Pending |
 | S4 | Transfer mutation, failures, success and dashboard refresh | Pending |
 | Release | Full requirement audit, production checks, submission README, deployment | Pending; publication requires approval |
@@ -52,13 +56,13 @@ Evidence must identify the checked revision; changes invalidate affected checks.
 | Requirement/source | Owner | Planned evidence | Status |
 | --- | --- | --- | --- |
 | D1-D5 | S1 | Behavioural tests plus loading/layout browser checks | 16 tests pass; header controls and eight-width loading/layout browser checks pass on final S1 source |
-| D6 | S2 | API search, debounce, count, older match, clear/no-match tests | Pending |
+| D6 | S2 | API search, debounce, count, older match, clear/no-match tests | Automated and focused production-browser checks pass at 6cfda96 |
 | D7; E4 dashboard retry | S1 | Failure then Retry integration test | Integration and real-browser keyboard Retry recovery passed |
 | D8; brief §5 | S1-S3 | 360/390 px, breakpoint/desktop, overflow and tap-target checks | Dashboard checks pass at eight widths; transfer checks remain S3 |
 | T1; T8 | S3-S4 | Keyboard, focus restoration, labels/errors/live announcements | Pending |
 | T2-T4; brief §3.3 | S3 | Form boundaries, new/saved recipient, step preservation and focus tests | Pending |
 | T5-T7; E4 transfer cases | S4 | Over-balance/no request, success refresh, failure, duplicate-submit tests | Pending |
-| TH1-TH3; tokens | S2 | Four theme combinations, persistence/pre-paint, contrast/focus checks | S1 four-mode switching/rendering and focus checked; persistence/pre-paint and full contrast audit remain S2 |
+| TH1-TH3; tokens | S2 | Four theme combinations, persistence/pre-paint, contrast/focus checks | S2 persistence/pre-paint and four-mode checks pass at 6cfda96; sampled text contrast passes, full composited/non-text audit remains release |
 | E1-E3 | All slices | Typecheck, boundary review, state/schema ownership review | Pending implementation |
 | E5 | Every slice, release | npm run check, build, browser console | Final S1 check/build and focused Chrome console checks pass at 7ae324d |
 | E6; DEPLOYMENT.md | Release | HTTPS deployment, worker, transfer/refresh without local server | Pending |
@@ -144,10 +148,11 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Review the verified simplified invalid-response correction and its reload limitation with the candidate; mock-worker lifecycle repair is excluded at the candidate's simplicity preference.
-The controlled worker-termination reproduction explains a matching failure path; the original idle-tab trigger remains unobserved.
-PR: https://github.com/timcheng112/meridian-banking/pull/1.
-Candidate understanding and acceptance remain pending; no merge, deployment, cleanup or S2-S4 implementation is authorized.
+Review S2 MR #2: https://github.com/timcheng112/meridian-banking/pull/2.
+Fidelity work is paused until the S2 MR review is handled; preserve the preferred S2 search presentation.
+Merge and cleanup still require authorization; do not reopen deferred mock-worker repair.
+Existing PR: https://github.com/timcheng112/meridian-banking/pull/1, merged.
+Completed worktree cleanup, new external publication and deployment remain separate authorization boundaries.
 
 ## Continuation audit - 7 November 2026
 
@@ -640,3 +645,105 @@ Publication includes the previously local planning-skill commit 5f4d32d and the 
 Published the simplified correction as b1d0cb4 with a normal push of feat/dashboard to the existing PR.
 Review summary and file inventory: https://github.com/timcheng112/meridian-banking/pull/1#issuecomment-6709369882.
 The publication receipt is documentation-only and does not invalidate the recorded checks on b1d0cb4 application source.
+
+## S1 merge and S2 handoff checkpoint - 8 November 2026
+
+The user explicitly approved and merged S1; GitHub and fetched integration-tree comparison confirm the result.
+Recorded source checks remain applicable because the merge tree matches the tested feature tree; application tests were not redundantly rerun for this documentation-only handoff.
+The primary development checkout now contains the merged implementation and these updated recovery records.
+The old feature worktree is clean and preserved; no Treehouse lease return, branch deletion, deployment or new external write occurred during handoff.
+Next-session focus and tooling pointers are in /private/tmp/meridian-s2-planning-handoff.md.
+
+## S2 plan v1 approved - 8 November 2026
+
+The candidate explicitly approved /private/tmp/meridian-s2-technical-plan.html, version 1, after reviewing search and persistent preference requirements.
+Approved scope: D6 API search with 300 ms debounce, limit=8, response total, immediate clear, skeleton rows and search-local failure/Retry; TH1-TH3 persistent theme/segment and synchronous pre-paint initialization.
+The plan includes the React/composition assessment and retains useAppPreferences, Header/mobilePreferences slots and coordinated initial dashboard reads.
+Approved implementation branch: feat/search-preferences, based on development d225ec57f6d73b3975bbf4680b88c37db0921bd3 including recovery records.
+A no-fetch Treehouse lease was acquired and the base verified; local lease metadata identifies meridian-s2.
+The existing S1 lease was verified as retained; no cleanup was performed.
+Next: Sol implements the approved file inventory and behavioral tests; Astra reviews changes and verification before candidate walkthrough.
+Implementation acceptance, publication, merge, deployment and cleanup remain pending separate authorization.
+
+## Requested follow-up: Figma fidelity after S2
+
+The candidate requested a dedicated bidirectional Figma/code fidelity round after S2 and before continuing the remaining feature slices.
+Compare the current application with the accepted Figma designs across responsive layouts, theme/segment combinations and implemented states.
+Add implemented UI or states missing from Figma to the existing design file, and implement approved design details missing from the application.
+The brief and supplied tokens remain authoritative; distinguish future S3-S4 transfer designs from omissions in the already implemented scope.
+Record mismatches and prepare the concrete correction plan for review before material changes under feature-dev.
+This follow-up does not interrupt or expand the current approved S2 implementation.
+
+## S2 implemented and verified - 8 November 2026
+
+Implementation revision: 6cfda96 on feat/search-preferences, above approval record d6c70bd and integration base d225ec5.
+Sol implemented only the approved nine application/test files, with no dependency changes or edits to supplied mocks/generated files.
+Search uses debounced term-specific Query reads, response totals, eight-row skeletons, clear/focus restoration and transaction-local error/Retry states.
+Preferences initialize synchronously from validated stored choices and persist explicit user selections, with safe storage failures and retained customer-default semantics.
+Astra review found no blocking correctness or plan-adherence findings; an initial Retry focus issue was fixed and covered with deferred-response tests before final verification.
+Node 22.23.4 npm run check passed lint, strict typecheck and 47 tests; npm run build and git diff --check passed.
+Production Chrome verified saved preferences and system dark before application modules loaded, older mixed-case search matches, result count, skeletons, keyboard Clear/Retry, no matches and search-local failure recovery.
+Responsive checks passed at 360, 390, 640, 1024 and 1280 px without horizontal overflow; search and Clear controls met 44 px targets.
+All four theme/segment combinations persisted across reload; 42 visible text contrast samples per combination had no failures.
+Contrast sampling used computed foreground and nearest opaque ancestor background; it does not establish full composited opacity, non-text contrast or assistive-technology behavior.
+Production QA recorded no page or console errors; the 360 px search and dark Premium desktop screenshots were visually inspected.
+The in-app browser remained unavailable; the existing isolated Chrome fallback was used.
+Local QA: /private/tmp/meridian-browser-qa/s2-verification.mjs and s2-results.json, with s2-*.png screenshots.
+Local review summary: /private/tmp/meridian-s2-review.md.
+The task-owned production preview is available on http://127.0.0.1:4177/ for candidate review while its process runs.
+The existing user development server and S1 worktree were preserved.
+Candidate understanding and acceptance, publication, merge, deployment and cleanup remain pending; no external submission occurred.
+Next after S2 acceptance: the requested bidirectional Figma/code fidelity round for implemented scope.
+
+## S2 candidate acceptance - 8 November 2026
+
+The candidate tested the production preview, confirmed it works as expected and requested continuing.
+S2 at implementation revision 6cfda96 is accepted locally; publication, merge and cleanup remain pending authorization.
+Next is the previously requested bidirectional Figma/code fidelity round for implemented S1-S2 scope.
+Begin with read-only comparison and a concrete correction plan; transfer functionality remains S3-S4.
+
+## Accepted: daily-limit scrolling
+
+The candidate asked whether the right-hand daily-limit card should remain visible while scrolling and confirmed keeping the current normal page flow.
+Do not add sticky positioning during the fidelity round; only the mobile New transfer action remains fixed as required by D8.
+
+## Fidelity audit proposal v1 - 8 November 2026
+
+Read-only live Figma audit session: 24d62488-f725-493e-81e5-692afb253f5f in existing file LVZHN7v88I6WOCMr80nXlu.
+Reviewed dashboard and Required states inventories, design contexts/screenshots for desktop/mobile/search, and measured app/design geometry at 360, 390, 640, 1024 and 1280 px.
+Most differences are accepted code refinements absent from Figma: centered header, stable row/account geometry, sun action icon, search count/action placement and missing dashboard/search states.
+One proposed code correction: entered SearchInput text uses --text while placeholder remains --text-muted with explicit opacity1.
+Concrete proposal: /private/tmp/meridian-fidelity-plan.html, version 1, with embedded comparison screenshots and exact Figma/code scope.
+Astra confirmed the narrow reconciliation boundary and retained normal-flow daily-limit behavior.
+Approval remains pending for this concrete correction plan; no Figma design or application changes occurred during audit.
+Proposed implementation branch fix/dashboard-fidelity depends on the accepted S2 head including these recovery records; verify its exact base after approval.
+S2 remains accepted locally with publication/merge pending; no external submission occurred.
+
+## S2 MR requested before fidelity - 8 November 2026
+
+The candidate clarified that S2 should be opened for MR review before starting fidelity corrections and requested continuing in that order.
+This authorizes publishing the accepted S2 branch and opening its MR into development; merge and cleanup remain separate.
+The candidate explicitly prefers the S2 application search presentation shown in their screenshot.
+Treat that result-count, Clear search and list composition as the preferred Figma synchronization target; fidelity plan v1 remains unapproved, including its proposed input-color adjustment.
+Pause further fidelity work until S2 MR review is handled.
+
+## S2 publication receipt - 8 November 2026
+
+Published feat/search-preferences at 427d5e9 and opened MR #2 into development: https://github.com/timcheng112/meridian-banking/pull/2.
+The connected GitHub integration returned 403 for PR creation; the authenticated GitHub CLI successfully created the MR using the prepared local description.
+Application source remains at verified 6cfda96; later commits contain records only.
+Fidelity corrections remain paused and plan v1 unapproved; preserve the candidate-preferred S2 search presentation.
+Merge, deployment and cleanup remain pending authorization.
+
+## S2 MR review correction - 8 November 2026
+
+Application revision f3a95f2 extracts displayed rows, status, error and empty-state copy into useTransactionSearch; TransactionList retains rendering and DOM focus ownership.
+This addresses review comment r4502821277 without changing query definitions or visible behavior.
+Independent Astra review found no findings; Node 22.23.4 lint, typecheck, all 47 tests, build and diff checks passed.
+Production Chrome verification and screenshots were refreshed against this revision, including five responsive widths, search states, keyboard Clear/Retry and four persisted preference combinations.
+No page or console errors were recorded; sampled contrast limits remain as documented above.
+At 360 and 390 px, the mobile transfer footer stayed at viewport bottom at top, middle and bottom scroll positions; the daily-limit content cleared it at page end.
+The earlier full-page screenshot was misleading; viewport captures show the actual fixed positioning, and no CSS correction was needed.
+Evidence remains outside Git in /private/tmp/meridian-browser-qa and is authorized for MR attachment.
+The candidate explicitly authorized committing, pushing, updating MR #2 and refreshing screenshot evidence, then requested another review.
+Next: candidate re-review of MR #2; merge and cleanup remain unauthorized, and fidelity remains paused.

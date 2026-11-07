@@ -1,8 +1,10 @@
+import { StrictMode } from 'react'
+import { readFileSync } from 'node:fs'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { act, cleanup, render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { delay, http, HttpResponse } from 'msw'
-import { afterEach, describe, expect, it, vi } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import type { Account, Customer, Transaction } from './api/types'
 import { formatMoney, formatShortDate } from './lib/format'
 import { server } from './test/setup'
@@ -12,9 +14,16 @@ const clients: QueryClient[] = []
 function renderApp() {
   const client = new QueryClient({ defaultOptions: { queries: { retry: false, staleTime: 30_000 } } })
   clients.push(client)
-  render(<QueryClientProvider client={client}><App /></QueryClientProvider>)
+  render(<StrictMode><QueryClientProvider client={client}><App /></QueryClientProvider></StrictMode>)
   return client
 }
+
+beforeEach(() => {
+  localStorage.clear()
+  document.documentElement.dataset.theme = 'light'
+  document.documentElement.dataset.segment = 'retail'
+  delete document.documentElement.dataset.segmentOverride
+})
 
 afterEach(() => {
   cleanup()
@@ -80,7 +89,7 @@ describe('dashboard', () => {
     expect(screen.getAllByText('Pending')).toHaveLength(1)
     expectMoney(screen.getByRole('region', { name: 'Daily transfer limit' }), 5000)
     for (const button of screen.getAllByRole('button', { name: 'New transfer' })) expect(button).toBeDisabled()
-    expect(screen.getByRole('searchbox', { name: 'Search transactions' })).toBeDisabled()
+    expect(screen.getByRole('searchbox', { name: 'Search transactions' })).toBeEnabled()
   })
 
   it('derives changed totals, singular deposit count, greeting and remaining limit', async () => {
@@ -155,7 +164,7 @@ describe('dashboard', () => {
 
 
 describe('header preferences', () => {
-  it('exposes navigation and synchronized in-memory theme and segment controls without persistence', async () => {
+  it('exposes navigation and synchronized theme and segment controls with explicit-choice persistence', async () => {
     const store = vi.spyOn(Storage.prototype, 'setItem')
     try {
       renderApp()
@@ -178,10 +187,12 @@ describe('header preferences', () => {
       await userEvent.click(screen.getAllByRole('button', { name: 'Retail' })[0])
       for (const button of screen.getAllByRole('button', { name: 'Retail', hidden: true })) expect(button).toHaveAttribute('aria-pressed', 'true')
       expect(document.documentElement).toHaveAttribute('data-segment', 'retail')
-      expect(store).not.toHaveBeenCalled()
+      expect(store).toHaveBeenCalledWith('meridian:theme:v1', 'dark')
+      expect(localStorage.getItem('meridian:theme:v1')).toBe('light')
+      expect(localStorage.getItem('meridian:segment:v1')).toBe('retail')
       cleanup()
-      expect(document.documentElement).not.toHaveAttribute('data-theme')
-      expect(document.documentElement).not.toHaveAttribute('data-segment')
+      expect(document.documentElement).toHaveAttribute('data-theme', 'light')
+      expect(document.documentElement).toHaveAttribute('data-segment', 'retail')
     } finally { store.mockRestore() }
   })
 
@@ -226,4 +237,38 @@ describe('invalid response Retry presentation', () => {
     await userEvent.click(screen.getByRole('button', { name: 'Retry' }))
     await waitFor(() => expect(screen.queryByRole('alert')).not.toBeInTheDocument())
   })
+})
+
+
+it('round-trips explicit choices through the actual bootstrap on remount', async () => {
+  renderApp()
+  await screen.findByRole('heading', { name: 'Good evening, Ava' })
+  await userEvent.click(screen.getByRole('button', { name: 'Switch to dark mode' }))
+  await userEvent.click(screen.getAllByRole('button', { name: 'Premium' })[0])
+  cleanup()
+  document.documentElement.dataset.theme = 'light'
+  document.documentElement.dataset.segment = 'retail'
+  const html = readFileSync('index.html', 'utf8')
+  const script = html.match(/<script id="preference-bootstrap">([\s\S]*?)<\/script>/)?.[1]
+  expect(script).toBeDefined()
+  new Function(script ?? '')()
+  renderApp()
+  expect(screen.getByRole('button', { name: 'Switch to light mode' })).toBeEnabled()
+  expect(document.documentElement).toHaveAttribute('data-segment', 'premium')
+  await screen.findByRole('heading', { name: 'Good evening, Ava' })
+  expect(document.documentElement).toHaveAttribute('data-segment', 'premium')
+})
+
+it('keeps an explicit segment selected before customer arrival and tolerates blocked writes', async () => {
+  server.use(http.get('*/api/customer', async () => {
+    await delay(100)
+    return HttpResponse.json({ customer: { ...customer, segment: 'premium' } })
+  }))
+  vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => { throw new Error('blocked') })
+  renderApp()
+  await userEvent.click(screen.getAllByRole('button', { name: 'Retail' })[0])
+  await userEvent.click(screen.getByRole('button', { name: 'Switch to dark mode' }))
+  await screen.findByRole('heading', { name: 'Good evening, Maya' })
+  expect(document.documentElement).toHaveAttribute('data-segment', 'retail')
+  expect(document.documentElement).toHaveAttribute('data-theme', 'dark')
 })

@@ -296,3 +296,42 @@ Public stop/start showed an MSW registration-update race; the alternative protoc
 A stopped mock worker still requires a page refresh; Retry retries the GETs but does not repair mock interception.
 General GET deadlines, automatic request replay, new UI and preference changes remain excluded.
 Continue under the accepted S1 MR-only review cadence with the simplified internal plan /private/tmp/meridian-s1-recovery-plan.html, version 3.
+
+## Accepted: S1 complete and prioritize mandatory remaining scope
+
+The candidate approved and merged S1 on 8 November 2026 and requested a handoff for the next planned work.
+After about eight hours invested, prioritize S2 search/preferences, the complete S3-S4 transfer flow, essential accessibility verification, deployment and submission documentation.
+Keep the small invalid-response correction and document the mock-worker refresh limitation; defer further lifecycle repair, optional features and broad architecture or visual redesign.
+The existing feature-dev S2 plan approval and React/composition assessment still apply; the user has not waived those gates or approved S2 implementation.
+
+## Accepted: S2 technical plan v1
+
+The candidate approved the concrete HTML plan /private/tmp/meridian-s2-technical-plan.html, version 1, and authorized local implementation.
+TransactionList owns feature-local search state; useDashboard retains parallel initial reads and recent rows for immediate clear.
+Use eight skeleton rows while debouncing or loading an uncached term, preserve input focus, and confine search failures and Retry to the transaction panel.
+Keep same-term cached results during refresh and distinguish refresh failure from an initial search failure.
+Persist explicit theme and segment choices under versioned localStorage keys; initialize HTML attributes synchronously in the document head before application startup.
+Without an override, theme follows system preference at startup and segment follows customer data with retail before the response.
+Handle invalid/blocked storage safely and preserve the existing hook/slots; omit live system tracking, cross-tab synchronization, context and memoization.
+The required React/composition assessment is included in the approved plan and will be checked during Astra review.
+Further mock-worker lifecycle work, transfer functionality, optional features and broad refactors remain excluded.
+
+## Accepted follow-up: bidirectional Figma fidelity after S2
+
+The candidate requested a dedicated fidelity round after S2 to align the implementation and existing Figma design file.
+Reconcile in both directions: implemented UI missing in Figma belongs in Figma, and approved design details missing in the implemented scope belong in code.
+Requirements and supplied tokens override either representation; future transfer designs remain assigned to S3-S4 rather than being pulled into this pass.
+Use the existing feature-dev plan/design review gates for material corrections and preserve explicit publication boundaries.
+
+## Accepted: daily-limit card stays in normal flow
+
+The candidate explicitly chose to keep the right-hand daily-limit card scrolling with the dashboard.
+The wireframe right rail does not prescribe sticky positioning, while D8 explicitly requires the fixed mobile transfer action.
+Preserve this behavior during Figma/code reconciliation.
+
+## Accepted: S2 MR first and preserve application search presentation
+
+The candidate clarified that the S2 MR must be opened before proceeding with fidelity corrections.
+They prefer the current S2 application search presentation over the older Figma search example.
+Use the accepted application composition as the target for later Figma synchronization; the fidelity correction plan remains pending approval.
+This does not authorize the proposed input-color correction, merge or cleanup.
