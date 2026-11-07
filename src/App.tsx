@@ -7,7 +7,7 @@ import { useAppPreferences } from './useAppPreferences'
 
 const brand = { mark: 'M', name: 'Meridian' }
 const navigation = [
-  { label: 'Overview', href: '#main-content', current: true },
+  { label: 'Overview', current: true },
   { label: 'Cards' },
   { label: 'Payments' },
   { label: 'Insights' },

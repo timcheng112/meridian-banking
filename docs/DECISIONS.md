@@ -335,3 +335,33 @@ The candidate clarified that the S2 MR must be opened before proceeding with fid
 They prefer the current S2 application search presentation over the older Figma search example.
 Use the accepted application composition as the target for later Figma synchronization; the fidelity correction plan remains pending approval.
 This does not authorize the proposed input-color correction, merge or cleanup.
+
+## Accepted: fidelity technical plan v2
+
+The candidate approved /private/tmp/meridian-fidelity-plan-v2.html, including listed existing-file Figma edits and the SearchInput text/placeholder token correction.
+Synchronize accepted S1-S2 presentation and implemented states into Figma while keeping requirements and supplied tokens authoritative.
+Retain accepted search composition, normal-flow daily-limit rail, current query/hook boundaries and existing component slots.
+Use merged development including d7c0268 and approval records as the verified implementation base.
+Screenshots remain outside Git; transfer work, further mock-worker repair and broad refactoring remain deferred.
+
+## Header review feedback and proposed circular avatar
+
+The candidate identified selected Overview as a current-page label that should have no click action or keyboard tab stop while retaining aria-current=page and selected styling.
+Implementation of that feedback is pending.
+For the AC avatar required by D2, a circular initials treatment is permitted because the brief prescribes no shape.
+Propose a non-interactive 40px circle with brand/brand-soft tokens, 14px semibold initials and the customer name as its accessible label.
+The isolated Figma proposal at 70:802 is ready for candidate selection; it has not been propagated or implemented.
+
+## Accepted: circular initials avatar
+
+The candidate selected the 40px circular avatar with 14px semibold brand/brand-soft styling and authorized removing its proposal boards.
+Propagated the reusable avatar to existing Figma headers while retaining the component and all unrelated references.
+The avatar is non-interactive and represents the customer by initials with an accessible customer-name label.
+Implementation remains pending approval of /private/tmp/meridian-header-feedback-plan.html, version 1, which also covers the agreed non-interactive current-page Overview label.
+
+## Accepted: header feedback implementation plan v1
+
+The candidate approved /private/tmp/meridian-header-feedback-plan.html, version 1, on the existing fidelity review branch.
+Render selected Overview as a span with aria-current=page and no link or tab stop; remove its obsolete href configuration.
+Render the approved circular initials avatar as a non-interactive named image using existing customer-derived data and supplied tokens.
+Retain existing preference ownership, component slots, query behavior and all fidelity exclusions.

@@ -53,8 +53,10 @@ describe('dashboard', () => {
     renderApp()
     expect(screen.getByRole('status')).toHaveTextContent('Loading your dashboard')
     expect(screen.queryByText('Total available')).not.toBeInTheDocument()
+    expect(screen.getByRole('img', { name: 'Customer' })).toBeEmptyDOMElement()
     await screen.findByRole('heading', { name: 'Good evening, Ava' })
     expect(screen.queryByText('Loading your dashboard')).not.toBeInTheDocument()
+    expect(screen.getByRole('img', { name: 'Ava Chen' })).toHaveTextContent('AC')
   })
 
   it('shows deposit totals, all account cards and the eight server-ordered transactions', async () => {
@@ -169,7 +171,12 @@ describe('header preferences', () => {
     try {
       renderApp()
       await screen.findByRole('heading', { name: 'Good evening, Ava' })
-      expect(screen.getByRole('link', { name: 'Overview', hidden: true })).toHaveAttribute('href', '#main-content')
+      const overview = within(screen.getByRole('navigation', { hidden: true })).getByText('Overview')
+      expect(overview).toHaveAttribute('aria-current', 'page')
+      expect(overview).not.toHaveAttribute('href')
+      expect(overview).not.toHaveAttribute('tabindex')
+      expect(screen.queryByRole('link', { name: 'Overview', hidden: true })).not.toBeInTheDocument()
+      expect(screen.queryByRole('button', { name: 'Overview', hidden: true })).not.toBeInTheDocument()
       for (const label of ['Cards', 'Payments', 'Insights']) expect(screen.getByRole('button', { name: label, hidden: true })).toBeDisabled()
       const theme = screen.getByRole('button', { name: 'Switch to dark mode' })
       expect(theme).toHaveAttribute('title', 'Switch to dark mode')
@@ -200,7 +207,7 @@ describe('header preferences', () => {
     server.use(http.get('*/api/customer', () => HttpResponse.json({ customer: { ...customer, segment: 'premium' } })))
     const client = renderApp()
     await screen.findByRole('heading', { name: 'Good evening, Maya' })
-    expect(screen.getByLabelText('Maya Tan')).toHaveTextContent('MT')
+    expect(screen.getByRole('img', { name: 'Maya Tan' })).toHaveTextContent('MT')
     expect(screen.queryByLabelText('Ava Chen')).not.toBeInTheDocument()
     expect(document.documentElement).toHaveAttribute('data-segment', 'premium')
     await userEvent.click(screen.getAllByRole('button', { name: 'Retail' })[0])

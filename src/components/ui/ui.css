@@ -26,7 +26,12 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   background: var(--surface-muted);
+  color: var(--text);
+}
+
+.ui-search-input::placeholder {
   color: var(--text-muted);
+  opacity: 1;
 }
 
 .ui-skeleton {

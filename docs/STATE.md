@@ -1,6 +1,6 @@
 # Current state
 
-## Active continuation: S2 MR open for review
+## Active continuation: fidelity and header feedback published in MR #3
 
 The candidate approved S1 and reported merging PR #1 on 8 November 2026.
 GitHub confirms the merge into development at 04956afd78cfb1a4251edccd140be74cba99637e.
@@ -17,9 +17,9 @@ Deadline: 10 November 2026, EOD, supplied by the candidate.
 The application renders dashboard content through the accepted query/state layer, with loading, initial error/Retry, refresh warnings and empty states.
 The header, persistent preferences, API search, responsive layout and shared UI presentation are implemented; S2 evidence is recorded below.
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
-Active scope: S1 accepted and merged; S2 implementation is authorized on feat/search-preferences.
-Integration branch: development at recovery commit d225ec5 above merged S1 revision 04956af; feat/dashboard remains at 22b1f22 pending separately authorized cleanup.
-Phase: S2 MR #2 is open into development; further fidelity work is paused for MR review.
+Active scope: S1 and S2 accepted and merged; fidelity v2 and header feedback accepted locally.
+Integration branch: development updated to S2 merge 8d0b4a3; completed S1 and S2 worktrees remain preserved pending separately authorized cleanup.
+Phase: candidate accepted the verified preview; MR #3 is open and merge remains pending.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -37,8 +37,8 @@ Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
 | Design | Local HTML directions, selected core flow, mobile/desktop, states and shared components | Complete Figma designs accepted; static verification limits remain documented |
 | Figma | Approved core designs using components and supplied tokens | Final hero action and refined review C applied; unused alternatives removed |
 | S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | Accepted and merged in PR #1 at 04956af |
-| S2 | API search and persistent theme/segment | MR #2 open; review extraction verified at f3a95f2, candidate re-review pending |
-| Fidelity | Bidirectional Figma/code reconciliation for implemented scope | Requested after S2; concrete correction plan before material edits |
+| S2 | API search and persistent theme/segment | Accepted and merged in MR #2 at 8d0b4a3 |
+| Fidelity | Bidirectional Figma/code reconciliation for implemented scope | Accepted and published in MR #3; merge pending |
 | S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Pending |
 | S4 | Transfer mutation, failures, success and dashboard refresh | Pending |
 | Release | Full requirement audit, production checks, submission README, deployment | Pending; publication requires approval |
@@ -148,9 +148,9 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Review S2 MR #2: https://github.com/timcheng112/meridian-banking/pull/2.
-Fidelity work is paused until the S2 MR review is handled; preserve the preferred S2 search presentation.
-Merge and cleanup still require authorization; do not reopen deferred mock-worker repair.
+Review MR #3 at https://github.com/timcheng112/meridian-banking/pull/3; merge and cleanup require explicit authorization.
+S2 MR #2 is accepted and merged; preserve the preferred S2 search presentation.
+Cleanup still requires authorization; do not reopen deferred mock-worker repair.
 Existing PR: https://github.com/timcheng112/meridian-banking/pull/1, merged.
 Completed worktree cleanup, new external publication and deployment remain separate authorization boundaries.
 
@@ -747,3 +747,157 @@ The earlier full-page screenshot was misleading; viewport captures show the actu
 Evidence remains outside Git in /private/tmp/meridian-browser-qa and is authorized for MR attachment.
 The candidate explicitly authorized committing, pushing, updating MR #2 and refreshing screenshot evidence, then requested another review.
 Next: candidate re-review of MR #2; merge and cleanup remain unauthorized, and fidelity remains paused.
+
+## S2 merge and fidelity handoff - 8 November 2026
+
+The candidate approved the review fix and merged MR #2.
+GitHub confirms merge 8d0b4a34f1b4460cf13b2325e25987e6ff3434b0 into development.
+The fetched merge tree exactly matches reviewed feature head 3a5d832; recorded verification on application revision f3a95f2 remains applicable.
+Local development was fast-forwarded; both completed feature worktrees remain intact.
+The refreshed evidence is attached at https://github.com/timcheng112/meridian-banking/pull/2#issuecomment-6710338768 and remains outside Git.
+Continuation pointers are saved in /private/tmp/meridian-fidelity-handoff.md.
+The fidelity proposal remains unapproved; no fidelity edits, cleanup or deployment occurred during handoff.
+
+## Fidelity plan recovery v2 - 8 November 2026
+
+Recovered clean development at d7c0268, with its recovery commit still local above origin/development 8d0b4a3.
+Verified the S2 merge tree equals reviewed head 3a5d832 and application/configuration files match verified f3a95f2; recorded checks remain applicable, with no fresh runtime checks claimed.
+Treehouse status confirms both S1 and S2 leases remain retained.
+The former preview at port 4177 did not respond.
+Prepared /private/tmp/meridian-fidelity-plan-v2.html for candidate review, preserving v1 separately.
+Astra read-only review corrected the development base, historical screenshot labels, current search-hook ownership, exact state copy and full-layout placement of dashboard refresh warnings.
+Scope remains Figma synchronization plus the proposed SearchInput text/placeholder token correction, preserving accepted search presentation and normal-flow daily limit.
+Approval remains pending; no application implementation, tests, Figma writes, publication or cleanup occurred.
+Next action is candidate review of v2; after approval, commit recovery/approval records and verify the development base includes d7c0268 before acquiring the implementation branch.
+
+## Fidelity v2 approved - 8 November 2026
+
+The candidate explicitly approved /private/tmp/meridian-fidelity-plan-v2.html and requested proceeding.
+Approval covers its listed updates to existing Figma file LVZHN7v88I6WOCMr80nXlu and the SearchInput CSS token correction.
+Preserve accepted S2 search presentation and normal-flow daily-limit card; transfer and mock-worker work remain excluded.
+Use fix/dashboard-fidelity from verified development including d7c0268 and this approval record, with Sol owning the CSS correction and checks and Astra reviewing evidence.
+Publication of application branches, PR creation, merges, deployment, evidence upload and cleanup remain separately authorized actions.
+Next: acquire a no-fetch lease, verify the base, record scope on the branch, implement and verify the approved plan.
+
+## Fidelity implementation branch
+
+Active branch: fix/dashboard-fidelity, based on development af56ce3 including recovery d7c0268 and v2 approval.
+The branch was created in a clean no-fetch Treehouse lease; S1 and S2 worktrees remain preserved.
+Approved ownership: Sol edits src/components/ui/ui.css and verifies the CSS-only correction; coordination owns records and approved Figma synchronization.
+Implementation and visual verification are in progress; candidate acceptance remains pending.
+
+## Fidelity application verification - 8 November 2026
+
+Application revision 6d48a73 changes only src/components/ui/ui.css: entered search text uses --text and placeholder uses --text-muted at opacity 1.
+Sol implemented and verified the approved change; lead diff and rendered screenshot inspection found no code-scope or presentation regressions.
+Node 22.23.4 lint, strict typecheck, all 47 tests, production build and diff checks passed.
+Isolated Chrome verified computed colors in all four modes, five responsive widths, keyboard Clear/Retry, search pending/no-match/older-match behavior and pre-paint preference persistence without console/page errors.
+Input contrast is 16.65:1 light and 13.49:1 dark; placeholder contrast against surface-muted is 6.17:1 light and 6.59:1 dark.
+At 360 and 390px, viewport screenshots and top/middle/bottom checks confirm fixed-footer anchoring and 32px clearance below the daily-limit card at page end.
+Evidence remains outside Git in /private/tmp/meridian-browser-qa/fidelity-v2-results.json, fidelity-v2-geometry.json, fidelity-v2-footer-results.json, fidelity-v2-search-contrast.json and fidelity-v2-*.png.
+Use fidelity-v2-search-viewport-360.png and fidelity-v2-search-viewport-390.png for mobile review; full-page screenshots distort fixed-element placement.
+The in-app browser remained unavailable; installed isolated Chrome provided the runtime evidence, with full cross-browser and assistive-technology verification still outside this focused check.
+Production preview: http://127.0.0.1:4181/ while the task process runs.
+Independent Astra code review of af56ce3..6d48a73 found no issues and confirmed the unchanged React/query boundaries.
+Figma synchronization and candidate acceptance are still pending; no application branch publication, merge or cleanup occurred.
+
+## Fidelity Figma reconciliation and review - 8 November 2026
+
+Executed the approved v2 scope in existing Figma file LVZHN7v88I6WOCMr80nXlu under session 3801877c-c640-47cf-99da-f05c818222ee.
+Updated all eleven dashboard boards at 5:2, 5:103, 5:204, 5:305, 5:406, 5:499, 5:592, 5:685, 5:778, 5:871 and 5:964.
+Reconciled centered header alignment, responsive account/row minimums, border-aware widths, search typography/placeholder token and theme action icons; added editable Icon/Sun at 58:798 from the unchanged source SVG.
+Updated matching search 18:2817/18:3124, loading 18:2954/18:3238, initial dashboard error 7:471 and no-match 7:476.
+Added seven desktop/mobile pairs: empty accounts 62:2702/62:2716; empty recent transactions 62:2724/62:2800; dashboard refresh warning 62:2858/62:3008; search pending 62:3131/62:3267; initial search failure 62:3369/62:3455; cached search updating 62:3523/62:3603; cached search refresh failure 62:3665/62:3751.
+The dashboard refresh warning precedes the complete loaded layout; search failures remain inside the transaction panel.
+Astra rendered review covered all eleven dashboard boards and twenty existing/new state roots, with structural checks for editable layers, Roboto-only text and eight pending/loading rows.
+Lead independently inspected representative desktop/tablet/mobile, dark Premium, matching search, loading, search pending/error and full-layout warning renders against current application evidence.
+Visual fixes corrected horizontal heading sizing, the mobile header minimum, placeholder binding/type size, the 1024px responsive total size and wrapped action spacing.
+Transaction panel heights match measured application geometry: 804px desktop, 847px tablet and 1063px mobile.
+Accepted differences remain system-font versus Roboto metrics, fractional rounding, static Figma annotations for the viewport-fixed mobile action and enabled future-transfer Figma actions versus currently disabled application controls.
+No transfer boards or future transfer behavior were changed; mock-worker repair remains deferred.
+Detailed node inventories and evidence remain local in /private/tmp/meridian-fidelity-figma-ledger.json, /private/tmp/meridian-fidelity-dashboard-final-ledger.json and /private/tmp/meridian-fidelity-states-ledger.json, with screenshots outside Git.
+Local review artifact: /private/tmp/meridian-fidelity-review.html.
+Candidate understanding and acceptance remain pending; no application push, PR, merge, deployment or worktree cleanup occurred.
+
+## Requested Figma organization follow-up
+
+After fidelity implementation, the candidate explicitly requested organizing the scattered Figma designs more neatly.
+Authorized follow-up is canvas organization across existing pages: clearly labeled groups, logical flow order and consistent board spacing.
+Preserve board IDs, design contents, internal layout, components, variable bindings and all retained references; no substantive transfer design changes or deletion are included.
+Organization is complete; the verified application revision remains 6d48a73.
+
+Organized all four Figma pages into 22 native labeled sections with consistent grids and logical flow order.
+Preserved all 111 original roots and IDs; recursive before/after checks confirmed unchanged internal geometry, text, fills, variable bindings and modes.
+Section overlap checks passed and all four page overviews were visually reviewed.
+Dashboard baselines: 67:558; transfer flow: 67:1644; transaction search states: 67:2754; component controls: 67:2991.
+Organization session: 197dd72d-0a93-4666-b284-fcbcada4243c; detailed ledger: /private/tmp/meridian-figma-organization-ledger.json.
+Overview screenshots remain outside Git at /private/tmp/meridian-browser-qa/figma-organized-{dashboard,transfer,states,components}.png.
+
+## Header feedback and avatar design proposal
+
+The candidate noted selected Overview should be non-interactive; this direction is agreed but application implementation remains pending.
+The candidate asked whether D2 prescribes bare AC initials and requested designing an avatar in Figma before implementation.
+D2 requires an AC avatar without specifying its shape; the wireframe uses a placeholder.
+Created an isolated proposal on Components at 70:802, with draft component 70:803: 40px circle, 14px semibold initials, brand foreground, brand-soft fill and radius-full.
+Twelve header previews cover 1280, 390 and 360px in all four theme/segment combinations.
+Token contrast ratios are 5.10, 5.33, 5.52 and 6.03:1; rendered checks confirm centered initials and no clipping at 360px.
+The proposed avatar is non-interactive and exposes the customer name; no profile menu is in scope.
+Accepted boards and application remain unchanged; avatar design selection and concrete implementation-plan approval remain pending.
+Review link: https://www.figma.com/design/LVZHN7v88I6WOCMr80nXlu?node-id=70-802.
+Evidence and full node inventory: /private/tmp/meridian-avatar-proposal-ledger.json and /private/tmp/meridian-browser-qa/avatar-proposal-*.png.
+
+## Circular avatar selected and proposal cleanup
+
+The candidate approved the circular-avatar proposal and explicitly authorized removing its proposals.
+Propagated the accepted component 70:803 to 21 existing headers: eleven Dashboard, nine Required states/dashboard contexts and one Transfer overlay.
+Preserved all header dimensions and verified no child overflow; the reusable component now lives in organized Dashboard components section 67:2994.
+Removed only avatar proposal section 70:802 and its twelve preview headers/notes; retained older selected hero/review references.
+Application remains unchanged at 6d48a73.
+Prepared /private/tmp/meridian-header-feedback-plan.html, version 1, covering the circular avatar and non-interactive Overview on the existing fidelity review branch.
+Concrete application plan approval, implementation, verification and candidate acceptance remain pending.
+
+Accepted-avatar rendered verification covered five widths and all four themes; evidence is /private/tmp/meridian-avatar-accepted-ledger.json and /private/tmp/meridian-browser-qa/avatar-accepted-*.png.
+
+## Header feedback plan v1 approved
+
+The candidate explicitly approved /private/tmp/meridian-header-feedback-plan.html, version 1, for application implementation.
+Continue fix/dashboard-fidelity from verified 7c34dfe in its retained worktree; this includes the approved avatar design and recovery records.
+Sol owns Header.tsx, layout.css, App.tsx and App.test.tsx; coordination owns records and Astra review.
+Scope is the non-interactive current-page Overview and approved circular customer avatar, preserving other behavior.
+Next: implement, run checks and focused responsive/keyboard browser verification, then candidate acceptance.
+
+## Header feedback implemented and verified
+
+Application revision 24f7a89 implements approved header feedback plan v1 in its four named application/test files.
+Overview is a non-interactive current-page span retaining its icon, underline and aria-current=page; its obsolete href was removed from App configuration.
+The customer avatar is a 40px token-styled circle with role=img, customer-derived name/initials and the existing Customer loading fallback.
+Sol implementation and independent Astra review found no scope or correctness issues; query/state ownership, preference slots and all other behavior remain unchanged.
+Final Node 22.23.4 lint, strict typecheck, all 47 tests, production build and diff checks passed.
+Chrome checks passed loading-to-customer avatar semantics, unchanged URL/scroll on Overview click, keyboard skipping Overview/avatar, preference keyboard interaction and visible focus.
+All five widths retain a 64px header without horizontal overflow, and avatar dimensions/semantic token colors match all four themes.
+Browser results recorded no console/page errors; evidence remains outside Git at /private/tmp/meridian-browser-qa/header-feedback-results.json and header-feedback-*.png.
+Production preview remains http://127.0.0.1:4181/ serving the updated build; reload to see the new header.
+Candidate understanding/acceptance, application publication and merge remain pending.
+
+## Candidate acceptance - fidelity and header feedback
+
+The candidate reviewed the updated preview and confirmed “ok passed”.
+Fidelity v2 and the approved header feedback are accepted locally at application revision 24f7a89.
+Prepared local MR summary /private/tmp/meridian-fidelity-mr.md for fix/dashboard-fidelity into development.
+Application source and verification remain unchanged; this checkpoint records acceptance only.
+Branch publication, MR creation, evidence uploads, merge, deployment and cleanup remain unauthorized.
+Next safe action is obtaining explicit branch/MR publication authorization; S3 remains a separately planned slice.
+
+## Fidelity publication authorized
+
+The candidate authorized pushing fix/dashboard-fidelity and opening its prepared MR into development in response to the publication request.
+Verified remote development remains 8d0b4a3 and the fidelity branch does not yet exist remotely.
+Use a normal non-force branch push; no merge, screenshot upload, deployment or cleanup is authorized.
+
+## Fidelity publication receipt
+
+Published fix/dashboard-fidelity and opened MR #3 into development: https://github.com/timcheng112/meridian-banking/pull/3.
+Initial published head was 840c590; this receipt is documentation-only and leaves verified application revision 24f7a89 unchanged.
+The GitHub connector denied MR creation with integration error 403; authenticated GitHub CLI completed the authorized creation.
+Remote development was verified at 8d0b4a3 before publication and was not changed.
+No screenshot upload, merge, deployment or cleanup occurred; merge remains pending explicit authorization.
