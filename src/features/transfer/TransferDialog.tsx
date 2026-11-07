@@ -47,8 +47,15 @@ export function TransferDialog({ customer, accounts, onClose }: Props) {
     if (getValues('amount').trim()) void trigger('amount')
   }, [accountId, availableBalance, remainingLimit, trigger, getValues])
 
+  const activeRecipientFields = recipientFields(mode).filter((path) => path !== 'bankName' || bankChoice === 'other')
+  const activeFields = step === 'recipient' ? activeRecipientFields : amountFields
+  const continueDisabled = step !== 'review' && (
+    activeFields.some((path) => Boolean(errors[path])) ||
+    (step === 'amount' && !accounts.some((account) => account.type !== 'credit'))
+  )
+
   async function advance() {
-    if (step === 'review') return
+    if (step === 'review' || continueDisabled) return
     if (step === 'amount' && !await trigger(recipientFields(mode))) {
       setStep('recipient')
       requestAnimationFrame(() => {
@@ -85,7 +92,7 @@ export function TransferDialog({ customer, accounts, onClose }: Props) {
         {step === 'review' ? <Button type="button" disabled>Confirm transfer</Button> : <Button
           type="submit"
           form="transfer-form"
-          disabled={step === 'amount' && !accounts.some((account) => account.type !== 'credit')}
+          disabled={continueDisabled}
         >Continue</Button>}
       </div>
     </>}
@@ -93,6 +100,13 @@ export function TransferDialog({ customer, accounts, onClose }: Props) {
     <form
       id="transfer-form"
       noValidate
+      onChange={(event) => {
+        const target = event.target
+        if (target instanceof HTMLInputElement || target instanceof HTMLSelectElement) {
+          const name = target.name as keyof TransferValues
+          if (getFieldState(name).invalid) void trigger(name)
+        }
+      }}
       onKeyDown={(event) => {
         if (event.key === 'Enter' && event.target instanceof HTMLInputElement && event.target.type !== 'radio') {
           event.preventDefault()
@@ -108,6 +122,7 @@ export function TransferDialog({ customer, accounts, onClose }: Props) {
         isFetching={query.isFetching}
         hasData={query.data !== undefined}
         retry={() => { void query.refetch() }}
+        control={control}
         register={register}
         setValue={setValue}
         errors={errors}

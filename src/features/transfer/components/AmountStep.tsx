@@ -20,18 +20,23 @@ export function AmountStep({ accounts, remainingLimit, register, control, setVal
     {deposits.length === 0 ? <p className="transfer-feedback" role="status">No deposit accounts are available for transfers.</p> : null}
     <div className="transfer-field">
       <label htmlFor="fromAccountId">From account</label>
-      <select
-        id="fromAccountId"
-        {...register('fromAccountId')}
-        disabled={deposits.length === 0}
-        aria-invalid={Boolean(errors.fromAccountId)}
-        aria-describedby={`account-help${errors.fromAccountId ? ' fromAccountId-error' : ''}`}
-      >
-        <option value="">Choose a deposit account</option>
-        {deposits.map((account) => <option key={account.id} value={account.id}>
-          {account.name} · {account.maskedNumber}
-        </option>)}
-      </select>
+      <div className="transfer-select">
+        <select
+          id="fromAccountId"
+          {...register('fromAccountId')}
+          disabled={deposits.length === 0}
+          aria-invalid={Boolean(errors.fromAccountId)}
+          aria-describedby={`account-help${errors.fromAccountId ? ' fromAccountId-error' : ''}`}
+        >
+          <option value="">Choose a deposit account</option>
+          {deposits.map((account) => <option key={account.id} value={account.id}>
+            {account.name} · {account.maskedNumber}
+          </option>)}
+        </select>
+        <svg viewBox="0 0 16 16" aria-hidden="true">
+          <path d="m3 6 5 5 5-5" />
+        </svg>
+      </div>
       <p id="account-help" className="transfer-help">Deposit accounts only</p>
       {errors.fromAccountId ? <p
         id="fromAccountId-error"

@@ -16,21 +16,20 @@
 .transfer-stepper [data-complete='true'] { color: var(--text-muted); }
 .transfer-stepper [data-complete='true'] .step-circle { background: var(--positive); color: var(--on-brand); border-color: var(--positive); }
 .transfer-stepper li[data-complete='true']:not(:last-child)::after { background: var(--positive); }
-.transfer-body { padding: var(--space-4) var(--space-6); min-height: 0; flex: 1; overflow: auto; overscroll-behavior: contain; }
-.transfer-dialog .transfer-body h3 { font-size: var(--text-lg); line-height: var(--leading-tight); letter-spacing: var(--tracking-tight); font-weight: var(--weight-semibold); margin: 0 0 var(--space-6); }
+.transfer-body { padding: var(--space-4) var(--space-6) var(--space-6); min-height: 0; flex: 1; overflow: auto; overscroll-behavior: contain; }
+.transfer-dialog .transfer-body h3 { font-size: var(--text-lg); line-height: var(--leading-normal); letter-spacing: var(--tracking-tight); font-weight: var(--weight-semibold); margin: 0 0 var(--space-2); }
 .transfer-footer { flex: none; padding: var(--space-4) var(--space-6) max(var(--space-4), env(safe-area-inset-bottom)); border-top: 1px solid var(--border); }
 .transfer-actions { display: flex; gap: var(--space-3); justify-content: space-between; }
 .transfer-actions .ui-button { min-height: var(--space-12); }
 .transfer-dialog .preview-notice { font-size: var(--text-sm); color: var(--text-muted); margin: 0 0 var(--space-3); }
-.payee-list { margin: var(--space-4) 0; border: 0; padding: 0; min-width: 0; }
-.payee-row { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-4) var(--space-3); min-height: var(--space-12); border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; margin-bottom: var(--space-2); }
+.payee-list { margin: var(--space-2) 0; border: 0; padding: 0; min-width: 0; }
+.payee-row { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) var(--space-4); border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; margin-bottom: var(--space-2); }
 .payee-row[data-selected='true'] { border-color: var(--brand); background: var(--brand-soft); }
 .payee-row input { accent-color: var(--brand); width: var(--space-4); height: var(--space-4); flex: none; margin: 0; }
-.payee-avatar { flex: none; width: var(--space-10); height: var(--space-10); display: grid; place-items: center; border-radius: var(--radius-full); background: var(--surface-muted); color: var(--text-muted); font-size: var(--text-sm); font-weight: var(--weight-semibold); }
 .payee-identity { flex: 1; min-width: 0; display: grid; gap: var(--space-1); overflow-wrap: anywhere; }
 .payee-identity strong { font-size: var(--text-sm); font-weight: var(--weight-semibold); }
 .payee-identity > span { font-size: var(--text-xs); color: var(--text-muted); }
-.new-recipient-toggle { width: 100%; min-height: var(--space-12); padding: var(--space-3) 0; display: flex; align-items: center; gap: var(--space-2); background: transparent; border: 0; color: var(--brand); font-size: var(--text-sm); font-weight: var(--weight-semibold); cursor: pointer; text-align: left; }
+.new-recipient-toggle { width: 100%; min-height: var(--space-12); padding: var(--space-3) var(--space-4); display: flex; align-items: center; gap: var(--space-2); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-sm); color: var(--text); font-size: var(--text-sm); font-weight: var(--weight-semibold); cursor: pointer; text-align: left; }
 .new-recipient-toggle svg { margin-left: auto; }
 .new-recipient-fields { padding-top: var(--space-4); }
 .transfer-field { margin-bottom: var(--space-6); }
@@ -60,9 +59,25 @@
 .review-total dt { color: inherit; }
 .transfer-dialog .transfer-arrival { font-size: var(--text-sm); color: var(--text-muted); background: var(--surface-muted); border-radius: var(--radius-sm); padding: var(--space-4); margin: var(--space-4) 0 0; }
 @media (min-width: 1024px) { .transfer-dialog { width: 520px; height: min(720px, calc(100dvh - var(--space-16))); margin: auto; border-radius: var(--radius-lg); } }
-@media (max-width: 1023px) { .transfer-header { padding-left: var(--space-4); padding-right: var(--space-4); padding-top: max(var(--space-4), env(safe-area-inset-top)); } .transfer-body { padding: var(--space-4); } .transfer-footer { padding-left: var(--space-4); padding-right: var(--space-4); } }
+@media (max-width: 1023px) { .transfer-header { padding-left: var(--space-4); padding-right: var(--space-4); padding-top: max(var(--space-4), env(safe-area-inset-top)); } .transfer-body { padding: var(--space-4) var(--space-4) var(--space-6); } .transfer-footer { padding-left: var(--space-4); padding-right: var(--space-4); } }
 
 @media (min-width: 1024px) { .transfer-footer { padding: var(--space-6); } .transfer-actions .ui-button-secondary { width: 120px; } .transfer-actions .ui-button-primary { width: 200px; } }
 @media (max-width: 1023px) { .transfer-actions .ui-button-secondary { width: 100px; } .transfer-actions .ui-button-primary { flex: 1; } }
 
 .transfer-dialog .ui-search-input { box-sizing: border-box; width: 100%; }
+
+.transfer-dialog .payee-search-label { display: block; font-size: var(--text-sm); font-weight: var(--weight-semibold); margin-bottom: var(--space-2); }
+.transfer-dialog .ui-search-input { min-height: var(--space-12); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-sm); }
+.payee-loading { display: grid; gap: var(--space-2); margin: var(--space-2) 0; }
+.transfer-dialog .payee-loading p { font-size: var(--text-sm); color: var(--text-muted); margin: 0; }
+.transfer-dialog .payee-skeleton { width: 100%; height: calc(var(--space-12) + var(--space-3)); border-radius: var(--radius-sm); }
+.transfer-dialog .payee-empty { display: grid; gap: var(--space-2); color: var(--text-muted); font-size: var(--text-sm); }
+.transfer-dialog .payee-empty p { margin: 0; }
+.payee-empty .ui-button { width: 176px; min-height: var(--space-12); }
+.payee-row:last-child { margin-bottom: 0; }
+.transfer-select { position: relative; }
+.transfer-select select { appearance: none; padding-right: var(--space-10); }
+.transfer-select svg { position: absolute; right: var(--space-3); top: 50%; transform: translateY(-50%); pointer-events: none; color: var(--text-muted); }
+
+.transfer-select svg { width: var(--space-5); height: var(--space-5); }
+.new-recipient-fields .transfer-field { margin-bottom: var(--space-2); }

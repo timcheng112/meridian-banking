@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import type { FieldErrors, UseFormRegister, UseFormSetValue } from 'react-hook-form'
+import { useController, type Control, type FieldErrors, type UseFormRegister, type UseFormSetValue } from 'react-hook-form'
 import type { Payee } from '../../../api/types'
 import { Button } from '../../../components/ui/Button'
 import { SearchInput } from '../../../components/ui/SearchInput'
@@ -13,6 +13,7 @@ type Props = {
   isFetching: boolean
   hasData: boolean
   retry: () => void
+  control: Control<TransferValues>
   register: UseFormRegister<TransferValues>
   setValue: UseFormSetValue<TransferValues>
   errors: FieldErrors<TransferValues>
@@ -20,7 +21,8 @@ type Props = {
   selectedId: string
   bankChoice: string
 }
-export function RecipientStep({ payees, isPending, isError, isFetching, hasData, retry, register, setValue, errors, mode, selectedId, bankChoice }: Props) {
+export function RecipientStep({ payees, isPending, isError, isFetching, hasData, retry, control, register, setValue, errors, mode, selectedId, bankChoice }: Props) {
+  const { field: payeeField } = useController({ name: 'payeeId', control })
   const [search, setSearch] = useState('')
   const searchRef = useRef<HTMLInputElement>(null)
   const term = search.trim().toLowerCase()
@@ -47,7 +49,9 @@ export function RecipientStep({ payees, isPending, isError, isFetching, hasData,
   </div>
   return <>
     <h3 tabIndex={-1}>Who are you sending to?</h3>
+    <label className="payee-search-label" htmlFor="payee-search">Search payees</label>
     <SearchInput
+      id="payee-search"
       ref={searchRef}
       aria-label="Search payees"
       placeholder="Search payees"
@@ -55,9 +59,9 @@ export function RecipientStep({ payees, isPending, isError, isFetching, hasData,
       onChange={(event) => setSearch(event.target.value)}
       disabled={!hasData || payees.length === 0}
     />
-    {isPending ? <div role="status">
+    {isPending ? <div className="payee-loading" role="status">
       <p>Loading payees…</p>
-      {[0, 1, 2, 3].map((item) => <Skeleton key={item} kind="value" />)}
+      {[0, 1, 2, 3].map((item) => <Skeleton key={item} kind="value" className="payee-skeleton" />)}
     </div> : null}
     {isError ? <div className="transfer-feedback" role="alert">
       <p>
@@ -78,17 +82,16 @@ export function RecipientStep({ payees, isPending, isError, isFetching, hasData,
         data-selected={mode === 'saved' && selectedId === payee.id}
       >
         <input
-          {...register('payeeId')}
+          name={payeeField.name}
+          ref={payeeField.ref}
+          onBlur={payeeField.onBlur}
           type="radio"
           value={payee.id}
           checked={mode === 'saved' && selectedId === payee.id}
-          onChange={(event) => { void register('payeeId').onChange(event); setValue('recipientMode', 'saved') }}
+          onChange={() => { setValue('recipientMode', 'saved'); payeeField.onChange(payee.id) }}
           aria-invalid={Boolean(errors.payeeId)}
           aria-describedby={errors.payeeId ? 'payeeId-error' : undefined}
         />
-        <span className="payee-avatar" aria-hidden="true">
-          {payee.initials}
-        </span>
         <span className="payee-identity">
           <strong>
             {payee.name}
@@ -97,10 +100,7 @@ export function RecipientStep({ payees, isPending, isError, isFetching, hasData,
             {payee.bank} · {payee.accountNumberMasked}
           </span>
         </span>
-        <svg viewBox="0 0 16 16" aria-hidden="true">
-          <path d="m6 3 5 5-5 5" />
-        </svg>
-      </label>)}{payees.length === 0 ? <p>No saved payees.</p> : filtered.length === 0 ? <div>
+      </label>)}{payees.length === 0 ? <p className="payee-empty">No saved payees.</p> : filtered.length === 0 ? <div className="payee-empty">
         <p>No payees match your search.</p>
         <Button
           type="button"
@@ -126,8 +126,9 @@ export function RecipientStep({ payees, isPending, isError, isFetching, hasData,
       aria-controls="new-recipient-fields"
       onClick={() => setValue('recipientMode', mode === 'new' ? 'saved' : 'new')}
     >
-      <span aria-hidden="true">+</span> Send to someone new<svg viewBox="0 0 16 16" aria-hidden="true">
-        <path d={mode === 'new' ? 'm3 10 5-5 5 5' : 'm3 6 5 5 5-5'} />
+      Send to someone new
+      <svg viewBox="0 0 16 16" aria-hidden="true">
+        <path d={mode === 'new' ? 'M3 8h10' : 'M3 8h10M8 3v10'} />
       </svg>
     </button>
     {mode === 'new' ? <div id="new-recipient-fields" className="new-recipient-fields">
@@ -135,18 +136,23 @@ export function RecipientStep({ payees, isPending, isError, isFetching, hasData,
       {field('accountNumber', 'Account number (8 digits)')}
       <div className="transfer-field">
         <label htmlFor="bankChoice">Bank</label>
-        <select
-          id="bankChoice"
-          {...register('bankChoice')}
-          aria-invalid={Boolean(errors.bankChoice)}
-          aria-describedby={errors.bankChoice ? 'bankChoice-error' : undefined}
-        >
-          <option value="">Choose a bank</option>
-          {['DBS', 'OCBC', 'UOB', 'POSB'].map((bank) => <option key={bank}>
-            {bank}
-          </option>)}
-          <option value="other">Other bank</option>
-        </select>
+        <div className="transfer-select">
+          <select
+            id="bankChoice"
+            {...register('bankChoice')}
+            aria-invalid={Boolean(errors.bankChoice)}
+            aria-describedby={errors.bankChoice ? 'bankChoice-error' : undefined}
+          >
+            <option value="">Choose a bank</option>
+            {['DBS', 'OCBC', 'UOB', 'POSB'].map((bank) => <option key={bank}>
+              {bank}
+            </option>)}
+            <option value="other">Other bank</option>
+          </select>
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <path d="m3 6 5 5 5-5" />
+          </svg>
+        </div>
         {errors.bankChoice ? <p
           id="bankChoice-error"
           className="transfer-error"
