@@ -1,6 +1,6 @@
 # Current state
 
-## Active continuation: S2 merged; fidelity plan review next
+## Active continuation: fidelity v2 implemented; candidate review next
 
 The candidate approved S1 and reported merging PR #1 on 8 November 2026.
 GitHub confirms the merge into development at 04956afd78cfb1a4251edccd140be74cba99637e.
@@ -17,9 +17,9 @@ Deadline: 10 November 2026, EOD, supplied by the candidate.
 The application renders dashboard content through the accepted query/state layer, with loading, initial error/Retry, refresh warnings and empty states.
 The header, persistent preferences, API search, responsive layout and shared UI presentation are implemented; S2 evidence is recorded below.
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
-Active scope: S1 and S2 accepted and merged; next is review of the requested fidelity plan.
+Active scope: S1 and S2 accepted and merged; fidelity v2 implemented and verified, pending candidate understanding and acceptance.
 Integration branch: development updated to S2 merge 8d0b4a3; completed S1 and S2 worktrees remain preserved pending separately authorized cleanup.
-Phase: S2 review accepted and MR #2 merged; fidelity plan v2 still requires approval.
+Phase: fidelity v2 local review prepared; candidate acceptance and application publication remain pending.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -38,7 +38,7 @@ Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
 | Figma | Approved core designs using components and supplied tokens | Final hero action and refined review C applied; unused alternatives removed |
 | S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | Accepted and merged in PR #1 at 04956af |
 | S2 | API search and persistent theme/segment | Accepted and merged in MR #2 at 8d0b4a3 |
-| Fidelity | Bidirectional Figma/code reconciliation for implemented scope | Requested after S2; concrete correction plan before material edits |
+| Fidelity | Bidirectional Figma/code reconciliation for implemented scope | V2 implemented and verified; candidate review pending |
 | S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Pending |
 | S4 | Transfer mutation, failures, success and dashboard refresh | Pending |
 | Release | Full requirement audit, production checks, submission README, deployment | Pending; publication requires approval |
@@ -148,7 +148,7 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Review the recovered fidelity proposal /private/tmp/meridian-fidelity-plan-v2.html with the candidate before material changes.
+Review /private/tmp/meridian-fidelity-review.html and preview http://127.0.0.1:4181/ with the candidate; obtain understanding and acceptance before publication or merge.
 S2 MR #2 is accepted and merged; preserve the preferred S2 search presentation.
 Cleanup still requires authorization; do not reopen deferred mock-worker repair.
 Existing PR: https://github.com/timcheng112/meridian-banking/pull/1, merged.
@@ -785,3 +785,36 @@ Active branch: fix/dashboard-fidelity, based on development af56ce3 including re
 The branch was created in a clean no-fetch Treehouse lease; S1 and S2 worktrees remain preserved.
 Approved ownership: Sol edits src/components/ui/ui.css and verifies the CSS-only correction; coordination owns records and approved Figma synchronization.
 Implementation and visual verification are in progress; candidate acceptance remains pending.
+
+## Fidelity application verification - 8 November 2026
+
+Application revision 6d48a73 changes only src/components/ui/ui.css: entered search text uses --text and placeholder uses --text-muted at opacity 1.
+Sol implemented and verified the approved change; lead diff and rendered screenshot inspection found no code-scope or presentation regressions.
+Node 22.23.4 lint, strict typecheck, all 47 tests, production build and diff checks passed.
+Isolated Chrome verified computed colors in all four modes, five responsive widths, keyboard Clear/Retry, search pending/no-match/older-match behavior and pre-paint preference persistence without console/page errors.
+Input contrast is 16.65:1 light and 13.49:1 dark; placeholder contrast against surface-muted is 6.17:1 light and 6.59:1 dark.
+At 360 and 390px, viewport screenshots and top/middle/bottom checks confirm fixed-footer anchoring and 32px clearance below the daily-limit card at page end.
+Evidence remains outside Git in /private/tmp/meridian-browser-qa/fidelity-v2-results.json, fidelity-v2-geometry.json, fidelity-v2-footer-results.json, fidelity-v2-search-contrast.json and fidelity-v2-*.png.
+Use fidelity-v2-search-viewport-360.png and fidelity-v2-search-viewport-390.png for mobile review; full-page screenshots distort fixed-element placement.
+The in-app browser remained unavailable; installed isolated Chrome provided the runtime evidence, with full cross-browser and assistive-technology verification still outside this focused check.
+Production preview: http://127.0.0.1:4181/ while the task process runs.
+Independent Astra code review of af56ce3..6d48a73 found no issues and confirmed the unchanged React/query boundaries.
+Figma synchronization and candidate acceptance are still pending; no application branch publication, merge or cleanup occurred.
+
+## Fidelity Figma reconciliation and review - 8 November 2026
+
+Executed the approved v2 scope in existing Figma file LVZHN7v88I6WOCMr80nXlu under session 3801877c-c640-47cf-99da-f05c818222ee.
+Updated all eleven dashboard boards at 5:2, 5:103, 5:204, 5:305, 5:406, 5:499, 5:592, 5:685, 5:778, 5:871 and 5:964.
+Reconciled centered header alignment, responsive account/row minimums, border-aware widths, search typography/placeholder token and theme action icons; added editable Icon/Sun at 58:798 from the unchanged source SVG.
+Updated matching search 18:2817/18:3124, loading 18:2954/18:3238, initial dashboard error 7:471 and no-match 7:476.
+Added seven desktop/mobile pairs: empty accounts 62:2702/62:2716; empty recent transactions 62:2724/62:2800; dashboard refresh warning 62:2858/62:3008; search pending 62:3131/62:3267; initial search failure 62:3369/62:3455; cached search updating 62:3523/62:3603; cached search refresh failure 62:3665/62:3751.
+The dashboard refresh warning precedes the complete loaded layout; search failures remain inside the transaction panel.
+Astra rendered review covered all eleven dashboard boards and twenty existing/new state roots, with structural checks for editable layers, Roboto-only text and eight pending/loading rows.
+Lead independently inspected representative desktop/tablet/mobile, dark Premium, matching search, loading, search pending/error and full-layout warning renders against current application evidence.
+Visual fixes corrected horizontal heading sizing, the mobile header minimum, placeholder binding/type size, the 1024px responsive total size and wrapped action spacing.
+Transaction panel heights match measured application geometry: 804px desktop, 847px tablet and 1063px mobile.
+Accepted differences remain system-font versus Roboto metrics, fractional rounding, static Figma annotations for the viewport-fixed mobile action and enabled future-transfer Figma actions versus currently disabled application controls.
+No transfer boards or future transfer behavior were changed; mock-worker repair remains deferred.
+Detailed node inventories and evidence remain local in /private/tmp/meridian-fidelity-figma-ledger.json, /private/tmp/meridian-fidelity-dashboard-final-ledger.json and /private/tmp/meridian-fidelity-states-ledger.json, with screenshots outside Git.
+Local review artifact: /private/tmp/meridian-fidelity-review.html.
+Candidate understanding and acceptance remain pending; no application push, PR, merge, deployment or worktree cleanup occurred.
