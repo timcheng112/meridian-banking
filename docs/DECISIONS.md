@@ -385,3 +385,45 @@ Disable for known active-step errors and revalidate errored fields as the user e
 Untouched inputs retain required blur/first-Continue validation and first-invalid focus; errors belonging to another step or inactive recipient mode do not disable progression.
 Apply the same guard to Enter and retain the no-deposit-account guard.
 This supersedes plan v1's always-enabled Continue treatment after errors appear; no submission behavior or global form architecture changes are included.
+
+## Selected: S3 new-recipient appearance A
+
+The candidate selected A after reviewing alternatives and explicitly authorized removing the rest.
+Keep the radio-style selected indicator and tinted row appearance shown at Figma node 79:1658, with saved search/payees visible and new fields inline.
+Preserve wireframe section 3's disclosure behavior rather than introducing C's separate saved/new mode screen treatment.
+The selected appearance does not by itself prescribe native radio semantics; the scoped implementation plan must explain the disclosure control, selection state and accessibility.
+B, C and the unselected D exploration were removed with authorization; accepted designs and shared components remain preserved.
+Application implementation and accepted-board propagation remain pending a concrete plan and authorization.
+
+## S3 review clarification: footer widths and retained draft
+
+The 902px question concerns action widths, independently of the accepted full-screen breakpoint.
+Code's mobile 12px gap differs from Figma's 16px gap, making Continue 4px wider at exact 360/390px references; this finding does not authorize a source change.
+There is no exact 902px transfer board, so 100/754px is an extrapolation of the Figma mobile rule, compared with rendered 100/758px.
+Keep the accepted single-draft retention policy while discussing alternatives: T4 preserves values on Back and plan v1 expressly preserves values across recipient-mode changes.
+The assignment does not prescribe a separate reset on recipient changes; clearing amount/note would be a new product decision requiring approval.
+GOV.UK guidance supports returning prior answers on Back and prepopulating edits: https://design-system.service.gov.uk/patterns/question-pages/ and https://design-system.service.gov.uk/patterns/check-answers/.
+Retention avoids repeated entry; a changed recipient can make an old note or amount inappropriate, so Review must clearly present the current recipient with all retained transfer details.
+
+## Accepted: implement selected A without another plan artifact
+
+The candidate explicitly waived an additional HTML plan and authorized direct implementation of selected A with the identified mobile footer-gap correction.
+Use A's indicator, tinted card and helper text while retaining the disclosure button with aria-expanded and aria-controls; the decorative indicator is not a separate native radio.
+Selection and expansion continue to derive from the same recipientMode value, preserving the current toggle behavior and retained inputs.
+Limit implementation to the recipient presentation, mobile footer spacing and relevant regression coverage.
+Candidate acceptance and all broader delivery gates remain pending.
+
+## Accepted implementation direction: larger desktop transfer dialog
+
+The candidate requested using more desktop space for the transfer dialog and retained the direct small-change implementation preference.
+Raise the desktop height cap to 880px while retaining the 520px wireframe width and a viewport-minus-64px bound.
+Measured normal Review needs 826px overall; 880px accommodates that content with modest spare height instead of stretching indefinitely on very tall monitors.
+Short windows continue to scroll internally and mobile remains unchanged.
+Candidate visual acceptance and corresponding Figma-height alignment remain pending.
+
+## Accepted: S3 result and branch publication
+
+The candidate accepted the reviewed S3 behavior and explicitly authorized commit, push and PR creation.
+Acceptance includes selected A, the 16px mobile footer gap and responsive desktop height up to 880px.
+Publish feat/transfer-form to development with the current verified scope; S4 submission behavior remains excluded.
+This authorization does not include merge, deployment, Figma propagation or worktree cleanup.

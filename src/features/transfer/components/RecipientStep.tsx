@@ -124,12 +124,15 @@ export function RecipientStep({ payees, isPending, isError, isFetching, hasData,
       className="new-recipient-toggle"
       aria-expanded={mode === 'new'}
       aria-controls="new-recipient-fields"
+      aria-labelledby="new-recipient-label"
+      aria-describedby="new-recipient-help"
       onClick={() => setValue('recipientMode', mode === 'new' ? 'saved' : 'new')}
     >
-      Send to someone new
-      <svg viewBox="0 0 16 16" aria-hidden="true">
-        <path d={mode === 'new' ? 'M3 8h10' : 'M3 8h10M8 3v10'} />
-      </svg>
+      <span className="new-recipient-indicator" aria-hidden="true" />
+      <span className="payee-identity">
+        <strong id="new-recipient-label">Send to someone new</strong>
+        <span id="new-recipient-help">Enter their details below</span>
+      </span>
     </button>
     {mode === 'new' ? <div id="new-recipient-fields" className="new-recipient-fields">
       {field('recipientName', 'Recipient name')}
