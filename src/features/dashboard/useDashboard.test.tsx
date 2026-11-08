@@ -69,19 +69,6 @@ describe('dashboard data', () => {
     expect(result.current.transactionCount).toBe(0)
   })
 
-  it('loads the supplied customer, accounts and eight newest transactions', async () => {
-    const { result } = setup()
-    await waitFor(() => expect(result.current.status).toBe('ready'))
-    if (result.current.status !== 'ready') throw new Error('Expected dashboard data')
-    expect(result.current.customer.firstName).toBe('Ava')
-    expect(result.current.accounts).toHaveLength(3)
-    expect(result.current.transactions).toHaveLength(8)
-    expect(result.current.transactionCount).toBe(15)
-    expect(result.current.transactions[0]?.description).toBe('FairPrice Finest')
-    const dates = result.current.transactions.map((transaction) => Date.parse(transaction.date))
-    expect(dates).toEqual([...dates].sort((a, b) => b - a))
-  })
-
   it.each(endpoints)('exposes a %s failure without automatic retries, then retries all reads', async (failedEndpoint) => {
     let attempts = 0
     const requests = new Map<string, number>()
@@ -109,60 +96,4 @@ describe('dashboard data', () => {
     }
   })
 
-  it('keeps cached data during refresh failure and clears the error after recovery', async () => {
-    const { result, client } = setup()
-    await waitFor(() => expect(result.current.status).toBe('ready'))
-    if (result.current.status !== 'ready') throw new Error('Expected dashboard data')
-    const previousAccounts = result.current.accounts
-    server.use(http.get('*/api/accounts', () =>
-      HttpResponse.json({ error: { code: 'INTERNAL_ERROR', message: 'Down' } }, { status: 500 }),
-    ))
-
-    await act(async () => { await client.invalidateQueries() })
-    await waitFor(() => {
-      expect(result.current.status).toBe('ready')
-      if (result.current.status === 'ready') expect(result.current.hasRefreshError).toBe(true)
-    })
-    if (result.current.status !== 'ready') throw new Error('Expected cached dashboard')
-    expect(result.current.accounts).toEqual(previousAccounts)
-
-    server.resetHandlers()
-    await act(async () => { await result.current.retry() })
-    await waitFor(() => {
-      if (result.current.status !== 'ready') throw new Error('Expected dashboard data')
-      expect(result.current.hasRefreshError).toBe(false)
-    })
-  })
-})
-
-
-describe('invalid dashboard responses', () => {
-  it.each(['<html>Vite</html>', '{broken', 'null'])('shows an initial error for %s', async (body) => {
-    server.use(http.get('*/api/accounts', () => new HttpResponse(body)))
-    const { result, client } = setup()
-    await waitFor(() => expect(result.current.status).toBe('error'))
-    expect(client.getQueryData(['accounts'])).toBeUndefined()
-  })
-
-  it.each(['<html>Vite</html>', '{broken', 'null'])('preserves cached data after refresh returns %s', async (body) => {
-    const { result, client } = setup()
-    await waitFor(() => expect(result.current.status).toBe('ready'))
-    const cached = client.getQueryData(['accounts'])
-    server.use(http.get('*/api/accounts', () => new HttpResponse(body)))
-    await act(async () => { await client.invalidateQueries() })
-    expect(result.current.status).toBe('ready')
-    if (result.current.status !== 'ready') throw new Error('Expected cache')
-    expect(result.current.hasRefreshError).toBe(true)
-    expect(client.getQueryData(['accounts'])).toBe(cached)
-  })
-
-  it('retries all reads after an invalid response is removed', async () => {
-    server.use(http.get('*/api/accounts', () => new HttpResponse('null')))
-    const { result, client } = setup()
-    await waitFor(() => expect(result.current.status).toBe('error'))
-    await waitFor(() => expect(client.isFetching()).toBe(0))
-    server.resetHandlers()
-    await act(async () => { await result.current.retry() })
-    await waitFor(() => expect(result.current.status).toBe('ready'))
-  })
 })

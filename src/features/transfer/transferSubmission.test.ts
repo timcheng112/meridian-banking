@@ -14,6 +14,10 @@ describe('transfer request boundary', () => {
     expect(mapTransferField('recipient.bank', values)).toBe('bankName')
     expect(mapTransferField('recipient.bank', { ...values, bankChoice: 'DBS' })).toBe('bankChoice')
     expect(mapTransferField('__proto__', values)).toBeUndefined()
+    for (const field of ['fromAccountId', 'payeeId', 'amount', 'note'] as const) {
+      expect(mapTransferField(field, values)).toBe(field)
+    }
+    expect(mapTransferField('recipient.name', values)).toBe('recipientName')
     expect(mapTransferField('recipient.accountNumber', values)).toBe('accountNumber')
   })
 })

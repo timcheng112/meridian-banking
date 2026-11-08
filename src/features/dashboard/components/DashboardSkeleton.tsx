@@ -18,7 +18,7 @@ export function DashboardSkeleton({ mobilePreferences }: { mobilePreferences: Re
               <Skeleton kind="value" className="skeleton-hero-value" />
               <Skeleton kind="line" />
             </div>
-            <div className="desktop-transfer"><NewTransferButton /></div>
+            <div className="desktop-transfer"><NewTransferButton disabled /></div>
           </div>
           <div className="accounts-section" aria-hidden="true">
             <Skeleton kind="heading" className="skeleton-section-heading" />
@@ -47,7 +47,7 @@ export function DashboardSkeleton({ mobilePreferences }: { mobilePreferences: Re
           <div className="skeleton-limit-note"><Skeleton kind="line" /><Skeleton kind="line" /></div>
         </div>
       </div>
-      <div className="mobile-transfer"><NewTransferButton /></div>
+      <div className="mobile-transfer"><NewTransferButton disabled /></div>
     </>
   )
 }
