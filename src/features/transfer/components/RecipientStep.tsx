@@ -20,7 +20,7 @@ export function RecipientStep({ query }: Props) {
   const { errors } = useFormState({ control, name: 'payeeId' })
   const payees = query.data?.payees ?? []
   const hasData = query.data !== undefined
-  const isError = query.isError || (query.isFetching && query.errorUpdatedAt > 0)
+  const isError = query.isError || (query.isFetching && query.errorUpdatedAt > query.dataUpdatedAt)
   const { field: payeeField } = useController({ name: 'payeeId', control })
   const [search, setSearch] = useState('')
   const searchRef = useRef<HTMLInputElement>(null)

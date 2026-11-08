@@ -3,15 +3,17 @@ import { Stepper } from './Stepper'
 import type { TransferStep } from '../transferSchema'
 
 type Props = {
-  step: TransferStep
+  visible: boolean
+  view: TransferStep | 'success'
   onClose: () => void
   children: ReactNode
   footer: ReactNode
 }
-export function TransferDialogShell({ step, onClose, children, footer }: Props) {
+export function TransferDialogShell({ visible, view, onClose, children, footer }: Props) {
   const dialogRef = useRef<HTMLDialogElement>(null)
   const bodyRef = useRef<HTMLDivElement>(null)
   useLayoutEffect(() => {
+    if (!visible) return
     const dialog = dialogRef.current!
     const overflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
@@ -20,11 +22,12 @@ export function TransferDialogShell({ step, onClose, children, footer }: Props) 
       if (dialog.open) dialog.close()
       document.body.style.overflow = overflow
     }
-  }, [])
+  }, [visible])
   useLayoutEffect(() => {
+    if (!visible) return
     bodyRef.current?.scrollTo?.(0, 0)
-    bodyRef.current?.querySelector<HTMLElement>('h3')?.focus()
-  }, [step])
+    bodyRef.current?.querySelector<HTMLElement>('.transfer-send-error, h3')?.focus()
+  }, [view, visible])
   return <dialog
     ref={dialogRef}
     className="transfer-dialog"
@@ -45,7 +48,7 @@ export function TransferDialogShell({ step, onClose, children, footer }: Props) 
           </svg>
         </button>
       </div>
-      <Stepper step={step} />
+      {view !== 'success' ? <Stepper step={view} /> : null}
     </header>
     <div className="transfer-body" ref={bodyRef}>
       {children}

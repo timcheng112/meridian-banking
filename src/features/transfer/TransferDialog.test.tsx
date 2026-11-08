@@ -6,6 +6,7 @@ import { delay, http, HttpResponse } from 'msw'
 import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest'
 import type { Account, Customer } from '../../api/types'
 import { server } from '../../test/setup'
+import { useTransferSubmission } from './useTransferSubmission'
 import { TransferDialog } from './TransferDialog'
 
 beforeAll(() => {
@@ -18,12 +19,16 @@ const accounts: Account[] = [
   { id: 'savings', name: 'Savings Plus', type: 'savings', maskedNumber: '•••• 9930', balance: 60, currency: 'SGD' },
   { id: 'credit', name: 'Rewards Card', type: 'credit', maskedNumber: '•••• 7712', balance: 1000, currency: 'SGD' },
 ]
+function TestDialog({ customer: customerData = customer, accounts: accountData, onClose }: { customer?: Customer; accounts: Account[]; onClose: () => void }) {
+  const submission = useTransferSubmission()
+  return <TransferDialog customer={customerData} accounts={accountData} onClose={onClose} visible submission={submission} onInvalid={() => {}} />
+}
 const clients: QueryClient[] = []
 function setup(accountData = accounts) {
   const client = new QueryClient({ defaultOptions: { queries: { retry: false, staleTime: 30_000 } } })
   clients.push(client)
   const onClose = vi.fn()
-  const view = render(<StrictMode><QueryClientProvider client={client}><TransferDialog customer={customer} accounts={accountData} onClose={onClose} /></QueryClientProvider></StrictMode>)
+  const view = render(<StrictMode><QueryClientProvider client={client}><TestDialog customer={customer} accounts={accountData} onClose={onClose} /></QueryClientProvider></StrictMode>)
   return { client, onClose, ...view }
 }
 afterEach(() => { cleanup(); clients.forEach((client) => client.clear()); clients.length = 0 })
@@ -54,8 +59,7 @@ describe('transfer draft', () => {
     expect(screen.getByText('Jamie Tan')).toBeVisible()
     expect(screen.getByText('DBS · •••• 3391')).toBeVisible()
     expect(screen.getByText('Dinner')).toBeVisible()
-    expect(screen.getByRole('button', { name: 'Confirm transfer' })).toBeDisabled()
-    expect(screen.getByText('Transfers are unavailable in this preview.')).toBeVisible()
+    expect(screen.getByRole('button', { name: 'Confirm transfer' })).toBeEnabled()
     await userEvent.keyboard('{Enter}')
     expect(posts).toBe(0)
     await userEvent.click(screen.getByRole('button', { name: 'Back' }))
@@ -283,6 +287,18 @@ describe('transfer draft', () => {
     await userEvent.click(screen.getByRole('button', { name: 'Retry' }))
     await waitFor(() => expect(screen.queryByRole('alert')).not.toBeInTheDocument())
     expect(screen.getByRole('radio', { name: /Jamie Tan/ })).toBeChecked()
+    let finish!: () => void
+    const held = new Promise<void>((resolve) => { finish = resolve })
+    server.use(http.get('*/api/payees', async () => {
+      await held
+      return HttpResponse.json(client.getQueryData(['payees']))
+    }))
+    let refreshing!: Promise<void>
+    act(() => { refreshing = client.invalidateQueries({ queryKey: ['payees'] }) })
+    await waitFor(() => expect(client.isFetching({ queryKey: ['payees'] })).toBe(1))
+    expect(screen.queryByText("We couldn't refresh your payees. Showing previously loaded payees.")).not.toBeInTheDocument()
+    expect(screen.getByRole('radio', { name: /Jamie Tan/ })).toBeChecked()
+    await act(async () => { finish(); await refreshing })
   })
 
   it('blocks a removed recipient when advancing from Amount', async () => {
@@ -298,12 +314,12 @@ describe('transfer draft', () => {
   it('revalidates entered amounts against changed external balances and limits', async () => {
     const { client, onClose, rerender } = setup(); await savedAmount()
     await userEvent.click(screen.getByRole('button', { name: '100' }))
-    rerender(<StrictMode><QueryClientProvider client={client}><TransferDialog customer={customer} accounts={accounts.map((account) => account.id === 'checking' ? { ...account, balance: 70 } : account)} onClose={onClose} /></QueryClientProvider></StrictMode>)
+    rerender(<StrictMode><QueryClientProvider client={client}><TestDialog customer={customer} accounts={accounts.map((account) => account.id === 'checking' ? { ...account, balance: 70 } : account)} onClose={onClose} /></QueryClientProvider></StrictMode>)
     expect(await screen.findByText(/Amount can't be more than your available balance/)).toHaveTextContent('70.00')
-    rerender(<StrictMode><QueryClientProvider client={client}><TransferDialog customer={{ ...customer, dailyTransferLimit: 80 }} accounts={accounts} onClose={onClose} /></QueryClientProvider></StrictMode>)
+    rerender(<StrictMode><QueryClientProvider client={client}><TestDialog customer={{ ...customer, dailyTransferLimit: 80 }} accounts={accounts} onClose={onClose} /></QueryClientProvider></StrictMode>)
     expect(await screen.findByText(/This transfer exceeds your remaining daily limit/)).toHaveTextContent('80.00')
     expect(screen.getByLabelText('Amount')).toHaveValue('100.00')
-    rerender(<StrictMode><QueryClientProvider client={client}><TransferDialog customer={customer} accounts={accounts.filter((account) => account.id !== 'checking')} onClose={onClose} /></QueryClientProvider></StrictMode>)
+    rerender(<StrictMode><QueryClientProvider client={client}><TestDialog customer={customer} accounts={accounts.filter((account) => account.id !== 'checking')} onClose={onClose} /></QueryClientProvider></StrictMode>)
     await next()
     expect(await screen.findByText('Choose a deposit account.')).toBeVisible()
     expect(screen.getByLabelText('From account')).toHaveFocus()
@@ -334,4 +350,130 @@ describe('transfer draft', () => {
     expect(document.body.style.overflow).toBe('auto')
     document.body.style.overflow = ''
   })
+})
+
+async function savedReview() {
+  await savedAmount()
+  await userEvent.click(screen.getByRole('button', { name: '100' }))
+  await next()
+}
+
+describe('transfer submission', () => {
+  it('revalidates a same-ID reduced balance on Confirm, focuses Amount and sends zero requests', async () => {
+    let posts = 0
+    server.use(http.post('*/api/transfers', () => { posts++; return fail() }))
+    const { client, onClose, rerender } = setup()
+    await savedReview()
+    rerender(<StrictMode><QueryClientProvider client={client}><TestDialog customer={customer} accounts={accounts.map((account) => account.id === 'checking' ? { ...account, balance: 70 } : account)} onClose={onClose} /></QueryClientProvider></StrictMode>)
+    await userEvent.click(screen.getByRole('button', { name: 'Confirm transfer' }))
+    expect(await screen.findByRole('heading', { name: 'How much?' })).toBeVisible()
+    await waitFor(() => expect(screen.getByLabelText('Amount')).toHaveFocus())
+    expect(screen.getByText(/Amount can't be more than your available balance/)).toHaveTextContent('70.00')
+    expect(posts).toBe(0)
+  })
+
+  it('blocks a removed payee at final validation without posting', async () => {
+    let posts = 0
+    server.use(http.post('*/api/transfers', () => { posts++; return fail() }))
+    const { client } = setup()
+    await savedReview()
+    act(() => client.setQueryData(['payees'], { payees: [] }))
+    await userEvent.click(screen.getByRole('button', { name: 'Confirm transfer' }))
+    expect(await screen.findByRole('heading', { name: 'Who are you sending to?' })).toBeVisible()
+    await waitFor(() => expect(screen.getByRole('button', { name: 'Send to someone new' })).toHaveFocus())
+    expect(posts).toBe(0)
+  })
+
+  it('guards synchronous repeated submits before validation settles and pending requests, without retrying a failure', async () => {
+    let posts = 0
+    let finish!: () => void
+    const held = new Promise<void>((resolve) => { finish = resolve })
+    server.use(http.post('*/api/transfers', async () => { posts++; await held; return fail() }))
+    setup(); await savedReview()
+    const form = document.getElementById('transfer-form')!
+    act(() => { fireEvent.submit(form); fireEvent.submit(form); fireEvent.submit(form) })
+    expect(await screen.findByRole('button', { name: 'Sending…' })).toBeDisabled()
+    expect(screen.getByRole('button', { name: 'Back' })).toBeDisabled()
+    await waitFor(() => expect(posts).toBe(1))
+    fireEvent.submit(form)
+    await userEvent.keyboard('{Enter}')
+    finish()
+    expect(await screen.findByRole('alert')).toHaveTextContent("Something went wrong. Your money hasn't left your account. Try again.")
+    expect(posts).toBe(1)
+    expect(screen.queryByRole('heading', { name: 'Transfer sent' })).not.toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Check the details' })).toBeVisible()
+    expect(screen.getByRole('button', { name: 'Confirm transfer' })).toBeEnabled()
+  })
+
+  it('preserves server amount errors across blur and unrelated edits, then clears on correction', async () => {
+    server.use(http.post('*/api/transfers', () => HttpResponse.json({ error: { code: 'INSUFFICIENT_FUNDS', message: 'Balance changed.', fields: { amount: 'Use a smaller amount.', 'unknown.field': 'Contact support.' } } }, { status: 422 })))
+    setup(); await savedReview()
+    await userEvent.click(screen.getByRole('button', { name: 'Confirm transfer' }))
+    const alert = await screen.findByRole('alert')
+    expect(alert).toHaveTextContent('Balance changed.')
+    expect(alert).toHaveTextContent('Contact support.')
+    await userEvent.click(screen.getByRole('button', { name: 'Edit amount' }))
+    await waitFor(() => expect(screen.getByLabelText('Amount')).toHaveFocus())
+    expect(screen.getByLabelText('Amount')).toHaveAttribute('aria-describedby', 'amount-context amount-error')
+    await userEvent.click(screen.getByLabelText('Note (optional)'))
+    await userEvent.type(screen.getByLabelText('Note (optional)'), 'Unrelated')
+    await userEvent.tab()
+    expect(screen.getByText('Use a smaller amount.')).toBeVisible()
+    expect(screen.getByRole('button', { name: 'Continue' })).toBeDisabled()
+    await userEvent.clear(screen.getByLabelText('Amount'))
+    await userEvent.type(screen.getByLabelText('Amount'), '90')
+    await waitFor(() => expect(screen.queryByText('Use a smaller amount.')).not.toBeInTheDocument())
+    await next()
+    expect(screen.getByRole('heading', { name: 'Check the details' })).toBeVisible()
+  })
+
+  it.each(['network', 'invalid JSON'] as const)('shows uncertainty after %s with no success or automatic retry', async (kind) => {
+    let posts = 0
+    server.use(http.post('*/api/transfers', () => { posts++; return kind === 'network' ? HttpResponse.error() : new HttpResponse('<html>invalid</html>') }))
+    setup(); await savedReview()
+    await userEvent.click(screen.getByRole('button', { name: 'Confirm transfer' }))
+    expect(await screen.findByRole('alert')).toHaveTextContent("We couldn't confirm whether this transfer completed. Check your dashboard before trying again.")
+    expect(screen.queryByRole('heading', { name: 'Transfer sent' })).not.toBeInTheDocument()
+    expect(posts).toBe(1)
+  })
+})
+
+it('revalidates an unchanged server-rejected amount when its from-account changes', async () => {
+  server.use(http.post('*/api/transfers', () => HttpResponse.json({ error: { code: 'INSUFFICIENT_FUNDS', message: 'Balance changed.', fields: { amount: 'Choose another account or amount.' } } }, { status: 422 })))
+  setup(); await savedReview()
+  await userEvent.click(screen.getByRole('button', { name: 'Confirm transfer' }))
+  await userEvent.click(await screen.findByRole('button', { name: 'Edit amount' }))
+  await userEvent.selectOptions(screen.getByLabelText('From account'), 'savings')
+  expect(await screen.findByText(/Amount can't be more than your available balance/)).toHaveTextContent('60.00')
+  expect(screen.queryByText('Choose another account or amount.')).not.toBeInTheDocument()
+  await userEvent.selectOptions(screen.getByLabelText('From account'), 'checking')
+  await waitFor(() => expect(screen.getByRole('button', { name: 'Continue' })).toBeEnabled())
+})
+
+it.each([
+  ['recipient.name', 'Recipient name', 'recipientName', false],
+  ['recipient.accountNumber', 'Account number (8 digits)', 'accountNumber', false],
+  ['recipient.bank', 'Bank', 'bankChoice', false],
+  ['recipient.bank', 'Bank name', 'bankName', true],
+  ['fromAccountId', 'From account', 'fromAccountId', false],
+  ['note', 'Note (optional)', 'note', false],
+] as const)('shows and focuses server %s errors using the existing linked %s field', async (path, label, field, otherBank) => {
+  server.use(http.post('*/api/transfers', () => HttpResponse.json({ error: { code: 'VALIDATION_ERROR', message: 'Check your details.', fields: { [path]: 'Please correct this detail.' } } }, { status: 400 })))
+  setup()
+  await userEvent.click(screen.getByRole('button', { name: 'Send to someone new' }))
+  await userEvent.type(screen.getByLabelText('Recipient name'), 'Alex Lim')
+  await userEvent.type(screen.getByLabelText('Account number (8 digits)'), '00123456')
+  await userEvent.selectOptions(screen.getByLabelText('Bank'), otherBank ? 'other' : 'OCBC')
+  if (otherBank) await userEvent.type(screen.getByLabelText('Bank name'), 'Local Bank')
+  await next()
+  await userEvent.click(screen.getByRole('button', { name: '50' }))
+  await next()
+  await userEvent.click(screen.getByRole('button', { name: 'Confirm transfer' }))
+  await userEvent.click(await screen.findByRole('button', { name: path.startsWith('recipient.') ? 'Edit recipient' : 'Edit amount' }))
+  const input = screen.getByLabelText(label)
+  await waitFor(() => expect(input).toHaveFocus())
+  expect(input).toHaveAttribute('aria-invalid', 'true')
+  expect(input.getAttribute('aria-describedby')).toContain(`${field}-error`)
+  await userEvent.tab()
+  expect(screen.getByText('Please correct this detail.')).toBeVisible()
 })

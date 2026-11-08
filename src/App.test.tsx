@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { readFileSync } from 'node:fs'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { act, cleanup, render, screen, waitFor, within } from '@testing-library/react'
+import { act, cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { delay, http, HttpResponse } from 'msw'
 import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest'
@@ -9,6 +9,18 @@ import type { Account, Customer, Transaction } from './api/types'
 import { formatMoney, formatShortDate } from './lib/format'
 import { server } from './test/setup'
 import App from './App'
+
+const validationGate = vi.hoisted(() => ({ wait: undefined as Promise<void> | undefined }))
+vi.mock('@hookform/resolvers/zod', async (importOriginal) => {
+  const original = await importOriginal<typeof import('@hookform/resolvers/zod')>()
+  return { ...original, zodResolver: (...args: Parameters<typeof original.zodResolver>) => {
+    const resolve = original.zodResolver(...args)
+    return async (...resolverArgs: Parameters<typeof resolve>) => {
+      if (validationGate.wait) await validationGate.wait
+      return resolve(...resolverArgs)
+    }
+  } }
+})
 
 beforeAll(() => {
   HTMLDialogElement.prototype.showModal = function () { this.setAttribute('open', '') }
@@ -31,7 +43,9 @@ beforeEach(() => {
 })
 
 afterEach(() => {
+  validationGate.wait = undefined
   cleanup()
+  server.events.removeAllListeners('request:start')
   clients.forEach((client) => client.clear())
   clients.length = 0
 })
@@ -309,3 +323,276 @@ it('starts payee reads only on opening and restores the opener with a fresh draf
   await userEvent.click(screen.getByRole('button', { name: 'Cancel' }))
   await waitFor(() => expect(opener).toHaveFocus())
 })
+
+async function openTransferReview(note = '') {
+  await screen.findByRole('heading', { name: 'Good evening, Ava' })
+  await userEvent.click(screen.getAllByRole('button', { name: 'New transfer' })[0])
+  await userEvent.click(await screen.findByRole('radio', { name: /Jamie Tan/ }))
+  await userEvent.click(screen.getByRole('button', { name: 'Continue' }))
+  await userEvent.type(screen.getByLabelText('Amount'), '120')
+  if (note) await userEvent.type(screen.getByLabelText('Note (optional)'), note)
+  await userEvent.click(screen.getByRole('button', { name: 'Continue' }))
+}
+
+describe('successful transfer and refresh', () => {
+  it('uses the API receipt and refreshes balances, daily limit and newest transaction without reloading', async () => {
+    let posts = 0
+    server.events.on('request:start', ({ request }) => { if (request.method === 'POST') posts++ })
+    renderApp(); await openTransferReview('Dinner')
+    await userEvent.click(screen.getByRole('button', { name: 'Confirm transfer' }))
+    expect(await screen.findByRole('heading', { name: 'Transfer sent' })).toBeVisible()
+    expect(screen.getByText(/^Reference TRF-/)).toBeVisible()
+    expectMoney(screen.getByRole('region', { name: 'Total available' }), 17120.55)
+    await waitFor(() => expect(screen.getByRole('button', { name: 'Back to dashboard' })).toBeEnabled())
+    expectMoney(screen.getByRole('region', { name: 'Total available' }), 17000.55)
+    expectMoney(screen.getByRole('region', { name: 'Daily transfer limit' }), 4880)
+    const checking = within(screen.getByRole('region', { name: 'Accounts' })).getAllByRole('article')[0]
+    expectMoney(checking, 4160.55)
+    expect(screen.getByRole('heading', { name: 'Transfer to Jamie Tan' })).toBeVisible()
+    await userEvent.click(screen.getByRole('button', { name: 'Back to dashboard' }))
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+    await userEvent.click(screen.getAllByRole('button', { name: 'New transfer' })[0])
+    expect(screen.getByRole('heading', { name: 'Who are you sending to?' })).toHaveFocus()
+    expect(screen.queryByText(/^Reference TRF-/)).not.toBeInTheDocument()
+    expect(posts).toBe(1)
+    server.events.removeAllListeners('request:start')
+  })
+
+  it.each(['customer', 'accounts', 'transactions'])('keeps successful receipt when %s refresh fails and retries GETs only', async (resource) => {
+    let posts = 0
+    const started = new Set<string>()
+    let sending = false
+    const observe = ({ request }: { request: Request }) => {
+      const path = new URL(request.url).pathname
+      if (request.method === 'POST') { posts++; sending = true }
+      else if (sending) started.add(path)
+    }
+    server.events.on('request:start', observe)
+    const client = renderApp(); await openTransferReview()
+    server.use(http.get(`*/api/${resource}`, errorResponse))
+    await userEvent.click(screen.getByRole('button', { name: 'Confirm transfer' }))
+    await screen.findByRole('heading', { name: 'Transfer sent' })
+    expect(await screen.findByText("Transfer sent, but we couldn't refresh your dashboard. Your transfer is complete. Try refreshing the dashboard.")).toBeVisible()
+    expect(posts).toBe(1)
+    expect(started).toEqual(new Set(['/api/customer', '/api/accounts', '/api/transactions']))
+    expect(client.getQueryData(['accounts'])).toBeDefined()
+    expect(screen.getByRole('button', { name: 'Back to dashboard' })).toBeEnabled()
+    expect(screen.queryByRole('button', { name: 'Confirm transfer' })).not.toBeInTheDocument()
+    server.resetHandlers()
+    await userEvent.click(screen.getByRole('button', { name: 'Retry dashboard refresh' }))
+    await waitFor(() => expect(screen.getByRole('button', { name: 'Back to dashboard' })).toBeEnabled())
+    expect(screen.queryByText(/Transfer sent, but we couldn't/)).not.toBeInTheDocument()
+    expectMoney(screen.getByRole('region', { name: 'Total available' }), 17000.55)
+    expect(posts).toBe(1)
+    server.events.removeListener('request:start', observe)
+  })
+
+  it('retains a hidden pending session, announces success without focus theft and reopens its receipt', async () => {
+    let finish!: () => void
+    const held = new Promise<void>((resolve) => { finish = resolve })
+    let posts = 0
+    // A test-local handler provides an API receipt while dashboard GETs use the supplied data.
+    server.use(http.post('*/api/transfers', async () => {
+      posts++
+      await held
+      return HttpResponse.json({ transfer: { id: 't', reference: 'TRF-HIDDEN', status: 'completed', fromAccountId: 'acc_checking', recipient: { name: 'Jamie Tan', bank: 'DBS', accountNumberMasked: '•••• 3391' }, amount: 120, fee: 0, currency: 'SGD', note: null, createdAt: '2026-11-08T12:00:00Z' }, account: { id: 'acc_checking', balance: 4160.55 }, dailyLimit: { limit: 5000, used: 120, remaining: 4880 } }, { status: 201 })
+    }))
+    renderApp(); await openTransferReview()
+    const opener = screen.getAllByRole('button', { name: 'New transfer' })[0]
+    vi.spyOn(opener, 'getClientRects').mockReturnValue({ length: 1 } as DOMRectList)
+    await userEvent.click(screen.getByRole('button', { name: 'Confirm transfer' }))
+    await screen.findByRole('button', { name: 'Sending…' })
+    await userEvent.click(screen.getByRole('button', { name: 'Close transfer' }))
+    await waitFor(() => expect(opener).toHaveFocus())
+    expect(document.body.style.overflow).toBe('')
+    expect(screen.getByText('Sending transfer… Open New transfer to view its status.')).toHaveAttribute('role', 'status')
+    await userEvent.click(opener)
+    expect(screen.getByRole('heading', { name: 'Check the details' })).toHaveFocus()
+    expect(screen.getByRole('button', { name: 'Sending…' })).toBeDisabled()
+    await userEvent.click(screen.getByRole('button', { name: 'Close transfer' }))
+    await waitFor(() => expect(opener).toHaveFocus())
+    finish()
+    expect(await screen.findByText('Transfer sent. Open New transfer to view the confirmation.')).toBeVisible()
+    expect(opener).toHaveFocus()
+    expect(document.body.style.overflow).toBe('')
+    await userEvent.click(opener)
+    expect(screen.getByRole('heading', { name: 'Transfer sent' })).toHaveFocus()
+    expect(screen.getByText('Reference TRF-HIDDEN')).toBeVisible()
+    expect(posts).toBe(1)
+  })
+
+  it('retains a hidden failure and intact draft until its visible outcome is dismissed', async () => {
+    let finish!: () => void
+    const held = new Promise<void>((resolve) => { finish = resolve })
+    server.use(http.post('*/api/transfers', async () => { await held; return errorResponse() }))
+    renderApp(); await openTransferReview('Retained draft')
+    await userEvent.click(screen.getByRole('button', { name: 'Confirm transfer' }))
+    await screen.findByRole('button', { name: 'Sending…' })
+    await userEvent.click(screen.getByRole('button', { name: 'Close transfer' }))
+    finish()
+    expect(await screen.findByText('Transfer failed. Open New transfer to review and try again.')).toBeVisible()
+    await userEvent.click(screen.getAllByRole('button', { name: 'New transfer' })[0])
+    expect(screen.getByRole('alert')).toHaveFocus()
+    expect(screen.getByText('Retained draft')).toBeVisible()
+    await userEvent.click(screen.getByRole('button', { name: 'Close transfer' }))
+    await userEvent.click(screen.getAllByRole('button', { name: 'New transfer' })[0])
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Who are you sending to?' })).toHaveFocus()
+  })
+
+  it('invalidates active and inactive search caches and preserves the search term and Clear behavior', async () => {
+    const client = renderApp()
+    await screen.findByRole('heading', { name: 'Good evening, Ava' })
+    const search = screen.getByRole('searchbox', { name: 'Search transactions' })
+    await userEvent.type(search, 'Jamie')
+    await screen.findByText('1 result')
+    await userEvent.clear(search)
+    await userEvent.type(search, 'groceries')
+    await screen.findByText('1 result')
+    await openTransferReview()
+    await userEvent.click(screen.getByRole('button', { name: 'Confirm transfer' }))
+    await screen.findByRole('heading', { name: 'Transfer sent' })
+    await waitFor(() => expect(screen.getByRole('button', { name: 'Back to dashboard' })).toBeEnabled())
+    expect(search).toHaveValue('groceries')
+    expect(screen.getByRole('heading', { name: 'FairPrice Finest' })).toBeVisible()
+    expect(screen.queryByRole('heading', { name: 'Transfer to Jamie Tan' })).not.toBeInTheDocument()
+    expect(client.getQueryState(['transactions', { limit: 8, q: 'Jamie' }])?.isInvalidated).toBe(true)
+    await userEvent.click(screen.getByRole('button', { name: 'Back to dashboard' }))
+    await userEvent.clear(search)
+    await userEvent.type(search, 'Jamie')
+    await waitFor(() => expect(client.getQueryData<{ total: number }>(['transactions', { limit: 8, q: 'Jamie' }])?.total).toBe(2), { timeout: 2000 })
+    expect(await screen.findByText('2 results')).toBeVisible()
+    expect(screen.getAllByRole('heading', { name: 'Transfer to Jamie Tan' })).toHaveLength(2)
+    await userEvent.click(screen.getByRole('button', { name: 'Clear search' }))
+    expect(search).toHaveValue('')
+    expect(screen.getAllByRole('heading', { name: 'Transfer to Jamie Tan' })).toHaveLength(1)
+  }, 10_000)
+})
+
+it('keeps validation locked through close/reopen and discards a hidden invalid draft with zero POST', async () => {
+  let release!: () => void
+  let posts = 0
+  server.use(http.post('*/api/transfers', () => { posts++; return errorResponse() }))
+  const client = renderApp(); await openTransferReview()
+  act(() => client.setQueryData(['payees'], { payees: [] }))
+  await screen.findByText('Recipient unavailable')
+  validationGate.wait = new Promise<void>((resolve) => { release = resolve })
+  const form = document.getElementById('transfer-form')!
+  act(() => { fireEvent.submit(form); fireEvent.submit(form) })
+  await userEvent.click(screen.getByRole('button', { name: 'Close transfer' }))
+  expect(screen.getByText('Sending transfer… Open New transfer to view its status.')).toBeVisible()
+  await userEvent.click(screen.getAllByRole('button', { name: 'New transfer' })[0])
+  expect(screen.getByRole('button', { name: 'Sending…' })).toBeDisabled()
+  await userEvent.click(screen.getByRole('button', { name: 'Close transfer' }))
+  release()
+  await waitFor(() => expect(screen.queryByText('Sending transfer… Open New transfer to view its status.')).not.toBeInTheDocument())
+  expect(screen.queryByRole('dialog', { hidden: true })).not.toBeInTheDocument()
+  expect(posts).toBe(0)
+  await userEvent.click(screen.getAllByRole('button', { name: 'New transfer' })[0])
+  expect(screen.getByRole('heading', { name: 'Who are you sending to?' })).toHaveFocus()
+})
+
+it('replaces an in-flight pre-transfer account read so its late stale result cannot overwrite refresh', async () => {
+  const client = renderApp(); await openTransferReview()
+  const cached = client.getQueryData<{ accounts: Account[] }>(['accounts'])!
+  let release!: () => void
+  const held = new Promise<void>((resolve) => { release = resolve })
+  let reads = 0
+  server.use(http.get('*/api/accounts', async () => {
+    reads++
+    if (reads === 1) { await held; return HttpResponse.json(cached) }
+    return HttpResponse.json({ accounts: cached.accounts.map((account) => account.id === 'acc_checking' ? { ...account, balance: 4160.55 } : account) })
+  }))
+  let oldRead!: Promise<void>
+  act(() => { oldRead = client.refetchQueries({ queryKey: ['accounts'] }) })
+  await waitFor(() => expect(reads).toBe(1))
+  await userEvent.click(screen.getByRole('button', { name: 'Confirm transfer' }))
+  await screen.findByRole('heading', { name: 'Transfer sent' })
+  await waitFor(() => expect(screen.getByRole('button', { name: 'Back to dashboard' })).toBeEnabled())
+  expect(reads).toBe(2)
+  expectMoney(screen.getByRole('region', { name: 'Total available' }), 17000.55)
+  await act(async () => { release(); await oldRead })
+  expectMoney(screen.getByRole('region', { name: 'Total available' }), 17000.55)
+})
+
+it('reports active search refresh failure independently and retries the transaction family without another POST', async () => {
+  let posts = 0
+  const observe = ({ request }: { request: Request }) => { if (request.method === 'POST') posts++ }
+  server.events.on('request:start', observe)
+  renderApp()
+  await screen.findByRole('heading', { name: 'Good evening, Ava' })
+  await userEvent.type(screen.getByRole('searchbox', { name: 'Search transactions' }), 'Jamie')
+  await screen.findByText('1 result')
+  await openTransferReview()
+  server.use(http.get('*/api/transactions', ({ request }) => {
+    if (new URL(request.url).searchParams.has('q')) return errorResponse()
+  }))
+  await userEvent.click(screen.getByRole('button', { name: 'Confirm transfer' }))
+  await screen.findByRole('heading', { name: 'Transfer sent' })
+  await screen.findByText("Transfer sent, but we couldn't refresh your dashboard. Your transfer is complete. Try refreshing the dashboard.")
+  expect(screen.queryByText("We couldn't refresh your dashboard. Showing previously loaded data.")).not.toBeInTheDocument()
+  expect(screen.getByText("We couldn't refresh your search results. Showing previously loaded results.")).toBeVisible()
+  server.resetHandlers()
+  await userEvent.click(screen.getByRole('button', { name: 'Retry dashboard refresh' }))
+  await waitFor(() => expect(screen.getByRole('button', { name: 'Back to dashboard' })).toBeEnabled())
+  expect(await screen.findByText('2 results')).toBeVisible()
+  expect(posts).toBe(1)
+})
+
+it('replaces an initial search read with no cached data before refreshing after a transfer', async () => {
+  let release!: () => void
+  const held = new Promise<void>((resolve) => { release = resolve })
+  let searchReads = 0
+  server.use(http.get('*/api/transactions', async ({ request }) => {
+    if (!new URL(request.url).searchParams.has('q')) return
+    searchReads++
+    if (searchReads === 1) { await held; return HttpResponse.json({ transactions: [], total: 0 }) }
+    return HttpResponse.json({ transactions: [{ ...transaction, id: 'new-transfer', description: 'Transfer to Jamie Tan', category: 'transfer' }], total: 1 })
+  }))
+  renderApp()
+  await screen.findByRole('heading', { name: 'Good evening, Ava' })
+  await userEvent.type(screen.getByRole('searchbox', { name: 'Search transactions' }), 'Jamie')
+  await waitFor(() => expect(searchReads).toBe(1))
+  await openTransferReview()
+  await userEvent.click(screen.getByRole('button', { name: 'Confirm transfer' }))
+  await screen.findByRole('heading', { name: 'Transfer sent' })
+  await waitFor(() => expect(screen.getByRole('button', { name: 'Back to dashboard' })).toBeEnabled())
+  expect(searchReads).toBe(2)
+  expect(screen.getByText('1 result')).toBeVisible()
+  await act(async () => { release(); await held })
+  expect(screen.getByText('1 result')).toBeVisible()
+  expect(screen.queryByText('No transactions match your search.')).not.toBeInTheDocument()
+})
+
+it('preserves a newer receipt and refresh status after an older dismissed receipt refresh settles', async () => {
+  const client = renderApp(); await openTransferReview()
+  const cached = client.getQueryData<{ accounts: Account[] }>(['accounts'])!
+  let releaseOld!: () => void
+  let releaseNew!: () => void
+  const oldRead = new Promise<void>((resolve) => { releaseOld = resolve })
+  const newRead = new Promise<void>((resolve) => { releaseNew = resolve })
+  let reads = 0
+  server.use(http.get('*/api/accounts', async () => {
+    const attempt = ++reads
+    await (attempt === 1 ? oldRead : newRead)
+    return HttpResponse.json({ accounts: cached.accounts.map((account) => account.id === 'acc_checking' ? { ...account, balance: attempt === 1 ? 4160.55 : 4040.55 } : account) })
+  }))
+  await userEvent.click(screen.getByRole('button', { name: 'Confirm transfer' }))
+  await screen.findByRole('heading', { name: 'Transfer sent' })
+  const oldReference = screen.getByText(/^Reference TRF-/).textContent
+  expect(screen.getByRole('button', { name: 'Back to dashboard' })).toBeDisabled()
+  await userEvent.click(screen.getByRole('button', { name: 'Close transfer' }))
+  await openTransferReview()
+  await userEvent.click(screen.getByRole('button', { name: 'Confirm transfer' }))
+  await screen.findByRole('heading', { name: 'Transfer sent' })
+  await waitFor(() => expect(reads).toBe(2))
+  const newReference = screen.getByText(/^Reference TRF-/).textContent
+  expect(newReference).not.toBe(oldReference)
+  await act(async () => { releaseOld(); await oldRead })
+  expect(screen.getByRole('button', { name: 'Back to dashboard' })).toBeDisabled()
+  expect(screen.getByText('Transfer sent. Updating your dashboard…')).toBeVisible()
+  expect(screen.getByText(/^Reference TRF-/)).toHaveTextContent(newReference!)
+  await act(async () => { releaseNew(); await newRead })
+  await waitFor(() => expect(screen.getByRole('button', { name: 'Back to dashboard' })).toBeEnabled())
+  expectMoney(screen.getByRole('region', { name: 'Total available' }), 16880.55)
+}, 10_000)
