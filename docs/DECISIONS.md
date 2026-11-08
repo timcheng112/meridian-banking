@@ -484,3 +484,6 @@ Approval covers the listed local extraction, behavior tests and browser verifica
 After local implementation and verification, the candidate explicitly requested pushing the refactor to the existing S3 PR #4.
 Publication includes the approved RHF composition, extracted hooks/footer/fields and behavioral coverage.
 Merge, deployment and cleanup remain separately gated.
+
+The candidate deferred further recipient-hook extraction until the correctness review and approved only naming the existing bank presets in RecipientStep.
+Keep the constant in the same module; the presets are not an exhaustive bank directory and Other bank remains available.

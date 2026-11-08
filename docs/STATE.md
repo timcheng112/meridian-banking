@@ -1228,3 +1228,11 @@ The candidate explicitly requested pushing the completed readability refactor.
 All eleven recorded source hashes still match the passing 90-test, build and Chrome evidence at publication preparation.
 Commit the reviewed source/tests and checkpoint, push feat/transfer-form normally, and update existing https://github.com/timcheng112/meridian-banking/pull/4 with the final S3 scope.
 Hosted Validation for this new head is pending the push; merge, deployment and cleanup remain unauthorized.
+
+## Bank preset readability follow-up
+
+The candidate requested extracting the four existing bank options into a module-level BANK_PRESETS constant in RecipientStep.
+Values, ordering and Other bank behavior remain unchanged; recipient-hook discussion is deferred to the correctness review.
+The candidate explicitly authorized pushing this constant extraction to existing PR #4.
+Hosted Validation for the new head follows the push; merge and cleanup remain excluded.
+Lint, typecheck and git diff --check passed for this constant extraction; no new tests or browser rerun were needed.

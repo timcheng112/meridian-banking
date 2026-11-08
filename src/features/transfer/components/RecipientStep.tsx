@@ -8,6 +8,9 @@ import { Skeleton } from '../../../components/ui/Skeleton'
 import type { TransferValues } from '../transferSchema'
 import { TransferTextField, TransferSelectField, TransferFieldError } from './TransferFields'
 
+// Common presets; Other bank supports banks outside this list.
+const BANK_PRESETS = ['DBS', 'OCBC', 'UOB', 'POSB']
+
 type Props = {
   query: UseQueryResult<PayeesResponse, Error>
 }
@@ -110,7 +113,7 @@ export function RecipientStep({ query }: Props) {
       <TransferTextField name="accountNumber" label="Account number (8 digits)" inputMode="numeric" />
       <TransferSelectField name="bankChoice" label="Bank">
         <option value="">Choose a bank</option>
-        {['DBS', 'OCBC', 'UOB', 'POSB'].map((bank) => <option key={bank}>
+        {BANK_PRESETS.map((bank) => <option key={bank}>
           {bank}
         </option>)}
         <option value="other">Other bank</option>
