@@ -525,3 +525,20 @@ The requested post-S4 correctness/readability review found and corrected a stale
 Keep RecipientStep's short cohesive setup local; a hook would expose many values and actions while splitting related code.
 There is no requirement for symmetric hooks for every step.
 Candidate feature acceptance is pending; passing verification and review do not grant publication or deployment approval.
+
+## Accepted: required-field completeness before Continue
+
+The candidate explicitly requested disabling Continue until required active-step fields are filled or selected, as well as when known errors exist.
+Use watched completeness only for that presentation gate; keep format, length, amount and financial rules in the existing schema.
+Optional note stays optional, and Enter uses the same gate.
+
+## Accepted: hide routine success-refresh text visually
+
+The candidate requested removing the flashing dashboard-update line from the visible success screen.
+Keep its status announcement screen-reader accessible and retain visible refresh-failure feedback.
+
+## Accepted: S4 result and PR publication
+
+After reviewing the preview and the requested completeness/status corrections, the candidate reported the result passed and explicitly authorized pushing a PR.
+Publish feat/transfer-submission into development with the accepted S4 scope and completed correctness/readability review.
+Merge, deployment and worktree cleanup remain separately gated.

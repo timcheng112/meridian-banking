@@ -1,6 +1,6 @@
 # Current state
 
-## Active continuation: S4 locally verified; candidate acceptance pending
+## Active continuation: S4 accepted; PR publication authorized
 
 The candidate approved S1 and reported merging PR #1 on 8 November 2026.
 GitHub confirms the merge into development at 04956afd78cfb1a4251edccd140be74cba99637e.
@@ -17,10 +17,10 @@ Deadline: 10 November 2026, EOD, supplied by the candidate.
 The application renders dashboard content through the accepted query/state layer, with loading, initial error/Retry, refresh warnings and empty states.
 The header, persistent preferences, API search, responsive layout and shared UI presentation are implemented; S2 evidence is recorded below.
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
-Active scope: S1-S3 and CI accepted and merged; approved S4 is implemented and locally verified on feat/transfer-submission, awaiting candidate understanding and acceptance.
+Active scope: S1-S3 and CI accepted and merged; S4 is accepted after candidate preview review, and publication of feat/transfer-submission to a PR into development is explicitly authorized.
 Integration base: remote development 5d4566fd924dcceec90c71f5077b83ccccb69f8c, the verified PR #4 merge containing CI PR #5.
 Primary development was fast-forwarded to 5d4566f; this local recovery checkpoint follows that merge.
-Phase: S4 implementation and the requested correctness/readability review are complete locally; candidate understanding and acceptance remain pending.
+Phase: S4 and its final candidate-requested fixes are accepted; commit and publish the reviewed branch as a PR into development.
 All five assignment development leases were returned with explicit authorization after clean-status and merge-preservation checks.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -41,7 +41,7 @@ Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
 | S2 | API search and persistent theme/segment | Accepted and merged in MR #2 at 8d0b4a3 |
 | Fidelity | Bidirectional Figma/code reconciliation for implemented scope | Accepted and merged in MR #3 at 571b9d5 |
 | S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Accepted and merged in PR #4 at 5d4566f |
-| S4 | Transfer mutation, failures, success and dashboard refresh | Locally verified at 126f0b0; candidate acceptance pending |
+| S4 | Transfer mutation, failures, success and dashboard refresh | Accepted with final completeness/status fixes; PR publication authorized |
 | Release | Full requirement audit, production checks, submission README, deployment | Pending; publication requires approval |
 
 Each slice uses feature-dev for technical planning and approval before implementation.
@@ -149,13 +149,12 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Review the local S4 production preview at http://127.0.0.1:4184/ and /private/tmp/meridian-s4-review.html.
-S4 and the requested correctness/readability review are complete locally on feat/transfer-submission at source revision 126f0b0.
-Obtain candidate understanding and acceptance before marking the slice accepted.
-Astra recommends keeping RecipientStep intact; no further hook extraction was performed.
-The S4 lease remains active, and the local preview is retained for review.
-New publication, deployment, merge and cleanup require separate authorization.
-The release-wide requirement audit, submission README and deployed verification remain pending.
+Commit the accepted final S4 fixes and records, push feat/transfer-submission, and create a PR into development.
+The candidate explicitly reported the preview passed and authorized PR publication.
+Verify the final published head and hosted CI after publication.
+The correctness/readability review is complete; keep RecipientStep intact as recommended.
+Merge, deployment and worktree cleanup remain separately authorized actions.
+Release-wide requirements, submission README and deployed verification remain pending.
 
 ## Continuation audit - 7 November 2026
 
@@ -1314,3 +1313,26 @@ The S4 lease remains active; local identity/path details are in /private/tmp/mer
 No supplied mocks, seed data, generated files, dependencies, CHANGELOG or runtime/CI configuration were changed.
 No push, PR update, Figma write, deployment, merge or lease cleanup occurred.
 Next: candidate walkthrough, understanding and acceptance, followed by separately authorized publication and release work.
+
+## Continue completeness correction
+
+The candidate requested an immediate fix for Continue being enabled before required fields were filled or selected.
+useTransferForm now watches required input values and disables Continue for incomplete active steps, retaining existing schema validation and known-error blocking.
+Saved recipients and source accounts must resolve to available choices; new recipient fields and conditional Other bank name must be nonblank; note remains optional.
+Enter follows the same completeness guard.
+Astra focused review passed; npm run check passed lint, typecheck and 119 tests; build and git diff --check passed.
+The rebuilt preview passed isolated Chrome checks for saved/new/Other bank completeness, empty amount, optional note and Enter blocking.
+Evidence: /private/tmp/meridian-browser-qa/s4-continue-results.json.
+Candidate acceptance and publication remain pending.
+The candidate also questioned the brief visible dashboard-refresh status on success; its purpose was explained, with a suggestion to retain the live announcement but remove routine visible copy.
+The candidate subsequently requested hiding the routine visible refresh status; SuccessPanel now applies sr-only while retaining role=status, arrival copy and the visible refresh-failure warning.
+Typecheck and production build pass after this one-class presentation change; current preview build is index-HrWPKeFw.js.
+
+## S4 acceptance and publication authorization
+
+The candidate tested the preview, requested the Continue completeness fix and hidden routine refresh status, then reported the result passed.
+The candidate explicitly requested pushing the PR into development.
+This records S4 acceptance and authorization to commit/push the final changes and create the PR; merge, deployment and cleanup remain excluded.
+Final completeness behavior passed 119 tests, lint/typecheck/build and focused Chrome checks.
+The final screen-reader-only presentation change passed typecheck/build and was accepted in the candidate preview.
+Local evidence remains outside Git; publication does not include screenshot uploads.

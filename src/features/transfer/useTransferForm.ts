@@ -57,7 +57,10 @@ export function useTransferForm({ customer, accounts, visible, submission, onInv
     },
   })
   const { control, trigger, getValues, getFieldState, setFocus } = form
-  const [mode, bankChoice, accountId] = useWatch({ control, name: ['recipientMode', 'bankChoice', 'fromAccountId'] })
+  const [mode, payeeId, recipientName, accountNumber, bankChoice, bankName, accountId, amount] = useWatch({
+    control,
+    name: ['recipientMode', 'payeeId', 'recipientName', 'accountNumber', 'bankChoice', 'bankName', 'fromAccountId', 'amount'],
+  })
   const selectedAccount = accounts.find((account) => account.id === accountId && account.type !== 'credit')
   const availableBalance = selectedAccount?.balance
   useEffect(() => {
@@ -67,9 +70,13 @@ export function useTransferForm({ customer, accounts, visible, submission, onInv
   const activeRecipientFields = recipientFields(mode).filter((path) => path !== 'bankName' || bankChoice === 'other')
   const activeFields = step === 'recipient' ? activeRecipientFields : amountFields
   const { errors } = useFormState({ control, name: activeFields })
+  const recipientComplete = mode === 'saved'
+    ? payees.some((payee) => payee.id === payeeId)
+    : [recipientName, accountNumber, bankChoice, ...(bankChoice === 'other' ? [bankName] : [])].every((value) => value.trim())
+  const stepComplete = step === 'recipient' ? recipientComplete : Boolean(selectedAccount && amount.trim())
   const continueDisabled = step !== 'review' && (
-    activeFields.some((path) => Boolean(errors[path])) ||
-    (step === 'amount' && !accounts.some((account) => account.type !== 'credit'))
+    !stepComplete ||
+    activeFields.some((path) => Boolean(errors[path]))
   )
 
   async function advance() {
