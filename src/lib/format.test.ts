@@ -1,5 +1,5 @@
-import { describe, expect, it } from 'vitest'
-import { formatMoney, formatShortDate } from './format'
+import { describe, expect, it, vi } from 'vitest'
+import { formatMoney } from './format'
 
 describe('formatMoney', () => {
   it('uses the SGD code and two decimals', () => {
@@ -10,8 +10,15 @@ describe('formatMoney', () => {
 })
 
 describe('formatShortDate', () => {
-  it('formats in Singapore time regardless of the runner timezone', () => {
-    // 00:15 UTC on 18 Oct — would read 17 Oct in the Americas.
-    expect(formatShortDate('2026-10-18T08:15:00+08:00')).toBe('18 Oct')
+  it('formats in Singapore time regardless of the runner timezone', async () => {
+    vi.stubEnv('TZ', 'UTC')
+    vi.resetModules()
+    try {
+      const { formatShortDate } = await import('./format')
+      // This instant is 18 Oct in UTC and 19 Oct in Singapore.
+      expect(formatShortDate('2026-10-18T17:15:00Z')).toBe('19 Oct')
+    } finally {
+      vi.unstubAllEnvs()
+    }
   })
 })

@@ -1,0 +1,101 @@
+.transfer-dialog { padding: 0; border: 0; margin: 0; width: 100%; max-width: none; height: 100vh; height: 100dvh; max-height: none; background: var(--surface); color: var(--text); overflow: hidden; box-shadow: var(--shadow-lg); }
+.transfer-dialog[open] { display: flex; flex-direction: column; }
+.transfer-dialog::backdrop { background: var(--overlay); }
+.transfer-header { flex: none; padding: var(--space-6); border-bottom: 1px solid var(--border); }
+.transfer-title-row { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); }
+.transfer-dialog .transfer-title-row h2 { font-size: var(--text-lg); font-weight: var(--weight-semibold); margin: 0; }
+.transfer-close { width: var(--tap-target); height: var(--space-12); border: 1px solid var(--border-strong); border-radius: var(--radius-sm); background: transparent; color: var(--text-muted); cursor: pointer; display: grid; place-items: center; }
+.transfer-dialog svg { width: var(--space-4); height: var(--space-4); fill: none; stroke: currentColor; stroke-width: 1.5; flex: none; }
+.transfer-close svg { width: var(--space-5); height: var(--space-5); }
+.transfer-stepper { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); list-style: none; padding: var(--space-2) 0 0; margin: 0; }
+.transfer-stepper li { position: relative; display: flex; flex-direction: column; align-items: center; gap: var(--space-2); font-size: var(--text-xs); color: var(--text-subtle); }
+.transfer-stepper li:not(:last-child)::after { content: ''; position: absolute; left: calc(50% + var(--space-4)); right: calc(-50% + var(--space-4)); top: var(--space-4); height: 1px; background: var(--border-strong); }
+.step-circle { position: relative; z-index: 1; width: var(--space-8); height: var(--space-8); border: 1px solid var(--border-strong); border-radius: var(--radius-full); display: grid; place-items: center; background: var(--surface-muted); font-size: var(--text-sm); font-weight: var(--weight-semibold); }
+.transfer-stepper [aria-current] { color: var(--brand); font-weight: var(--weight-semibold); }
+.transfer-stepper [aria-current] .step-circle { background: var(--brand); color: var(--on-brand); border-color: var(--brand); }
+.transfer-stepper [data-complete='true'] { color: var(--text-muted); }
+.transfer-stepper [data-complete='true'] .step-circle { background: var(--positive); color: var(--on-brand); border-color: var(--positive); }
+.transfer-stepper li[data-complete='true']:not(:last-child)::after { background: var(--positive); }
+.transfer-body { padding: var(--space-4) var(--space-6) var(--space-6); min-height: 0; flex: 1; overflow: auto; overscroll-behavior: contain; }
+.transfer-dialog .transfer-body h3 { font-size: var(--text-lg); line-height: var(--leading-normal); letter-spacing: var(--tracking-tight); font-weight: var(--weight-semibold); margin: 0 0 var(--space-2); }
+.transfer-footer { flex: none; padding: var(--space-4) var(--space-6) max(var(--space-4), env(safe-area-inset-bottom)); border-top: 1px solid var(--border); }
+.transfer-actions { display: flex; gap: var(--space-3); justify-content: space-between; }
+.transfer-actions .ui-button { min-height: var(--space-12); }
+.transfer-dialog .payee-list { margin: var(--space-2) 0; border: 0; padding: 0; min-width: 0; }
+.payee-row { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) var(--space-4); border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; margin-bottom: var(--space-2); }
+.payee-row[data-selected='true'] { border-color: var(--brand); background: var(--brand-soft); }
+.payee-row input { accent-color: var(--brand); width: var(--space-5); height: var(--space-5); flex: none; margin: 0; }
+.payee-identity { flex: 1; min-width: 0; display: grid; gap: var(--space-1); overflow-wrap: anywhere; }
+.payee-identity strong { font-size: var(--text-sm); font-weight: var(--weight-semibold); }
+.payee-identity > span { font-size: var(--text-xs); color: var(--text-muted); }
+.new-recipient-toggle { width: 100%; min-height: calc(var(--space-12) + var(--space-3) + 1px); padding: var(--space-2) var(--space-4); display: flex; align-items: center; gap: var(--space-3); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text); cursor: pointer; text-align: left; }
+.new-recipient-toggle[aria-expanded='true'] { border-color: var(--brand); background: var(--brand-soft); }
+.new-recipient-indicator { width: var(--space-5); height: var(--space-5); flex: none; border: 2px solid var(--border-strong); border-radius: var(--radius-full); display: grid; place-items: center; }
+.new-recipient-toggle[aria-expanded='true'] .new-recipient-indicator { border-color: var(--brand); }
+.new-recipient-toggle[aria-expanded='true'] .new-recipient-indicator::after { content: ''; width: calc(var(--space-5) / 2); height: calc(var(--space-5) / 2); border-radius: var(--radius-full); background: var(--brand); }
+.new-recipient-fields { padding-top: var(--space-4); }
+.transfer-field { margin-bottom: var(--space-6); }
+.transfer-field:last-child { margin-bottom: 0; }
+.transfer-field label { display: block; font-size: var(--text-sm); font-weight: var(--weight-semibold); margin-bottom: var(--space-2); }
+.transfer-field input, .transfer-field select { box-sizing: border-box; width: 100%; min-width: 0; min-height: var(--space-12); border: 1px solid var(--border-strong); background: var(--surface); color: var(--text); border-radius: var(--radius-sm); padding: var(--space-3); font: inherit; }
+.transfer-field [aria-invalid='true'] { border-color: var(--negative); }
+.transfer-dialog .transfer-error { color: var(--negative); font-size: var(--text-xs); margin: var(--space-2) 0 0; }
+.transfer-dialog .transfer-help { color: var(--text-muted); font-size: var(--text-xs); margin: var(--space-2) 0 0; }
+.transfer-dialog .transfer-help p { margin: var(--space-1) 0 0; }
+.amount-input { position: relative; }
+.amount-input > span { position: absolute; top: 50%; left: var(--space-4); transform: translateY(-50%); color: var(--text-muted); font-size: var(--text-sm); }
+.amount-input input { padding-left: var(--space-16); font-size: var(--text-base); font-variant-numeric: tabular-nums; }
+.amount-presets { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-2); margin-top: var(--space-3); }
+.amount-presets button { min-height: var(--space-12); border: 1px solid var(--border-strong); border-radius: var(--radius-sm); background: var(--surface); color: var(--text-muted); cursor: pointer; font: inherit; font-size: var(--text-sm); }
+.note-label { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-2); }
+.note-label > span { color: var(--text-muted); font-size: var(--text-xs); }
+.transfer-feedback { padding: var(--space-4); background: var(--warning-soft); color: var(--warning); border-radius: var(--radius-sm); font-size: var(--text-sm); margin: var(--space-4) 0; }
+.transfer-dialog .transfer-feedback p { margin: 0 0 var(--space-3); }
+.transfer-review { margin: 0; font-size: var(--text-sm); }
+.transfer-review > div { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-4); padding: var(--space-4) 0; border-bottom: 1px solid var(--border); }
+.transfer-review dt { color: var(--text-muted); }
+.transfer-review dd { margin: 0; text-align: right; overflow-wrap: anywhere; }
+.transfer-review dd strong { display: block; font-weight: var(--weight-semibold); }
+.transfer-review dd span { display: block; color: var(--text-muted); font-size: var(--text-xs); margin-top: var(--space-1); }
+.transfer-review .review-total { padding: var(--space-4); margin-top: var(--space-4); background: var(--hero-from); border-radius: var(--radius-sm); color: var(--on-hero); font-size: var(--text-lg); font-weight: var(--weight-semibold); border: 0; }
+.review-total dt { color: inherit; }
+.transfer-dialog .transfer-arrival { font-size: var(--text-sm); color: var(--text-muted); background: var(--surface-muted); border-radius: var(--radius-sm); padding: var(--space-4); margin: var(--space-4) 0 0; }
+@media (min-width: 1024px) { .transfer-dialog { width: 520px; height: min(880px, calc(100dvh - var(--space-16))); margin: auto; border-radius: var(--radius-lg); } }
+@media (max-width: 1023px) { .transfer-header { padding-left: var(--space-4); padding-right: var(--space-4); padding-top: max(var(--space-4), env(safe-area-inset-top)); } .transfer-body { padding: var(--space-4) var(--space-4) var(--space-6); } .transfer-footer { padding-left: var(--space-4); padding-right: var(--space-4); } }
+
+@media (min-width: 1024px) { .transfer-footer { padding: var(--space-6); } .transfer-actions .ui-button-secondary { width: 120px; } .transfer-actions .ui-button-primary { width: 200px; } }
+@media (max-width: 1023px) { .transfer-actions { gap: var(--space-4); } .transfer-actions .ui-button-secondary { width: 100px; } .transfer-actions .ui-button-primary { flex: 1; } }
+
+.transfer-dialog .ui-search-input { box-sizing: border-box; width: 100%; }
+
+.transfer-dialog .payee-search-label { display: block; font-size: var(--text-sm); font-weight: var(--weight-semibold); margin-bottom: var(--space-2); }
+.transfer-dialog .ui-search-input { height: var(--space-12); min-height: var(--space-12); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-sm); }
+.payee-loading { display: grid; gap: var(--space-2); margin: var(--space-2) 0; }
+.transfer-dialog .payee-loading p { font-size: var(--text-sm); color: var(--text-muted); margin: 0; }
+.transfer-dialog .payee-skeleton { width: 100%; height: calc(var(--space-12) + var(--space-3)); border-radius: var(--radius-sm); }
+.transfer-dialog .payee-empty { display: grid; gap: var(--space-2); color: var(--text-muted); font-size: var(--text-sm); }
+.transfer-dialog .payee-empty p { margin: 0; }
+.payee-empty .ui-button { width: 176px; min-height: var(--space-12); }
+.payee-row:last-child { margin-bottom: 0; }
+.transfer-select { position: relative; }
+.transfer-select select { appearance: none; padding-right: var(--space-10); }
+.transfer-select svg { position: absolute; right: var(--space-3); top: 50%; transform: translateY(-50%); pointer-events: none; color: var(--text-muted); }
+
+.transfer-select svg { width: var(--space-5); height: var(--space-5); }
+.new-recipient-fields .transfer-field { margin-bottom: var(--space-2); }
+
+.transfer-form-fields { padding: 0; margin: 0; border: 0; min-width: 0; }
+.transfer-send-error { margin-bottom: var(--space-6); background: var(--negative-soft); color: var(--negative); }
+.transfer-send-error p:first-child { font-weight: var(--weight-semibold); }
+.transfer-send-error ul { padding-left: var(--space-5); overflow-wrap: anywhere; }
+.transfer-send-error .ui-button { margin-top: var(--space-2); margin-right: var(--space-2); }
+.transfer-success { text-align: center; padding: var(--space-6) 0; }
+.success-medallion { display: inline-grid; place-items: center; width: var(--space-16); height: var(--space-16); background: var(--positive); color: var(--surface); border-radius: var(--radius-full); margin-bottom: var(--space-6); }
+.transfer-dialog .success-medallion svg { width: var(--space-8); height: var(--space-8); stroke-width: 2; }
+.transfer-success .success-amount { font-size: var(--text-3xl); font-weight: var(--weight-bold); font-variant-numeric: tabular-nums; color: var(--text); }
+.success-reference { overflow-wrap: anywhere; }
+.transfer-success p { color: var(--text-muted); }
+.transfer-actions.success-actions .ui-button { width: 100%; }
+.transfer-spinner { width: var(--space-4); height: var(--space-4); border: 2px solid currentColor; border-right-color: transparent; border-radius: var(--radius-full); animation: transfer-spin 1s linear infinite; }
+@keyframes transfer-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .transfer-spinner { animation: none; } }

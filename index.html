@@ -2,8 +2,26 @@
 <html lang="en" data-theme="light" data-segment="retail">
   <head>
     <meta charset="UTF-8" />
+    <script id="preference-bootstrap">
+      (() => {
+        const root = document.documentElement
+        let theme
+        let segment
+        try { theme = localStorage.getItem('meridian:theme:v1') } catch { /* Storage is optional. */ }
+        try { segment = localStorage.getItem('meridian:segment:v1') } catch { /* Read preferences independently. */ }
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = 'light'
+          try { if (window.matchMedia('(prefers-color-scheme: dark)').matches) theme = 'dark' } catch { /* Use light without system detection. */ }
+        }
+        root.dataset.theme = theme
+        root.dataset.segment = segment === 'premium' ? 'premium' : 'retail'
+        if (segment === 'retail' || segment === 'premium') root.dataset.segmentOverride = segment
+        else delete root.dataset.segmentOverride
+      })()
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#f4f6fa" />
+    <link rel="icon" href="data:," />
     <title>Meridian Banking</title>
   </head>
   <body>

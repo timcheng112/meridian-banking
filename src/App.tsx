@@ -1,39 +1,48 @@
-import { useQuery } from '@tanstack/react-query'
-import { apiFetch } from './api/client'
-import type { Health } from './api/types'
+import type { Segment } from './api/types'
+import { Header } from './components/layout/Header'
+import { HeaderControls } from './components/layout/HeaderControls'
+import { SegmentSwitch } from './components/layout/SegmentSwitch'
+import { Dashboard } from './features/dashboard/Dashboard'
+import { useAppPreferences } from './useAppPreferences'
+
+const brand = { mark: 'M', name: 'Meridian' }
+const navigation = [
+  { label: 'Overview', current: true },
+  { label: 'Cards' },
+  { label: 'Payments' },
+  { label: 'Insights' },
+]
+const segmentOptions: ReadonlyArray<{ value: Segment; label: string }> = [
+  { value: 'retail', label: 'Retail' },
+  { value: 'premium', label: 'Premium' },
+]
 
 export default function App() {
-  const health = useQuery({
-    queryKey: ['health'],
-    queryFn: () => apiFetch<Health>('/api/health'),
-    retry: false,
-  })
-
-  const status = health.isPending
-    ? 'checking…'
-    : health.isError
-      ? 'not connected'
-      : 'connected'
+  const { theme, segment, toggleTheme, setSegment, customer } = useAppPreferences()
+  const headerCustomer = {
+    name: customer ? `${customer.firstName} ${customer.lastName}` : 'Customer',
+    initials: customer ? `${customer.firstName.charAt(0)}${customer.lastName.charAt(0)}` : '',
+  }
 
   return (
-    <div className="starter">
-      <header className="starter-header">
-        <strong>Meridian</strong>
-        <span>Take-home starter</span>
-      </header>
-
-      <main className="starter-main">
-        <h1>Build the dashboard and transfer flow</h1>
-        <p>
-          Start with <code>README.md</code>, then read{' '}
-          <code>brief/candidate-brief.md</code>. Replace this screen with your
-          app.
-        </p>
-
-        <p className="status" role="status">
-          Mock API: {status}
-        </p>
+    <>
+      <Header
+        brand={brand}
+        navigation={navigation}
+        customer={headerCustomer}
+        controls={
+          <HeaderControls
+            segmentOptions={segmentOptions}
+            segment={segment}
+            theme={theme}
+            onSegmentChange={setSegment}
+            onThemeToggle={toggleTheme}
+          />
+        }
+      />
+      <main id="main-content" className="dashboard">
+        <Dashboard mobilePreferences={<SegmentSwitch options={segmentOptions} segment={segment} onChange={setSegment} />} />
       </main>
-    </div>
+    </>
   )
 }

@@ -1,0 +1,462 @@
+.dashboard {
+  max-width: calc(var(--container) + 2 * var(--gutter-mobile));
+  margin: 0 auto;
+  padding: var(--space-8) var(--gutter-mobile);
+  padding-bottom: calc(var(--space-8) + 80px + env(safe-area-inset-bottom));
+}
+
+.dashboard h1,
+.dashboard h2,
+.dashboard h3,
+.dashboard p {
+  margin: 0;
+}
+
+.dashboard h1 {
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+}
+
+.dashboard h2 {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+}
+
+.dashboard h3 {
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+}
+
+.dashboard-layout,
+.dashboard-column,
+.accounts-section {
+  display: grid;
+  gap: var(--space-6);
+  min-width: 0;
+}
+
+.dashboard-layout {
+  align-items: start;
+}
+
+.panel {
+  padding: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  min-width: 0;
+}
+
+.balance-hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  background: var(--hero-from);
+  color: var(--on-hero);
+}
+
+.balance-details,
+.account-identity,
+.account-value,
+.daily-limit {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.balance-hero h2,
+.balance-hero .balance-details > p:last-child,
+.daily-limit h2,
+.daily-limit > p:not(.limit-value) {
+  font-size: var(--text-sm);
+}
+
+.balance-hero h2 {
+  font-weight: var(--weight-regular);
+}
+
+.total-value {
+  font-size: var(--text-display);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  overflow-wrap: anywhere;
+}
+
+.account-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-4);
+}
+
+.account-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  gap: var(--space-4);
+  overflow-wrap: anywhere;
+  min-height: calc(2 * var(--text-base) * var(--leading-normal) + var(--space-2) + var(--text-sm) * var(--leading-normal) + 2 * var(--space-4) + 2px);
+}
+
+.account-card p:not(.account-balance),
+.transaction-metadata,
+.daily-limit h2,
+.daily-limit > p:not(.limit-value) {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.account-balance {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+}
+
+.transactions-heading,
+.transaction-row,
+.transaction-metadata {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.transactions-heading {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-bottom: var(--space-6);
+  gap: var(--space-4);
+}
+
+.transaction-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.transaction-row {
+  justify-content: space-between;
+  min-height: calc(var(--text-base) * var(--leading-normal) + var(--space-1) + var(--text-sm) * var(--leading-normal) + var(--space-2) + var(--space-6) + 2 * var(--space-4) + 1px);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.transaction-row:last-child {
+  border-bottom: 0;
+}
+
+.transaction-details {
+  flex: 1 1 0;
+  min-width: 0;
+  display: grid;
+  gap: var(--space-1);
+  overflow-wrap: anywhere;
+}
+
+.transaction-metadata {
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.transaction-category {
+  text-transform: capitalize;
+}
+
+.transaction-amount {
+  flex: 0 0 auto;
+  max-width: 50%;
+  overflow-wrap: anywhere;
+  text-align: right;
+  font-weight: var(--weight-semibold);
+}
+
+.money-in {
+  color: var(--positive);
+}
+
+.pending-chip {
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  background: var(--warning-soft);
+  color: var(--warning);
+  font-size: var(--text-xs);
+  line-height: 16px;
+}
+
+.limit-value {
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  overflow-wrap: anywhere;
+}
+
+.limit-note {
+  border-top: 1px solid var(--border);
+  padding-top: var(--space-2);
+}
+
+.dashboard-message {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.refresh-warning {
+  background: var(--warning-soft);
+  color: var(--warning);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-6);
+}
+
+.skeleton-panel {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.dashboard-greeting {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.mobile-preferences {
+  margin: 0;
+}
+
+.dashboard > .mobile-preferences {
+  margin-bottom: var(--space-6);
+}
+
+.account-value {
+  text-align: right;
+}
+
+.transactions-heading .ui-search-input {
+  width: 100%;
+}
+
+.merchant-mark {
+  display: none;
+}
+
+.desktop-transfer {
+  display: none;
+}
+
+.mobile-transfer {
+  position: fixed;
+  z-index: var(--z-header);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--surface);
+  padding: var(--space-4);
+  padding-bottom: calc(var(--space-4) + env(safe-area-inset-bottom));
+}
+
+.mobile-transfer .transfer-button {
+  width: 100%;
+}
+
+.balance-details {
+  min-width: 0;
+}
+
+.dashboard-skeleton .ui-skeleton {
+  max-width: 100%;
+}
+
+.skeleton-greeting {
+  height: 42px;
+}
+
+.skeleton-hero-value {
+  height: calc(var(--text-display) * var(--leading-tight));
+}
+
+.skeleton-account-title {
+  height: 24px;
+  width: 90%;
+}
+
+.skeleton-account-value {
+  height: calc(var(--text-xl) * var(--leading-tight));
+  width: 100%;
+}
+
+.skeleton-section-heading {
+  height: 27px;
+}
+
+.skeleton-search {
+  height: 50px;
+  width: 100%;
+  border-radius: var(--radius-md);
+}
+
+.skeleton-limit-value {
+  height: calc(var(--text-2xl) * var(--leading-tight));
+  width: 100%;
+}
+
+.skeleton-limit-note {
+  border-top: 1px solid var(--border);
+  padding-top: var(--space-2);
+  display: grid;
+  gap: 0;
+}
+
+.skeleton-transaction-title {
+  height: 24px;
+  width: 80%;
+}
+
+.skeleton-transaction-meta {
+  height: 21px;
+  width: 70%;
+}
+
+.skeleton-transaction-amount {
+  width: 35%;
+  height: 24px;
+}
+
+.skeleton-balance-details {
+  flex: 1;
+}
+
+.skeleton-balance-details > .ui-skeleton-line,
+.account-identity > .ui-skeleton-line:not(.skeleton-account-title),
+.account-value > .ui-skeleton-line,
+.daily-limit > .ui-skeleton-line,
+.skeleton-limit-note > .ui-skeleton-line {
+  height: calc(var(--text-sm) * var(--leading-normal));
+}
+
+.account-value .account-balance {
+  white-space: nowrap;
+}
+
+.dashboard-skeleton .account-card {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+}
+
+@media (min-width: 640px) {
+  .dashboard {
+    max-width: calc(var(--container) + 2 * var(--gutter));
+    padding-inline: var(--gutter);
+  }
+
+  .merchant-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    border-radius: var(--radius-md);
+    background: var(--surface-muted);
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+  }
+
+  .transactions-panel {
+    padding: var(--space-6);
+  }
+
+  .transaction-row {
+    min-height: 85px;
+  }
+
+  .mobile-preferences {
+    display: none;
+  }
+
+  .account-card {
+    min-height: calc(var(--text-xl) * var(--leading-tight) + var(--space-2) + var(--text-sm) * var(--leading-normal) + 2 * var(--space-4) + 2px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dashboard-layout {
+    grid-template-columns: minmax(0, 1fr) 300px;
+  }
+
+  .account-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+  }
+
+  .account-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .account-value {
+    text-align: left;
+  }
+
+  .balance-hero {
+    padding: var(--space-6);
+    flex-wrap: nowrap;
+  }
+
+  .transactions-heading .ui-search-input,
+  .skeleton-search {
+    width: 240px;
+  }
+
+  .mobile-preferences,
+  .mobile-transfer {
+    display: none;
+  }
+
+  .desktop-transfer {
+    display: block;
+  }
+
+  .dashboard {
+    padding-bottom: var(--space-8);
+  }
+
+  .transfer-button {
+    min-width: 11rem;
+    white-space: nowrap;
+  }
+
+  .daily-limit {
+    padding: var(--space-6);
+  }
+
+  .account-identity {
+    min-height: calc(var(--text-base) * var(--leading-normal) + var(--space-2) + var(--text-sm) * var(--leading-normal));
+  }
+
+  .dashboard-skeleton .account-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.search-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.search-actions:has(button),
+.search-error {
+  margin-bottom: var(--space-4);
+}
+
+.search-error {
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--warning-soft);
+  color: var(--warning);
+}

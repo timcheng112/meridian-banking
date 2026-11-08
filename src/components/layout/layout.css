@@ -1,0 +1,132 @@
+.app-header {
+  background: var(--surface);
+}
+
+.header-inner {
+  max-width: calc(var(--container) + 2 * var(--gutter-mobile));
+  margin: auto;
+  padding: var(--space-1) var(--gutter-mobile);
+  min-height: var(--header-height);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.brand-logo {
+  color: var(--brand);
+  font-size: var(--text-xl);
+  white-space: nowrap;
+}
+
+.brand-logo span {
+  margin-left: var(--space-2);
+}
+
+.header-controls {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+  margin-left: auto;
+}
+
+.customer-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--space-10);
+  height: var(--space-10);
+  flex-shrink: 0;
+  border-radius: var(--radius-full);
+  background: var(--brand-soft);
+  color: var(--brand);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+}
+
+.ui-button.theme-toggle {
+  width: var(--tap-target);
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.segment-switch {
+  display: inline-flex;
+  padding: var(--space-1);
+  border-radius: var(--radius-sm);
+  background: var(--surface-muted);
+}
+
+.segment-switch button {
+  min-height: var(--space-12);
+  min-width: 80px;
+  padding: var(--space-3);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  cursor: pointer;
+}
+
+.segment-switch button[aria-pressed=true] {
+  background: var(--brand-soft);
+  color: var(--brand);
+}
+
+.segment-switch button:hover {
+  background: var(--brand-soft);
+}
+
+.segment-switch button:active {
+  color: var(--brand-active);
+}
+
+.desktop-nav, .desktop-segment {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .desktop-segment { display: block; }
+  .header-inner {
+    max-width: calc(var(--container) + 2 * var(--gutter));
+    padding-inline: var(--gutter);
+  }
+
+}
+
+@media (min-width: 1024px) {
+  .desktop-segment {
+    display: block;
+  }
+
+  .desktop-nav {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+  }
+
+  .desktop-nav a, .desktop-nav button, .desktop-nav [aria-current=page] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    height: var(--space-12);
+    padding: var(--space-3);
+    border: 0;
+    background: transparent;
+    font-size: var(--text-sm);
+    text-decoration: none;
+  }
+
+  .desktop-nav a, .desktop-nav [aria-current=page] {
+    color: var(--brand);
+    border-bottom: 2px solid var(--brand);
+  }
+
+  .desktop-nav button {
+    color: var(--text-muted);
+    opacity: 0.55;
+  }
+
+}
