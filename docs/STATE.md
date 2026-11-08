@@ -956,7 +956,8 @@ Branch chore/ci starts from verified local development 3eba44f and uses a separa
 The earlier S3 publication approval does not authorize publishing this branch.
 S3 acceptance includes selected A styling, 16px mobile footer gaps and the 880px desktop height cap; its application code and detailed evidence remain in the preserved S3 branch and PR #4.
 The candidate accepted the local workflow and explicitly authorized commit, push and opening its PR to development.
-Next: publish chore/ci and verify the hosted Actions run; merge and cleanup remain excluded.
+Published CI PR: https://github.com/timcheng112/meridian-banking/pull/5.
+Next: review and separately authorize merge; cleanup remains excluded.
 No deployment, secrets, browser automation, S4, merge or cleanup is included.
 
 ## CI local verification checkpoint
@@ -968,5 +969,7 @@ Ruby YAML syntax parsing and git diff --check passed; actionlint is unavailable 
 Workflow SHA-256: 75b885f28ab2e581736a088157a4e4630e9c7e2f4019ba17d9d6c6a94a7820f4.
 The lockfile and application source are unchanged from development 3eba44f, whose application tree matches remote development 571b9d5.
 These checks cover the merged dashboard baseline; S3's separate 87-test evidence remains on its accepted PR #4 branch.
-Hosted Ubuntu execution, npm cache restore and GitHub event/concurrency behavior remain unverified until authorized publication and an actual Actions run.
-No CI push, PR, deployment, merge or worktree cleanup occurred.
+Hosted Ubuntu run https://github.com/timcheng112/meridian-banking/actions/runs/42441128237 passed at workflow commit 382242d, including installation, checks, build and cache post-step.
+Concurrent-run cancellation and the integration-branch push trigger have not been exercised deliberately.
+CI commit and push completed and PR #5 is open against development.
+No deployment, merge or worktree cleanup occurred.
