@@ -1,6 +1,6 @@
 # Current state
 
-## Active continuation: local CI setup; accepted S3 in PR #4
+## Active continuation: S3 accepted; PR #4 open
 
 The candidate approved S1 and reported merging PR #1 on 8 November 2026.
 GitHub confirms the merge into development at 04956afd78cfb1a4251edccd140be74cba99637e.
@@ -17,9 +17,10 @@ Deadline: 10 November 2026, EOD, supplied by the candidate.
 The application renders dashboard content through the accepted query/state layer, with loading, initial error/Retry, refresh warnings and empty states.
 The header, persistent preferences, API search, responsive layout and shared UI presentation are implemented; S2 evidence is recorded below.
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
-Active scope: approved local GitHub Actions CI setup on chore/ci; S3 is accepted and published in open PR #4.
-Integration base: local development 3eba44f above remote fidelity merge 571b9d5; existing worktrees remain preserved pending separately authorized cleanup.
-Phase: CI configuration approved for local implementation; accepted S3 remains on feat/transfer-form at 77aea84 in https://github.com/timcheng112/meridian-banking/pull/4, which is open and unmerged.
+Active scope: S3 accepted in open PR #4, rebased onto development containing merged CI PR #5.
+Integration base: remote development 0589a4b; feat/transfer-form preserves accepted S3 source while incorporating the named-step CI workflow.
+Primary local development remains at 3eba44f; all worktrees remain preserved.
+Phase: S3 accepted and published in PR #4 to development; final application commit 3c33c48 matches verified evidence, and merge remains pending.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -39,7 +40,7 @@ Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
 | S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | Accepted and merged in PR #1 at 04956af |
 | S2 | API search and persistent theme/segment | Accepted and merged in MR #2 at 8d0b4a3 |
 | Fidelity | Bidirectional Figma/code reconciliation for implemented scope | Accepted and merged in MR #3 at 571b9d5 |
-| S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Accepted; open PR #4 at 77aea84, excluded from this CI branch until merged |
+| S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Accepted; PR #4 open to development |
 | S4 | Transfer mutation, failures, success and dashboard refresh | Pending |
 | Release | Full requirement audit, production checks, submission README, deployment | Pending; publication requires approval |
 
@@ -59,8 +60,8 @@ Evidence must identify the checked revision; changes invalidate affected checks.
 | D6 | S2 | API search, debounce, count, older match, clear/no-match tests | Automated and focused production-browser checks pass at 6cfda96 |
 | D7; E4 dashboard retry | S1 | Failure then Retry integration test | Integration and real-browser keyboard Retry recovery passed |
 | D8; brief §5 | S1-S3 | 360/390 px, breakpoint/desktop, overflow and tap-target checks | Dashboard checks pass at eight widths; transfer checks remain S3 |
-| T1; T8 | S3-S4 | Keyboard, focus restoration, labels/errors/live announcements | Pending |
-| T2-T4; brief §3.3 | S3 | Form boundaries, new/saved recipient, step preservation and focus tests | Pending |
+| T1; T8 | S3-S4 | Keyboard, focus restoration, labels/errors/live announcements | S3 tests and Chrome checks pass at e19fb10; send alert/success announcement remain S4 |
+| T2-T4; brief §3.3 | S3 | Form boundaries, new/saved recipient, step preservation and focus tests | Automated and focused Chrome checks pass at e19fb10 |
 | T5-T7; E4 transfer cases | S4 | Over-balance/no request, success refresh, failure, duplicate-submit tests | Pending |
 | TH1-TH3; tokens | S2 | Four theme combinations, persistence/pre-paint, contrast/focus checks | S2 persistence/pre-paint and four-mode checks pass at 6cfda96; sampled text contrast passes, full composited/non-text audit remains release |
 | E1-E3 | All slices | Typecheck, boundary review, state/schema ownership review | Pending implementation |
@@ -148,9 +149,10 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Continue candidate review on feat/transfer-form; that worktree's STATE owns current S3 verification and acceptance status.
-Review /private/tmp/meridian-s3-review.html and the production preview http://127.0.0.1:4183/ while its process runs.
-S3 is implemented locally; candidate understanding/acceptance and publication remain pending.
+Review PR #4: https://github.com/timcheng112/meridian-banking/pull/4.
+S3 is accepted and published; obtain separate merge authorization before integration.
+Local review: /private/tmp/meridian-s3-review.html; production preview http://127.0.0.1:4183/ while its process runs.
+Merge and cleanup require separate authorization; S4 still requires its own concrete plan approval.
 S2 MR #2 is accepted and merged; preserve the preferred S2 search presentation.
 Cleanup still requires authorization; do not reopen deferred mock-worker repair.
 Existing PR: https://github.com/timcheng112/meridian-banking/pull/1, merged.
@@ -940,12 +942,208 @@ No compound-component framework or custom context is needed for this fixed flow.
 Next: commit approval records, verify the integration base includes f1e16de, acquire a no-fetch lease, record the new branch/base and dispatch gpt-6.1-sol.
 Candidate implementation acceptance and all external publication, merge, deployment and cleanup remain pending.
 
-## S3 worktree continuation pointer
+## S3 implementation branch
 
-S3 is accepted and published on feat/transfer-form at 77aea84 in open PR #4, based on development 2420c37.
-Recover the active worktree using git worktree list and read its STATE for complete checks and limitations.
-The no-fetch meridian-s3 lease remains retained alongside the three completed leases.
-S3 merge, cleanup and S4 implementation remain unauthorized.
+Active branch: feat/transfer-form, based on development 2420c37605d1866b78644324cfa853028f253ad4 including f1e16de and approved plan v1 records.
+Acquired a no-fetch Treehouse lease and explicitly verified the branch base in the clean worktree.
+Treehouse status at the configured temporary pool confirms all three completed leases remain retained; the earlier default-root status failure is resolved for this pool.
+Sol owns the exact application/test inventory in /private/tmp/meridian-s3-plan-v1.html; coordination owns records and Astra review.
+Implementation is authorized; no S4 sending or external publication is included.
+The browser skill was read and in-app connection attempted; it returned Browser is not available: iab, so use the established isolated Chrome fallback for runtime verification.
+
+## S3 implemented and verified - 8 November 2026
+
+Implementation revision 85d50e8 and scoped CSS correction e19fb10 implement the approved v1 plan in its sixteen application/test files.
+Sol built the native dialog, explicit steps, one RHF form, context-aware Zod rules and Query payees; independent Astra review found no outstanding findings after corrections.
+Checks cover conditional recipient fields, financial boundaries, preserved inputs, blur/Continue focus, refreshed balance/limit and removed account/payee handling.
+The React/composition review confirmed derived values, localized form subscriptions, typed props and shell children/footer slots without custom context, compound exports or speculative memoization.
+The entry buttons now open the form; closing discards the draft and restores focus, and Confirm transfer remains disabled with the approved preview notice.
+S4 POST, sending, success, API rejection and dashboard refresh remain unimplemented.
+
+Node 22.23.4 npm run check passed lint, strict typecheck and 83 tests; the focused eleven-test dialog suite passed after the final same-ID balance-refresh assertion.
+The final production build and git diff --check passed; Vite reports two third-party Zod PURE-annotation warnings without build failure.
+Chrome QA at e19fb105b4d4622b349c6d1b223b8d677735138f passed all nine groups: native modality/keyboard/restoration, saved/new flow, validation/preservation/reset, loading/error/Retry/empty/cached-refresh behavior, seven responsive widths, short viewports and four color modes.
+No page/console errors or transfer POST requests were recorded.
+Browser QA found dashboard CSS overriding dialog typography/spacing and a completed-connector specificity conflict; Sol scoped the selectors, Astra reviewed the correction, and fresh browser checks confirmed the fix.
+Desktop measures 520 by 720px with bounded height, body padding 16 by 24px and 120/200px footer buttons; short mobile viewport checks preserve a scrolling body and reachable fixed footer.
+Representative narrow errors, long-value review and dark Premium screenshots were visually inspected by Astra and coordination.
+Sampled text contrast minima were 5.44:1 light and 7.52:1 dark; nearest-opaque-background sampling does not establish exhaustive composited/non-text compliance.
+Chrome browser-chrome focus transitions were distinguished from focus reaching background application controls; background inertness passed.
+Physical safe areas, actual browser zoom, cross-browser and assistive-technology verification remain untested; no-deposit and live account/context removal checks rely on integration tests.
+
+Local evidence: /private/tmp/meridian-browser-qa/s3-final-e19fb10-results.json, s3-layout-metrics.json, s3-contrast-samples.json and s3-*.png.
+Local review artifact: /private/tmp/meridian-s3-review.html, including every changed application/test file and suggested walkthrough.
+Production preview: http://127.0.0.1:4183/ while the task-owned process runs.
+Candidate understanding/acceptance, publication, merge, deployment and cleanup remain pending; no external submission occurred.
+
+## S3 candidate review feedback
+
+The candidate reported touching loading skeletons, disclosure and no-match styling differences from Figma, native select chevron positioning, limited bottom field clearance and a recipient-selection regression after Back.
+Live Figma inspection confirms compact payee rows without the application's added avatar/trailing chevron, a labelled surface search input, bordered disclosure and smaller muted no-match text with 8px gaps.
+At 902px, full-screen presentation follows the accepted below-1024 breakpoint; content fidelity still needs correction.
+The saved-payee regression arises from combining controlled checked props with RHF register's uncontrolled radio ref, which restores the inactive saved ID on remount.
+Sol is correcting this through useController while preserving inactive form values and adding the saved-to-new-to-Back regression.
+The candidate explicitly requested Continue be disabled when the current step has errors.
+Approved feedback amendment: disable on known active-step errors, revalidate already-errored fields during editing, and retain blur/first-Continue validation for untouched fields and first-invalid focus.
+The same guard applies to Enter; inactive-mode and later-step errors must not block current-step progression.
+Routine fidelity corrections use existing files and tokens, including inset decorative chevrons over native selects and at least 24px clearance below final scrolled fields/errors.
+Earlier automated/browser evidence describes e19fb10 and missed this mixed-mode remount and these visual differences; refresh affected evidence before re-review.
+Payee search remains local over GET /api/payees because the contract has no payee-search query; initial field validation remains on blur/Continue as required by brief section 3.3.
+
+## S3 feedback corrections verified
+
+Runtime revisions e877e89 and c777694 correct the candidate feedback in five existing application/test files; the local plan includes the explicit candidate-feedback amendment.
+Controlled payee radios preserve new-recipient mode and details across Amount/Back even after a prior saved selection; selecting a saved payee explicitly still changes the active mode.
+Continue and Enter share the known-active-error guard, with edit-time recovery for errored fields and exclusion of inactive/hidden errors.
+Corrected recipient presentation includes labelled surface search, compact rows, four full-width separated skeletons, bordered brand disclosure with right icon, muted no-match copy/spacing and inset decorative chevrons over native selects.
+Final scrolled fields/errors retain 24px clearance above the fixed footer; the 902px view remains the approved full-screen sheet.
+Sol's full check passed lint, strict typecheck and 86 tests, including fourteen dialog tests; production build and diff checks passed after the final CSS corrections.
+Astra reviewed the behavior and final CSS delta with no findings, preserving one validation authority and the existing composition boundaries.
+Targeted Chrome feedback QA passed four groups with no page/console errors or POST requests.
+Final visual and mixed-mode/error checks apply to c77769470907b26f6959919e19b400df04451153; unchanged held-loading/error evidence from e877e89 is identified in the aggregate.
+Direct Figma comparison confirmed 61px payee rows, 20px radios, 48px search, bordered disclosure, muted 14px no-match text and 176x48px Clear search across 360/390/902/1280px light/dark samples.
+Coordination inspected final desktop recipient and scrolled 902px new-recipient screenshots; Astra inspected narrow dark and other affected states.
+Standard bank selection and retained values passed; native-popup keyboard automation remains unverified because the same headless Chrome behavior occurred in a bare native form.
+Evidence: /private/tmp/meridian-browser-qa/s3-feedback-final-c777694-results.json, s3-feedback-metrics.json and s3-feedback-*.png.
+The review artifact /private/tmp/meridian-s3-review.html and preview http://127.0.0.1:4183/ now show the corrections; refresh the preview to load the rebuilt assets.
+Candidate re-review and acceptance remain pending; no external publication, Figma design writes, merge, deployment or cleanup occurred.
+
+## S3 next-session feedback handoff
+
+The candidate requested a handoff to address further feedback before acceptance.
+They authorize showing several selected-state variants for Send to someone new in the existing Figma file, so its active selection is as clear as a saved payee's radio indicator.
+Variant selection and propagation remain pending; do not implement a new selection design before the candidate chooses it and the feature-dev plan is updated as needed.
+Their prior question about the 902px view concerned footer button widths, not the full-screen breakpoint; compare actual action widths and proportions against Figma and distinguish exact references from interpolated behavior.
+They also want an explanation of retained Amount-step values after returning to Recipient and changing the payee, including assignment wording and usual form behavior.
+Brief T4 says Back keeps everything entered; approved plan v1 explicitly preserves values across steps and recipient-mode changes, but the brief does not separately specify resetting amount/note when the recipient changes.
+No retention-policy change is authorized by that question.
+Next-session pointers: /private/tmp/meridian-s3-feedback-handoff.md.
+Application source remains unchanged at c777694; these handoff notes are uncommitted and should be preserved.
+
+## S3 selection and footer review - 8 November 2026
+
+Recovered primary development at 3eba44f and feat/transfer-form at f3c9b4a, preserving the existing uncommitted handoff notes.
+Configured Treehouse status verifies the S3 lease and all three completed leases remain retained.
+Application source, tests and runtime/package configuration match c777694, so previously recorded checks remain applicable; the full suite was not repeated for this design discussion.
+The old preview had stopped; restarted its existing production build at http://127.0.0.1:4183/ for focused Chrome verification.
+In-app browser retry still reports unavailable; Chrome remains the scoped browser evidence.
+
+Created only the explicitly authorized isolated proposals in the existing Figma file LVZHN7v88I6WOCMr80nXlu.
+Overview: https://www.figma.com/design/LVZHN7v88I6WOCMr80nXlu?node-id=79-1651.
+A uses a selected radio row matching saved payees (79:1658); B retains the disclosure with brand-soft fill, brand border, Selected status and minus icon (79:1735); C introduces an explicit saved/new choice above inline fields (79:1813).
+The boards intentionally show expanded body content in full for selection review and are labelled accordingly; they do not change the runtime viewport or scrolling policy.
+Screenshot inspection passed for readable choices, fields and footer; structural inspection found 40 instances, 60 text nodes, 58 frames, 17 vectors, no image-filled nodes, and Roboto throughout.
+Accepted boards and shared source components were preserved; selection, propagation, implementation and S3 acceptance remain pending.
+
+Fresh rendered Cancel/Continue measurements at height 987px: 360px viewport gives 100/216px, 390px gives 100/246px, 902px gives 100/758px, and desktop 1024/1280px gives 120/200px inside the 520px dialog.
+Back/Continue independently matches these widths at 390, 902 and 1024px.
+Mobile code uses a 12px gap and 16px side padding; existing Figma 360/390px references use a 16px gap with 100/212px and 100/242px buttons.
+Desktop matches Figma: 24px side padding and a 152px distributed gap between 120/200px buttons.
+Buttons measure 48px high in code and references.
+No exact 902px transfer board exists; extending the mobile Figma rule gives 100/754px, an inference rather than an approved intermediate-width design.
+The 4px mobile gap discrepancy is recorded pending correction; no CSS change occurred.
+Adjacent viewport measurements at 901/903/1023px confirm the primary button expands with remaining space.
+
+Fresh browser retention check selected Savings, entered 120.00 and Dinner, returned to Recipient, switched Jamie Tan to Marcus Lee, and retained all three values on Amount; Review then displayed Marcus Lee and Dinner.
+This agrees with T4 and the approved plan's Draft lifecycle, while T4 does not separately prescribe resets on recipient changes.
+Primary GOV.UK question-page and check-answers guidance supports retaining prior answers during back/edit flows; applying that convention to recipient changes is a design judgment, not a banking-specific mandate.
+Source account, amount and note remain one draft; review of the changed recipient alongside amount/note mitigates stale-value risk without discarding input.
+No retention-policy change is authorized.
+
+Evidence: /private/tmp/meridian-browser-qa/s3-width-review.json, s3-retention-review.json, s3-width-390.png, s3-width-902.png and s3-width-1024.png.
+Proposal screenshot: /private/tmp/meridian-browser-qa/s3-selection-proposals.png.
+Figma ledger: /private/tmp/meridian-s3-selection-ledger.json; session 28653e67-a911-4187-9c57-ec6cd8eded14.
+Both focused Chrome runs recorded no page errors; these checks do not extend prior cross-browser, assistive-technology or native-select-popup coverage.
+At this checkpoint the candidate choice was pending; the subsequent selection below supersedes that next action.
+S4 sending, publication, merge, deployment and cleanup remain excluded.
+
+## S3 selection A and authorized proposal cleanup
+
+The candidate explicitly selected A and authorized removing the other proposal variants.
+Retained A at https://www.figma.com/design/LVZHN7v88I6WOCMr80nXlu?node-id=79-1658 and compacted its labelled showcase at node 79:1651.
+Removed only proposal B (79:1732), C (79:1810), the subsequently created D (81:1856), and obsolete comparison labels.
+D had been created during the recommendation discussion before the user clarified that the recommendation was essentially A; it was never selected or implemented.
+Fresh canvas inspection verifies all three removed roots are absent, while A, accepted recipient boards and the shared selected-payee component remain present.
+A fresh canvas screenshot passes visual review of the compact selected showcase; the screenshot endpoint initially returned an older cached comparison, so the live canvas render is authoritative.
+The selection concerns A's clear indicator and tinted-card appearance; preserve wireframe section 3's inline disclosure, visible saved-payee list, and existing bounded scrolling behavior.
+Implementation interaction details and accessibility belong in the next scoped plan; no application change or accepted-board propagation is authorized by this cleanup.
+Next: prepare the concrete feature-dev plan for selected A and obtain approval before implementation.
+S3 acceptance, S4, publication, merge, deployment and worktree cleanup remain pending or excluded.
+
+## S3 selected A implementation authorized
+
+The candidate explicitly instructed go ahead and then no need for plan, just implement.
+This waives the additional HTML technical-plan approval gate for this bounded checkpoint.
+Authorized scope: selected A appearance on the existing new-recipient disclosure and mobile footer gap correction from 12px to 16px.
+Preserve saved-list visibility, inline expansion, recipient-mode ownership, retained draft values and S3 exclusions.
+React/composition assessment: derive the indicator and selected styling directly from existing recipientMode; keep the native disclosure button, existing typed step props and one RHF form, with no new state, effects, context or memoization.
+Sol owns RecipientStep.tsx, transfer.css and focused TransferDialog.test.tsx coverage; Astra owns review, browser verification and records.
+No S4 sending, external publication, accepted-board propagation, merge or cleanup is authorized.
+
+## S3 selected A implementation verified
+
+Sol implemented selected A in RecipientStep.tsx and transfer.css, with focused regression coverage in TransferDialog.test.tsx.
+The disclosure now uses a decorative circular selected indicator, the two-line label and brand-soft selected card while retaining its native button, aria-expanded, aria-controls, focus behavior and inline fields.
+Its exact accessible name remains Send to someone new; the helper is exposed as its accessible description.
+The mobile footer gap is now 16px; desktop geometry is unchanged.
+Astra reviewed the three-file diff and React/composition boundaries with no outstanding findings.
+No new state, effects, context, memoization, validation definitions or request behavior were introduced.
+
+Node 22.23.4 npm run check passed lint, strict typecheck and 87 tests; production build and git diff --check passed.
+The build retains the existing third-party Zod annotation warnings.
+Fresh Chrome checks passed Space/Enter disclosure toggling, focus retention and Tab to the first field, saved-list visibility, new-recipient selection after Back, explicit saved-payee reselection, retained Savings/120.00/Dinner, accurate Review recipient, disabled S3 Confirm and Escape opener restoration.
+Measured Back/Continue widths are 100/212 at 360px, 100/242 at 390px and 100/754 at 902px with 16px gaps; desktop 1024px remains 120/200 with 152px distributed space.
+No horizontal overflow, console/page errors or POST requests were recorded.
+The selected card measures 61px high at all four widths; Light Retail and Dark Premium screenshots use the expected token colors.
+Astra visually inspected narrow Dark Premium, 902px Light Retail and desktop Light Retail screenshots; desktop retains bounded body scrolling with fields below the visible card when necessary.
+
+Evidence: /private/tmp/meridian-browser-qa/s3-selected-a-results.json and s3-selected-a-*.png, with exact SHA-256 hashes for all three changed source/test files.
+Evidence applies to the uncommitted selected-A working diff above f3c9b4a, not the older c777694-only source.
+The updated /private/tmp/meridian-s3-review.html and rebuilt http://127.0.0.1:4183/ preview are ready for candidate re-review; refresh an existing tab to load the new build.
+Existing cross-browser, assistive-technology and native-select-popup limitations remain; the new styling was sampled in two theme/segment combinations rather than rerunning the unchanged full flow matrix.
+All earlier record edits and handoff notes remain preserved; no commit or external publication was performed in this checkpoint.
+Next: candidate checks selected A, toggles between saved/new recipients and confirms understanding and S3 acceptance.
+S4 sending, accepted-board propagation, publication, merge, deployment and worktree cleanup remain outside this authorization.
+
+## S3 desktop-height feedback verified
+
+The candidate requested a bigger desktop dialog because the Review view left usable space around it.
+Using the existing direct-implementation preference for small changes, Sol changed only the desktop cap in transfer.css from 720px to 880px, still bounded by 100dvh minus the 64px spacing token.
+The required 520px desktop width, mobile sizing, fixed header/footer and internally scrolling body remain intact.
+Before the change, a normal Review at 1440x1014 CSS pixels had a 427px body for 533px of content; 880px gives a 587px body, fitting the full Review with 54px spare.
+The provided screenshot is a scaled raster; its image dimensions were not treated as exact CSS viewport dimensions.
+Astra reviewed the one-property delta and inspected tall desktop Review, short desktop Review and narrow mobile screenshots.
+
+Node 22.23.4 npm run check passed 87 tests plus lint/typecheck; production build and diff checks passed with the existing Zod dependency warnings.
+Focused Chrome verification passed 21 Recipient/Amount/Review combinations at 1440x1014, 1440x1200, 1024x800, 1280x650, 1280x420, 360x844 and 390x420.
+At the first two sizes the dialog is 520x880; at 1024x800 it is 520x736; short desktop windows remain 520x586 and 520x356.
+Mobile remains full-screen, and scrolling keeps the header/footer fixed with no horizontal overflow.
+Keyboard focus checks, Escape restoration, console/page errors and no-POST assertions passed.
+Evidence: /private/tmp/meridian-browser-qa/s3-taller-dialog-results.json and s3-taller-*.png, including current CSS SHA-256 e2e02f0e78222226f45bb0bf933c734c333a96878cf8197d33d61c237fc6e59a.
+Before/after comparisons in that evidence temporarily applied the old height rule in the browser; no source changes were made for the comparison.
+The rebuilt preview remains http://127.0.0.1:4183/; refresh to inspect the larger Review.
+Figma height alignment remains pending; no Figma writes, publication, S4 behavior, merge, cleanup or S3 acceptance occurred.
+Existing cross-browser and assistive-technology limitations remain.
+
+## S3 accepted and publication authorized
+
+The candidate reviewed the updated preview and explicitly said: ok this works, approved, commit and push PR.
+S3 is accepted, including selected A with inline disclosure semantics, retained draft values, the 16px mobile footer gap and the 880px desktop dialog cap.
+Authorization covers committing the task-owned changes and records, pushing feat/transfer-form and opening its PR to development.
+Final source hashes match the recorded selected-A and taller-dialog browser evidence; the most recent check/build passed 87 tests, so unchanged source checks were not repeated.
+The PR covers T1-T4/T8 and shared validation with payee query states; S4 owns sending, success, API submission failures and dashboard refresh.
+Confirm transfer remains intentionally disabled with the approved preview notice.
+Merge, deployment, accepted-board propagation and worktree cleanup remain separately gated.
+
+## S3 PR #4 published
+
+Committed the final accepted source and records as 3c33c48827985eba5fb175925c5753c4e556bd06 and pushed feat/transfer-form.
+Opened https://github.com/timcheng112/meridian-banking/pull/4 targeting development under explicit candidate authorization.
+GitHub integration PR creation lacked repository write permission, so the authenticated gh CLI completed the authorized operation.
+Remote development remained 571b9d5; its merge base with this branch is the same commit, and the PR contains the intended S3 files and records.
+Evidence hashes still match the committed application files; no source changes followed the accepted verification.
+This documentation-only publication checkpoint accompanies the PR without changing application behavior.
+Merge, deployment, accepted-board propagation and worktree cleanup remain pending separate authorization; S4 is unimplemented.
 
 ## Approved CI setup
 
@@ -957,7 +1155,7 @@ The earlier S3 publication approval does not authorize publishing this branch.
 S3 acceptance includes selected A styling, 16px mobile footer gaps and the 880px desktop height cap; its application code and detailed evidence remain in the preserved S3 branch and PR #4.
 The candidate accepted the local workflow and explicitly authorized commit, push and opening its PR to development.
 Published CI PR: https://github.com/timcheng112/meridian-banking/pull/5.
-Next: review and separately authorize merge; cleanup remains excluded.
+The candidate merged CI PR #5 at 0589a4b; cleanup remains excluded.
 No deployment, secrets, browser automation, S4, merge or cleanup is included.
 
 ## CI local verification checkpoint
@@ -971,7 +1169,7 @@ The lockfile and application source are unchanged from development 3eba44f, whos
 These checks cover the merged dashboard baseline; S3's separate 87-test evidence remains on its accepted PR #4 branch.
 Hosted Ubuntu run https://github.com/timcheng112/meridian-banking/actions/runs/42441128237 passed at workflow commit 382242d, including installation, checks, build and cache post-step.
 Concurrent-run cancellation and the integration-branch push trigger have not been exercised deliberately.
-CI commit and push completed and PR #5 is open against development.
+CI PR #5 is merged into development at 0589a4b.
 No deployment, merge or worktree cleanup occurred.
 
 ## Approved CI log readability follow-up
@@ -981,3 +1179,60 @@ Lint, typecheck and tests now run as separate sequential steps using the existin
 Triggers, permissions, concurrency, dependencies, caching and build behavior remain unchanged.
 This updates the existing authorized PR #5; hosted verification of this follow-up is pending the next push.
 The preceding final-head run passed at 6e82276: https://github.com/timcheng112/meridian-banking/actions/runs/42441627770.
+
+## Authorized S3 rebase onto merged CI
+
+The candidate requested rebasing PR #4 onto updated development and explicitly authorized force pushing.
+Verified PR #5 merged at 0589a4b0a25b2ce721f69f464bdc89dc324e93b1 and PR #4 remote head was 77aea84aa1bb31bf923d543e759358d6a70891e0.
+Replayed S3 commits onto that exact integration base and reconciled documentation conflicts while preserving both accepted S3 records and CI decisions.
+The application, tests and package files are byte-for-byte unchanged from accepted S3 head 77aea84; the workflow matches merged development exactly.
+Existing 87-test and browser evidence remains applicable; the new hosted Validation run will verify S3 after the push.
+Use force-with-lease against the observed old head; PR #4 merge, deployment and cleanup remain unauthorized.
+
+## Proposed S3 readability extraction
+
+The candidate requested reusable extraction and discussion of compound components while prioritizing readability.
+Current accepted S3 head a5c5f44 is rebased onto development 0589a4b; hosted Validation passed all 87 tests and build at https://github.com/timcheng112/meridian-banking/actions/runs/42442220688.
+Proposal: /private/tmp/meridian-s3-readability-plan-v1.html, version 1.
+Use the existing RHF FormProvider for shared form methods, explicit step/footer composition, feature-local typed fields, and separate transfer form and launcher hooks.
+This is limited composition rather than a second custom context or a generic compound wizard API.
+The proposal preserves accepted behavior and excludes S4, visual changes and external writes.
+The candidate approved plan v1 after the JSX walkthrough and clarification that RHF context shares form methods/values/errors while step/actions stay in the hook and payees stay in Query.
+Phase: readability refactor locally verified and explicitly authorized for publication to existing PR #4.
+Next: push the reviewed refactor and verify hosted Validation; PR #4 merge remains separately gated.
+
+## S3 readability verification checkpoint
+
+Implemented approved plan v1 above local approval commit ae57cf1; PR #4 remains at published a5c5f44.
+Dashboard delegates opener state/focus restoration to useTransferLauncher; TransferDialog composes one RHF FormProvider, shell, steps and TransferFooter.
+useTransferForm owns form initialization, payee query, navigation/validation events and the shared invalid-field focus helper.
+RecipientStep and AmountStep consume RHF context with scoped field/error subscriptions; TransferFields shares native text/select/error markup within the feature.
+CSS, schema, dialog shell, ReviewStep, package files and S4 boundaries remain unchanged.
+Astra and parent source reviews found no correctness issues.
+Node 22.23.4 npm run check passed lint, typecheck and 90 tests across eight files; npm run build and git diff --check passed.
+Three new parameterized tests verify native invalid-field focus and linked errors; existing tests gained deferred recipient fallback and combined account hint/error assertions.
+The build retains existing Zod annotation warnings.
+Chrome production-browser smoke passed at 390px and 1280px, covering recipient/amount/review, retained account/amount/note, keyboard disclosure, invalid native-field focus, linked labels/errors, resize-close focus fallback, discard/reopen and Other bank review.
+No page/console errors or POST requests occurred.
+Footer geometry and selected-A presentation match accepted values; desktop/mobile screenshots were visually inspected.
+The in-app browser remains unavailable, so the established local Chrome fallback supplied runtime evidence.
+Evidence and source SHA-256 hashes: /private/tmp/meridian-browser-qa/s3-readability-results.json.
+Screenshots: /private/tmp/meridian-browser-qa/s3-readability-1280-light.png and /private/tmp/meridian-browser-qa/s3-readability-review-mobile.png.
+Preview: http://127.0.0.1:4183/ while the local production server runs.
+The browser harness waits for asynchronous validation and animation-frame focus restoration; initial immediate focus reads were corrected in the harness without source changes.
+No new push, PR update, Figma write, merge, deployment or cleanup occurred.
+
+## Authorized readability publication
+
+The candidate explicitly requested pushing the completed readability refactor.
+All eleven recorded source hashes still match the passing 90-test, build and Chrome evidence at publication preparation.
+Commit the reviewed source/tests and checkpoint, push feat/transfer-form normally, and update existing https://github.com/timcheng112/meridian-banking/pull/4 with the final S3 scope.
+Hosted Validation for this new head is pending the push; merge, deployment and cleanup remain unauthorized.
+
+## Bank preset readability follow-up
+
+The candidate requested extracting the four existing bank options into a module-level BANK_PRESETS constant in RecipientStep.
+Values, ordering and Other bank behavior remain unchanged; recipient-hook discussion is deferred to the correctness review.
+The candidate explicitly authorized pushing this constant extraction to existing PR #4.
+Hosted Validation for the new head follows the push; merge and cleanup remain excluded.
+Lint, typecheck and git diff --check passed for this constant extraction; no new tests or browser rerun were needed.

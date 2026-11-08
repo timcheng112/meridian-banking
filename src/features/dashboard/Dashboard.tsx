@@ -1,4 +1,6 @@
 import type { ReactNode } from 'react'
+import { useTransferLauncher } from './useTransferLauncher'
+import { TransferDialog } from '../transfer/TransferDialog'
 import { DashboardContent } from './DashboardContent'
 import { DashboardFeedback } from './components/DashboardFeedback'
 import { DashboardSkeleton } from './components/DashboardSkeleton'
@@ -6,6 +8,7 @@ import { useDashboard } from './useDashboard'
 import './dashboard.css'
 
 export function Dashboard({ mobilePreferences }: { mobilePreferences: ReactNode }) {
+  const transfer = useTransferLauncher()
   const dashboard = useDashboard()
   const { status, retry, isFetching } = dashboard
 
@@ -27,7 +30,8 @@ export function Dashboard({ mobilePreferences }: { mobilePreferences: ReactNode 
       {hasRefreshError ? (
         <DashboardFeedback kind="refresh-error" onRetry={retry} isFetching={isFetching} />
       ) : null}
-      <DashboardContent mobilePreferences={mobilePreferences} customer={customer} accounts={accounts} transactions={transactions} />
+      <DashboardContent onNewTransfer={transfer.open} mobilePreferences={mobilePreferences} customer={customer} accounts={accounts} transactions={transactions} />
+      {transfer.isOpen ? <TransferDialog customer={customer} accounts={accounts} onClose={transfer.close} /> : null}
     </>
   )
 }

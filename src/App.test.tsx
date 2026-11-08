@@ -4,11 +4,16 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { act, cleanup, render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { delay, http, HttpResponse } from 'msw'
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest'
 import type { Account, Customer, Transaction } from './api/types'
 import { formatMoney, formatShortDate } from './lib/format'
 import { server } from './test/setup'
 import App from './App'
+
+beforeAll(() => {
+  HTMLDialogElement.prototype.showModal = function () { this.setAttribute('open', '') }
+  HTMLDialogElement.prototype.close = function () { this.removeAttribute('open') }
+})
 
 const clients: QueryClient[] = []
 function renderApp() {
@@ -90,7 +95,7 @@ describe('dashboard', () => {
     expect(rows[1]).toHaveTextContent('Pending')
     expect(screen.getAllByText('Pending')).toHaveLength(1)
     expectMoney(screen.getByRole('region', { name: 'Daily transfer limit' }), 5000)
-    for (const button of screen.getAllByRole('button', { name: 'New transfer' })) expect(button).toBeDisabled()
+    for (const button of screen.getAllByRole('button', { name: 'New transfer' })) expect(button).toBeEnabled()
     expect(screen.getByRole('searchbox', { name: 'Search transactions' })).toBeEnabled()
   })
 
@@ -278,4 +283,29 @@ it('keeps an explicit segment selected before customer arrival and tolerates blo
   await screen.findByRole('heading', { name: 'Good evening, Maya' })
   expect(document.documentElement).toHaveAttribute('data-segment', 'retail')
   expect(document.documentElement).toHaveAttribute('data-theme', 'dark')
+})
+
+it('starts payee reads only on opening and restores the opener with a fresh draft on reopen', async () => {
+  let payeeReads = 0
+  server.use(http.get('*/api/payees', () => { payeeReads++; return HttpResponse.json({ payees: [] }) }))
+  renderApp()
+  await screen.findByRole('heading', { name: 'Good evening, Ava' })
+  expect(payeeReads).toBe(0)
+  const opener = screen.getAllByRole('button', { name: 'New transfer' })[0]
+  // jsdom has no layout; model this opener as the visible responsive placement.
+  vi.spyOn(opener, 'getClientRects').mockReturnValue({ length: 1 } as DOMRectList)
+  await userEvent.click(opener)
+  await screen.findByText('No saved payees.')
+  expect(payeeReads).toBeGreaterThan(0)
+  await userEvent.click(screen.getByRole('button', { name: /Send to someone new/ }))
+  await userEvent.type(screen.getByLabelText('Recipient name'), 'Discard me')
+  await userEvent.click(screen.getByRole('button', { name: 'Close transfer' }))
+  await waitFor(() => expect(opener).toHaveFocus())
+  expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+  await userEvent.click(opener)
+  expect(screen.getByRole('heading', { name: 'Who are you sending to?' })).toHaveFocus()
+  await userEvent.click(screen.getByRole('button', { name: /Send to someone new/ }))
+  expect(screen.getByLabelText('Recipient name')).toHaveValue('')
+  await userEvent.click(screen.getByRole('button', { name: 'Cancel' }))
+  await waitFor(() => expect(opener).toHaveFocus())
 })
