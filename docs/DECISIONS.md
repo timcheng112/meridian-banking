@@ -515,3 +515,13 @@ The candidate approved /private/tmp/meridian-s4-technical-plan-v1.html, version 
 Proceed with bounded Sol implementation and tests, Astra integration review and local verification.
 The earlier proposed S4 choices are now accepted within that artifact scope; candidate understanding and feature acceptance remain pending.
 Publication and deployment require separate approval.
+
+## S4 implementation and review checkpoint
+
+The approved submission lifecycle uses one retained RHF form, a Dashboard-owned mutation and independently tracked query refresh.
+Cancel prior query reads before invalidating each family so an initial search with no cached data cannot complete with a pre-transfer snapshot.
+Use readable labels for server-field summaries and uncertainty wording for unconfirmed transport outcomes.
+The requested post-S4 correctness/readability review found and corrected a stale payee-warning timestamp comparison without extracting a recipient hook.
+Keep RecipientStep's short cohesive setup local; a hook would expose many values and actions while splitting related code.
+There is no requirement for symmetric hooks for every step.
+Candidate feature acceptance is pending; passing verification and review do not grant publication or deployment approval.

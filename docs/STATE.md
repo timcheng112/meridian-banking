@@ -1,6 +1,6 @@
 # Current state
 
-## Active continuation: S3 and CI merged; S4 planning next
+## Active continuation: S4 locally verified; candidate acceptance pending
 
 The candidate approved S1 and reported merging PR #1 on 8 November 2026.
 GitHub confirms the merge into development at 04956afd78cfb1a4251edccd140be74cba99637e.
@@ -17,10 +17,10 @@ Deadline: 10 November 2026, EOD, supplied by the candidate.
 The application renders dashboard content through the accepted query/state layer, with loading, initial error/Retry, refresh warnings and empty states.
 The header, persistent preferences, API search, responsive layout and shared UI presentation are implemented; S2 evidence is recorded below.
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
-Active scope: S1-S3 and CI accepted and merged; S4 technical plan v1 is approved for local implementation and verification.
+Active scope: S1-S3 and CI accepted and merged; approved S4 is implemented and locally verified on feat/transfer-submission, awaiting candidate understanding and acceptance.
 Integration base: remote development 5d4566fd924dcceec90c71f5077b83ccccb69f8c, the verified PR #4 merge containing CI PR #5.
 Primary development was fast-forwarded to 5d4566f; this local recovery checkpoint follows that merge.
-Phase: approved S4 implementation on feat/transfer-submission; candidate acceptance remains pending.
+Phase: S4 implementation and the requested correctness/readability review are complete locally; candidate understanding and acceptance remain pending.
 All five assignment development leases were returned with explicit authorization after clean-status and merge-preservation checks.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -41,7 +41,7 @@ Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
 | S2 | API search and persistent theme/segment | Accepted and merged in MR #2 at 8d0b4a3 |
 | Fidelity | Bidirectional Figma/code reconciliation for implemented scope | Accepted and merged in MR #3 at 571b9d5 |
 | S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Accepted and merged in PR #4 at 5d4566f |
-| S4 | Transfer mutation, failures, success and dashboard refresh | Pending |
+| S4 | Transfer mutation, failures, success and dashboard refresh | Locally verified at 126f0b0; candidate acceptance pending |
 | Release | Full requirement audit, production checks, submission README, deployment | Pending; publication requires approval |
 
 Each slice uses feature-dev for technical planning and approval before implementation.
@@ -60,15 +60,15 @@ Evidence must identify the checked revision; changes invalidate affected checks.
 | D6 | S2 | API search, debounce, count, older match, clear/no-match tests | Automated and focused production-browser checks pass at 6cfda96 |
 | D7; E4 dashboard retry | S1 | Failure then Retry integration test | Integration and real-browser keyboard Retry recovery passed |
 | D8; brief §5 | S1-S3 | 360/390 px, breakpoint/desktop, overflow and tap-target checks | Dashboard checks pass at eight widths; transfer checks remain S3 |
-| T1; T8 | S3-S4 | Keyboard, focus restoration, labels/errors/live announcements | S3 tests and Chrome checks pass at e19fb10; send alert/success announcement remain S4 |
+| T1; T8 | S3-S4 | Keyboard, focus restoration, labels/errors/live announcements | S3 evidence retained; S4 send alert/live-region and focused Chrome behavior pass at 126f0b0; full screen-reader audit pending |
 | T2-T4; brief §3.3 | S3 | Form boundaries, new/saved recipient, step preservation and focus tests | Automated and focused Chrome checks pass at e19fb10 |
-| T5-T7; E4 transfer cases | S4 | Over-balance/no request, success refresh, failure, duplicate-submit tests | Pending |
+| T5-T7; E4 transfer cases | S4 | Over-balance/no request, success refresh, failure, duplicate-submit tests | 118-test full suite and focused production-browser checks pass at 126f0b0 |
 | TH1-TH3; tokens | S2 | Four theme combinations, persistence/pre-paint, contrast/focus checks | S2 persistence/pre-paint and four-mode checks pass at 6cfda96; sampled text contrast passes, full composited/non-text audit remains release |
 | E1-E3 | All slices | Typecheck, boundary review, state/schema ownership review | Pending implementation |
-| E5 | Every slice, release | npm run check, build, browser console | Final S1 check/build and focused Chrome console checks pass at 7ae324d |
+| E5 | Every slice, release | npm run check, build, browser console | S4 full check/build and focused production-browser success-console checks pass at 126f0b0 |
 | E6; DEPLOYMENT.md | Release | HTTPS deployment, worker, transfer/refresh without local server | Pending |
 | brief §4; wireframes §1-7 | Design, all slices | Exact copy/formatters, required screens and states review | Pending |
-| API contract requests/errors/hooks | S1-S4 | Typed requests, server field errors, no POST retries, refetch-failure separation | Pending |
+| API contract requests/errors/hooks | S1-S4 | Typed requests, server field errors, no POST retries, refetch-failure separation | S4 tests and focused browser checks pass at 126f0b0; final release audit pending |
 | README §5 | Release | Submission README sections, AI-use examples, repository/deployed URLs | Pending |
 
 Optional features stay deferred until mandatory criteria are satisfied.
@@ -149,13 +149,13 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-S3 PR #4 and CI PR #5 are merged, and all assignment leases have been returned.
-Prepare the S4 HTML technical plan and obtain explicit candidate approval before implementation or implementation-worker dispatch.
-After approval, commit recovery records, verify the development base, and acquire a fresh Treehouse lease for the S4 branch.
-After S4, conduct the requested correctness/readability review; keep further recipient-hook extraction deferred until that review.
-Preserve the accepted S2 search presentation and keep further mock-worker lifecycle repair deferred.
-The former S3 production preview on port 4183 is stopped; its local review artifact is historical evidence.
-New publication, deployment, merge and cleanup require their own authorization.
+Review the local S4 production preview at http://127.0.0.1:4184/ and /private/tmp/meridian-s4-review.html.
+S4 and the requested correctness/readability review are complete locally on feat/transfer-submission at source revision 126f0b0.
+Obtain candidate understanding and acceptance before marking the slice accepted.
+Astra recommends keeping RecipientStep intact; no further hook extraction was performed.
+The S4 lease remains active, and the local preview is retained for review.
+New publication, deployment, merge and cleanup require separate authorization.
+The release-wide requirement audit, submission README and deployed verification remain pending.
 
 ## Continuation audit - 7 November 2026
 
@@ -1285,3 +1285,32 @@ A fresh Treehouse lease was acquired with --no-fetch after inspecting current he
 Lease identity and local path are retained outside the repository; no old returned lease was resumed.
 The feature worktree was clean before branching and HEAD matched the explicit base.
 Next: Sol implements the approved v1 inventory and tests; Astra reviews and coordinates verification.
+
+## S4 local verification and correctness/readability review
+
+Approved plan v1 is implemented at 126f0b08be225521e4bca1ed2155cde702a8468b on feat/transfer-submission, based on development 7ba8564.
+Sol implemented the bounded transfer submission, retained-session lifetime, API field correction, response receipt and independent query refresh.
+The parent-owned synchronous guard covers validation and POST; automatic mutation retries remain disabled.
+Refresh cancels old customer/accounts/transaction reads, invalidates the entire transaction family and keeps transfer success independent from GET failures.
+Closing an unresolved submitted session preserves the mounted RHF form; unsent drafts retain the accepted discard behavior.
+Astra integration and full-flow correctness/readability reviews closed with no remaining blocking findings.
+Review corrections covered alert focus, delayed opener-focus restoration, uncertain network copy, readable field labels, dependent server-error correction and initial search-read cancellation.
+The full-flow review also corrected RecipientStep's stale payee-error timestamp comparison, with recovery-then-healthy-refresh regression coverage.
+That narrow correctness fix was the only additional application file beyond the approved inventory; no recipient-hook extraction or broader refactor occurred.
+The review recommends keeping the cohesive RecipientStep setup in its component rather than adding a large hook interface.
+Node 22 npm run check passed lint, typecheck and 118 tests across nine files; npm run build and git diff --check passed.
+Tests cover all API field mappings, same-ID balance changes, removed payees, repeated submits, hidden validation/pending/results, active/inactive search, old-read cancellation, per-resource refresh failures and overlapping old/new refresh attempts.
+Final isolated Chrome production-browser checks pass at source revision 126f0b0.
+Browser scenarios cover saved/new success, leading-zero recipient payload, hidden completion, failure correction, linked amount-error focus, refreshed financial/search values and GET-only refresh retry.
+Sending, success and failure layouts pass at 360, 390, 640, 1023, 1024 and 1280px, including short-viewport footer reachability and 44px controls.
+All four theme/segment states were captured; final error-text contrast measures 4.76:1 in light themes and 7.24:1 in dark themes.
+Reduced-motion spinner behavior passes; the success path has no console/page errors, and the intentional #fail scenario produces the expected HTTP 500 console entry.
+Native dialog navigation excludes dashboard controls, with browser-chrome transitions represented by BODY focus between cycles; no custom focus trap was added.
+The in-app browser remained unavailable; full screen-reader testing and the release-wide accessibility audit remain pending.
+Evidence: /private/tmp/meridian-browser-qa/s4-results.json and s4-final-smoke.json, including revision and source hashes.
+Representative final screenshots: s4-settled-success-light-retail.png, s4-final-error-dark-premium.png, s4-new-success-desktop.png and s4-refresh-failure.png in that directory.
+Local review: /private/tmp/meridian-s4-review.html; production preview: http://127.0.0.1:4184/ while its task-owned process runs.
+The S4 lease remains active; local identity/path details are in /private/tmp/meridian-s4-lease.json.
+No supplied mocks, seed data, generated files, dependencies, CHANGELOG or runtime/CI configuration were changed.
+No push, PR update, Figma write, deployment, merge or lease cleanup occurred.
+Next: candidate walkthrough, understanding and acceptance, followed by separately authorized publication and release work.
