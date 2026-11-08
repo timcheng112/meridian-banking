@@ -942,10 +942,10 @@ Candidate implementation acceptance and all external publication, merge, deploym
 
 ## S3 worktree continuation pointer
 
-S3 is implemented and verified on feat/transfer-form, based on development 2420c37, with candidate feedback corrections at application revision c777694.
+S3 is accepted and published on feat/transfer-form at 77aea84 in open PR #4, based on development 2420c37.
 Recover the active worktree using git worktree list and read its STATE for complete checks and limitations.
 The no-fetch meridian-s3 lease remains retained alongside the three completed leases.
-Candidate review is next; no publication, merge, cleanup or S4 implementation is authorized.
+S3 merge, cleanup and S4 implementation remain unauthorized.
 
 ## Approved CI setup
 
@@ -955,5 +955,18 @@ The concrete routine configuration scope was approved directly in chat; no addit
 Branch chore/ci starts from verified local development 3eba44f and uses a separate no-fetch Treehouse lease.
 The earlier S3 publication approval does not authorize publishing this branch.
 S3 acceptance includes selected A styling, 16px mobile footer gaps and the 880px desktop height cap; its application code and detailed evidence remain in the preserved S3 branch and PR #4.
-Next: implement and validate the workflow locally, then present it for review.
+The candidate accepted the local workflow and explicitly authorized commit, push and opening its PR to development.
+Next: publish chore/ci and verify the hosted Actions run; merge and cleanup remain excluded.
 No deployment, secrets, browser automation, S4, merge or cleanup is included.
+
+## CI local verification checkpoint
+
+The workflow is implemented and reviewed on chore/ci above scope-record commit 31df4d6.
+Official releases verified on 8 November 2026 are checkout v7.0.1 and setup-node v7.1.0; the workflow uses their v7 major tags.
+Node 22.23.4 npm ci --offline installed 319 packages successfully; npm run check passed lint, typecheck and all 47 tests across six files, and npm run build passed.
+Ruby YAML syntax parsing and git diff --check passed; actionlint is unavailable locally.
+Workflow SHA-256: 75b885f28ab2e581736a088157a4e4630e9c7e2f4019ba17d9d6c6a94a7820f4.
+The lockfile and application source are unchanged from development 3eba44f, whose application tree matches remote development 571b9d5.
+These checks cover the merged dashboard baseline; S3's separate 87-test evidence remains on its accepted PR #4 branch.
+Hosted Ubuntu execution, npm cache restore and GitHub event/concurrency behavior remain unverified until authorized publication and an actual Actions run.
+No CI push, PR, deployment, merge or worktree cleanup occurred.

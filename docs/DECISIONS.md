@@ -387,3 +387,15 @@ Use current supported major versions of the official checkout and setup-node act
 Keep configuration in .github/workflows/ci.yml without new dependencies or application changes.
 The routine configuration proceeds from this concrete approval without another HTML artifact.
 Publication requires separate authorization; the earlier S3 approval covers only PR #4.
+
+The selected official action majors are checkout@v7 and setup-node@v7, checked against [checkout releases](https://github.com/actions/checkout/releases/tag/v7.0.1) and [setup-node releases](https://github.com/actions/setup-node/releases/tag/v7.1.0).
+Major tags keep supported fixes available without dependency tooling for this small assessment.
+The explicit npm cache uses the existing package-lock.json and clean installation still runs every time.
+Concurrency follows [GitHub's documented workflow grouping](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency); PR numbers and branch refs separate independent work.
+Checkout credentials are not persisted because this job only reads and validates code.
+
+## Accepted: CI publication
+
+The candidate approved committing, pushing and opening the CI PR after reviewing the concrete local workflow and passing checks.
+Authorization includes checking the hosted Actions run and correcting workflow failures within the approved scope.
+Merge, deployment and cleanup remain excluded.
