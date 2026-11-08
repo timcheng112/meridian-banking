@@ -1,6 +1,6 @@
 # Current state
 
-## Active continuation: S4 accepted and published in PR #6
+## Active continuation: S4 merged; correctness round next
 
 The candidate approved S1 and reported merging PR #1 on 8 November 2026.
 GitHub confirms the merge into development at 04956afd78cfb1a4251edccd140be74cba99637e.
@@ -17,10 +17,10 @@ Deadline: 10 November 2026, EOD, supplied by the candidate.
 The application renders dashboard content through the accepted query/state layer, with loading, initial error/Retry, refresh warnings and empty states.
 The header, persistent preferences, API search, responsive layout and shared UI presentation are implemented; S2 evidence is recorded below.
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
-Active scope: S1-S3 and CI accepted and merged; S4 is accepted after candidate preview review, and publication of feat/transfer-submission to a PR into development is explicitly authorized.
-Integration base: remote development 5d4566fd924dcceec90c71f5077b83ccccb69f8c, the verified PR #4 merge containing CI PR #5.
-Primary development was fast-forwarded to 5d4566f; this local recovery checkpoint follows that merge.
-Phase: S4 and its final candidate-requested fixes are accepted; commit and publish the reviewed branch as a PR into development.
+Active scope: S1-S4 and CI are accepted and merged; the next requested work is a correctness/readability round.
+Integration base: remote development 7089fca244e79d7001879c96ad4a87a99e7ed10d, the verified PR #6 merge.
+Primary development was fast-forwarded to 7089fca; the local recovery checkpoint follows that merge.
+Phase: S4 PR #6 is merged; the candidate requested a handoff for the next correctness round.
 All five assignment development leases were returned with explicit authorization after clean-status and merge-preservation checks.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -41,7 +41,7 @@ Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
 | S2 | API search and persistent theme/segment | Accepted and merged in MR #2 at 8d0b4a3 |
 | Fidelity | Bidirectional Figma/code reconciliation for implemented scope | Accepted and merged in MR #3 at 571b9d5 |
 | S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Accepted and merged in PR #4 at 5d4566f |
-| S4 | Transfer mutation, failures, success and dashboard refresh | Accepted with final completeness/status fixes; PR publication authorized |
+| S4 | Transfer mutation, failures, success and dashboard refresh | Accepted and merged in PR #6 at 7089fca |
 | Release | Full requirement audit, production checks, submission README, deployment | Pending; publication requires approval |
 
 Each slice uses feature-dev for technical planning and approval before implementation.
@@ -149,11 +149,12 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Review S4 PR #6: https://github.com/timcheng112/meridian-banking/pull/6.
-The accepted feat/transfer-submission branch is published into development with the final completeness and success-status corrections.
-Verify hosted Validation for the final published head before merge.
-Merge, deployment and worktree cleanup require separate authorization.
-The S4 lease and local preview remain available.
+Recover merged development and conduct the candidate-requested correctness/readability round against the complete application.
+Use the S4 integration/full-flow review as prior evidence rather than treating it as a reason to skip this explicitly requested next round.
+Prioritize real correctness issues, clear ownership, appropriate reuse and candidate explainability; discuss material refactors before implementation.
+Further recipient-hook extraction has not been performed; evaluate its value during this review rather than assuming every step needs a hook.
+The S4 lease and local preview remain available; cleanup has not been authorized.
+New publication, deployment and future merges require separate authorization.
 Release-wide requirements, submission README and deployed verification remain pending.
 
 ## Continuation audit - 7 November 2026
@@ -1345,3 +1346,15 @@ The GitHub connector could read the repository but returned insufficient permiss
 Hosted Validation started after PR creation; verify the final head through the PR checks before merging.
 This publication checkpoint changes records only; application and test evidence still applies by source identity.
 The PR remains open; no merge, deployment or cleanup was performed.
+
+## Merged S4 and correctness-round handoff
+
+GitHub confirms PR #6 merged into development at 7089fca244e79d7001879c96ad4a87a99e7ed10d on 8 November 2026.
+Fetched development and verified the merge tree exactly matches accepted final PR head c2905a3db509965d1acd3de7a9adc15083e569d1; that head is an ancestor of the merge.
+Hosted Validation passed lint, typecheck, tests and build for that final PR head: https://github.com/timcheng112/meridian-banking/actions/runs/42448248299.
+The clean primary development checkout was fast-forwarded to 7089fca before this local recovery checkpoint.
+The feature worktree remains clean at c2905a3, and its S4 Treehouse lease remains active.
+The task-owned preview on http://127.0.0.1:4184/ is still listening; local lease/process details remain in /private/tmp/meridian-s4-lease.json.
+The candidate explicitly requested a handoff to proceed to the correctness round, despite the already completed S4 integration/readability review.
+Treat the next round as an intentional complete-application review and use existing findings/evidence to avoid redundant work.
+No cleanup, branch deletion, deployment or new external publication was performed during handoff.

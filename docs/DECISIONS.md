@@ -542,3 +542,10 @@ Keep its status announcement screen-reader accessible and retain visible refresh
 After reviewing the preview and the requested completeness/status corrections, the candidate reported the result passed and explicitly authorized pushing a PR.
 Publish feat/transfer-submission into development with the accepted S4 scope and completed correctness/readability review.
 Merge, deployment and worktree cleanup remain separately gated.
+
+## Accepted: next correctness round after S4 merge
+
+After reporting PR #6 merged, the candidate requested a handoff to continue with the correctness round.
+Proceed with that review of the merged application, building on the completed S4 integration review and preserving candidate explainability and existing behavior.
+The previous recommendation to keep RecipientStep intact is evidence for discussion, not a prohibition on reassessing a concrete improvement.
+Do not infer authorization for material refactors, external publication, deployment or lease cleanup from this handoff request.
