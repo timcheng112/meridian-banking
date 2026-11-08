@@ -21,8 +21,7 @@
 .transfer-footer { flex: none; padding: var(--space-4) var(--space-6) max(var(--space-4), env(safe-area-inset-bottom)); border-top: 1px solid var(--border); }
 .transfer-actions { display: flex; gap: var(--space-3); justify-content: space-between; }
 .transfer-actions .ui-button { min-height: var(--space-12); }
-.transfer-dialog .preview-notice { font-size: var(--text-sm); color: var(--text-muted); margin: 0 0 var(--space-3); }
-.payee-list { margin: var(--space-2) 0; border: 0; padding: 0; min-width: 0; }
+.transfer-dialog .payee-list { margin: var(--space-2) 0; border: 0; padding: 0; min-width: 0; }
 .payee-row { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) var(--space-4); border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; margin-bottom: var(--space-2); }
 .payee-row[data-selected='true'] { border-color: var(--brand); background: var(--brand-soft); }
 .payee-row input { accent-color: var(--brand); width: var(--space-5); height: var(--space-5); flex: none; margin: 0; }
@@ -84,3 +83,19 @@
 
 .transfer-select svg { width: var(--space-5); height: var(--space-5); }
 .new-recipient-fields .transfer-field { margin-bottom: var(--space-2); }
+
+.transfer-form-fields { padding: 0; margin: 0; border: 0; min-width: 0; }
+.transfer-send-error { margin-bottom: var(--space-6); background: var(--negative-soft); color: var(--negative); }
+.transfer-send-error p:first-child { font-weight: var(--weight-semibold); }
+.transfer-send-error ul { padding-left: var(--space-5); overflow-wrap: anywhere; }
+.transfer-send-error .ui-button { margin-top: var(--space-2); margin-right: var(--space-2); }
+.transfer-success { text-align: center; padding: var(--space-6) 0; }
+.success-medallion { display: inline-grid; place-items: center; width: var(--space-16); height: var(--space-16); background: var(--positive); color: var(--surface); border-radius: var(--radius-full); margin-bottom: var(--space-6); }
+.transfer-dialog .success-medallion svg { width: var(--space-8); height: var(--space-8); stroke-width: 2; }
+.transfer-success .success-amount { font-size: var(--text-3xl); font-weight: var(--weight-bold); font-variant-numeric: tabular-nums; color: var(--text); }
+.success-reference { overflow-wrap: anywhere; }
+.transfer-success p { color: var(--text-muted); }
+.transfer-actions.success-actions .ui-button { width: 100%; }
+.transfer-spinner { width: var(--space-4); height: var(--space-4); border: 2px solid currentColor; border-right-color: transparent; border-radius: var(--radius-full); animation: transfer-spin 1s linear infinite; }
+@keyframes transfer-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .transfer-spinner { animation: none; } }

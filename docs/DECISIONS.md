@@ -487,3 +487,58 @@ Merge, deployment and cleanup remain separately gated.
 
 The candidate deferred further recipient-hook extraction until the correctness review and approved only naming the existing bank presets in RecipientStep.
 Keep the constant in the same module; the presets are not an exhaustive bank directory and Other bank remains available.
+
+## Accepted: return all completed assignment leases
+
+After reporting PR #4 merged, the candidate explicitly requested returning all worktrees leased for this assignment development.
+Verify clean worktrees and preservation in merged development, then use Treehouse lease-identity checks to return all five completed leases.
+Preserve local and remote branches and evidence; stop task-owned preview processes through the supported return operation.
+Next work is S4 planning followed by implementation, then the correctness/readability review with recipient-hook discussion deferred to that review.
+
+## Proposed: S4 technical plan v1
+
+The local proposal is /private/tmp/meridian-s4-technical-plan-v1.html, version 1; candidate approval is pending.
+Retain one RHF form and its current schema, with final validation before an explicit guarded POST and no automatic mutation retries.
+Place mutation and refresh lifecycle above the dialog so closing it cannot lose an in-flight operation; preserve the mounted form session after submission until its outcome is acknowledged.
+Ordinary unsent drafts still discard on close, while hidden pending/results reopen through the existing New transfer action with concise dashboard status.
+This proposed lifecycle preserves T1 close/Escape behavior without duplicating drafts or permitting a second unresolved transfer.
+Use the API response for the receipt and independently refresh customer, accounts and the transaction query family, including active search and stale inactive terms.
+Keep successful submission distinct from refresh failure and offer GET-only refresh retry.
+Map whitelisted API field paths to RHF, retain failed Review data and provide explicit correction actions to earlier steps.
+The artifact proposes copy for uncertain transport outcomes and success with incomplete refresh, alongside the accepted sending/error/success designs.
+No new context, generic wizard, recipient-hook extraction, dependencies, CI work or external writes are proposed.
+After approval, explicitly selected Sol implements the bounded file inventory; Astra reviews integration and verification before candidate understanding and acceptance.
+
+## Accepted: S4 technical plan v1
+
+The candidate approved /private/tmp/meridian-s4-technical-plan-v1.html, version 1, including the proposed submission lifetime, error correction and refresh treatments.
+Proceed with bounded Sol implementation and tests, Astra integration review and local verification.
+The earlier proposed S4 choices are now accepted within that artifact scope; candidate understanding and feature acceptance remain pending.
+Publication and deployment require separate approval.
+
+## S4 implementation and review checkpoint
+
+The approved submission lifecycle uses one retained RHF form, a Dashboard-owned mutation and independently tracked query refresh.
+Cancel prior query reads before invalidating each family so an initial search with no cached data cannot complete with a pre-transfer snapshot.
+Use readable labels for server-field summaries and uncertainty wording for unconfirmed transport outcomes.
+The requested post-S4 correctness/readability review found and corrected a stale payee-warning timestamp comparison without extracting a recipient hook.
+Keep RecipientStep's short cohesive setup local; a hook would expose many values and actions while splitting related code.
+There is no requirement for symmetric hooks for every step.
+Candidate feature acceptance is pending; passing verification and review do not grant publication or deployment approval.
+
+## Accepted: required-field completeness before Continue
+
+The candidate explicitly requested disabling Continue until required active-step fields are filled or selected, as well as when known errors exist.
+Use watched completeness only for that presentation gate; keep format, length, amount and financial rules in the existing schema.
+Optional note stays optional, and Enter uses the same gate.
+
+## Accepted: hide routine success-refresh text visually
+
+The candidate requested removing the flashing dashboard-update line from the visible success screen.
+Keep its status announcement screen-reader accessible and retain visible refresh-failure feedback.
+
+## Accepted: S4 result and PR publication
+
+After reviewing the preview and the requested completeness/status corrections, the candidate reported the result passed and explicitly authorized pushing a PR.
+Publish feat/transfer-submission into development with the accepted S4 scope and completed correctness/readability review.
+Merge, deployment and worktree cleanup remain separately gated.
