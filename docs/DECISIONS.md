@@ -427,3 +427,38 @@ The candidate accepted the reviewed S3 behavior and explicitly authorized commit
 Acceptance includes selected A, the 16px mobile footer gap and responsive desktop height up to 880px.
 Publish feat/transfer-form to development with the current verified scope; S4 submission behavior remains excluded.
 This authorization does not include merge, deployment, Figma propagation or worktree cleanup.
+
+## Accepted: small GitHub Actions CI workflow
+
+The candidate approved the exact single-job Node 22 CI scope directly in chat.
+Use GitHub-hosted Ubuntu, npm lockfile caching, clean installation, existing check and build scripts, read-only contents permission, ten-minute timeout, and concurrency cancellation per PR or branch.
+Trigger pull requests targeting development or main and pushes to those branches.
+Use current supported major versions of the official checkout and setup-node actions, verified against their official release documentation.
+Keep configuration in .github/workflows/ci.yml without new dependencies or application changes.
+The routine configuration proceeds from this concrete approval without another HTML artifact.
+Publication requires separate authorization; the earlier S3 approval covers only PR #4.
+
+The selected official action majors are checkout@v7 and setup-node@v7, checked against [checkout releases](https://github.com/actions/checkout/releases/tag/v7.0.1) and [setup-node releases](https://github.com/actions/setup-node/releases/tag/v7.1.0).
+Major tags keep supported fixes available without dependency tooling for this small assessment.
+The explicit npm cache uses the existing package-lock.json and clean installation still runs every time.
+Concurrency follows [GitHub's documented workflow grouping](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency); PR numbers and branch refs separate independent work.
+Checkout credentials are not persisted because this job only reads and validates code.
+
+## Accepted: CI publication
+
+The candidate approved committing, pushing and opening the CI PR after reviewing the concrete local workflow and passing checks.
+Authorization includes checking the hosted Actions run and correcting workflow failures within the approved scope.
+Merge, deployment and cleanup remain excluded.
+
+## Accepted: named validation steps
+
+The candidate approved seven explicitly named CI steps in the existing single Validation job so failures are visible directly in GitHub's step list.
+Replace the combined check command with its existing lint, typecheck and test commands, keeping their order and fail-fast behavior.
+No package scripts or application code change.
+
+## Accepted: rebase S3 onto merged CI
+
+After merging PR #5, the candidate explicitly requested rebasing PR #4 onto updated development and force pushing the rebased branch.
+Use the verified development merge 0589a4b and an explicit force-with-lease against the observed S3 remote head.
+Preserve S3 behavior and both branches' durable records, and verify the resulting hosted Validation run.
+This does not authorize merging PR #4, deployment or cleanup.

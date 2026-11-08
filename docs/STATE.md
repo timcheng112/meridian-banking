@@ -17,8 +17,9 @@ Deadline: 10 November 2026, EOD, supplied by the candidate.
 The application renders dashboard content through the accepted query/state layer, with loading, initial error/Retry, refresh warnings and empty states.
 The header, persistent preferences, API search, responsive layout and shared UI presentation are implemented; S2 evidence is recorded below.
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
-Active scope: S1, S2 and fidelity/header feedback accepted and merged; S3 plan v1 approved for local implementation.
-Integration branch: development at 3eba44f; active feat/transfer-form is f3c9b4a with the verified selected-A working diff; completed worktrees remain preserved pending separately authorized cleanup.
+Active scope: S3 accepted in open PR #4, rebased onto development containing merged CI PR #5.
+Integration base: remote development 0589a4b; feat/transfer-form preserves accepted S3 source while incorporating the named-step CI workflow.
+Primary local development remains at 3eba44f; all worktrees remain preserved.
 Phase: S3 accepted and published in PR #4 to development; final application commit 3c33c48 matches verified evidence, and merge remains pending.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
@@ -1143,3 +1144,47 @@ Remote development remained 571b9d5; its merge base with this branch is the same
 Evidence hashes still match the committed application files; no source changes followed the accepted verification.
 This documentation-only publication checkpoint accompanies the PR without changing application behavior.
 Merge, deployment, accepted-board propagation and worktree cleanup remain pending separate authorization; S4 is unimplemented.
+
+## Approved CI setup
+
+The candidate approved one Ubuntu job using Node 22 and npm caching, followed by npm ci, npm run check and npm run build.
+Run for pull requests targeting development or main and pushes to either branch, cancel obsolete runs for the same PR or branch, use read-only contents permission, and cap the job at ten minutes.
+The concrete routine configuration scope was approved directly in chat; no additional HTML plan is required for this task.
+Branch chore/ci starts from verified local development 3eba44f and uses a separate no-fetch Treehouse lease.
+The earlier S3 publication approval does not authorize publishing this branch.
+S3 acceptance includes selected A styling, 16px mobile footer gaps and the 880px desktop height cap; its application code and detailed evidence remain in the preserved S3 branch and PR #4.
+The candidate accepted the local workflow and explicitly authorized commit, push and opening its PR to development.
+Published CI PR: https://github.com/timcheng112/meridian-banking/pull/5.
+The candidate merged CI PR #5 at 0589a4b; cleanup remains excluded.
+No deployment, secrets, browser automation, S4, merge or cleanup is included.
+
+## CI local verification checkpoint
+
+The workflow is implemented and reviewed on chore/ci above scope-record commit 31df4d6.
+Official releases verified on 8 November 2026 are checkout v7.0.1 and setup-node v7.1.0; the workflow uses their v7 major tags.
+Node 22.23.4 npm ci --offline installed 319 packages successfully; npm run check passed lint, typecheck and all 47 tests across six files, and npm run build passed.
+Ruby YAML syntax parsing and git diff --check passed; actionlint is unavailable locally.
+Workflow SHA-256: 75b885f28ab2e581736a088157a4e4630e9c7e2f4019ba17d9d6c6a94a7820f4.
+The lockfile and application source are unchanged from development 3eba44f, whose application tree matches remote development 571b9d5.
+These checks cover the merged dashboard baseline; S3's separate 87-test evidence remains on its accepted PR #4 branch.
+Hosted Ubuntu run https://github.com/timcheng112/meridian-banking/actions/runs/42441128237 passed at workflow commit 382242d, including installation, checks, build and cache post-step.
+Concurrent-run cancellation and the integration-branch push trigger have not been exercised deliberately.
+CI PR #5 is merged into development at 0589a4b.
+No deployment, merge or worktree cleanup occurred.
+
+## Approved CI log readability follow-up
+
+The candidate approved naming the job Validation and its seven steps Check out code, Set up Node.js, Install dependencies, Lint, Typecheck, Tests and Build.
+Lint, typecheck and tests now run as separate sequential steps using the existing package scripts in the same job.
+Triggers, permissions, concurrency, dependencies, caching and build behavior remain unchanged.
+This updates the existing authorized PR #5; hosted verification of this follow-up is pending the next push.
+The preceding final-head run passed at 6e82276: https://github.com/timcheng112/meridian-banking/actions/runs/42441627770.
+
+## Authorized S3 rebase onto merged CI
+
+The candidate requested rebasing PR #4 onto updated development and explicitly authorized force pushing.
+Verified PR #5 merged at 0589a4b0a25b2ce721f69f464bdc89dc324e93b1 and PR #4 remote head was 77aea84aa1bb31bf923d543e759358d6a70891e0.
+Replayed S3 commits onto that exact integration base and reconciled documentation conflicts while preserving both accepted S3 records and CI decisions.
+The application, tests and package files are byte-for-byte unchanged from accepted S3 head 77aea84; the workflow matches merged development exactly.
+Existing 87-test and browser evidence remains applicable; the new hosted Validation run will verify S3 after the push.
+Use force-with-lease against the observed old head; PR #4 merge, deployment and cleanup remain unauthorized.
