@@ -1,6 +1,6 @@
 # Current state
 
-## Active continuation: S4 accepted; PR publication authorized
+## Active continuation: S4 accepted and published in PR #6
 
 The candidate approved S1 and reported merging PR #1 on 8 November 2026.
 GitHub confirms the merge into development at 04956afd78cfb1a4251edccd140be74cba99637e.
@@ -149,11 +149,11 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Commit the accepted final S4 fixes and records, push feat/transfer-submission, and create a PR into development.
-The candidate explicitly reported the preview passed and authorized PR publication.
-Verify the final published head and hosted CI after publication.
-The correctness/readability review is complete; keep RecipientStep intact as recommended.
-Merge, deployment and worktree cleanup remain separately authorized actions.
+Review S4 PR #6: https://github.com/timcheng112/meridian-banking/pull/6.
+The accepted feat/transfer-submission branch is published into development with the final completeness and success-status corrections.
+Verify hosted Validation for the final published head before merge.
+Merge, deployment and worktree cleanup require separate authorization.
+The S4 lease and local preview remain available.
 Release-wide requirements, submission README and deployed verification remain pending.
 
 ## Continuation audit - 7 November 2026
@@ -1336,3 +1336,12 @@ This records S4 acceptance and authorization to commit/push the final changes an
 Final completeness behavior passed 119 tests, lint/typecheck/build and focused Chrome checks.
 The final screen-reader-only presentation change passed typecheck/build and was accepted in the candidate preview.
 Local evidence remains outside Git; publication does not include screenshot uploads.
+
+## S4 PR publication
+
+Published feat/transfer-submission and created https://github.com/timcheng112/meridian-banking/pull/6 into development with explicit candidate authorization.
+Accepted application head: b03a1ec6d7c3e4a6eb1893cc9d2ce8427a129e3c.
+The GitHub connector could read the repository but returned insufficient permissions for PR creation; the authenticated GitHub CLI created the PR successfully.
+Hosted Validation started after PR creation; verify the final head through the PR checks before merging.
+This publication checkpoint changes records only; application and test evidence still applies by source identity.
+The PR remains open; no merge, deployment or cleanup was performed.
