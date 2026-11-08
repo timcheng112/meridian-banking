@@ -1,16 +1,17 @@
 # Current state
 
-## Active continuation: authorized release integration; deployment before README
+## Active continuation: approved submission README publication
 
 The candidate approved submission-readiness work with Vitest coverage and bounded browser acceptance, deferring Playwright and structural refactors.
 The candidate accepted the loading-control fix and approved a bounded test cleanup after reviewing its coverage trade-offs.
-Active worktree: `/private/tmp/meridian-design-worktrees/.treehouse/meridian-banking-564804/2/meridian-banking`, branch `fix/loading-transfer-controls`, based explicitly on development `ec706cc`.
+Active worktree: `/private/tmp/meridian-design-worktrees/.treehouse/meridian-banking-564804/2/meridian-banking`, now on `docs/submission-readme`, based explicitly on main `bf5d69e`.
+The completed readiness slice was based on development `ec706cc` and is preserved on `fix/loading-transfer-controls` at `d9c5d33`.
 Baseline Node 22 check/build passed with 119 tests; the new regression failed on the expected disabled assertion before the fix.
 Post-fix Node 22 check/build and diff checks passed with 120 tests across nine files; independent review found no blocking loading-control issues.
 Full verification exposed an existing search-cache test race that also reproduced with the new regression excluded, while the isolated cache test passed.
 That test now waits for scheduled dialog-close focus restoration before typing and explicitly checks the entered search value, preserving its cache assertions and timeout.
 The full suite passed after this synchronization correction; the later submission-readiness checkpoint records fresh browser verification.
-Remaining work: authorized integration and main promotion, hosting selection, public deployment verification, then README finalization and candidate walkthrough.
+Remaining work: publish the revised submission README and verification records, then candidate walkthrough and submission.
 No publication, merge, deployment, or cleanup had occurred at the test-cleanup checkpoint.
 
 The approved test cleanup removes nine duplicated dashboard cases, one artificially suspended-validation scenario and its resolver mock, three repeated server-field UI cases, and two refresh-failure endpoint permutations.
@@ -65,6 +66,49 @@ The author name and first-person AI-use examples require candidate review; hosti
 No external writes, commit, merge, deployment or lease cleanup occurred.
 Treehouse status attempted to initialize a path outside the writable roots and was blocked; current lease status remains unverified, with the handoff lease identities retained.
 
+## Release promotion checkpoint - 8 November 2026
+
+The candidate authorized the proposed integration, main promotion and deployment-before-README sequence, then selected Vercel.
+Readiness PR #7, https://github.com/timcheng112/meridian-banking/pull/7, passed hosted CI and was squash-merged into development at `6bc5703b4e0eb1f78e3d159999135f8ddd2927c0`.
+Its tree exactly matches reviewed readiness commit `d9c5d3366a403b1a7c61c06eb1360981a2f8f250`.
+Release PR #8, https://github.com/timcheng112/meridian-banking/pull/8, passed both associated hosted checks and was merged with ancestry preserved into main at `bf5d69e98b9fa7281ea3f80aefc565dc3b417389`.
+The main merge has parents `bb9a6fe` and `6bc5703`, and its tree exactly matches development.
+No folders were selectively excluded; supplied brief/mocks/seed/worker and CHANGELOG remain unchanged.
+The post-merge main CI run, https://github.com/timcheng112/meridian-banking/actions/runs/42451654542, passed completely, including lint, typecheck, 107 tests and production build.
+
+The clean primary checkout now matches remote development at `6bc5703`; local and remote main refs match `bf5d69e`.
+Squash integration made the previous local documentation-only recovery commit redundant; it is preserved on `checkpoint/pre-release-development-ec706cc` before clean development was aligned with the remote using `git reset --keep`.
+The existing slot-2 worktree is reused for `docs/submission-readme` from verified main `bf5d69e`; no lease return or cleanup was performed.
+The GitHub connector denied PR creation with integration permissions, so the existing authenticated GitHub CLI completed the authorized PRs and merges.
+
+Vercel was discovered but remained unconnected; no project or deployment has been created by the agent.
+The candidate now asks for dashboard deployment instructions, so support candidate-led import of `timcheng112/meridian-banking`, production branch main, Vite preset, Node 22.x, install `npm ci`, build `npm run build`, output `dist`, no environment variables.
+Local settings/checklist: `/private/tmp/meridian-vercel-release-settings.md`.
+After the candidate supplies the public URL, verify HTTPS worker control, real transfers, balances/transactions/limit refresh, reload and successful-flow console output without a local API server.
+Finalize README afterward using the existing separate proposal and candidate-reviewed name/AI-use statements.
+
+## Public deployment checkpoint - 8 November 2026
+
+The candidate deployed https://meridian-banking-one.vercel.app through Vercel and supplied the URL for verification.
+Unsigned HTTPS access returns 200, and the deployed index, both JavaScript bundles, CSS and mockServiceWorker.js match the verified local production build byte-for-byte.
+Public build comparisons: `/private/tmp/meridian-public-assets.json`.
+The exact Vercel build runtime/account metadata was not available through a connected provider; asset equality verifies the deployed application content rather than independently attesting its Git metadata or Node version.
+
+Isolated headless Chrome passed at 390px and 1280px without local API fallback.
+The worker was activated, controlled the public origin and served the API; successful POST responses and refresh reads were marked fromServiceWorker.
+Checks passed seed totals/eight rows, saved-recipient transfer with API reference, updated total/transaction/daily limit, reload and expected seed reset, deliberate #fail with no false success, retained draft and successful explicit correction.
+Desktop additionally passed a new recipient with a leading-zero account and Other bank.
+Successful-flow console errors and all page errors were empty; the intentional failure's expected HTTP 500 was separated from successful-flow output.
+All observed API requests used the public origin.
+Evidence: `/private/tmp/meridian-browser-qa/public/results.json`, `dashboard-after-transfer-390.png` and `dashboard-after-transfer-1280.png`; runner log `/private/tmp/meridian-public-browser.txt`.
+This is real public-origin browser evidence, but the normal interactive-window/physical-device check in DEPLOYMENT.md is not claimed from headless automation.
+The in-app browser remained unavailable; broader screen-reader/cross-browser/non-text-contrast limits remain as recorded.
+
+The separate README proposal now contains the verified public URL and deployed-flow evidence, with the obsolete deployment-pending issue removed.
+Review artifacts remain `/private/tmp/meridian-submission-README.proposed.md` and `/private/tmp/meridian-readme-proposal.html`.
+The candidate subsequently reviewed the proposal, requested a concise rewrite and PR-backed AI examples, and confirmed the author name as Timothy Cheng; the local README now reflects that feedback.
+README.md and docs/STATE.md contain the local documentation follow-up on docs/submission-readme; application source remains at verified main bf5d69e.
+
 ## Snapshot and recovery
 
 Deadline: 10 November 2026, EOD, supplied by the candidate.
@@ -74,7 +118,7 @@ The candidate explicitly accepted the complete Figma designs on 7 November 2026.
 Active scope: local submission-readiness checks are complete; the candidate authorized integrating the readiness batch, promoting development to main and deploying before README finalization.
 Integration base: remote development 7089fca244e79d7001879c96ad4a87a99e7ed10d, the verified PR #6 merge.
 Primary development was fast-forwarded to 7089fca; the local recovery checkpoint follows that merge.
-Phase: readiness integration and release promotion are authorized; hosting destination remains pending.
+Phase: main promotion, public Vercel flow verification and candidate README approval are complete; documentation publication is in progress.
 All five assignment development leases were returned with explicit authorization after clean-status and merge-preservation checks.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -136,10 +180,10 @@ Passing checks do not imply candidate understanding or authorize publication.
 | E3 | One RHF lifetime and context-aware Zod schema; validation/retention tests | Native controls and linked errors sampled |
 | E4 | Direct-entry over-balance/no POST; App successful refresh; App failed dashboard/Retry | All three mandatory behavioural scenarios retained |
 | E5 | Node 22 check/build and diff check pass | Successful flow has no console/page errors; deliberate failures distinguished |
-| E6; DEPLOYMENT.md | Worker copied to dist; unconditional awaited start and BASE_URL reviewed | Local production worker/health/transfer pass; public HTTPS and normal-window check pending |
+| E6; DEPLOYMENT.md | Worker copied to dist; unconditional awaited start and BASE_URL reviewed | Public HTTPS worker/health/transfer/refresh/reload pass; normal interactive-window check remains candidate-owned |
 | Brief §4; wireframes §1-7 | Shared formatters, prescribed copy, required loading/empty/error views and transfer steps reviewed | Representative responsive/theme views inspected; broader accessibility limits above |
 | API contract | Typed GET/POST mapping, error whitelist, no POST retries, response/cancellation and refresh tests | Real saved/new payload paths and worker interception pass |
-| README §5 | Separate concrete proposal prepared from implemented behaviour and accepted decisions | Candidate review, replacement and deployed URL pending |
+| README §5 | Separate concrete proposal prepared from implemented behaviour and accepted decisions | Verified deployed URL added to separate draft; candidate review and replacement pending |
 
 Optional features remain deferred.
 
@@ -218,12 +262,10 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Publish the reviewed readiness slice, verify hosted CI and squash-merge it into development under the accepted workflow.
-Promote development to main with a merge that preserves ancestry, verify hosted CI and deploy to the candidate-selected provider/account.
-Perform public HTTPS worker, transfer, refresh and console checks, then finalize the reviewed README with the deployed URL.
-The candidate explicitly approved this sequence after discussing branch promotion and retaining repository documentation.
-Candidate walkthrough and understanding remain part of acceptance.
-Keep both active leases until cleanup is explicitly authorized.
+Publish the candidate-requested concise README and verification records through the accepted integration/release workflow under the existing release-sequence authorization.
+The candidate reviewed the initial proposal, requested actual discretionary decisions, PR-backed AI examples, the Figma link and focused future improvements, then corrected the author name to Timothy Cheng.
+Candidate normal-browser smoke and code walkthrough/understanding remain part of acceptance.
+Do not send the submission email or return leases without separate authorization.
 
 ## Continuation audit - 7 November 2026
 
@@ -1426,3 +1468,35 @@ The task-owned preview on http://127.0.0.1:4184/ is still listening; local lease
 The candidate explicitly requested a handoff to proceed to the correctness round, despite the already completed S4 integration/readability review.
 Treat the next round as an intentional complete-application review and use existing findings/evidence to avoid redundant work.
 No cleanup, branch deletion, deployment or new external publication was performed during handoff.
+
+Vercel documentation notes that package.json engines can override the dashboard Node selection.
+The supplied package.json still declares `>=20`, so setting a dashboard preference alone must not be claimed to pin builds to Node 22.
+No runtime constraint or lockfile changes were made during release promotion; inspect the deployed build version and discuss an explicit pin if needed.
+
+## Submission README revision - 8 November 2026
+
+Replaced the local starter README after candidate review of the separate proposal and explicit correction requests.
+The author is Timothy Cheng; the draft is about 550 words and includes the verified live URL and accepted Figma design link.
+Decisions focus on choices left open by the assignment: API search, native dialog, refetch instead of cache patching, and pending-session retention.
+AI use names OpenAI Codex, the project-local feature-dev skill and durable session records.
+Reviewed PR #1-#6 comments through the GitHub connector; selected the candidate's original header-props, preference-hook and search-hook comments, excluding agent-authored replies even where they shared the same GitHub login.
+The three comments link directly to discussion_r4502002380, discussion_r4502181670 and discussion_r4502821277; current source confirms the resulting changes.
+Known issues/future work distinguish expected seed reset from unfinished work and list Playwright/CI browser coverage, further targeted refactoring, broader accessibility verification and the worker-refresh limitation.
+No code changes or test reruns are needed for this documentation-only follow-up; git diff --check passes.
+
+The candidate requested a more complete directory-tree introduction, separate instructions for page reload and opening a transfer, explicit skeleton-loader coverage, and simpler wording throughout.
+The local README now shows feature components, hooks, queries, tests/styles, docs, supplied materials and CI/agent files, and describes dashboard/payee/search skeletons separately.
+The updated proposal mirrors the repository README; application source remains unchanged and publication awaits review of the revised documentation.
+
+The candidate requested a shorter directory tree with simpler component labels and aligned descriptions.
+Moved descriptions to separate indented lines, replaced state/error/success shorthand with feature-component descriptions, and removed lower-value tree entries while keeping docs and CI.
+The temporary HTML review uses horizontal scrolling for long lines rather than splitting code-tree comments into unaligned fragments.
+
+## Approved submission README publication - 8 November 2026
+
+The candidate explicitly approved the final local README, including the simplified directory tree, clear skeleton-loader instructions, Timothy Cheng author name, Figma link, PR-backed AI-use examples and remaining improvements.
+Publish docs/submission-readme into development, verify CI, then promote development to main with ancestry preserved under the accepted release sequence.
+The diff contains only README.md and docs/STATE.md; application source, tests, dependencies and supplied assets remain unchanged.
+Local git diff --check passes; existing 107-test/build/public-browser evidence still applies to the unchanged application.
+Candidate approval covers the document content, not a claim of independent code understanding.
+Submission email and lease cleanup remain separately authorized actions.
