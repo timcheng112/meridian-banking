@@ -399,3 +399,9 @@ Checkout credentials are not persisted because this job only reads and validates
 The candidate approved committing, pushing and opening the CI PR after reviewing the concrete local workflow and passing checks.
 Authorization includes checking the hosted Actions run and correcting workflow failures within the approved scope.
 Merge, deployment and cleanup remain excluded.
+
+## Accepted: named validation steps
+
+The candidate approved seven explicitly named CI steps in the existing single Validation job so failures are visible directly in GitHub's step list.
+Replace the combined check command with its existing lint, typecheck and test commands, keeping their order and fail-fast behavior.
+No package scripts or application code change.

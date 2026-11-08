@@ -973,3 +973,11 @@ Hosted Ubuntu run https://github.com/timcheng112/meridian-banking/actions/runs/4
 Concurrent-run cancellation and the integration-branch push trigger have not been exercised deliberately.
 CI commit and push completed and PR #5 is open against development.
 No deployment, merge or worktree cleanup occurred.
+
+## Approved CI log readability follow-up
+
+The candidate approved naming the job Validation and its seven steps Check out code, Set up Node.js, Install dependencies, Lint, Typecheck, Tests and Build.
+Lint, typecheck and tests now run as separate sequential steps using the existing package scripts in the same job.
+Triggers, permissions, concurrency, dependencies, caching and build behavior remain unchanged.
+This updates the existing authorized PR #5; hosted verification of this follow-up is pending the next push.
+The preceding final-head run passed at 6e82276: https://github.com/timcheng112/meridian-banking/actions/runs/42441627770.
