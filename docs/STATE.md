@@ -20,7 +20,7 @@ The candidate explicitly accepted the complete Figma designs on 7 November 2026.
 Active scope: S1-S3 and CI accepted and merged; S4 technical plan v1 is approved for local implementation and verification.
 Integration base: remote development 5d4566fd924dcceec90c71f5077b83ccccb69f8c, the verified PR #4 merge containing CI PR #5.
 Primary development was fast-forwarded to 5d4566f; this local recovery checkpoint follows that merge.
-Phase: merged S3 includes the RHF readability refactor and BANK_PRESETS extraction; Confirm remains disabled and S4 is unimplemented.
+Phase: approved S4 implementation on feat/transfer-submission; candidate acceptance remains pending.
 All five assignment development leases were returned with explicit authorization after clean-status and merge-preservation checks.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -1276,3 +1276,12 @@ Next: acquire a fresh no-fetch lease from this committed development checkpoint,
 Astra reviews integration and verification before candidate understanding and acceptance.
 The post-S4 correctness/readability review remains requested; recipient-hook extraction stays deferred until that review.
 Publication, deployment, merge and cleanup are excluded from this approval.
+
+## S4 branch checkpoint
+
+Active branch: feat/transfer-submission, created from verified local development 7ba85647d830948e2352dcd37a41d582760c43a9.
+The base contains merged S3/CI and committed S4 plan approval/recovery records.
+A fresh Treehouse lease was acquired with --no-fetch after inspecting current help.
+Lease identity and local path are retained outside the repository; no old returned lease was resumed.
+The feature worktree was clean before branching and HEAD matched the explicit base.
+Next: Sol implements the approved v1 inventory and tests; Astra reviews and coordinates verification.
