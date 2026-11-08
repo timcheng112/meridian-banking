@@ -377,3 +377,13 @@ Preserve accepted transfer designs and empty-payee copy, with proposed loading/e
 Confirm transfer remains disabled with Transfers are unavailable in this preview. during S3; S4 owns submission, failures, success and refresh.
 Approval authorizes local implementation and tests by Sol with Astra review, including the listed missing-state treatments.
 External publication, Figma writes, merge, deployment and cleanup remain separately gated.
+
+## Accepted: small GitHub Actions CI workflow
+
+The candidate approved the exact single-job Node 22 CI scope directly in chat.
+Use GitHub-hosted Ubuntu, npm lockfile caching, clean installation, existing check and build scripts, read-only contents permission, ten-minute timeout, and concurrency cancellation per PR or branch.
+Trigger pull requests targeting development or main and pushes to those branches.
+Use current supported major versions of the official checkout and setup-node actions, verified against their official release documentation.
+Keep configuration in .github/workflows/ci.yml without new dependencies or application changes.
+The routine configuration proceeds from this concrete approval without another HTML artifact.
+Publication requires separate authorization; the earlier S3 approval covers only PR #4.

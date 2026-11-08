@@ -1,6 +1,6 @@
 # Current state
 
-## Active continuation: fidelity merged; S3 planning next
+## Active continuation: local CI setup; accepted S3 in PR #4
 
 The candidate approved S1 and reported merging PR #1 on 8 November 2026.
 GitHub confirms the merge into development at 04956afd78cfb1a4251edccd140be74cba99637e.
@@ -17,9 +17,9 @@ Deadline: 10 November 2026, EOD, supplied by the candidate.
 The application renders dashboard content through the accepted query/state layer, with loading, initial error/Retry, refresh warnings and empty states.
 The header, persistent preferences, API search, responsive layout and shared UI presentation are implemented; S2 evidence is recorded below.
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
-Active scope: S1, S2 and fidelity/header feedback accepted and merged; next is S3 technical planning.
-Integration branch: development at local recovery commit f1e16de above fidelity merge 571b9d5; completed S1, S2 and fidelity worktrees remain preserved pending separately authorized cleanup.
-Phase: S3 candidate feedback corrected and verified on feat/transfer-form at c777694; recover that worktree's STATE for current evidence and pending candidate acceptance.
+Active scope: approved local GitHub Actions CI setup on chore/ci; S3 is accepted and published in open PR #4.
+Integration base: local development 3eba44f above remote fidelity merge 571b9d5; existing worktrees remain preserved pending separately authorized cleanup.
+Phase: CI configuration approved for local implementation; accepted S3 remains on feat/transfer-form at 77aea84 in https://github.com/timcheng112/meridian-banking/pull/4, which is open and unmerged.
 Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -39,7 +39,7 @@ Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
 | S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | Accepted and merged in PR #1 at 04956af |
 | S2 | API search and persistent theme/segment | Accepted and merged in MR #2 at 8d0b4a3 |
 | Fidelity | Bidirectional Figma/code reconciliation for implemented scope | Accepted and merged in MR #3 at 571b9d5 |
-| S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Pending |
+| S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Accepted; open PR #4 at 77aea84, excluded from this CI branch until merged |
 | S4 | Transfer mutation, failures, success and dashboard refresh | Pending |
 | Release | Full requirement audit, production checks, submission README, deployment | Pending; publication requires approval |
 
@@ -946,3 +946,14 @@ S3 is implemented and verified on feat/transfer-form, based on development 2420c
 Recover the active worktree using git worktree list and read its STATE for complete checks and limitations.
 The no-fetch meridian-s3 lease remains retained alongside the three completed leases.
 Candidate review is next; no publication, merge, cleanup or S4 implementation is authorized.
+
+## Approved CI setup
+
+The candidate approved one Ubuntu job using Node 22 and npm caching, followed by npm ci, npm run check and npm run build.
+Run for pull requests targeting development or main and pushes to either branch, cancel obsolete runs for the same PR or branch, use read-only contents permission, and cap the job at ten minutes.
+The concrete routine configuration scope was approved directly in chat; no additional HTML plan is required for this task.
+Branch chore/ci starts from verified local development 3eba44f and uses a separate no-fetch Treehouse lease.
+The earlier S3 publication approval does not authorize publishing this branch.
+S3 acceptance includes selected A styling, 16px mobile footer gaps and the 880px desktop height cap; its application code and detailed evidence remain in the preserved S3 branch and PR #4.
+Next: implement and validate the workflow locally, then present it for review.
+No deployment, secrets, browser automation, S4, merge or cleanup is included.
