@@ -1,6 +1,6 @@
 # Current state
 
-## Active continuation: S3 accepted; PR #4 open
+## Active continuation: S3 and CI merged; S4 planning next
 
 The candidate approved S1 and reported merging PR #1 on 8 November 2026.
 GitHub confirms the merge into development at 04956afd78cfb1a4251edccd140be74cba99637e.
@@ -17,11 +17,11 @@ Deadline: 10 November 2026, EOD, supplied by the candidate.
 The application renders dashboard content through the accepted query/state layer, with loading, initial error/Retry, refresh warnings and empty states.
 The header, persistent preferences, API search, responsive layout and shared UI presentation are implemented; S2 evidence is recorded below.
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
-Active scope: S3 accepted in open PR #4, rebased onto development containing merged CI PR #5.
-Integration base: remote development 0589a4b; feat/transfer-form preserves accepted S3 source while incorporating the named-step CI workflow.
-Primary local development remains at 3eba44f; all worktrees remain preserved.
-Phase: S3 accepted and published in PR #4 to development; final application commit 3c33c48 matches verified evidence, and merge remains pending.
-Treehouse lease acquired locally with no fetch; lease metadata remains in local Treehouse state.
+Active scope: S1-S3 and CI accepted and merged; next is S4 technical planning before implementation.
+Integration base: remote development 5d4566fd924dcceec90c71f5077b83ccccb69f8c, the verified PR #4 merge containing CI PR #5.
+Primary development was fast-forwarded to 5d4566f; this local recovery checkpoint follows that merge.
+Phase: merged S3 includes the RHF readability refactor and BANK_PRESETS extraction; Confirm remains disabled and S4 is unimplemented.
+All five assignment development leases were returned with explicit authorization after clean-status and merge-preservation checks.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
 The candidate explicitly authorized creating design files in Figma folder 686015682.
@@ -40,7 +40,7 @@ Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
 | S1 | Dashboard parallel reads, total/accounts/eight transactions, skeletons, error/retry | Accepted and merged in PR #1 at 04956af |
 | S2 | API search and persistent theme/segment | Accepted and merged in MR #2 at 8d0b4a3 |
 | Fidelity | Bidirectional Figma/code reconciliation for implemented scope | Accepted and merged in MR #3 at 571b9d5 |
-| S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Accepted; PR #4 open to development |
+| S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Accepted and merged in PR #4 at 5d4566f |
 | S4 | Transfer mutation, failures, success and dashboard refresh | Pending |
 | Release | Full requirement audit, production checks, submission README, deployment | Pending; publication requires approval |
 
@@ -1236,3 +1236,19 @@ Values, ordering and Other bank behavior remain unchanged; recipient-hook discus
 The candidate explicitly authorized pushing this constant extraction to existing PR #4.
 Hosted Validation for the new head follows the push; merge and cleanup remain excluded.
 Lint, typecheck and git diff --check passed for this constant extraction; no new tests or browser rerun were needed.
+
+## Merged S3 and authorized lease return
+
+GitHub confirms PR #4 merged on 8 November 2026 at 5d4566fd924dcceec90c71f5077b83ccccb69f8c.
+The merge tree exactly matches accepted final S3 head 91474fd, whose hosted Validation passed: https://github.com/timcheng112/meridian-banking/actions/runs/42445332247.
+The preceding readability source passed 90 tests, lint/typecheck/build and focused browser checks; the final constant-only extraction passed lint/typecheck and hosted Validation.
+The candidate explicitly requested returning all worktrees leased for this assignment.
+Verified all five heads clean and ancestors of merged development before returning leases 1 through 5 using their exact lease identities.
+Treehouse now reports all five pool entries available, with no active lease or lingering process.
+The pool retains detached reusable checkouts; local and remote branches and local evidence artifacts were preserved.
+Treehouse stopped the task-owned S3 preview node process 49181 and esbuild process 49233 when returning lease 4; http://127.0.0.1:4183/ is no longer a live preview.
+No worktree had uncommitted or unmerged changes, and no dirty leftovers remain.
+Next: recover primary development, prepare and approve the S4 technical plan, then implement transfer mutation/failure/success/refresh within T5-T7.
+After S4, perform the correctness/readability round, including the deferred recipient-hook discussion, before the full requirement and release audit.
+Release references remain brief/candidate-brief.md, brief/api-contract.md, wireframes/wireframe.md, README submission requirements and DEPLOYMENT.md; deployment needs explicit authorization.
+No S4 implementation, deployment or remote branch deletion occurred during this handoff.

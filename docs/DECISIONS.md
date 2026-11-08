@@ -487,3 +487,10 @@ Merge, deployment and cleanup remain separately gated.
 
 The candidate deferred further recipient-hook extraction until the correctness review and approved only naming the existing bank presets in RecipientStep.
 Keep the constant in the same module; the presets are not an exhaustive bank directory and Other bank remains available.
+
+## Accepted: return all completed assignment leases
+
+After reporting PR #4 merged, the candidate explicitly requested returning all worktrees leased for this assignment development.
+Verify clean worktrees and preservation in merged development, then use Treehouse lease-identity checks to return all five completed leases.
+Preserve local and remote branches and evidence; stop task-owned preview processes through the supported return operation.
+Next work is S4 planning followed by implementation, then the correctness/readability review with recipient-hook discussion deferred to that review.
