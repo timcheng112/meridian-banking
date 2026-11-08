@@ -462,3 +462,19 @@ After merging PR #5, the candidate explicitly requested rebasing PR #4 onto upda
 Use the verified development merge 0589a4b and an explicit force-with-lease against the observed S3 remote head.
 Preserve S3 behavior and both branches' durable records, and verify the resulting hosted Validation run.
 This does not authorize merging PR #4, deployment or cleanup.
+
+## Proposed: S3 readability and limited composition
+
+The candidate asked whether a compound-component API would improve readability and requested reusable extraction.
+Propose RHF FormProvider/useFormContext to remove form-method plumbing, with explicit domain props and the existing shell slots.
+Extract useTransferLauncher, useTransferForm, TransferFooter and transfer-local typed text/select/error components.
+Keep custom currency and note-counter layouts explicit and preserve one form lifetime and field-scoped subscriptions.
+A second TransferContext or a public Provider/Frame/Actions framework offers little benefit for the current single fixed consumer and remains excluded from this proposal.
+The field components remain feature-local because they depend on TransferValues and transfer styling; no generic schema-driven shared UI API is introduced.
+The concrete proposal is /private/tmp/meridian-s3-readability-plan-v1.html, version 1, and requires candidate approval before implementation.
+
+## Accepted: S3 readability plan v1
+
+The candidate approved /private/tmp/meridian-s3-readability-plan-v1.html after reviewing JSX and discussing context ownership.
+Use RHF FormProvider only for the existing form, with step/actions in useTransferForm and payee server state in TanStack Query.
+Approval covers the listed local extraction, behavior tests and browser verification; further publication requires explicit review authorization.

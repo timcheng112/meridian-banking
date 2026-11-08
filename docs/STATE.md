@@ -1188,3 +1188,15 @@ Replayed S3 commits onto that exact integration base and reconciled documentatio
 The application, tests and package files are byte-for-byte unchanged from accepted S3 head 77aea84; the workflow matches merged development exactly.
 Existing 87-test and browser evidence remains applicable; the new hosted Validation run will verify S3 after the push.
 Use force-with-lease against the observed old head; PR #4 merge, deployment and cleanup remain unauthorized.
+
+## Proposed S3 readability extraction
+
+The candidate requested reusable extraction and discussion of compound components while prioritizing readability.
+Current accepted S3 head a5c5f44 is rebased onto development 0589a4b; hosted Validation passed all 87 tests and build at https://github.com/timcheng112/meridian-banking/actions/runs/42442220688.
+Proposal: /private/tmp/meridian-s3-readability-plan-v1.html, version 1.
+Use the existing RHF FormProvider for shared form methods, explicit step/footer composition, feature-local typed fields, and separate transfer form and launcher hooks.
+This is limited composition rather than a second custom context or a generic compound wizard API.
+The proposal preserves accepted behavior and excludes S4, visual changes and external writes.
+The candidate approved plan v1 after the JSX walkthrough and clarification that RHF context shares form methods/values/errors while step/actions stay in the hook and payees stay in Query.
+Phase: approved local readability implementation with Sol code/test ownership and Astra review.
+Next: implement and verify, then return for candidate review before any new publication.
