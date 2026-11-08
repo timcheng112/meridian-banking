@@ -119,6 +119,24 @@ describe('transfer draft', () => {
     expect(screen.getByLabelText('Bank name')).toHaveValue('Local Bank')
   })
 
+  it.each([
+    ['accountNumber', 'Account number (8 digits)'],
+    ['bankChoice', 'Bank'],
+    ['bankName', 'Bank name'],
+  ] as const)('focuses the invalid native %s field and links its error', async (name, label) => {
+    setup()
+    await userEvent.click(screen.getByRole('button', { name: 'Send to someone new' }))
+    await userEvent.type(screen.getByLabelText('Recipient name'), 'Alex Lim')
+    if (name !== 'accountNumber') await userEvent.type(screen.getByLabelText('Account number (8 digits)'), '00123456')
+    if (name === 'bankName') await userEvent.selectOptions(screen.getByLabelText('Bank'), 'other')
+    await next()
+    const input = screen.getByLabelText(label)
+    expect(input).toHaveFocus()
+    expect(input).toHaveAttribute('aria-invalid', 'true')
+    expect(input).toHaveAttribute('aria-describedby', `${name}-error`)
+    expect(document.getElementById(`${name}-error`)).toBeVisible()
+  })
+
   it('updates amount errors when the selected account changes and checks note boundaries', async () => {
     setup(); await savedAmount()
     await userEvent.click(screen.getByRole('button', { name: '100' }))
@@ -274,6 +292,7 @@ describe('transfer draft', () => {
     await next()
     expect(await screen.findByRole('heading', { name: 'Who are you sending to?' })).toBeVisible()
     expect(screen.getByText('Choose a recipient.')).toBeVisible()
+    await waitFor(() => expect(screen.getByRole('button', { name: 'Send to someone new' })).toHaveFocus())
   })
 
   it('revalidates entered amounts against changed external balances and limits', async () => {
@@ -288,6 +307,8 @@ describe('transfer draft', () => {
     await next()
     expect(await screen.findByText('Choose a deposit account.')).toBeVisible()
     expect(screen.getByLabelText('From account')).toHaveFocus()
+    expect(screen.getByLabelText('From account')).toHaveAttribute('aria-describedby', 'account-help fromAccountId-error')
+    expect(screen.getByLabelText('From account')).toHaveAccessibleDescription('Deposit accounts only Choose a deposit account.')
     expect(screen.getByLabelText('Amount')).toHaveValue('100.00')
   })
 

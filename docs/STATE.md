@@ -1198,5 +1198,33 @@ Use the existing RHF FormProvider for shared form methods, explicit step/footer 
 This is limited composition rather than a second custom context or a generic compound wizard API.
 The proposal preserves accepted behavior and excludes S4, visual changes and external writes.
 The candidate approved plan v1 after the JSX walkthrough and clarification that RHF context shares form methods/values/errors while step/actions stay in the hook and payees stay in Query.
-Phase: approved local readability implementation with Sol code/test ownership and Astra review.
-Next: implement and verify, then return for candidate review before any new publication.
+Phase: readability refactor locally verified and explicitly authorized for publication to existing PR #4.
+Next: push the reviewed refactor and verify hosted Validation; PR #4 merge remains separately gated.
+
+## S3 readability verification checkpoint
+
+Implemented approved plan v1 above local approval commit ae57cf1; PR #4 remains at published a5c5f44.
+Dashboard delegates opener state/focus restoration to useTransferLauncher; TransferDialog composes one RHF FormProvider, shell, steps and TransferFooter.
+useTransferForm owns form initialization, payee query, navigation/validation events and the shared invalid-field focus helper.
+RecipientStep and AmountStep consume RHF context with scoped field/error subscriptions; TransferFields shares native text/select/error markup within the feature.
+CSS, schema, dialog shell, ReviewStep, package files and S4 boundaries remain unchanged.
+Astra and parent source reviews found no correctness issues.
+Node 22.23.4 npm run check passed lint, typecheck and 90 tests across eight files; npm run build and git diff --check passed.
+Three new parameterized tests verify native invalid-field focus and linked errors; existing tests gained deferred recipient fallback and combined account hint/error assertions.
+The build retains existing Zod annotation warnings.
+Chrome production-browser smoke passed at 390px and 1280px, covering recipient/amount/review, retained account/amount/note, keyboard disclosure, invalid native-field focus, linked labels/errors, resize-close focus fallback, discard/reopen and Other bank review.
+No page/console errors or POST requests occurred.
+Footer geometry and selected-A presentation match accepted values; desktop/mobile screenshots were visually inspected.
+The in-app browser remains unavailable, so the established local Chrome fallback supplied runtime evidence.
+Evidence and source SHA-256 hashes: /private/tmp/meridian-browser-qa/s3-readability-results.json.
+Screenshots: /private/tmp/meridian-browser-qa/s3-readability-1280-light.png and /private/tmp/meridian-browser-qa/s3-readability-review-mobile.png.
+Preview: http://127.0.0.1:4183/ while the local production server runs.
+The browser harness waits for asynchronous validation and animation-frame focus restoration; initial immediate focus reads were corrected in the harness without source changes.
+No new push, PR update, Figma write, merge, deployment or cleanup occurred.
+
+## Authorized readability publication
+
+The candidate explicitly requested pushing the completed readability refactor.
+All eleven recorded source hashes still match the passing 90-test, build and Chrome evidence at publication preparation.
+Commit the reviewed source/tests and checkpoint, push feat/transfer-form normally, and update existing https://github.com/timcheng112/meridian-banking/pull/4 with the final S3 scope.
+Hosted Validation for this new head is pending the push; merge, deployment and cleanup remain unauthorized.

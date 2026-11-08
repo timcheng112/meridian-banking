@@ -1,52 +1,29 @@
 import { useRef, useState } from 'react'
-import { useController, type Control, type FieldErrors, type UseFormRegister, type UseFormSetValue } from 'react-hook-form'
-import type { Payee } from '../../../api/types'
+import { useController, useFormContext, useFormState, useWatch } from 'react-hook-form'
+import type { UseQueryResult } from '@tanstack/react-query'
+import type { PayeesResponse } from '../../../api/types'
 import { Button } from '../../../components/ui/Button'
 import { SearchInput } from '../../../components/ui/SearchInput'
 import { Skeleton } from '../../../components/ui/Skeleton'
 import type { TransferValues } from '../transferSchema'
+import { TransferTextField, TransferSelectField, TransferFieldError } from './TransferFields'
 
 type Props = {
-  payees: Payee[]
-  isPending: boolean
-  isError: boolean
-  isFetching: boolean
-  hasData: boolean
-  retry: () => void
-  control: Control<TransferValues>
-  register: UseFormRegister<TransferValues>
-  setValue: UseFormSetValue<TransferValues>
-  errors: FieldErrors<TransferValues>
-  mode: TransferValues['recipientMode']
-  selectedId: string
-  bankChoice: string
+  query: UseQueryResult<PayeesResponse, Error>
 }
-export function RecipientStep({ payees, isPending, isError, isFetching, hasData, retry, control, register, setValue, errors, mode, selectedId, bankChoice }: Props) {
+export function RecipientStep({ query }: Props) {
+  const { control, setValue } = useFormContext<TransferValues>()
+  const [mode, selectedId, bankChoice] = useWatch({ control, name: ['recipientMode', 'payeeId', 'bankChoice'] })
+  const { errors } = useFormState({ control, name: 'payeeId' })
+  const payees = query.data?.payees ?? []
+  const hasData = query.data !== undefined
+  const isError = query.isError || (query.isFetching && query.errorUpdatedAt > 0)
   const { field: payeeField } = useController({ name: 'payeeId', control })
   const [search, setSearch] = useState('')
   const searchRef = useRef<HTMLInputElement>(null)
   const term = search.trim().toLowerCase()
   const filtered = payees.filter((payee) => `${payee.name} ${payee.bank}`.toLowerCase().includes(term))
   const selected = payees.find((payee) => payee.id === selectedId)
-  const field = (name: 'recipientName' | 'accountNumber' | 'bankName', label: string) => <div className="transfer-field">
-    <label htmlFor={name}>
-      {label}
-    </label>
-    <input
-      id={name}
-      {...register(name)}
-      inputMode={name === 'accountNumber' ? 'numeric' : undefined}
-      aria-invalid={Boolean(errors[name])}
-      aria-describedby={errors[name] ? `${name}-error` : undefined}
-    />
-    {errors[name] ? <p
-      id={`${name}-error`}
-      className="transfer-error"
-      aria-live="polite"
-    >
-      {errors[name]?.message}
-    </p> : null}
-  </div>
   return <>
     <h3 tabIndex={-1}>Who are you sending to?</h3>
     <label className="payee-search-label" htmlFor="payee-search">Search payees</label>
@@ -59,7 +36,7 @@ export function RecipientStep({ payees, isPending, isError, isFetching, hasData,
       onChange={(event) => setSearch(event.target.value)}
       disabled={!hasData || payees.length === 0}
     />
-    {isPending ? <div className="payee-loading" role="status">
+    {query.isPending ? <div className="payee-loading" role="status">
       <p>Loading payees…</p>
       {[0, 1, 2, 3].map((item) => <Skeleton key={item} kind="value" className="payee-skeleton" />)}
     </div> : null}
@@ -70,8 +47,8 @@ export function RecipientStep({ payees, isPending, isError, isFetching, hasData,
       <Button
         type="button"
         variant="secondary"
-        onClick={retry}
-        disabled={isFetching}
+        onClick={() => { void query.refetch() }}
+        disabled={query.isFetching}
       >Retry</Button>
     </div> : null}
     {hasData ? <fieldset className="payee-list">
@@ -111,13 +88,7 @@ export function RecipientStep({ payees, isPending, isError, isFetching, hasData,
     </fieldset> : null}
     {mode === 'saved' && selected && !filtered.includes(selected) ? <p className="transfer-help">Selected: {selected.name}
     </p> : null}
-    {errors.payeeId && mode === 'saved' ? <p
-      id="payeeId-error"
-      className="transfer-error"
-      aria-live="polite"
-    >
-      {errors.payeeId.message}
-    </p> : null}
+    {mode === 'saved' ? <TransferFieldError name="payeeId" /> : null}
     <button
       id="new-recipient-toggle"
       type="button"
@@ -135,36 +106,16 @@ export function RecipientStep({ payees, isPending, isError, isFetching, hasData,
       </span>
     </button>
     {mode === 'new' ? <div id="new-recipient-fields" className="new-recipient-fields">
-      {field('recipientName', 'Recipient name')}
-      {field('accountNumber', 'Account number (8 digits)')}
-      <div className="transfer-field">
-        <label htmlFor="bankChoice">Bank</label>
-        <div className="transfer-select">
-          <select
-            id="bankChoice"
-            {...register('bankChoice')}
-            aria-invalid={Boolean(errors.bankChoice)}
-            aria-describedby={errors.bankChoice ? 'bankChoice-error' : undefined}
-          >
-            <option value="">Choose a bank</option>
-            {['DBS', 'OCBC', 'UOB', 'POSB'].map((bank) => <option key={bank}>
-              {bank}
-            </option>)}
-            <option value="other">Other bank</option>
-          </select>
-          <svg viewBox="0 0 16 16" aria-hidden="true">
-            <path d="m3 6 5 5 5-5" />
-          </svg>
-        </div>
-        {errors.bankChoice ? <p
-          id="bankChoice-error"
-          className="transfer-error"
-          aria-live="polite"
-        >
-          {errors.bankChoice.message}
-        </p> : null}
-      </div>
-      {bankChoice === 'other' ? field('bankName', 'Bank name') : null}
+      <TransferTextField name="recipientName" label="Recipient name" />
+      <TransferTextField name="accountNumber" label="Account number (8 digits)" inputMode="numeric" />
+      <TransferSelectField name="bankChoice" label="Bank">
+        <option value="">Choose a bank</option>
+        {['DBS', 'OCBC', 'UOB', 'POSB'].map((bank) => <option key={bank}>
+          {bank}
+        </option>)}
+        <option value="other">Other bank</option>
+      </TransferSelectField>
+      {bankChoice === 'other' ? <TransferTextField name="bankName" label="Bank name" /> : null}
     </div> : null}
   </>
 }

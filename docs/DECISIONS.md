@@ -478,3 +478,9 @@ The concrete proposal is /private/tmp/meridian-s3-readability-plan-v1.html, vers
 The candidate approved /private/tmp/meridian-s3-readability-plan-v1.html after reviewing JSX and discussing context ownership.
 Use RHF FormProvider only for the existing form, with step/actions in useTransferForm and payee server state in TanStack Query.
 Approval covers the listed local extraction, behavior tests and browser verification; further publication requires explicit review authorization.
+
+## Accepted: publish S3 readability refactor
+
+After local implementation and verification, the candidate explicitly requested pushing the refactor to the existing S3 PR #4.
+Publication includes the approved RHF composition, extracted hooks/footer/fields and behavioral coverage.
+Merge, deployment and cleanup remain separately gated.
