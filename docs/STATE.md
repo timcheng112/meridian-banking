@@ -1,6 +1,26 @@
 # Current state
 
-## Active continuation: S4 accepted and published in PR #6
+## Active continuation: authorized release integration; deployment before README
+
+The candidate approved submission-readiness work with Vitest coverage and bounded browser acceptance, deferring Playwright and structural refactors.
+The candidate accepted the loading-control fix and approved a bounded test cleanup after reviewing its coverage trade-offs.
+Active worktree: `/private/tmp/meridian-design-worktrees/.treehouse/meridian-banking-564804/2/meridian-banking`, branch `fix/loading-transfer-controls`, based explicitly on development `ec706cc`.
+Baseline Node 22 check/build passed with 119 tests; the new regression failed on the expected disabled assertion before the fix.
+Post-fix Node 22 check/build and diff checks passed with 120 tests across nine files; independent review found no blocking loading-control issues.
+Full verification exposed an existing search-cache test race that also reproduced with the new regression excluded, while the isolated cache test passed.
+That test now waits for scheduled dialog-close focus restoration before typing and explicitly checks the entered search value, preserving its cache assertions and timeout.
+The full suite passed after this synchronization correction; the later submission-readiness checkpoint records fresh browser verification.
+Remaining work: authorized integration and main promotion, hosting selection, public deployment verification, then README finalization and candidate walkthrough.
+No publication, merge, deployment, or cleanup had occurred at the test-cleanup checkpoint.
+
+The approved test cleanup removes nine duplicated dashboard cases, one artificially suspended-validation scenario and its resolver mock, three repeated server-field UI cases, and two refresh-failure endpoint permutations.
+Mandatory behaviours, real-resolver duplicate prevention, retained pending sessions, and recorded race regressions remain covered.
+All API field mappings are checked in the existing small unit test, and the date test now uses a UTC/Singapore boundary with a fresh formatter under UTC.
+This deliberately reduces scenario permutations; it does not preserve every former edge-case test.
+Independent review found no unintended coverage loss; its unused-import finding was corrected.
+Post-cleanup Node 22 lint, typecheck, all 105 tests across nine files, production build, and diff checks passed.
+The candidate said they were unsure how to review the cleanup but were comfortable continuing and requested a handoff.
+Proceed to the remaining requirement-evidence and browser acceptance pass; candidate code understanding remains pending and must not be inferred from this assent.
 
 The candidate approved S1 and reported merging PR #1 on 8 November 2026.
 GitHub confirms the merge into development at 04956afd78cfb1a4251edccd140be74cba99637e.
@@ -11,16 +31,50 @@ The candidate approved the concrete S2 HTML plan and accepted the verified imple
 The candidate has spent about eight hours on the assignment and agreed to prioritize remaining required functionality over further worker-lifecycle investigation, optional features or architecture/design exploration.
 Retain the simple response correction and document the manual-refresh limitation.
 
+## Submission-readiness checkpoint - 8 November 2026
+
+Recovered the existing seven-file uncommitted batch on `fix/loading-transfer-controls` at base `ec706cc`; the primary checkout stays on development.
+Added two approved, direct-entry amount cases for over-balance and over-daily-limit, asserting exact formatted errors, linked descriptions, focus, blocked progression and zero POST requests.
+No additional application source changes were needed beyond the retained loading-button fix.
+Node 22 `npm run check` passes with 107 tests across nine files; `npm run build` and `git diff --check` pass.
+The production build includes `dist/mockServiceWorker.js` and is served from this worktree at `http://127.0.0.1:4186/` while the preview runs.
+
+The in-app browser bootstrap reported unavailable, so the established isolated Chrome fallback supplied fresh production-browser evidence.
+Five transfer scenarios passed: pending duplicate protection/hidden completion, new recipient with Other bank, real `#fail` correction/retry, server-field correction, and successful send with GET-only refresh recovery.
+Geometry passed 32 dashboard/recipient/amount/review checks at 360, 390, 639, 640, 1023, 1024, 1280 and 1440 px, plus retained sending/success/failure checks at six widths and short-mobile footer checks.
+Sampled visible button/input/select/payee-row targets meet 44px, with radio hit areas assessed through their wrapping labels.
+Keyboard checks passed native radio Space/arrow selection, modal Tab containment, Escape and opener focus restoration.
+Theme/system initialization, reload persistence, mixed-case older-transaction search, result count, no matches and Clear search passed.
+The production worker was active and controlled the page; `/api/health` returned its mock response without a Node mock server.
+Successful-flow console and page-error checks were clear; intentional `#fail` produced the expected HTTP 500 console entry.
+
+Text contrast scans passed all four token combinations for dashboard, loaded recipient, amount-error and review views, including input values/placeholders, with a lowest sampled ratio of 4.63:1.
+Send-error contrast also passed all four combinations, and reduced-motion spinner behaviour passed.
+These are bounded Chrome checks, not full screen-reader, cross-browser, zoom, physical-device or non-text contrast certification.
+Representative screenshots were inspected; internal scrolling preserves short-screen access to content and actions.
+Browser scenarios use local runtime instrumentation for held requests and injected refresh/server-field failures; the real success and `#fail` paths use unchanged supplied handlers.
+No Playwright dependency, browser suite, CI expansion or supplied-file changes were added to the repository.
+
+Local evidence is under `/private/tmp/meridian-browser-qa/readiness/`: `s4-results.json`, `s4-final-smoke.json`, `extra-results.json`, screenshots and `source-hashes.json`.
+Check/build logs are `/private/tmp/meridian-readiness-check.txt` and `/private/tmp/meridian-readiness-build.txt`.
+The hashes identify the uncommitted source rather than claiming the base commit alone contains this batch.
+
+A concrete README draft is `/private/tmp/meridian-submission-README.proposed.md`, with readable review artifact `/private/tmp/meridian-readme-proposal.html`.
+The repository README is preserved until candidate review, as required by the handoff.
+The author name and first-person AI-use examples require candidate review; hosting and the public URL remain pending.
+No external writes, commit, merge, deployment or lease cleanup occurred.
+Treehouse status attempted to initialize a path outside the writable roots and was blocked; current lease status remains unverified, with the handoff lease identities retained.
+
 ## Snapshot and recovery
 
 Deadline: 10 November 2026, EOD, supplied by the candidate.
 The application renders dashboard content through the accepted query/state layer, with loading, initial error/Retry, refresh warnings and empty states.
 The header, persistent preferences, API search, responsive layout and shared UI presentation are implemented; S2 evidence is recorded below.
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
-Active scope: S1-S3 and CI accepted and merged; S4 is accepted after candidate preview review, and publication of feat/transfer-submission to a PR into development is explicitly authorized.
-Integration base: remote development 5d4566fd924dcceec90c71f5077b83ccccb69f8c, the verified PR #4 merge containing CI PR #5.
-Primary development was fast-forwarded to 5d4566f; this local recovery checkpoint follows that merge.
-Phase: S4 and its final candidate-requested fixes are accepted; commit and publish the reviewed branch as a PR into development.
+Active scope: local submission-readiness checks are complete; the candidate authorized integrating the readiness batch, promoting development to main and deploying before README finalization.
+Integration base: remote development 7089fca244e79d7001879c96ad4a87a99e7ed10d, the verified PR #6 merge.
+Primary development was fast-forwarded to 7089fca; the local recovery checkpoint follows that merge.
+Phase: readiness integration and release promotion are authorized; hosting destination remains pending.
 All five assignment development leases were returned with explicit authorization after clean-status and merge-preservation checks.
 Final design selections and rendered verification limits are recorded in the latest checkpoints below.
 The setup checkpoint is preserved on local main and development; inspect current Git refs and cleanliness on recovery.
@@ -41,7 +95,7 @@ Accepted choices are in DECISIONS; follow AGENTS recovery before continuing.
 | S2 | API search and persistent theme/segment | Accepted and merged in MR #2 at 8d0b4a3 |
 | Fidelity | Bidirectional Figma/code reconciliation for implemented scope | Accepted and merged in MR #3 at 571b9d5 |
 | S3 | Accessible transfer dialog, recipient/amount/review, shared validation | Accepted and merged in PR #4 at 5d4566f |
-| S4 | Transfer mutation, failures, success and dashboard refresh | Accepted with final completeness/status fixes; PR publication authorized |
+| S4 | Transfer mutation, failures, success and dashboard refresh | Accepted and merged in PR #6 at 7089fca |
 | Release | Full requirement audit, production checks, submission README, deployment | Pending; publication requires approval |
 
 Each slice uses feature-dev for technical planning and approval before implementation.
@@ -50,29 +104,44 @@ Acceptance requires candidate understanding; verification alone does not mark a 
 
 ## Coverage and evidence index
 
-References point to authoritative requirements rather than duplicating acceptance text.
-All application coverage is pending unless current evidence explicitly says otherwise.
-Evidence must identify the checked revision; changes invalidate affected checks.
+The assignment sources own requirement wording; this table maps each mandatory ID to the current local evidence.
+Current evidence is for base `ec706cc` plus the uncommitted readiness diff, identified by the source-hash manifest in the checkpoint above.
+Automated evidence uses the 107-test run; browser evidence uses the current production build in isolated Chrome.
+Passing checks do not imply candidate understanding or authorize publication.
 
-| Requirement/source | Owner | Planned evidence | Status |
-| --- | --- | --- | --- |
-| D1-D5 | S1 | Behavioural tests plus loading/layout browser checks | 16 tests pass; header controls and eight-width loading/layout browser checks pass on final S1 source |
-| D6 | S2 | API search, debounce, count, older match, clear/no-match tests | Automated and focused production-browser checks pass at 6cfda96 |
-| D7; E4 dashboard retry | S1 | Failure then Retry integration test | Integration and real-browser keyboard Retry recovery passed |
-| D8; brief §5 | S1-S3 | 360/390 px, breakpoint/desktop, overflow and tap-target checks | Dashboard checks pass at eight widths; transfer checks remain S3 |
-| T1; T8 | S3-S4 | Keyboard, focus restoration, labels/errors/live announcements | S3 evidence retained; S4 send alert/live-region and focused Chrome behavior pass at 126f0b0; full screen-reader audit pending |
-| T2-T4; brief §3.3 | S3 | Form boundaries, new/saved recipient, step preservation and focus tests | Automated and focused Chrome checks pass at e19fb10 |
-| T5-T7; E4 transfer cases | S4 | Over-balance/no request, success refresh, failure, duplicate-submit tests | 118-test full suite and focused production-browser checks pass at 126f0b0 |
-| TH1-TH3; tokens | S2 | Four theme combinations, persistence/pre-paint, contrast/focus checks | S2 persistence/pre-paint and four-mode checks pass at 6cfda96; sampled text contrast passes, full composited/non-text audit remains release |
-| E1-E3 | All slices | Typecheck, boundary review, state/schema ownership review | Pending implementation |
-| E5 | Every slice, release | npm run check, build, browser console | S4 full check/build and focused production-browser success-console checks pass at 126f0b0 |
-| E6; DEPLOYMENT.md | Release | HTTPS deployment, worker, transfer/refresh without local server | Pending |
-| brief §4; wireframes §1-7 | Design, all slices | Exact copy/formatters, required screens and states review | Pending |
-| API contract requests/errors/hooks | S1-S4 | Typed requests, server field errors, no POST retries, refetch-failure separation | S4 tests and focused browser checks pass at 126f0b0; final release audit pending |
-| README §5 | Release | Submission README sections, AI-use examples, repository/deployed URLs | Pending |
+| Requirement/source | Source and retained automated evidence | Browser evidence / remaining limit |
+| --- | --- | --- |
+| D1 | `useDashboard`, query options; parallel-read barrier and App loading/disabled-transfer tests | Skeleton sizing retained from prior checks; current loaded layout passes; full layout-shift measurement not repeated |
+| D2 | Header, DashboardContent; App header/navigation/preferences tests | Current mobile/desktop header inspected |
+| D3 | DashboardContent, BalanceHero; supplied and changed deposit-total/count tests | Seed and post-transfer totals verified |
+| D4 | AccountCard; three-card/masked-number/credit-sign tests | Responsive account layout inspected |
+| D5 | TransactionRow; eight ordered rows, metadata, pending and signed-money tests | Current rows and new-transfer ordering checked |
+| D6 | useTransactionSearch; debounce, mixed-case description/category, older result, count, clear, no-match and race tests | Mixed-case older match, count, no matches and clear pass |
+| D7 | DashboardFeedback; failed-read Retry and invalid-response recovery tests | Prior native Retry browser evidence retained; no new initial-error browser scenario |
+| D8 | Dashboard/layout CSS; disabled loading controls regression | Eight widths, 390px gutter/fixed CTA, sampled 44px hit areas and no page overflow pass |
+| T1 | TransferDialogShell/useTransferLauncher; step focus, cancel/close, opener and fresh-draft tests | Native modal Tab, Escape, opener restoration, desktop/full-screen geometry pass |
+| T2 | RecipientStep/payees query; saved/new, Other bank, search/loading/empty/error and retention tests | Keyboard payee selection and new-recipient/Other bank transfer pass |
+| T3 | AmountStep; deposit-only accounts, presets, note counter/boundaries and context tests | Amount inputs, current balance/limit and responsive form checked |
+| T4 | ReviewStep; draft retention, masked leading-zero account and actual bank tests | Saved/new review and Back corrections pass |
+| T5 | useTransferSubmission; repeated-submit, pending session, API receipt tests | One POST while pending, Sending, response reference and success pass |
+| T6 | useTransferSubmission refresh; App balance/limit/transaction/search-cache and stale-read tests | New balance/transaction/limit without reload and GET-only retry pass |
+| T7 | TransferSubmissionFeedback; real error, no false success, retained draft, API fields and transport uncertainty tests | Real `#fail`, correction and explicit retry pass |
+| T8 | TransferFields/dialog; labels, described errors, send alert, live region and focus tests | Native radio/modal keyboard pass; full screen-reader audit pending |
+| Validation §3.3 | transferSchema unit boundaries and TransferDialog blur/progression/final-validation tests; direct-entry balance/limit cases added | Linked over-balance field error rendered; single schema remains rule owner |
+| TH1 | index.html/useAppPreferences; actual bootstrap, system/invalid/blocked storage and remount tests | System dark startup and explicit choice persistence pass; first-paint timing supported by bootstrap source/test |
+| TH2 | Imported supplied tokens, dataset attributes; preference/segment tests | All four token combinations rendered; persistence pass |
+| TH3 | Labels/pressed state, shared focus rule; preference/field tests | Sampled text/input/placeholder contrast and keyboard focus pass; full non-text/assistive-tech audit pending |
+| E1 | strict tsconfig, API types, apiFetch/query/mutation boundary; lint/typecheck pass | No runtime browser claim needed |
+| E2 | Query owns server data; derived totals, local UI state; refresh/cache/race tests | End-to-end refresh pass |
+| E3 | One RHF lifetime and context-aware Zod schema; validation/retention tests | Native controls and linked errors sampled |
+| E4 | Direct-entry over-balance/no POST; App successful refresh; App failed dashboard/Retry | All three mandatory behavioural scenarios retained |
+| E5 | Node 22 check/build and diff check pass | Successful flow has no console/page errors; deliberate failures distinguished |
+| E6; DEPLOYMENT.md | Worker copied to dist; unconditional awaited start and BASE_URL reviewed | Local production worker/health/transfer pass; public HTTPS and normal-window check pending |
+| Brief §4; wireframes §1-7 | Shared formatters, prescribed copy, required loading/empty/error views and transfer steps reviewed | Representative responsive/theme views inspected; broader accessibility limits above |
+| API contract | Typed GET/POST mapping, error whitelist, no POST retries, response/cancellation and refresh tests | Real saved/new payload paths and worker interception pass |
+| README §5 | Separate concrete proposal prepared from implemented behaviour and accepted decisions | Candidate review, replacement and deployed URL pending |
 
-Optional features stay deferred until mandatory criteria are satisfied.
-Final audit must expand grouped rows against each referenced requirement and re-run evidence against the release revision.
+Optional features remain deferred.
 
 ## Verification and limitations
 
@@ -149,12 +218,12 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Review S4 PR #6: https://github.com/timcheng112/meridian-banking/pull/6.
-The accepted feat/transfer-submission branch is published into development with the final completeness and success-status corrections.
-Verify hosted Validation for the final published head before merge.
-Merge, deployment and worktree cleanup require separate authorization.
-The S4 lease and local preview remain available.
-Release-wide requirements, submission README and deployed verification remain pending.
+Publish the reviewed readiness slice, verify hosted CI and squash-merge it into development under the accepted workflow.
+Promote development to main with a merge that preserves ancestry, verify hosted CI and deploy to the candidate-selected provider/account.
+Perform public HTTPS worker, transfer, refresh and console checks, then finalize the reviewed README with the deployed URL.
+The candidate explicitly approved this sequence after discussing branch promotion and retaining repository documentation.
+Candidate walkthrough and understanding remain part of acceptance.
+Keep both active leases until cleanup is explicitly authorized.
 
 ## Continuation audit - 7 November 2026
 
@@ -1345,3 +1414,15 @@ The GitHub connector could read the repository but returned insufficient permiss
 Hosted Validation started after PR creation; verify the final head through the PR checks before merging.
 This publication checkpoint changes records only; application and test evidence still applies by source identity.
 The PR remains open; no merge, deployment or cleanup was performed.
+
+## Merged S4 and correctness-round handoff
+
+GitHub confirms PR #6 merged into development at 7089fca244e79d7001879c96ad4a87a99e7ed10d on 8 November 2026.
+Fetched development and verified the merge tree exactly matches accepted final PR head c2905a3db509965d1acd3de7a9adc15083e569d1; that head is an ancestor of the merge.
+Hosted Validation passed lint, typecheck, tests and build for that final PR head: https://github.com/timcheng112/meridian-banking/actions/runs/42448248299.
+The clean primary development checkout was fast-forwarded to 7089fca before this local recovery checkpoint.
+The feature worktree remains clean at c2905a3, and its S4 Treehouse lease remains active.
+The task-owned preview on http://127.0.0.1:4184/ is still listening; local lease/process details remain in /private/tmp/meridian-s4-lease.json.
+The candidate explicitly requested a handoff to proceed to the correctness round, despite the already completed S4 integration/readability review.
+Treat the next round as an intentional complete-application review and use existing findings/evidence to avoid redundant work.
+No cleanup, branch deletion, deployment or new external publication was performed during handoff.

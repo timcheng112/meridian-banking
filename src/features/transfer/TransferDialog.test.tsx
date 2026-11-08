@@ -6,6 +6,7 @@ import { delay, http, HttpResponse } from 'msw'
 import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest'
 import type { Account, Customer } from '../../api/types'
 import { server } from '../../test/setup'
+import { formatMoney } from '../../lib/format'
 import { useTransferSubmission } from './useTransferSubmission'
 import { TransferDialog } from './TransferDialog'
 
@@ -143,6 +144,29 @@ describe('transfer draft', () => {
     expect(input).toHaveAttribute('aria-invalid', 'true')
     expect(input).toHaveAttribute('aria-describedby', `${name}-error`)
     expect(document.getElementById(`${name}-error`)).toBeVisible()
+  })
+
+  it.each([
+    ['balance', 'checking', '4280.56', `Amount can't be more than your available balance (${formatMoney(4280.55)}).`],
+    ['daily limit', 'savings', '5000.01', `This transfer exceeds your remaining daily limit (${formatMoney(5000)}).`],
+  ])('blocks a directly entered amount over the %s without sending a request', async (_rule, accountId, value, message) => {
+    let posts = 0
+    server.use(http.post('*/api/transfers', () => { posts++; return fail() }))
+    setup(accounts.map((account) => account.id === 'savings' ? { ...account, balance: 12840 } : account))
+    await savedAmount()
+    await userEvent.selectOptions(screen.getByLabelText('From account'), accountId)
+    const amount = screen.getByLabelText('Amount')
+    await userEvent.type(amount, value)
+    // Enter validates before blur has established a known error.
+    await userEvent.keyboard('{Enter}')
+    expect(await screen.findByText(message.replace(/\s/g, ' '))).toBeVisible()
+    await waitFor(() => expect(amount).toHaveFocus())
+    expect(amount).toHaveAttribute('aria-describedby', 'amount-context amount-error')
+    expect(screen.getByRole('button', { name: 'Continue' })).toBeDisabled()
+    await userEvent.click(screen.getByRole('button', { name: 'Continue' }))
+    expect(screen.getByRole('heading', { name: 'How much?' })).toBeVisible()
+    expect(screen.queryByRole('button', { name: 'Confirm transfer' })).not.toBeInTheDocument()
+    expect(posts).toBe(0)
   })
 
   it('updates amount errors when the selected account changes and checks note boundaries', async () => {
@@ -458,11 +482,8 @@ it('revalidates an unchanged server-rejected amount when its from-account change
 
 it.each([
   ['recipient.name', 'Recipient name', 'recipientName', false],
-  ['recipient.accountNumber', 'Account number (8 digits)', 'accountNumber', false],
   ['recipient.bank', 'Bank', 'bankChoice', false],
   ['recipient.bank', 'Bank name', 'bankName', true],
-  ['fromAccountId', 'From account', 'fromAccountId', false],
-  ['note', 'Note (optional)', 'note', false],
 ] as const)('shows and focuses server %s errors using the existing linked %s field', async (path, label, field, otherBank) => {
   server.use(http.post('*/api/transfers', () => HttpResponse.json({ error: { code: 'VALIDATION_ERROR', message: 'Check your details.', fields: { [path]: 'Please correct this detail.' } } }, { status: 400 })))
   setup()

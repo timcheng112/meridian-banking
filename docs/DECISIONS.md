@@ -542,3 +542,20 @@ Keep its status announcement screen-reader accessible and retain visible refresh
 After reviewing the preview and the requested completeness/status corrections, the candidate reported the result passed and explicitly authorized pushing a PR.
 Publish feat/transfer-submission into development with the accepted S4 scope and completed correctness/readability review.
 Merge, deployment and worktree cleanup remain separately gated.
+
+## Accepted: next correctness round after S4 merge
+
+After reporting PR #6 merged, the candidate requested a handoff to continue with the correctness round.
+Proceed with that review of the merged application, building on the completed S4 integration review and preserving candidate explainability and existing behavior.
+The previous recommendation to keep RecipientStep intact is evidence for discussion, not a prohibition on reassessing a concrete improvement.
+Do not infer authorization for material refactors, external publication, deployment or lease cleanup from this handoff request.
+
+## Accepted: release integration and deployment before README finalization
+
+After reviewing the proposed sequence, the candidate explicitly requested proceeding with readiness integration, development-to-main promotion, deployment verification and then final README publication.
+Squash the readiness slice into development and promote development to main with a merge that preserves ancestry, following the accepted branch workflow.
+Retain repository documentation rather than selectively excluding folders from main; static deployment serves the built dist directory.
+Authorization covers the necessary commits, pushes, PRs and merges for this release sequence.
+Hosting provider/account selection remains pending, and deployment must use the candidate-selected destination.
+Finalize the README with the verified public URL and candidate-reviewed author/AI-use details after deployment.
+Worktree cleanup and submission email remain outside this authorization.

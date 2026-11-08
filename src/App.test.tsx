@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { readFileSync } from 'node:fs'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { act, cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react'
+import { act, cleanup, render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { delay, http, HttpResponse } from 'msw'
 import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest'
@@ -9,18 +9,6 @@ import type { Account, Customer, Transaction } from './api/types'
 import { formatMoney, formatShortDate } from './lib/format'
 import { server } from './test/setup'
 import App from './App'
-
-const validationGate = vi.hoisted(() => ({ wait: undefined as Promise<void> | undefined }))
-vi.mock('@hookform/resolvers/zod', async (importOriginal) => {
-  const original = await importOriginal<typeof import('@hookform/resolvers/zod')>()
-  return { ...original, zodResolver: (...args: Parameters<typeof original.zodResolver>) => {
-    const resolve = original.zodResolver(...args)
-    return async (...resolverArgs: Parameters<typeof resolve>) => {
-      if (validationGate.wait) await validationGate.wait
-      return resolve(...resolverArgs)
-    }
-  } }
-})
 
 beforeAll(() => {
   HTMLDialogElement.prototype.showModal = function () { this.setAttribute('open', '') }
@@ -43,7 +31,6 @@ beforeEach(() => {
 })
 
 afterEach(() => {
-  validationGate.wait = undefined
   cleanup()
   server.events.removeAllListeners('request:start')
   clients.forEach((client) => client.clear())
@@ -68,6 +55,28 @@ const transaction: Transaction = {
 const errorResponse = () => HttpResponse.json({ error: { code: 'INTERNAL_ERROR', message: 'Down' } }, { status: 500 })
 
 describe('dashboard', () => {
+  it('disables both transfer placements while loading, then opens the loaded transfer dialog', async () => {
+    let release!: () => void
+    const pending = new Promise<void>((resolve) => { release = resolve })
+    server.use(http.get('*/api/accounts', async () => {
+      await pending
+      // Fall through to the supplied handler after releasing the request.
+    }))
+    renderApp()
+    try {
+      const buttons = screen.getAllByRole('button', { name: 'New transfer', hidden: true })
+      expect(buttons).toHaveLength(2)
+      for (const button of buttons) expect(button).toBeDisabled()
+    } finally {
+      release()
+    }
+    await screen.findByRole('heading', { name: 'Good evening, Ava' })
+    const buttons = screen.getAllByRole('button', { name: 'New transfer' })
+    for (const button of buttons) expect(button).toBeEnabled()
+    await userEvent.click(buttons[0])
+    expect(screen.getByRole('dialog', { name: 'New transfer' })).toBeVisible()
+  })
+
   it('announces loading before showing the loaded dashboard', async () => {
     renderApp()
     expect(screen.getByRole('status')).toHaveTextContent('Loading your dashboard')
@@ -358,7 +367,7 @@ describe('successful transfer and refresh', () => {
     server.events.removeAllListeners('request:start')
   })
 
-  it.each(['customer', 'accounts', 'transactions'])('keeps successful receipt when %s refresh fails and retries GETs only', async (resource) => {
+  it('keeps successful receipt when accounts refresh fails and retries GETs only', async () => {
     let posts = 0
     const started = new Set<string>()
     let sending = false
@@ -369,7 +378,7 @@ describe('successful transfer and refresh', () => {
     }
     server.events.on('request:start', observe)
     const client = renderApp(); await openTransferReview()
-    server.use(http.get(`*/api/${resource}`, errorResponse))
+    server.use(http.get('*/api/accounts', errorResponse))
     await userEvent.click(screen.getByRole('button', { name: 'Confirm transfer' }))
     await screen.findByRole('heading', { name: 'Transfer sent' })
     expect(await screen.findByText("Transfer sent, but we couldn't refresh your dashboard. Your transfer is complete. Try refreshing the dashboard.")).toBeVisible()
@@ -458,8 +467,11 @@ describe('successful transfer and refresh', () => {
     expect(screen.queryByRole('heading', { name: 'Transfer to Jamie Tan' })).not.toBeInTheDocument()
     expect(client.getQueryState(['transactions', { limit: 8, q: 'Jamie' }])?.isInvalidated).toBe(true)
     await userEvent.click(screen.getByRole('button', { name: 'Back to dashboard' }))
+    // jsdom has no visible opener; wait for the scheduled fallback focus before typing.
+    await waitFor(() => expect(screen.getByRole('heading', { name: 'Good evening, Ava' })).toHaveFocus())
     await userEvent.clear(search)
     await userEvent.type(search, 'Jamie')
+    expect(search).toHaveValue('Jamie')
     await waitFor(() => expect(client.getQueryData<{ total: number }>(['transactions', { limit: 8, q: 'Jamie' }])?.total).toBe(2), { timeout: 2000 })
     expect(await screen.findByText('2 results')).toBeVisible()
     expect(screen.getAllByRole('heading', { name: 'Transfer to Jamie Tan' })).toHaveLength(2)
@@ -467,29 +479,6 @@ describe('successful transfer and refresh', () => {
     expect(search).toHaveValue('')
     expect(screen.getAllByRole('heading', { name: 'Transfer to Jamie Tan' })).toHaveLength(1)
   }, 10_000)
-})
-
-it('keeps validation locked through close/reopen and discards a hidden invalid draft with zero POST', async () => {
-  let release!: () => void
-  let posts = 0
-  server.use(http.post('*/api/transfers', () => { posts++; return errorResponse() }))
-  const client = renderApp(); await openTransferReview()
-  act(() => client.setQueryData(['payees'], { payees: [] }))
-  await screen.findByText('Recipient unavailable')
-  validationGate.wait = new Promise<void>((resolve) => { release = resolve })
-  const form = document.getElementById('transfer-form')!
-  act(() => { fireEvent.submit(form); fireEvent.submit(form) })
-  await userEvent.click(screen.getByRole('button', { name: 'Close transfer' }))
-  expect(screen.getByText('Sending transfer… Open New transfer to view its status.')).toBeVisible()
-  await userEvent.click(screen.getAllByRole('button', { name: 'New transfer' })[0])
-  expect(screen.getByRole('button', { name: 'Sending…' })).toBeDisabled()
-  await userEvent.click(screen.getByRole('button', { name: 'Close transfer' }))
-  release()
-  await waitFor(() => expect(screen.queryByText('Sending transfer… Open New transfer to view its status.')).not.toBeInTheDocument())
-  expect(screen.queryByRole('dialog', { hidden: true })).not.toBeInTheDocument()
-  expect(posts).toBe(0)
-  await userEvent.click(screen.getAllByRole('button', { name: 'New transfer' })[0])
-  expect(screen.getByRole('heading', { name: 'Who are you sending to?' })).toHaveFocus()
 })
 
 it('replaces an in-flight pre-transfer account read so its late stale result cannot overwrite refresh', async () => {
