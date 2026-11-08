@@ -494,3 +494,24 @@ After reporting PR #4 merged, the candidate explicitly requested returning all w
 Verify clean worktrees and preservation in merged development, then use Treehouse lease-identity checks to return all five completed leases.
 Preserve local and remote branches and evidence; stop task-owned preview processes through the supported return operation.
 Next work is S4 planning followed by implementation, then the correctness/readability review with recipient-hook discussion deferred to that review.
+
+## Proposed: S4 technical plan v1
+
+The local proposal is /private/tmp/meridian-s4-technical-plan-v1.html, version 1; candidate approval is pending.
+Retain one RHF form and its current schema, with final validation before an explicit guarded POST and no automatic mutation retries.
+Place mutation and refresh lifecycle above the dialog so closing it cannot lose an in-flight operation; preserve the mounted form session after submission until its outcome is acknowledged.
+Ordinary unsent drafts still discard on close, while hidden pending/results reopen through the existing New transfer action with concise dashboard status.
+This proposed lifecycle preserves T1 close/Escape behavior without duplicating drafts or permitting a second unresolved transfer.
+Use the API response for the receipt and independently refresh customer, accounts and the transaction query family, including active search and stale inactive terms.
+Keep successful submission distinct from refresh failure and offer GET-only refresh retry.
+Map whitelisted API field paths to RHF, retain failed Review data and provide explicit correction actions to earlier steps.
+The artifact proposes copy for uncertain transport outcomes and success with incomplete refresh, alongside the accepted sending/error/success designs.
+No new context, generic wizard, recipient-hook extraction, dependencies, CI work or external writes are proposed.
+After approval, explicitly selected Sol implements the bounded file inventory; Astra reviews integration and verification before candidate understanding and acceptance.
+
+## Accepted: S4 technical plan v1
+
+The candidate approved /private/tmp/meridian-s4-technical-plan-v1.html, version 1, including the proposed submission lifetime, error correction and refresh treatments.
+Proceed with bounded Sol implementation and tests, Astra integration review and local verification.
+The earlier proposed S4 choices are now accepted within that artifact scope; candidate understanding and feature acceptance remain pending.
+Publication and deployment require separate approval.

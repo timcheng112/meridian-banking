@@ -17,7 +17,7 @@ Deadline: 10 November 2026, EOD, supplied by the candidate.
 The application renders dashboard content through the accepted query/state layer, with loading, initial error/Retry, refresh warnings and empty states.
 The header, persistent preferences, API search, responsive layout and shared UI presentation are implemented; S2 evidence is recorded below.
 The candidate explicitly accepted the complete Figma designs on 7 November 2026.
-Active scope: S1-S3 and CI accepted and merged; next is S4 technical planning before implementation.
+Active scope: S1-S3 and CI accepted and merged; S4 technical plan v1 is approved for local implementation and verification.
 Integration base: remote development 5d4566fd924dcceec90c71f5077b83ccccb69f8c, the verified PR #4 merge containing CI PR #5.
 Primary development was fast-forwarded to 5d4566f; this local recovery checkpoint follows that merge.
 Phase: merged S3 includes the RHF readability refactor and BANK_PRESETS extraction; Confirm remains disabled and S4 is unimplemented.
@@ -149,14 +149,13 @@ The later selection, propagation and cleanup IDs are in `/private/tmp/meridian-s
 
 ## Next safe action
 
-Review PR #4: https://github.com/timcheng112/meridian-banking/pull/4.
-S3 is accepted and published; obtain separate merge authorization before integration.
-Local review: /private/tmp/meridian-s3-review.html; production preview http://127.0.0.1:4183/ while its process runs.
-Merge and cleanup require separate authorization; S4 still requires its own concrete plan approval.
-S2 MR #2 is accepted and merged; preserve the preferred S2 search presentation.
-Cleanup still requires authorization; do not reopen deferred mock-worker repair.
-Existing PR: https://github.com/timcheng112/meridian-banking/pull/1, merged.
-Completed worktree cleanup, new external publication and deployment remain separate authorization boundaries.
+S3 PR #4 and CI PR #5 are merged, and all assignment leases have been returned.
+Prepare the S4 HTML technical plan and obtain explicit candidate approval before implementation or implementation-worker dispatch.
+After approval, commit recovery records, verify the development base, and acquire a fresh Treehouse lease for the S4 branch.
+After S4, conduct the requested correctness/readability review; keep further recipient-hook extraction deferred until that review.
+Preserve the accepted S2 search presentation and keep further mock-worker lifecycle repair deferred.
+The former S3 production preview on port 4183 is stopped; its local review artifact is historical evidence.
+New publication, deployment, merge and cleanup require their own authorization.
 
 ## Continuation audit - 7 November 2026
 
@@ -1252,3 +1251,28 @@ Next: recover primary development, prepare and approve the S4 technical plan, th
 After S4, perform the correctness/readability round, including the deferred recipient-hook discussion, before the full requirement and release audit.
 Release references remain brief/candidate-brief.md, brief/api-contract.md, wireframes/wireframe.md, README submission requirements and DEPLOYMENT.md; deployment needs explicit authorization.
 No S4 implementation, deployment or remote branch deletion occurred during this handoff.
+
+## S4 planning checkpoint - 8 November 2026
+
+Recovered primary development at 0af91aa, above locally recorded origin/development 5d4566f; no remote fetch or publication was performed.
+Application source, tests, package files, runtime configuration and CI match accepted S3 head 91474fd, so the recorded evidence remains applicable by source identity.
+Treehouse status with the configured temporary root confirms all five pool entries available, with no leases or tracked processes.
+The historical Next safe action section has been reconciled with the merged S3/CI and completed cleanup.
+Proposed artifact: /private/tmp/meridian-s4-technical-plan-v1.html, version 1, prepared through feature-dev with explicit Astra planning and React/composition assessment.
+Scope is T5-T7, remaining T8/E4 transfer coverage, final validation, typed mutation, server errors, success and customer/accounts/transaction-family refresh.
+The proposal includes retained submitted-session lifetime for close/reopen, API-error correction, and distinct successful-transfer/failed-refresh states; these additions await approval with the artifact.
+No application or test implementation has started, and no new lease has been acquired.
+The in-app browser bootstrap remains unavailable; isolated Chrome verified the plan at 390px and 1280px with no horizontal overflow or page errors.
+Plan screenshots are local under /private/tmp/meridian-browser-qa/s4-plan-390.png and s4-plan-1280.png; these verify the review artifact, not S4 application behavior.
+Next: obtain explicit approval of plan v1, commit recovery and approval records, verify the base, then acquire a new lease for feat/transfer-submission before Sol implementation.
+After S4, conduct the requested correctness/readability review and only then revisit recipient-hook extraction.
+Publication, deployment, merge and cleanup remain separately gated.
+
+## Approved S4 implementation
+
+The candidate explicitly approved /private/tmp/meridian-s4-technical-plan-v1.html, version 1, and requested proceeding.
+Approval covers the exact file inventory, lifecycle and missing-state treatments, behavioral tests and local verification in that artifact.
+Next: acquire a fresh no-fetch lease from this committed development checkpoint, record the feature branch/base there, then dispatch Sol implementation.
+Astra reviews integration and verification before candidate understanding and acceptance.
+The post-S4 correctness/readability review remains requested; recipient-hook extraction stays deferred until that review.
+Publication, deployment, merge and cleanup are excluded from this approval.
